@@ -1,0 +1,1259 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Atual": {
+      "main": [
+        [
+          {
+            "node": "Formata Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request6": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Data Atual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Final 2789",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Final 3986",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 3986": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 2789": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-07T20:13:54.332Z",
+  "id": "sAbOv5JKpZQP5uPj",
+  "meta": null,
+  "name": "[JESS] [L1] Auto Inscritos",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/501823/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "token_type",
+              "value": "Bearer"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"emails\":[\n      {\n         \"email\":\"{{ $node[\"Formata Telefone\"].json[\"email\"] }}\",\n         \"variables\":{\n            \"Nome\":\"{{ $node[\"Formata Telefone\"].json[\"name\"] }}\",\n\"Phone\":\"{{ $node[\"Formata Telefone\"].json[\"phone\"] }}\",\n\"subscribe_date\":\"{{ $node[\"Data Atual\"].json[\"currentDate\"] }}\",\n\"utm_source\":\"{{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\",\n\"utm_campaign\":\"{{ $node[\"Formata Telefone\"].json[\"utm_campaign\"] }}\",\n\"utm_medium\":\"{{ $node[\"Formata Telefone\"].json[\"utm_medium\"] }}\",\n\"utm_content\":\"{{ $node[\"Formata Telefone\"].json[\"utm_content\"] }}\",\n\"utm_term\":\"{{ $node[\"Formata Telefone\"].json[\"utm_term\"] }}\",\n\"Pagina\":\"{{ $node[\"Formata Telefone\"].json[\"path\"] }}\",\n\"grupo\":\"não\",\n\"chip\":\"2789\",\n\"pesquisa\":\"não respondeu\"\n         }\n      }\n   ]\n}",
+        "options": {}
+      },
+      "id": "c6068576-ceda-490e-a04a-7873605cc16e",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "39a2263d-331b-4b1a-afed-3a5539add378",
+        "options": {}
+      },
+      "id": "111800d5-4050-4f7f-9ea7-9253a70c10ab",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        340
+      ],
+      "webhookId": "39a2263d-331b-4b1a-afed-3a5539add378"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"grant_type\":\"client_credentials\",    \"client_id\":\"3ff5527b0f45a4d1c46ccace02f53347\",    \"client_secret\":\"1ca1c037309edf7fd9d12d1d8e343da5\" }",
+        "options": {}
+      },
+      "id": "4cd0df26-a6cd-4600-bfbc-5141c19d32f3",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        960,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    let ddi = '55';\n    number = number.toString().replace(/[^\\d]/g, \"\");\n\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        ddi = number.substring(0, 2);\n        ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n\n    } else {\n        return number;\n    }\n}\n\n$input.all()[0].json['phone'] = formataTelefone($input.all()[0].json['phone']);\n\nreturn $input.all();\n"
+      },
+      "id": "966c7a70-64ff-436c-a511-0034d0b0c7ab",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] L1- Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data de Inscrição": "={{ $('Formata Data').item.json.formattedDate }}",
+            "Nome": "={{ $('Formata Telefone').item.json.name }}",
+            "Chave(busca)": "={{ $('Formata Telefone').item.json.phone.slice(-7) }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Telefone": "={{ $('Formata Telefone').item.json.phone }}",
+            "utm_source": "={{ $('Formata Telefone').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Formata Telefone').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Formata Telefone').item.json.utm_medium }}",
+            "utm_content": "={{ $('Formata Telefone').item.json.utm_content }}",
+            "utm_term": "={{ $('Formata Telefone').item.json.utm_term }}",
+            "Página de Captura": "={{ $('Formata Telefone').item.json.path }}",
+            "Entrou no Grupo?": "Não",
+            "Chip": "=2789"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data de Inscrição",
+              "displayName": "Data de Inscrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Página de Captura",
+              "displayName": "Página de Captura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entrou no Grupo?",
+              "displayName": "Entrou no Grupo?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Idade",
+              "displayName": "Idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Renda mensal",
+              "displayName": "Renda mensal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Primeira Pergunta",
+              "displayName": "Primeira Pergunta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nível de inglês",
+              "displayName": "Nível de inglês",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Desejo",
+              "displayName": "Desejo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Desafio",
+              "displayName": "Desafio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Ponto Fraco",
+              "displayName": "Ponto Fraco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Motivação",
+              "displayName": "Motivação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Sugestão pra Aula",
+              "displayName": "Sugestão pra Aula",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Onde conheceu",
+              "displayName": "Onde conheceu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Quanto tempo conhece",
+              "displayName": "Quanto tempo conhece",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Chip",
+              "displayName": "Chip",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "4e2801aa-5a09-4dd1-8db8-b4baac9d1852",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1340,
+        140
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a12185eb-37b0-4fd8-93af-a374fc60abe3",
+      "name": "Data Atual",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        260,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "2aaf97c1-be57-402f-9880-ec45368c5327",
+      "name": "Formata Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        440,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "008f70b3-5841-4285-b3b6-a3a6a9e8f63b",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-audio",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json[\"phone\"] }}"
+            },
+            {
+              "name": "audio",
+              "value": "=https://raw.githubusercontent.com/math-cristhyan/arquivos-make/main/audio-jessica.mp3"
+            },
+            {
+              "name": "delayMessage",
+              "value": "={{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "64109cad-f93b-4989-a9f8-e7cbbb6d3c39",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1740,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.random }}",
+              "operation": "equal"
+            }
+          ]
+        }
+      },
+      "id": "e09ae97f-73ab-4004-afff-5a5431b999c1",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        760,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "random",
+              "type": "numberValue",
+              "numberValue": "={{ Math.floor(Math.random() * 2) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ee6721fd-b233-4070-a16b-45ef4fbce430",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [
+        600,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/501823/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "token_type",
+              "value": "Bearer"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"emails\":[\n      {\n         \"email\":\"{{ $node[\"Formata Telefone\"].json[\"email\"] }}\",\n         \"variables\":{\n            \"Nome\":\"{{ $node[\"Formata Telefone\"].json[\"name\"] }}\",\n\"Phone\":\"{{ $node[\"Formata Telefone\"].json[\"phone\"] }}\",\n\"subscribe_date\":\"{{ $node[\"Data Atual\"].json[\"currentDate\"] }}\",\n\"utm_source\":\"{{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\",\n\"utm_campaign\":\"{{ $node[\"Formata Telefone\"].json[\"utm_campaign\"] }}\",\n\"utm_medium\":\"{{ $node[\"Formata Telefone\"].json[\"utm_medium\"] }}\",\n\"utm_content\":\"{{ $node[\"Formata Telefone\"].json[\"utm_content\"] }}\",\n\"utm_term\":\"{{ $node[\"Formata Telefone\"].json[\"utm_term\"] }}\",\n\"Pagina\":\"{{ $node[\"Formata Telefone\"].json[\"path\"] }}\",\n\"grupo\":\"não\",\n\"chip\":\"3986\"\n         }\n      }\n   ]\n}",
+        "options": {}
+      },
+      "id": "9dcddbc4-4f6c-49d0-bf66-06571b3ac560",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"grant_type\":\"client_credentials\",    \"client_id\":\"3ff5527b0f45a4d1c46ccace02f53347\",    \"client_secret\":\"1ca1c037309edf7fd9d12d1d8e343da5\" }",
+        "options": {}
+      },
+      "id": "9b74afdd-0bd9-43af-b749-dd3797de535b",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        960,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] L1- Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data de Inscrição": "={{ $('Formata Data').item.json.formattedDate }}",
+            "Nome": "={{ $('Formata Telefone').item.json.name }}",
+            "Chave(busca)": "={{ $('Formata Telefone').item.json.phone.slice(-7) }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Telefone": "={{ $('Formata Telefone').item.json.phone }}",
+            "utm_source": "={{ $('Formata Telefone').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Formata Telefone').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Formata Telefone').item.json.utm_medium }}",
+            "utm_content": "={{ $('Formata Telefone').item.json.utm_content }}",
+            "utm_term": "={{ $('Formata Telefone').item.json.utm_term }}",
+            "Página de Captura": "={{ $('Formata Telefone').item.json.path }}",
+            "Entrou no Grupo?": "Não",
+            "Chip": "=3986"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data de Inscrição",
+              "displayName": "Data de Inscrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Página de Captura",
+              "displayName": "Página de Captura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entrou no Grupo?",
+              "displayName": "Entrou no Grupo?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Idade",
+              "displayName": "Idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Renda mensal",
+              "displayName": "Renda mensal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Primeira Pergunta",
+              "displayName": "Primeira Pergunta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nível de inglês",
+              "displayName": "Nível de inglês",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Desejo",
+              "displayName": "Desejo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Desafio",
+              "displayName": "Desafio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Ponto Fraco",
+              "displayName": "Ponto Fraco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Motivação",
+              "displayName": "Motivação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Sugestão pra Aula",
+              "displayName": "Sugestão pra Aula",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Onde conheceu",
+              "displayName": "Onde conheceu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Quanto tempo conhece",
+              "displayName": "Quanto tempo conhece",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Chip",
+              "displayName": "Chip",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "813329d3-fc94-4e32-aba7-ced15a0789a6",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1340,
+        480
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json[\"phone\"] }}"
+            },
+            {
+              "name": "audio",
+              "value": "=https://raw.githubusercontent.com/math-cristhyan/arquivos-make/main/audio-jessica.mp3"
+            },
+            {
+              "name": "delayMessage",
+              "value": "={{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "85266d63-7d43-4336-85ce-a556d0e7b6d9",
+      "name": "HTTP Request7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1740,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $json.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "adbf680f-d354-4be6-a9e6-07751fc7011c",
+      "name": "Google Sheets2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        -60,
+        340
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "0eb5f09b-8101-4068-9ebd-38004940b8af",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        100,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $('Formata Telefone').item.json.name.split(\" \")[0] }}.\n\nFico feliz que você se inscreveu no *The BritEnglish.*\n\nEu gravei um áudio para te passar um *recado importante* e te dar um *presente especial.*\n "
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4d848cf9-a226-4807-a3fe-c533017a0945",
+      "name": "Final 3986",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1540,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $('Formata Telefone').item.json.name.split(\" \")[0] }}.\n\nFico feliz que você se inscreveu no *The BritEnglish.*\n\nEu gravei um áudio para te passar um *recado importante* e te dar um *presente especial.*\n "
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f1f6ddb7-2a3b-41ae-85d3-eccd2d0987eb",
+      "name": "Final 2789",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1540,
+        140
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 BytedanceWebview/d8a21c6 musical_ly_32.8.0 JsSdk/2.0 NetType/WIFI Channel/App Store ByteLocale/pt Region/BR FalconTag/FF3855FC-5406-4989-B1B2-3280DC517A82",
+            "content-length": "200",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "accept-language": "pt-BR,pt;q=0.9",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "189.18.62.23",
+            "cf-ipcountry": "BR",
+            "cf-ray": "846b2d3789f300af-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "text/plain;charset=UTF-8",
+            "origin": "https://britenglish.com.br",
+            "referer": "https://britenglish.com.br/",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "172.68.18.28",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.68.18.28"
+          },
+          "params": {},
+          "query": {},
+          "body": "{\"email\":\"matheus@gmail.com\",\"name\":\"Douglas de Araujo Silva\",\"phone\":\"(27) 99242-9696\",\"utm_source\":\"tiktok\",\"utm_medium\":null,\"utm_campaign\":null,\"utm_term\":null,\"utm_content\":null,\"path\":\"/\"}"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-26T13:36:07.000Z",
+  "versionId": "6c97199c-6a12-44cd-bd1c-96fcdc4b9505"
+}
