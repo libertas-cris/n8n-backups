@@ -1,0 +1,568 @@
+{
+  "active": true,
+  "connections": {
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-12T01:59:01.916Z",
+  "id": "AWuATSQWU2Ia57ww",
+  "meta": null,
+  "name": "[JESS] [L1] Cruzamento de dados da pesquisa",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "7a9914b3-8001-4b5f-ab20-4b550e153292",
+        "options": {}
+      },
+      "id": "17be3f69-172a-4d1b-9038-aaec0748874c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        620,
+        260
+      ],
+      "webhookId": "7a9914b3-8001-4b5f-ab20-4b550e153292"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    let ddi = '55';\n\n    // Verifica se o número é indefinido ou nulo\n    if (number === undefined || number === null) {\n        return ''; // Ou qualquer valor padrão desejado\n    }\n\n    number = number.toString().replace(/[^\\d]/g, \"\");\n\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        ddi = number.substring(0, 2);\n        ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) === '55' ? number : (number.substring(0, 1) === '0' ? formataTelefone(number.substring(1, 12)) : number);\n\n    } else {\n        return number;\n    }\n}\n\n// Verifica se 'Digite seu telefone' está definido antes de chamar a função\nconst telefone = $input.all()[0].json['E seu número de telefone (de preferência do WhatsApp)'];\n$input.all()[0].json['E seu número de telefone (de preferência do WhatsApp)'] = formataTelefone(telefone);\n\nreturn $input.all();\n"
+      },
+      "id": "be647614-1a04-438d-b7fe-375e4aa2087e",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        980,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "2edb2737-99dc-43b2-97bc-7d6260930793",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        800,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Chave(busca)",
+              "lookupValue": "={{ $json['E seu número de telefone (de preferência do WhatsApp)'].slice(-7) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "954f8653-072b-4229-84bf-2e25cc5a27ce",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1200,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "841cd964-4071-4eb3-840e-5f43e9509cad",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Idade": "={{ $('Code1').item.json['Quantos anos você tem?'] }}",
+            "Renda mensal": "={{ $('Code1').item.json['Qual a sua renda mensal?'] }}",
+            "Nível de inglês": "={{ $('Code1').item.json['O que você acha que é o seu nível no inglês?'] }}",
+            "Desejo": "={{ $('Code1').item.json['Qual é o seu desejo em relação à fluência no inglês britânico?'] }}",
+            "Desafio": "={{ $('Code1').item.json['Qual é o seu maior desafio no inglês e como você acha que eu posso te ajudar? '] }}",
+            "Ponto Fraco": "={{ $('Code1').item.json['Qual desses você acredita ser o ponto fraco no seu inglês?'] }}",
+            "Motivação": "={{ $('Code1').item.json['Qual sua motivação para se tornar fluente no inglês britânico especificamente?'] }}",
+            "Onde conheceu": "={{ $('Code1').item.json['Você lembra por onde você me conheceu?'] }}",
+            "Quanto tempo conhece": "={{ $('Code1').item.json['E última pergunta: Há quanto tempo você me conhece?'] }}",
+            "Primeira Pergunta": "={{ $('Code1').item.json['Qual sua primeira pergunta quando o assunto é falar inglês?'] }}",
+            "Sugestão pra Aula": "={{ $('Code1').item.json['O que você mais quer que eu aborde nessa aula gratuita The BritEnglish?'] }}"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data de Inscrição",
+              "displayName": "Data de Inscrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Página de Captura",
+              "displayName": "Página de Captura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entrou no Grupo?",
+              "displayName": "Entrou no Grupo?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Idade",
+              "displayName": "Idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Renda mensal",
+              "displayName": "Renda mensal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Primeira Pergunta",
+              "displayName": "Primeira Pergunta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nível de inglês",
+              "displayName": "Nível de inglês",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Desejo",
+              "displayName": "Desejo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Desafio",
+              "displayName": "Desafio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ponto Fraco",
+              "displayName": "Ponto Fraco",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Motivação",
+              "displayName": "Motivação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sugestão pra Aula",
+              "displayName": "Sugestão pra Aula",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Onde conheceu",
+              "displayName": "Onde conheceu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Quanto tempo conhece",
+              "displayName": "Quanto tempo conhece",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chip",
+              "displayName": "Chip",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eb34ee9f-4253-4d44-b500-12afac8ad927",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1600,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/501823/emails/variable ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "token_type",
+              "value": "Bearer"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"email\":\"{{ $node[\"Google Sheets\"].json[\"Email\"] }}\",\n   \"variables\":[\n      {\n         \"name\":\"pesquisa\",\n         \"value\":\"respondeu\"\n      }\n   ]\n} ",
+        "options": {}
+      },
+      "id": "d4372ebd-da9b-4dde-8aaf-2e446be7651d",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2000,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"grant_type\":\"client_credentials\",    \"client_id\":\"3ff5527b0f45a4d1c46ccace02f53347\",    \"client_secret\":\"1ca1c037309edf7fd9d12d1d8e343da5\" }",
+        "options": {}
+      },
+      "id": "7090a211-8588-4171-8ee1-2e15b0733a27",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1800,
+        260
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (compatible; Google-Apps-Script; beanserver; +https://script.google.com; id: UAEmdDd-fNfzCKCdKPavFHpUV9Ajha3f-ksc)",
+            "content-length": "1068",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "107.178.194.67",
+            "cf-ipcountry": "US",
+            "cf-ray": "84678abc79a1115c-ORD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.69.59.22",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.69.59.22"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Qual seu nome?": "Fabiana",
+            "E seu número de telefone (de preferência do WhatsApp)": "11984872871",
+            "Seu e-mail": "fabianagenila@gmail.com",
+            "Quantos anos você tem?": "45 a 54 anos",
+            "Qual a sua renda mensal?": "De R$1.001 a R$3.000",
+            "Qual sua primeira pergunta quando o assunto é falar inglês?": "como não esquecer o que aprendeu",
+            "O que você acha que é o seu nível no inglês?": "Intermediário - já falo um pouco, mas preciso de mais",
+            "Qual é o seu desejo em relação à fluência no inglês britânico?": "ter uma pronúncia mais aperfeiçoada, entender melhor",
+            "Qual é o seu maior desafio no inglês e como você acha que eu posso te ajudar? ": "speaking",
+            "Qual desses você acredita ser o ponto fraco no seu inglês?": "Speaking",
+            "Qual sua motivação para se tornar fluente no inglês britânico especificamente?": "ver filmes sem legenda",
+            "O que você mais quer que eu aborde nessa aula gratuita The BritEnglish?": "sotaques",
+            "Você lembra por onde você me conheceu?": "Instagram",
+            "E última pergunta: Há quanto tempo você me conhece?": "1 mês mais ou menos"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-17T16:42:00.000Z",
+  "versionId": "57ba5593-cb10-4b33-9a93-3f56ae9586da"
+}
