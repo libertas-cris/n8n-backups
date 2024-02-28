@@ -1,0 +1,175 @@
+{
+  "active": true,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-18T19:24:14.462Z",
+  "id": "lVJp3Gb30w5MeXuU",
+  "meta": null,
+  "name": "[REDESIGN] [BC] Onboarding",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    let ddi = '55';\n    number = number.toString().replace(/[^\\d]/g, \"\");\n\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        ddi = number.substring(0, 2);\n        ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n\n    } else {\n        return number;\n    }\n}\n\n$input.all()[0].json['contact[phone]'] = formataTelefone($input.all()[0].json['contact[phone]']);\n\nreturn $input.all();\n"
+      },
+      "id": "61fc577f-c5e0-41f9-b944-70a58f90f66d",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "86dbfe74-e4cd-46d2-8db2-fbf48b4ed9f7",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        960,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/gPnRPBPbkwxL/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "nome",
+              "value": "={{ $json['contact[first_name]'] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json['contact[email]'] }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ $json['contact[phone]'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "be603064-7b94-46f1-b8bd-a69ad6933009",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1280,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ed0888e0-469c-4c28-99d6-f0745dcc7c65",
+        "options": {}
+      },
+      "id": "2470ff04-c00d-48d0-9a6f-a0d155b57b5b",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        800,
+        340
+      ],
+      "webhookId": "ed0888e0-469c-4c28-99d6-f0745dcc7c65"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "GuzzleHttp/6.5.5 curl/8.3.0 PHP/7.4.33",
+            "content-length": "593",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "23.22.14.42",
+            "cf-ipcountry": "US",
+            "cf-ray": "8578994afd1b084b-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "172.70.38.105",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.70.38.105"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "contact[id]": "61847",
+            "contact[email]": "testecris@gmail.com",
+            "contact[first_name]": "teste",
+            "contact[last_name]": "",
+            "contact[phone]": "81993515055",
+            "contact[orgname]": "",
+            "contact[customer_acct_name]": "",
+            "contact[tags]": "",
+            "contact[ip4]": "0.0.0.0",
+            "contact[fields][link_boleto]": "",
+            "contact[fields][ultima_interacao]": "",
+            "contact[fields][valor]": "",
+            "contact[fields][utmsource]": "",
+            "contact[fields][utmcampaign]": "",
+            "contact[fields][utmterm]": "",
+            "contact[fields][utmmedium]": "",
+            "contact[fields][utmcontent]": "",
+            "contact[fields][black_law_date]": "",
+            "seriesid": "24"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-18T19:30:00.000Z",
+  "versionId": "19708ee0-d305-43cb-a973-791901187f08"
+}
