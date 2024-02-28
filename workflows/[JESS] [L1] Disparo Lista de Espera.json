@@ -1,0 +1,457 @@
+{
+  "active": false,
+  "connections": {
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 2789": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split In Batches1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Final 2789",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches1": {
+      "main": [
+        [
+          {
+            "node": "Final 3986",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 3986": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-26T13:28:16.632Z",
+  "id": "MX219H2bm8pHfWWn",
+  "meta": null,
+  "name": "[JESS] [L1] Disparo Lista de Espera",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "b29a93ac-0fdd-4f3f-bd10-2a00aef8d4df",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1524329621,
+          "mode": "list",
+          "cachedResultName": "Lista de Espera",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=1524329621"
+        },
+        "options": {}
+      },
+      "id": "4e0d54d0-018e-465a-a6ed-a47e2547b90f",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        700,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Whatsapp }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "6d6e5a4a-acc6-4b21-acaa-9881fbb8b951",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        900,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $json[\"Nome\"].split(\" \")[0] }}. 🤓\n\nVocê ficou sabendo? Ontem na aula do *The BritEnglish* abrimos as inscrições do *BritiShize.*\n\nÉ o meu *único curso de inglês AO VIVO*, com foco na *cultura britânica* para você *sofisticar seu inglês em 2024.* 🤯\n\nComo você está na minha lista de espera, além de receber *4 bônus ainda ganha de presente:* \n\n🎁 Uma super aula sobre *cultura de trabalho* britânica e *exam preparation.*\n\nVou compartilhar a *minha experiência* e *revelar alguns segredinhos* que vão te ajudar muito caso você esteja planejando trabalhar na Inglaterra.\n\nAs vagas são limitadas, *pra você garantir a sua na única turma do ano* é só me responder com *BRITI* que te envio o link.\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b4fc1d48-5eca-4d0f-abce-295103ffba83",
+      "name": "Final 3986",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2040,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $json[\"Nome\"].split(\" \")[0] }}. 🤓\n\nVocê ficou sabendo? Ontem na aula do *The BritEnglish* abrimos as inscrições do *BritiShize.*\n\nÉ o meu *único curso de inglês AO VIVO*, com foco na *cultura britânica* para você *sofisticar seu inglês em 2024.* 🤯\n\nComo você está na minha lista de espera, além de receber *4 bônus ainda ganha de presente:* \n\n🎁 Uma super aula sobre *cultura de trabalho* britânica e *exam preparation.*\n\nVou compartilhar a *minha experiência* e *revelar alguns segredinhos* que vão te ajudar muito caso você esteja planejando trabalhar na Inglaterra.\n\nAs vagas são limitadas, *pra você garantir a sua na única turma do ano* é só me responder com *BRITI* que te envio o link.\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ac8e8e28-a850-402c-98b8-a8b3a8b256b9",
+      "name": "Final 2789",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2040,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.Chip }}",
+              "operation": "equal",
+              "value2": 2789
+            }
+          ]
+        }
+      },
+      "id": "bda9ca04-4b60-4b31-8b1c-5372b8049cd6",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "c16dc9f7-416f-49e1-ab26-9dfc82dd47f3",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "733d5974-b97b-44b3-ba38-db345827bc90",
+      "name": "Split In Batches1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Split In Batches').item.json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=As inscrições vão ser abertas no evento _*The BritEnglish.*_ 🇬🇧\n\nUma aula gratuita onde vou revelar alguns *segredinhos*e te mostrar *como aperfeiçoar o seu inglês britânico.*\n\nPra ficar por dentro de tudo e garantir sua vaga no curso, me responde com *entrar no grupo* para receber o link. "
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a6d559d2-761f-4931-935e-5dd877d5dabe",
+      "name": "Final 2789 p2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2280,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Split In Batches1').item.json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=As inscrições vão ser abertas no evento _*The BritEnglish.*_ 🇬🇧\n\nUma aula gratuita onde vou revelar alguns *segredinhos*e te mostrar *como aperfeiçoar o seu inglês britânico.*\n\nPra ficar por dentro de tudo e garantir sua vaga no curso, me responde com *entrar no grupo* para receber o link. "
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "70ef17dd-bc6d-4d45-a97a-1f56e3bf57f1",
+      "name": "Final 3986 p2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2300,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.item.json['Whatsapp'] = formataTelefone($input.item.json['Whatsapp'])\n\n\nreturn $input.item;"
+      },
+      "id": "691d8a66-0421-4bc5-a558-3c06790def6d",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Whatsapp }}",
+              "operation": "startsWith",
+              "value2": "=55"
+            }
+          ]
+        }
+      },
+      "id": "0afaedb1-443d-49fb-b435-dc0d3598e9c3",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-31T17:14:41.000Z",
+  "versionId": "233e3e89-0b14-46da-aac7-579b83ada56b"
+}
