@@ -1,0 +1,1814 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Entrou",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Saiu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata webhook": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Entrou": {
+      "main": [
+        [
+          {
+            "node": "Adiciona Participantes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Saiu": {
+      "main": [
+        [
+          {
+            "node": "Adiciona Participantes1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read + ID": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read - ID": {
+      "main": [
+        [
+          {
+            "node": "Wait3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Adicionar 1 na Contagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adicionar 1 na Contagem": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Captação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Read + ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait3": {
+      "main": [
+        [
+          {
+            "node": "Subtrair 1 na Contagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Subtrair 1 na Contagem": {
+      "main": [
+        [
+          {
+            "node": "Wait4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait4": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Captação1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait5": {
+      "main": [
+        [
+          {
+            "node": "Read - ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona Participantes1": {
+      "main": [
+        [
+          {
+            "node": "Wait5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona Participantes": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Captação": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Captação1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Entrar no grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Entrar no grupo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ok",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ok": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "BRITI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BRITI": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-07T16:36:01.176Z",
+  "id": "ZuNJEuFwUrIgdohj",
+  "meta": null,
+  "name": "[JESS] Controle de Entrada e Saída dos Grupos",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "314c998f-b757-4aa6-b41a-6e6787e21ad8",
+        "options": {}
+      },
+      "id": "8dc72228-ffb5-4d51-bd78-1f01eb27a7fb",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        440
+      ],
+      "webhookId": "314c998f-b757-4aa6-b41a-6e6787e21ad8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $node[\"Trata webhook\"].json[\"notification\"] }}",
+              "operation": "isNotEmpty"
+            }
+          ],
+          "boolean": [
+            {
+              "value1": "={{ $json.Comunidade }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "bed237a5-0496-40fe-9ea4-e50cddcd28ef",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        600,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "value": "={{ $node[\"Trata webhook\"].json[\"momment\"]/1000 }}",
+        "custom": true,
+        "toFormat": "DD/MM/Y",
+        "options": {
+          "fromFormat": "x",
+          "toTimezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "70bd031d-550b-4d1e-8a90-ead495c4c65e",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        820,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $node[\"Trata webhook\"].json[\"notification\"] }}",
+              "operation": "notEqual",
+              "value2": "GROUP_PARTICIPANT_LEAVE"
+            }
+          ]
+        }
+      },
+      "id": "dcf1dfa2-5e7b-47b8-835f-3414a1f2dfac",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $input.all()[0].json.body == 'string' ? JSON.parse($input.all()[0].json.body) : $input.all()[0].json.body"
+      },
+      "id": "e487d9dd-9209-416d-925b-c8ab4e7a6ea7",
+      "name": "Trata webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        120,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Data Entrada",
+              "value": "={{ $json[\"data\"] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $node[\"Trata webhook\"].json[\"notificationParameters\"][\"0\"] }}"
+            },
+            {
+              "name": "Group_ID",
+              "value": "={{ $node[\"Trata webhook\"].json[\"phone\"] }}"
+            },
+            {
+              "name": "Grupo",
+              "value": "={{ $node[\"Trata webhook\"].json[\"chatName\"] }}"
+            },
+            {
+              "name": "No Grupo?",
+              "value": "Entrou"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b5ef8915-cf9a-4037-894c-401cd7ea3dd5",
+      "name": "Entrou",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Data Saida",
+              "value": "={{ $json[\"data\"] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $node[\"Trata webhook\"].json[\"notificationParameters\"][\"0\"] }}"
+            },
+            {
+              "name": "Group_ID",
+              "value": "={{ $node[\"Trata webhook\"].json[\"phone\"] }}"
+            },
+            {
+              "name": "Grupo",
+              "value": "={{ $node[\"Trata webhook\"].json[\"chatName\"] }}"
+            },
+            {
+              "name": "No Grupo?",
+              "value": "Saiu"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "06919509-a20a-4e3e-a745-b7fe64bd62f2",
+      "name": "Saiu",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=1771462503",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 61832675,
+          "mode": "list",
+          "cachedResultName": "Comunidades",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=61832675"
+        },
+        "columnToMatchOn": "Phone",
+        "valueToMatchOn": "={{ $('Trata webhook').item.json.phone }}",
+        "fieldsUi": {
+          "values": [
+            {
+              "column": "Participantes",
+              "fieldValue": "={{ parseInt($node[\"Read + ID\"].json[\"Participantes\"] == '' ? 0 : $node[\"Read + ID\"].json[\"Participantes\"]) + 1 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "64fc0713-3be8-4a6b-924a-5adeb2cb8f95",
+      "name": "Adicionar 1 na Contagem",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        2360,
+        320
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=61832675",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 61832675,
+          "mode": "list",
+          "cachedResultName": "Comunidades",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Fi8TTkG5EJU7klpCs507VgaS1Ub3AZAaAJ7q8PWBmkw/edit#gid=61832675"
+        },
+        "columnToMatchOn": "Phone",
+        "valueToMatchOn": "={{ $node[\"Trata webhook\"].json[\"phone\"] }}",
+        "fieldsUi": {
+          "values": [
+            {
+              "column": "Participantes",
+              "fieldValue": "={{ parseInt($node[\"Read - ID\"].json[\"Participantes\"] == '' ? 0 : $node[\"Read - ID\"].json[\"Participantes\"]) - 1 }}"
+            },
+            {
+              "column": "Saidas",
+              "fieldValue": "={{ parseInt($node[\"Read - ID\"].json[\"Saidas\"] == '' ? 0 : $node[\"Read - ID\"].json[\"Saidas\"]) + 1 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "133d530b-056d-46bb-af2a-2f3b3f06b0c3",
+      "name": "Subtrair 1 na Contagem",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        2360,
+        520
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 61832675,
+          "mode": "list",
+          "cachedResultName": "Comunidades",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=61832675"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Phone",
+              "lookupValue": "={{ $('Trata webhook').item.json.phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bd33b2eb-7640-434b-b28e-ecbc50034ad6",
+      "name": "Read + ID",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        1920,
+        320
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 61832675,
+          "mode": "list",
+          "cachedResultName": "Comunidades",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=61832675"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Phone",
+              "lookupValue": "={{ $node[\"Trata webhook\"].json[\"phone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "107f8059-7b15-4072-9452-662b75b042ea",
+      "name": "Read - ID",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        1920,
+        520
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let IDs = [\n\"120363221113589065-group\", \"120363219706934514-group\", \"120363226497572898-group\"]\n\n\nlet Comunidade = IDs.includes($node[\"Trata webhook\"].json[\"phone\"])\n\nreturn {Comunidade:Comunidade}"
+      },
+      "id": "4c0f207a-2305-4d29-851f-42b2809d7458",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        460,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "ce41ddbf-51ab-4ef1-8f9f-3d959faf4b7c",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        320
+      ],
+      "webhookId": "257d593f-989c-42d6-8136-79a1952b8d92"
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "4e1f765c-8c75-4c34-a9ea-5e0dd0e2bf80",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        320
+      ],
+      "webhookId": "92561da4-2498-450a-9866-0a0d1a8f1674"
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "186f5c82-2627-4fe2-9922-8e941b497718",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        320
+      ],
+      "webhookId": "9aa7df7f-e87b-4abb-bf96-9c09213b991f"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=1771462503",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Telefone": "={{ $('Entrou').item.json.Telefone }}",
+            "Entrou no Grupo?": "Sim"
+          },
+          "matchingColumns": [
+            "Telefone"
+          ],
+          "schema": [
+            {
+              "id": "Data de Inscrição",
+              "displayName": "Data de Inscrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Página de Captura",
+              "displayName": "Página de Captura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entrou no Grupo?",
+              "displayName": "Entrou no Grupo?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "05f00c75-8a21-41b9-aa0b-2bebc99dca81",
+      "name": "Atualiza Captação",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2760,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1771462503,
+          "mode": "list",
+          "cachedResultName": "Participantes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=1771462503"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "Data": "={{ $json[\"Data Entrada\"] }}",
+            "Telefone": "={{ $json.Telefone }}",
+            "Group_ID": "={{ $json.Group_ID }}",
+            "Grupo": "={{ $json.Grupo }}",
+            "No Grupo?": "={{ $json[\"No Grupo?\"] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Group_ID",
+              "displayName": "Group_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Grupo",
+              "displayName": "Grupo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "No Grupo?",
+              "displayName": "No Grupo?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "11003ed6-0b28-4956-a712-0307ced4c275",
+      "name": "Adiciona Participantes",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1480,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "c33a094d-ab4c-4430-868f-930123359474",
+      "name": "Wait3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        520
+      ],
+      "webhookId": "1a29f425-6e7d-429b-8cf5-7865383fe2ca"
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "3b5ab7e1-b987-49ef-8fe2-538d9cec391a",
+      "name": "Wait4",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2560,
+        520
+      ],
+      "webhookId": "88c833b5-7e45-430c-9a9e-ac7ff4e32c7c"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=61832675",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Telefone": "={{ $node[\"Trata webhook\"].json[\"notificationParameters\"][\"0\"] }}",
+            "Entrou no Grupo?": "Saiu"
+          },
+          "matchingColumns": [
+            "Telefone"
+          ],
+          "schema": [
+            {
+              "id": "Data de Inscrição",
+              "displayName": "Data de Inscrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Página de Captura",
+              "displayName": "Página de Captura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entrou no Grupo?",
+              "displayName": "Entrou no Grupo?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ce47b559-a9cf-4dad-8415-241f64373f53",
+      "name": "Atualiza Captação1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2760,
+        520
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "unit": "seconds"
+      },
+      "id": "5656826b-3ee0-4d38-86ca-7663a5ab6d0f",
+      "name": "Wait5",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1700,
+        520
+      ],
+      "webhookId": "999bdcf7-d586-40b5-99d6-e0a8c4ed5f1c"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1771462503,
+          "mode": "list",
+          "cachedResultName": "Participantes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=1771462503"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "Telefone"
+          ],
+          "schema": [
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data Entrada",
+              "displayName": "Data Entrada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Group_ID",
+              "displayName": "Group_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Grupo",
+              "displayName": "Grupo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "No Grupo?",
+              "displayName": "No Grupo?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data Saida",
+              "displayName": "Data Saida",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5b5bd0be-3fea-412a-820a-afbae47dac35",
+      "name": "Adiciona Participantes1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1480,
+        520
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/501823/emails/variable ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "token_type",
+              "value": "Bearer"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"email\":\"{{ $('Google Sheets').item.json.Email }}\",\n   \"variables\":[\n      {\n         \"name\":\"grupo\",\n         \"value\":\"sim\"\n      }\n   ]\n} ",
+        "options": {}
+      },
+      "id": "f5aac65f-edc7-4eb8-bc52-609c4bcf1a38",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3360,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"grant_type\":\"client_credentials\",    \"client_id\":\"3ff5527b0f45a4d1c46ccace02f53347\",    \"client_secret\":\"1ca1c037309edf7fd9d12d1d8e343da5\" }",
+        "options": {}
+      },
+      "id": "c5b6c957-5887-4282-8c34-8653591018ba",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3160,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Telefone",
+              "lookupValue": "={{ $json.Telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c6e73d3e-b515-4b5f-b8a2-5aa01bdcecf7",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2960,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/501823/emails/variable ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "token_type",
+              "value": "Bearer"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"email\":\"{{ $('Google Sheets1').item.json.Email }}\",\n   \"variables\":[\n      {\n         \"name\":\"grupo\",\n         \"value\":\"saiu\"\n      }\n   ]\n} ",
+        "options": {}
+      },
+      "id": "cdd2d31b-f13c-4d00-a1eb-2395d6f036d4",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3360,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"grant_type\":\"client_credentials\",    \"client_id\":\"3ff5527b0f45a4d1c46ccace02f53347\",    \"client_secret\":\"1ca1c037309edf7fd9d12d1d8e343da5\" }",
+        "options": {}
+      },
+      "id": "0dd90b97-e387-4f59-92f6-fa23decadf87",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3160,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Telefone",
+              "lookupValue": "={{ $json.Telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4f289c9e-7687-4afe-ba5a-76b9c1ea9f1d",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2960,
+        520
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.isGroup }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "45c1582e-2799-4ff9-b684-3d9f86bc7a76",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        280,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-link",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Ótimo! O link para entrar no grupo é este aqui: \n👉🏻 https://chat.whatsapp.com/GckGDaFSljI9UhpTEhfIis"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            },
+            {
+              "name": "image",
+              "value": "=https://britenglish.com.br/wp-content/uploads/2024/01/DESKTOPJESS_BIO.webp"
+            },
+            {
+              "name": "linkUrl",
+              "value": "=https://chat.whatsapp.com/GckGDaFSljI9UhpTEhfIis"
+            },
+            {
+              "name": "title",
+              "value": "Entre no grupo oficial"
+            },
+            {
+              "name": "linkDescription",
+              "value": "Toque no link abaixo para entrar no grupo"
+            },
+            {
+              "name": "delayTyping",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c5529df6-f2f4-47f4-98ec-09d36f653fa1",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        660,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-link",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Para responder a pesquisa e receber os presentes, é só tocar nesse link \n👉🏻 https://bit.ly/thebritenglish-pesquisa"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            },
+            {
+              "name": "image",
+              "value": "=https://britenglish.com.br/wp-content/uploads/2024/01/DESKTOPJESS_BIO.webp"
+            },
+            {
+              "name": "linkUrl",
+              "value": "=https://bit.ly/thebritenglish-pesquisa"
+            },
+            {
+              "name": "title",
+              "value": "Responda e pegue seus presentes"
+            },
+            {
+              "name": "linkDescription",
+              "value": "Toque no link abaixo para responder uma pesquisa rápida e receber dois presentes"
+            },
+            {
+              "name": "delayTyping",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dac54462-3c27-4278-ac30-a9bb49d84628",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Entrar no grupo"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "entrar no grupo"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "ENTRAR NO GRUPO"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Entrar no Grupo"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "406941bd-615a-4804-8c0e-1803bd9becf2",
+      "name": "Entrar no grupo",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        420,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "ok"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "entrar no grupo"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "OK"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Ok"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "7a510483-d948-4ba2-92e6-f82764fee92a",
+      "name": "Ok",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        640,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-link",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Aqui está o link para fazer sua inscrição no BritiShize:\n\nhttps://jessicaparish.com.br/britishize?utm_source=1x1_espera\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            },
+            {
+              "name": "image",
+              "value": "=https://britenglish.com.br/wp-content/uploads/2024/01/DESKTOPJESS_BIO.webp"
+            },
+            {
+              "name": "linkUrl",
+              "value": "=https://jessicaparish.com.br/britishize?utm_source=1x1_espera"
+            },
+            {
+              "name": "title",
+              "value": "BritiShize"
+            },
+            {
+              "name": "linkDescription",
+              "value": "Toque no link abaixo para realizar a sua inscrição"
+            },
+            {
+              "name": "delayTyping",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2b9357db-7cc0-40b4-b6f4-434063b1499b",
+      "name": "HTTP Request10",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1280,
+        1300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "briti"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "BRITI"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Briti"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "396e532d-5215-403c-a4f1-5f2e20c80837",
+      "name": "BRITI",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        940,
+        1320
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-07T16:35:41.227Z",
+      "updatedAt": "2024-01-07T16:35:41.227Z",
+      "id": "lnBfoQAPlkm8ew3T",
+      "name": "Jess"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-31T17:12:27.000Z",
+  "versionId": "e3e6cee6-ed6a-463b-8621-cc3ae7b9d35a"
+}
