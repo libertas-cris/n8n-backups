@@ -1,0 +1,283 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Iniciar atendimento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Iniciar atendimento": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Português",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Português": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Não",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Importação de Aluno",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-25T15:38:46.871Z",
+  "id": "wzS9yvoNIBUKAwed",
+  "meta": null,
+  "name": "[SALA BLACK] Importação de aluno | Hotmart",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "442f200e-3c3f-447f-9c8e-f51fa93ffc80",
+        "options": {}
+      },
+      "id": "6bbb320e-070f-4eb4-aa7d-546691ce0dd9",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        700,
+        260
+      ],
+      "webhookId": "442f200e-3c3f-447f-9c8e-f51fa93ffc80"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "edb8ee35-9f23-4817-bcec-b1f62e69fb87",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        920,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Iniciar atendimento"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2eeee004-fa65-4d2f-a31a-2221f0dba71b",
+      "name": "Iniciar atendimento",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 8,
+        "unit": "seconds"
+      },
+      "id": "d16c213c-fd73-44df-935b-85bab8e521e4",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        260
+      ],
+      "webhookId": "f1ad384f-ed2c-4b24-845e-38d2eadf5959"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Português"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5b03ac0e-507c-4ba2-82b8-50137aadb80f",
+      "name": "Português",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1540,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 8,
+        "unit": "seconds"
+      },
+      "id": "c7ae5d33-93ee-41b7-b37a-8b7767bc6db9",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1760,
+        420
+      ],
+      "webhookId": "65f0b077-cfc1-4336-ae2b-5b375903f197"
+    },
+    {
+      "parameters": {
+        "amount": 15,
+        "unit": "seconds"
+      },
+      "id": "553e51b3-2779-49c5-a3a6-da3288ac46e5",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        260
+      ],
+      "webhookId": "b5cb59ce-3395-4ee8-9995-2cf3178e243d"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Não"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "29934830-f23e-4e96-a387-a08cb61a7fcb",
+      "name": "Não",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1980,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Importação de aluno: \n\n{{ $('Code1').item.json.name }};{{ $('Code1').item.json.email }}\n\nTurma 7\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234  "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b9fd7ced-f6c9-440d-b320-020a2b5925b0",
+      "name": "Importação de Aluno",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2380,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-21T20:41:44.000Z",
+  "versionId": "e9aec79a-7158-4c0a-875f-e88f0a3498d6"
+}
