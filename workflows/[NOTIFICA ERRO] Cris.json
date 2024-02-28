@@ -1,0 +1,70 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-22T02:08:54.989Z",
+  "id": "HNdKTazc8iQXKV7C",
+  "meta": null,
+  "name": "[NOTIFICA ERRO] Cris",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a15be7e6-ceb4-4b13-ab81-509d489a20c4",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        880,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5581993515055"
+            },
+            {
+              "name": "message",
+              "value": "=Erro na automação: *{{ $json.workflow.name }}*\n\nMensagem de erro:\n*{{ $json.execution.error.message }}*\n\nÚltima etapa executada:\n*{{ $json.execution.lastNodeExecuted }}*"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "57365b5f-372c-4a5f-861f-4bdf2b11da6c",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-26T17:07:58.000Z",
+  "versionId": "99f24740-73ab-4dd1-a213-b88e37f7f40a"
+}
