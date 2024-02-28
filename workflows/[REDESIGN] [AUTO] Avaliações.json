@@ -1,0 +1,286 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega Data": {
+      "main": [
+        [
+          {
+            "node": "Formata Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Pega Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-08T14:34:20.184Z",
+  "id": "DCrKAqwPsb1hrr26",
+  "meta": null,
+  "name": "[REDESIGN] [AUTO] Avaliações",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bd29e076-2689-4f06-a5fc-8a7273745fcc",
+        "options": {}
+      },
+      "id": "2a6982bf-63e7-4bc2-9f05-9bd98a334b44",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        340
+      ],
+      "webhookId": "bd29e076-2689-4f06-a5fc-8a7273745fcc"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "3e5a4def-2be0-4bcd-ba37-1da123dee44b",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        980,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "bc32af73-ae34-4a2d-b580-682f84424b75",
+      "name": "Pega Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "094f3433-8b42-4162-b65f-a60662e0339f",
+      "name": "Formata Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1300,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w",
+          "mode": "list",
+          "cachedResultName": "[Redesign.360] - Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1994761602,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Avaliações",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit#gid=1994761602"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $json.formattedDate }}",
+            "ID_botconversa": "={{ $('Trata Webhook').item.json.id }}",
+            "Nome": "={{ $('Trata Webhook').item.json.nome }}",
+            "Email": "={{ $('Trata Webhook').item.json.email }}",
+            "Telefone": "={{ $('Trata Webhook').item.json.telefone }}",
+            "Produto": "={{ $('Trata Webhook').item.json.produto }}",
+            "Feedback": "={{ $('Trata Webhook').item.json.feedback }}",
+            "Avaliação": "={{ $('Trata Webhook').item.json.nota }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID_botconversa",
+              "displayName": "ID_botconversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Produto",
+              "displayName": "Produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Feedback",
+              "displayName": "Feedback",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Avaliação",
+              "displayName": "Avaliação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f7f8b678-188a-4cc0-b375-b988ddffb4a0",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1460,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "python-requests/2.26.0",
+            "content-length": "197",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "18.231.143.126",
+            "cf-ipcountry": "BR",
+            "cf-ray": "852539f278591b18-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "sentry-trace": "5c54647101d748adadf0a992d6672907-89c7045bc3414b17-0",
+            "x-forwarded-for": "172.71.238.23",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.71.238.23"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "nome": "{primeiro-nome}",
+            "email": "{E-mail}",
+            "telefone": "{telefone-indicador}",
+            "id": "{codigo-indicacao}",
+            "nota": "{Nota - Curso}",
+            "produto": "Box Visual Law 360",
+            "feedback": "{Feedback}"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-08T18:04:10.000Z",
+  "versionId": "a88fd068-71b1-4988-b26e-2b3a8c6769b3"
+}
