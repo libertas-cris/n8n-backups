@@ -1,0 +1,341 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Pega Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega Data": {
+      "main": [
+        [
+          {
+            "node": "Formata Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data": {
+      "main": [
+        [
+          {
+            "node": "Adiciona Planilha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Token Sendpulse": {
+      "main": [
+        [
+          {
+            "node": "Lista de Espera - SendPulse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-08T04:36:25.886Z",
+  "id": "6Qc040Y0HqhdsTvH",
+  "meta": null,
+  "name": "[JESS] Lista de Espera",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a78c416a-95e7-474a-b474-8016fe57548e",
+        "options": {}
+      },
+      "id": "99257833-51d7-45ed-98a1-32bb65d52ee6",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        720,
+        340
+      ],
+      "webhookId": "a78c416a-95e7-474a-b474-8016fe57548e"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    let ddi = '55';\n    number = number.toString().replace(/[^\\d]/g, \"\");\n\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        ddi = number.substring(0, 2);\n        ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n\n    } else {\n        return number;\n    }\n}\n\n$input.all()[0].json['Telefone'] = formataTelefone($input.all()[0].json['Telefone']);\n\nreturn $input.all();\n"
+      },
+      "id": "218e149d-31ff-41aa-8471-d6a45eef9a58",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "b2fadafc-4a21-4643-af70-2c282fdfdb5a",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        880,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "de6cffb3-16f3-42a8-aa07-24b42e842cb6",
+      "name": "Pega Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "e90fef68-aaca-40d5-85f2-a27ace5ee87d",
+      "name": "Formata Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1203358289,
+          "mode": "list",
+          "cachedResultName": "[NOVA] Lista de Espera",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=1203358289"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            " Data de Inscrição": "={{ $json.formattedDate }}",
+            "Nome": "={{ $('Formata Telefone').item.json.Name }}",
+            "Email": "={{ $('Formata Telefone').item.json.Email }}",
+            "Telefone": "={{ $('Formata Telefone').item.json.Telefone }}",
+            "Página": "={{ $('Formata Telefone').item.json[\"Page URL\"] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": " Data de Inscrição",
+              "displayName": " Data de Inscrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Página",
+              "displayName": "Página",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "52244d86-3694-473b-8981-3db6df1170b4",
+      "name": "Adiciona Planilha",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1520,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"grant_type\":\"client_credentials\",    \"client_id\":\"3ff5527b0f45a4d1c46ccace02f53347\",    \"client_secret\":\"1ca1c037309edf7fd9d12d1d8e343da5\" }",
+        "options": {}
+      },
+      "id": "04c17732-2c75-4deb-853f-219bca333bcc",
+      "name": "Token Sendpulse",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1680,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/501823/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "token_type",
+              "value": "Bearer"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"emails\":[\n      {\n         \"email\":\"{{ $node[\"Formata Telefone\"].json[\"email\"] }}\",\n         \"variables\":{\n            \"Nome\":\"{{ $node[\"Formata Telefone\"].json[\"name\"] }}\",\n\"Phone\":\"{{ $node[\"Formata Telefone\"].json[\"phone\"] }}\",\n\"subscribe_date\":\"{{ $node[\"Data Atual\"].json[\"currentDate\"] }}\",\n\"utm_source\":\"{{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\",\n\"utm_campaign\":\"{{ $node[\"Formata Telefone\"].json[\"utm_campaign\"] }}\",\n\"utm_medium\":\"{{ $node[\"Formata Telefone\"].json[\"utm_medium\"] }}\",\n\"utm_content\":\"{{ $node[\"Formata Telefone\"].json[\"utm_content\"] }}\",\n\"utm_term\":\"{{ $node[\"Formata Telefone\"].json[\"utm_term\"] }}\",\n\"Pagina\":\"{{ $node[\"Formata Telefone\"].json[\"path\"] }}\",\n\"grupo\":\"não\",\n\"chip\":\"2789\",\n\"pesquisa\":\"não respondeu\"\n         }\n      }\n   ]\n}",
+        "options": {}
+      },
+      "id": "776bd72f-b041-4357-87a6-c364bd1f0afc",
+      "name": "Lista de Espera - SendPulse",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1840,
+        180
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "WordPress/6.4.3; https://www.jessicaparish.com.br",
+            "content-length": "517",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "177.154.191.198",
+            "cf-ipcountry": "BR",
+            "cf-ray": "85212c8f0c515224-UDI",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "172.71.2.142",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.71.2.142"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Name": "Matheus",
+            "Email": "matheus.cristhyan.libertas@gmail.com",
+            "Telefone": "(81)993515055",
+            "Date": "fevereiro 8, 2024",
+            "Time": "4:36 am",
+            "Page URL": "https://www.jessicaparish.com.br/britishize-lista-de-espera/?preview_id=367&preview_nonce=5e7038ab7e&preview=true",
+            "User Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
+            "Remote IP": "186.235.185.56",
+            "Powered by": "Elementor",
+            "form_id": "2d485b5",
+            "form_name": "Lista de Espera"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-08T04:47:09.000Z",
+  "versionId": "b0b0ffb7-57e6-4d99-a16d-a5e54d3a342c"
+}
