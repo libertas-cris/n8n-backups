@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-01-17T02:49:37.118Z",
+  "id": "9N6iISRcA5uzAl25",
+  "meta": null,
+  "name": "[JESS] [L1] Envia",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-17T02:49:37.118Z",
+  "versionId": "929befd7-a6b5-4c4d-9ff9-c7922d0b5094"
+}
