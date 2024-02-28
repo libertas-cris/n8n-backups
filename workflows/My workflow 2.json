@@ -1,0 +1,103 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-07T19:16:42.481Z",
+  "id": "wSdDExHKM9xFZ4CC",
+  "meta": null,
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"grant_type\":\"client_credentials\",    \"client_id\":\"3ff5527b0f45a4d1c46ccace02f53347\",    \"client_secret\":\"1ca1c037309edf7fd9d12d1d8e343da5\" }",
+        "options": {}
+      },
+      "id": "03ccf29e-82fa-40c2-9c76-665ceee39466",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1100,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/501823/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY4ZDFhOTJiMzAzYmQ3YzNhMjA2NDE1ZDAzNWQxNmQ1MDNlOGZiYWZhNzA4NWQwMmE2NDUyNzdiYmRhNGZkYjJmMGI0OTU5M2MyNTM4NTJhIn0.eyJhdWQiOiIzZmY1NTI3YjBmNDVhNGQxYzQ2Y2NhY2UwMmY1MzM0NyIsImp0aSI6ImY4ZDFhOTJiMzAzYmQ3YzNhMjA2NDE1ZDAzNWQxNmQ1MDNlOGZiYWZhNzA4NWQwMmE2NDUyNzdiYmRhNGZkYjJmMGI0OTU5M2MyNTM4NTJhIiwiaWF0IjoxNzA0NjU1MDAzLCJuYmYiOjE3MDQ2NTUwMDMsImV4cCI6MTcwNDY1ODYwMywic3ViIjoiIiwic2NvcGVzIjpbXSwidXNlciI6eyJpZCI6ODUzODQ4NywiZ3JvdXBfaWQiOm51bGwsInBhcmVudF9pZCI6bnVsbCwiY29udGV4dCI6eyJhY2NsaW0iOiIwIn0sImFyZWEiOiJyZXN0In19.lxCdphrAn4KXjMIfBulcM2K-JvjHnvv2MVK1DznS1IViPJTkZA446VSL5LJ1-Z3nssMINXjhfKaMx9NiQmMm7V94rRHQMu5nUoLR7MwQQtIK6be_iDp90FVtw4PyfAGkCOI1eM_gGMrFE_EiQ-ATfgnHRBqkl4tn5GfXYZKH-xFDqur5mmUKwYTkuJOLl-W9EVKm86XZjs9TTBhdPWMO46eXzCeOrrn6IO07R04hzgiY4v5j2aDQfmcwCRGev-bIPc68KTD9y4xufCZspJnnxpxnFSIRQXbLaWCKdXQaSn_iYQVVy8_L0K1km7WCvn-2oOvzsod164xStSDlS4nHlA"
+            },
+            {
+              "name": "token_type",
+              "value": "Bearer"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"emails\":[\n      {\n         \"email\":\"test7@gmail.com\",\n         \"variables\":{\n            \"Nome\":\"Cris\",\n\"Phone\": 5581993515055,\n\"utm_source\":\"teste\",\n\"utm_campaign\":\"teste\",\n\"utm_medium\":\"teste\",\n\"utm_content\":\"teste\",\n\"utm_term\":\"teste\"\n         }\n      }\n   ]\n}",
+        "options": {}
+      },
+      "id": "67367a89-41b5-41c5-a7c3-9d618fae150c",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1460,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "ebfda605-847a-4a77-b74e-7afdcdc7de24",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-07T20:30:15.000Z",
+  "versionId": "d58b7a52-4cb6-498c-866f-2871846f6a09"
+}
