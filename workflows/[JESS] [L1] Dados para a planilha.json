@@ -1,0 +1,342 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-07T17:21:12.753Z",
+  "id": "hoqkMJm1qF2mLR4A",
+  "meta": null,
+  "name": "[JESS] [L1] Dados para a planilha",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "48518d61-92c9-4766-806d-4ae0f425916a",
+        "options": {}
+      },
+      "id": "a519fc87-12fa-4631-871b-359931a78b71",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        700,
+        300
+      ],
+      "webhookId": "48518d61-92c9-4766-806d-4ae0f425916a"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\nreturn { Telefone : formataTelefone($input.all()[0].json['contact[phone]']) };"
+      },
+      "id": "260ab523-9e77-4d9b-bdbe-02201b7db38d",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "e2794b8b-f9df-4f4f-aad3-5b37c326b436",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        920,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Data de Inscrição",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_data_inscrio]\"] }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Code1').item.json[\"contact[first_name]\"] }}"
+            },
+            {
+              "name": "Sobrenome",
+              "value": "={{ $('Code1').item.json[\"contact[last_name]\"] }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code1').item.json[\"contact[email]\"] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $json.Telefone }}"
+            },
+            {
+              "name": "Canal",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_utm_source_capt]\"] }}"
+            },
+            {
+              "name": "Campanha",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_utm_campaign_capt]\"] }}"
+            },
+            {
+              "name": "Criativo",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_utm_content_capt]\"] }}"
+            },
+            {
+              "name": "Público",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_utm_medium_capt]\"] }}"
+            },
+            {
+              "name": "Temperatura",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_temperatura]\"] }}"
+            },
+            {
+              "name": "Página de Captura",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_pagina_capt]\"] }}"
+            },
+            {
+              "name": "Entrou Grupo",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_entrou_grupo]\"] }}"
+            },
+            {
+              "name": "Pesquisa",
+              "value": "={{ $('Code1').item.json[\"contact[fields][ea_respondeu_pesquisa]\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2f33dc8e-9313-4ec9-a0da-421ae96305f3",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Fi8TTkG5EJU7klpCs507VgaS1Ub3AZAaAJ7q8PWBmkw/edit#gid=0",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com\\/\\w+\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Captação",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Fi8TTkG5EJU7klpCs507VgaS1Ub3AZAaAJ7q8PWBmkw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data de Inscrição",
+              "displayName": "Data de Inscrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sobrenome",
+              "displayName": "Sobrenome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Canal",
+              "displayName": "Canal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Campanha",
+              "displayName": "Campanha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Criativo",
+              "displayName": "Criativo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Público",
+              "displayName": "Público",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Temperatura",
+              "displayName": "Temperatura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Página de Captura",
+              "displayName": "Página de Captura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Entrou Grupo",
+              "displayName": "Entrou Grupo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pesquisa",
+              "displayName": "Pesquisa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "fcc978e4-8d23-480d-acb2-9c4fd19655f6",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1580,
+        300
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "22",
+          "name": "Google Sheets ACExpress"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-07T16:35:41.227Z",
+      "updatedAt": "2024-01-07T16:35:41.227Z",
+      "id": "lnBfoQAPlkm8ew3T",
+      "name": "Jess"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-07T17:21:51.000Z",
+  "versionId": "c4f7f1b6-0b7d-4112-804f-1f850de3527e"
+}
