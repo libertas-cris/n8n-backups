@@ -1,0 +1,388 @@
+{
+  "active": true,
+  "connections": {
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "GitHub1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-15T03:56:35.178Z",
+  "id": "bJ43CE9JHefgdiFf",
+  "meta": null,
+  "name": "[WORKSHOP] 16/12",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f39f8dda-af29-4d71-943f-d9fa473e0044",
+        "options": {}
+      },
+      "id": "a39a1d9b-38da-482c-9468-7d621d8ff8b1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        480,
+        440
+      ],
+      "webhookId": "f39f8dda-af29-4d71-943f-d9fa473e0044"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "b7ae001c-3c2a-42cd-9344-07c3c2a701ab",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        700,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['Agora digita aqui pra mim o seu whatsapp'] = formataTelefone($('Code1').all()[0].json['Agora digita aqui pra mim o seu whatsapp'])\n\nreturn $input.all();"
+      },
+      "id": "f960cdf5-771f-415d-9194-16b0481a783b",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        920,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.elevenlabs.io/v1/text-to-speech/knrPHWnBmmDHMoiMeP3l",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "xi-api-key",
+              "value": "db39d64f3f342fd9a180e0ef172b026c"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model_id\": \"eleven_multilingual_v2\",\n  \"text\": \"Faala aí {{ $('Code3').item.json[\"Conta aqui pra o bom velhinho qual é o seu nome\"] }}, tudo bem? Acabei de ver aqui que você respondeu a nossa pesquisa natalina. Deixa eu ver aqui o que você quer ganhar... hum... vamos lá... {{ $('Code3').item.json[\"Por último e mais importante, o que ê gostaria de ganhar de natal?\"] }} É, sinceramente não acredito que você teve coragem de pedir isso depois de tudo que você aprontou esse ano. Mas beleza, vou analisar o seu caso e ver o que consigo fazer seu safadinho.\",\n  \"voice_settings\": {\n    \"similarity_boost\": 0.75,\n    \"stability\": 0.7,\n    \"use_speaker_boost\": true\n  }}  ",
+        "options": {}
+      },
+      "id": "5ad40145-ed80-457c-a4bc-346d94ea0599",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1480,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C7D7F616E81709AFCEF4246B13114DA/token/770055EBEEA94DBA43D2499D/send-audio",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fbe4e7010433e425987590b77842cc406S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Code3').item.json[\"Agora digita aqui pra mim o seu whatsapp\"] }}"
+            },
+            {
+              "name": "audio",
+              "value": "={{ $json.content.download_url }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8bb96fdc-67ec-4e66-aac8-1e761498801d",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1940,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "owner": {
+          "__rl": true,
+          "value": "math-cristhyan",
+          "mode": "list",
+          "cachedResultName": "math-cristhyan",
+          "cachedResultUrl": "https://github.com/math-cristhyan"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "arquivos",
+          "mode": "list",
+          "cachedResultName": "arquivos",
+          "cachedResultUrl": "https://github.com/math-cristhyan/arquivos"
+        },
+        "filePath": "=audiodo- {{ $('Code3').item.json[\"Conta aqui pra o bom velhinho qual é o seu nome\"] }}.mp3",
+        "binaryData": true,
+        "commitMessage": "sucess"
+      },
+      "id": "43a5528e-a98d-4936-a7e3-c97fdb9b574d",
+      "name": "GitHub",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        440
+      ],
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "K82YW9sNcgn0IywJ",
+          "name": "GitHub Cris"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://img1.niftyimages.com/avph/mrai/2u45?name={{ $('Code3').item.json[\"Conta aqui pra o bom velhinho qual é o seu nome\"] }}&pedido= {{ $('Code3').item.json[\"Por último e mais importante, o que ê gostaria de ganhar de natal?\"] }}",
+        "options": {}
+      },
+      "id": "a3f2ad46-c3ed-4809-8815-6659677ff3f9",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1160,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "fileSelector": ".mp3"
+      },
+      "id": "65228a47-69d3-48b0-beb2-9776f95b03df",
+      "name": "Read Binary Files",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/m9kfxs3iaeasghtwghcun6xi68u56b1t",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "nome",
+              "value": "={{ $json[\"Conta aqui pra o bom velhinho qual é o seu nome\"] }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ $json[\"Agora digita aqui pra mim o seu whatsapp\"] }}"
+            },
+            {
+              "name": "pedido",
+              "value": "={{ $json[\"Por último e mais importante, o que ê gostaria de ganhar de natal?\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "27fa5b90-6399-4846-9c51-97f5f44f5fb9",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1140,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 15,
+        "unit": "seconds"
+      },
+      "id": "c07fdc32-557b-46f8-8fb3-d3be9231d8b2",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        440
+      ],
+      "webhookId": "08b87ade-af44-4098-805a-ee449db87721"
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "file",
+        "operation": "delete",
+        "owner": {
+          "__rl": true,
+          "value": "math-cristhyan",
+          "mode": "list",
+          "cachedResultName": "math-cristhyan",
+          "cachedResultUrl": "https://github.com/math-cristhyan"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "arquivos",
+          "mode": "list",
+          "cachedResultName": "arquivos",
+          "cachedResultUrl": "https://github.com/math-cristhyan/arquivos"
+        },
+        "filePath": "={{ $('GitHub').item.json.content.path }}",
+        "commitMessage": "sucess"
+      },
+      "id": "b3a9b70d-aae6-41ac-8c55-d83234a8ed76",
+      "name": "GitHub1",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        440
+      ],
+      "credentials": {
+        "githubOAuth2Api": {
+          "id": "K82YW9sNcgn0IywJ",
+          "name": "GitHub Cris"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (compatible; Google-Apps-Script; beanserver; +https://script.google.com; id: UAEmdDd_hBILAHu5LJr8q1ep-T1-a7hH-cA)",
+            "content-length": "201",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "107.178.194.67",
+            "cf-ipcountry": "US",
+            "cf-ray": "836170bb28f822cc-ORD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.71.254.197",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.71.254.197"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Conta aqui pra o bom velhinho qual é o seu nome": "jack",
+            "Agora digita aqui pra mim o seu whatsapp": "5531972027791",
+            "Por último e mais importante, o que ê gostaria de ganhar de natal?": "um iphone"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-19T12:23:58.000Z",
+  "versionId": "27eca400-3187-4cb2-aba5-3e387beaf2e0"
+}
