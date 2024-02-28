@@ -1,0 +1,1938 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Verifica Evento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Evento": {
+      "main": [
+        [
+          {
+            "node": "Verifica se é 1º parcela",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "busca cliente na planilha de cobrança | Pagou",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "busca cliente na planilha de cobrança | Atrasado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Verifica se é 1º parcela",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica se é 1º parcela": {
+      "main": [
+        [
+          {
+            "node": "Add primeira cobrança na planilha",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Add próximas cobranças na planilha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica tipo de pagamento": {
+      "main": [
+        [
+          {
+            "node": "Formata data de vencimento | Boleto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Formata data de vencimento | Pix",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Formata data de vencimento | Cartão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "1º Parcela |Boleto": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata data de vencimento | Boleto": {
+      "main": [
+        [
+          {
+            "node": "1º Parcela |Boleto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata data de vencimento | Pix": {
+      "main": [
+        [
+          {
+            "node": "1º Parcela | PIX",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata data de vencimento | Cartão": {
+      "main": [
+        [
+          {
+            "node": "1º Parcela |Cartão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca parcela": {
+      "main": [
+        [
+          {
+            "node": "marca parcela como paga",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca cliente na planilha de cobrança | Pagou": {
+      "main": [
+        [
+          {
+            "node": "busca parcela",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca cliente na planilha de cobrança | Atrasado": {
+      "main": [
+        [
+          {
+            "node": "busca parcela1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca parcela1": {
+      "main": [
+        [
+          {
+            "node": "Datas de cobrança",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datas de cobrança": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add primeira cobrança na planilha": {
+      "main": [
+        [
+          {
+            "node": "Verifica tipo de pagamento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Add próximas cobranças na planilha1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-30T12:59:50.616Z",
+  "id": "ivC7WPfDIP4uzfcZ",
+  "meta": null,
+  "name": "[ASAAS] Controle de Cobranças",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "840ca80b-d38c-4b0a-a08b-fee44cd78c21",
+        "options": {}
+      },
+      "id": "4e1df321-bdb7-41ae-a0ab-9118390c8474",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        200
+      ],
+      "webhookId": "840ca80b-d38c-4b0a-a08b-fee44cd78c21"
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.payment.customer }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dab64b52-2495-49a1-b421-ec44e3381365",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        360,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "a218cac1-2585-4f05-bc51-267fddea7584",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        120,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b0dfe9b5-07a9-47c9-b28e-6664eb765e35",
+      "name": "Chama fluxo de onboarding no clickup",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2800,
+        -560
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-document/pdf",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5581993515055"
+            },
+            {
+              "name": "document",
+              "value": "={{ $('Trata Webhook').item.json.payment.bankSlipUrl }}"
+            },
+            {
+              "name": "fileName",
+              "value": "=1ºparcela- {{ $('HTTP Request').item.json.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f8de6c6e-2dbd-4a0c-8fa6-f60e4cb5f42c",
+      "name": "Envia Boleto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2520,
+        -560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "100"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d65730bb-d62e-4bd2-a258-cfb15f5af269",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -140,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['mobilePhone'] = formataTelefone($input.all()[0].json['mobilePhone'])\n\nreturn $input.all();"
+      },
+      "id": "b8a7f76c-8a98-48ec-8405-6df1fae19c54",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        600,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $('Trata Webhook').item.json.event }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "PAYMENT_CREATED"
+            },
+            {
+              "value2": "PAYMENT_RECEIVED",
+              "output": 1
+            },
+            {
+              "value2": "PAYMENT_OVERDUE",
+              "output": 2
+            },
+            {
+              "value2": "PAYMENT_CONFIRMED",
+              "output": 3
+            }
+          ]
+        }
+      },
+      "id": "e4690381-de6e-4902-9722-32646ca29d6e",
+      "name": "Verifica Evento",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        880,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('Trata Webhook').item.json.payment.installmentNumber }}",
+              "value2": "1"
+            }
+          ]
+        }
+      },
+      "id": "903e93b8-b02e-4de3-b75d-4a382a5fab45",
+      "name": "Verifica se é 1º parcela",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data da cobrança": "={{ $('Trata Webhook').item.json.payment.dueDate }}",
+            "Id_asaas": "={{ $('Trata Webhook').item.json.payment.customer }}",
+            "id_cobrança": "={{ $('Trata Webhook').item.json.payment.id }}",
+            "descrição_parcela": "={{ $('Trata Webhook').item.json.payment.description }}",
+            "link_boleto": "={{ $('Trata Webhook').item.json.payment.bankSlipUrl }}",
+            "Nome": "={{ $('Formata Telefone').item.json.name }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Telefone": "={{ $('Formata Telefone').item.json.mobilePhone }}",
+            "id": "={{ $('Trata Webhook').item.json.payment.customer }}{{ $('Trata Webhook').item.json.payment.id }}",
+            "n_parcela": "={{ $('Trata Webhook').item.json.payment.installmentNumber }}",
+            "tipo_pagamento": "={{ $('Trata Webhook').item.json.payment.billingType }}",
+            "id_parcelamento": "={{ $('Trata Webhook').item.json.payment.installment }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data da cobrança",
+              "displayName": "Data da cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Id_asaas",
+              "displayName": "Id_asaas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_cobrança",
+              "displayName": "id_cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_parcelamento",
+              "displayName": "id_parcelamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "n_parcela",
+              "displayName": "n_parcela",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tipo_pagamento",
+              "displayName": "tipo_pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "link_boleto",
+              "displayName": "link_boleto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atrasado",
+              "displayName": "atrasado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_1",
+              "displayName": "cobrança_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_2",
+              "displayName": "cobrança_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_3",
+              "displayName": "cobrança_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pago",
+              "displayName": "pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ae1f2429-241a-458d-a7d5-216ace194967",
+      "name": "Add próximas cobranças na planilha",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1400,
+        80
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "d435dfd9-0489-4652-86bc-45c4f02b4b77",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        100,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data da cobrança": "={{ $('Item Lists').item.json.data.dueDate }}",
+            "Id_asaas": "={{ $('Item Lists').item.json.data.customer }}",
+            "id_cobrança": "={{ $('Item Lists').item.json.data.id }}",
+            "descrição_parcela": "={{ $('Item Lists').item.json.data.installmentNumber }}",
+            "link_boleto": "={{ $('Item Lists').item.json.data.bankSlipUrl }}",
+            "Nome": "={{ $json.name }}",
+            "Email": "={{ $json.email }}",
+            "Telefone": "={{ $json.mobilePhone }}",
+            "n_parcela": "={{ $('Item Lists').item.json.data.installmentNumber }}",
+            "tipo_pagamento": "={{ $('Item Lists').item.json.data.billingType }}",
+            "id_parcelamento": "={{ $('Item Lists').item.json.data.installment }}",
+            "id": "={{ $('Item Lists').item.json.data.customer }}{{ $('Item Lists').item.json.data.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data da cobrança",
+              "displayName": "Data da cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Id_asaas",
+              "displayName": "Id_asaas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_cobrança",
+              "displayName": "id_cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_parcelamento",
+              "displayName": "id_parcelamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "n_parcela",
+              "displayName": "n_parcela",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tipo_pagamento",
+              "displayName": "tipo_pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "link_boleto",
+              "displayName": "link_boleto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atrasado",
+              "displayName": "atrasado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_1",
+              "displayName": "cobrança_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_2",
+              "displayName": "cobrança_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_3",
+              "displayName": "cobrança_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pago",
+              "displayName": "pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0fe17d10-77d8-4121-bd95-2f72eaa73c2c",
+      "name": "Add próximas cobranças na planilha1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        560,
+        760
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.data.customer }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {
+          "batching": {
+            "batch": {}
+          }
+        }
+      },
+      "id": "b70db3ac-db49-4340-80d0-e4997f3e152c",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        340,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $('Trata Webhook').item.json.payment.billingType }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "BOLETO"
+            },
+            {
+              "value2": "PIX",
+              "output": 1
+            },
+            {
+              "value2": "CREDIT_CARD",
+              "output": 2
+            }
+          ]
+        }
+      },
+      "id": "9cafac84-fd67-4584-82ab-7e75106c1f37",
+      "name": "Verifica tipo de pagamento",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        1660,
+        -360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5581993515055"
+            },
+            {
+              "name": "message",
+              "value": "=Olá,  {{ $('HTTP Request').item.json.name }}. Esse aqui é boleto de pagamento da sua primeira parcela do acompanhamento da Sala Black com vencimento para o dia  {{ $json.vencimento }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d5e9b158-fe16-4bcf-968e-77130d6480cc",
+      "name": "1º Parcela | PIX",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2240,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5581993515055"
+            },
+            {
+              "name": "message",
+              "value": "=Olá,  {{ $('HTTP Request').item.json.name }}. Esse aqui é boleto de pagamento da sua primeira parcela do acompanhamento da Sala Black com vencimento para o dia  {{ $json.vencimento }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2fc3872-5632-40af-8bdf-68a319b6e6da",
+      "name": "1º Parcela |Boleto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2240,
+        -560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Trata Webhook').item.json.payment.dueDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "outputFieldName": "vencimento",
+        "options": {}
+      },
+      "id": "6962888b-9a61-4a0c-b6c0-8c06f6d08fed",
+      "name": "Formata data de vencimento | Boleto",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        -560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Trata Webhook').item.json.payment.dueDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "outputFieldName": "vencimento",
+        "options": {}
+      },
+      "id": "bffc20d2-daf6-447f-ad6b-fc8823afd6a2",
+      "name": "Formata data de vencimento | Pix",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Trata Webhook').item.json.payment.dueDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "outputFieldName": "vencimento",
+        "options": {}
+      },
+      "id": "83e803ad-48bc-47d7-8efa-047183fea4c9",
+      "name": "Formata data de vencimento | Cartão",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5581993515055"
+            },
+            {
+              "name": "message",
+              "value": "=Olá,  {{ $('HTTP Request').item.json.name }}. Esse aqui é boleto de pagamento da sua primeira parcela do acompanhamento da Sala Black com vencimento para o dia  {{ $json.vencimento }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6c710ae5-f079-4a01-baee-86b3e5c520cf",
+      "name": "1º Parcela |Cartão",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2240,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "08b10d58-9fad-4563-83b8-689484feea93",
+      "name": "Chama fluxo de onboarding no clickup1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2520,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "cb0e29ad-3168-4471-8ae5-693e9abd39fc",
+      "name": "Chama fluxo de onboarding no clickup2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2520,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.n_parcela }}",
+              "value2": "={{ $('Trata Webhook').item.json.payment.installmentNumber }}"
+            }
+          ]
+        }
+      },
+      "id": "32c6317d-03aa-4de1-b759-a1da726e0b4e",
+      "name": "busca parcela",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Id_asaas": "=",
+            "pago": "sim",
+            "id": "={{ $('Trata Webhook').item.json.payment.customer }}{{ $('Trata Webhook').item.json.payment.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data da cobrança",
+              "displayName": "Data da cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Id_asaas",
+              "displayName": "Id_asaas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "id_cobrança",
+              "displayName": "id_cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_parcelamento",
+              "displayName": "id_parcelamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "n_parcela",
+              "displayName": "n_parcela",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_pagamento",
+              "displayName": "tipo_pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link_boleto",
+              "displayName": "link_boleto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atrasado",
+              "displayName": "atrasado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_1",
+              "displayName": "cobrança_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_2",
+              "displayName": "cobrança_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_3",
+              "displayName": "cobrança_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pago",
+              "displayName": "pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "040327c4-265e-42c4-8e87-130648d5a1c8",
+      "name": "marca parcela como paga",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1720,
+        300
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "id",
+              "lookupValue": "={{ $('Trata Webhook').item.json.payment.customer }}{{ $('Trata Webhook').item.json.payment.id }}"
+            }
+          ]
+        },
+        "options": {
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "id": "aab27d7c-a16a-4e27-a504-b250cce08430",
+      "name": "busca cliente na planilha de cobrança | Pagou",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1240,
+        300
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "id",
+              "lookupValue": "={{ $('Trata Webhook').item.json.payment.customer }}{{ $('Trata Webhook').item.json.payment.id }}"
+            }
+          ]
+        },
+        "options": {
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "id": "71c5f329-86ef-4ca0-8a1f-5e264d9dbe08",
+      "name": "busca cliente na planilha de cobrança | Atrasado",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1240,
+        600
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.n_parcela }}",
+              "value2": "={{ $('Trata Webhook').item.json.payment.installmentNumber }}"
+            }
+          ]
+        }
+      },
+      "id": "f1f65e62-6b47-4df6-a1cd-39665bf413ea",
+      "name": "busca parcela1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "cobrança_1": "={{ $json.datafutura1 }}",
+            "cobrança_2": "={{ $json.datafutura2 }}",
+            "cobrança_3": "={{ $json.datafutura3 }}",
+            "Id_asaas": "=",
+            "id": "={{ $('Trata Webhook').item.json.payment.customer }}{{ $('Trata Webhook').item.json.payment.id }}",
+            "atrasado": "sim"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data da cobrança",
+              "displayName": "Data da cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Id_asaas",
+              "displayName": "Id_asaas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "id_cobrança",
+              "displayName": "id_cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_parcelamento",
+              "displayName": "id_parcelamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "n_parcela",
+              "displayName": "n_parcela",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_pagamento",
+              "displayName": "tipo_pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link_boleto",
+              "displayName": "link_boleto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atrasado",
+              "displayName": "atrasado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_1",
+              "displayName": "cobrança_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_2",
+              "displayName": "cobrança_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_3",
+              "displayName": "cobrança_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pago",
+              "displayName": "pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "053c1f48-0154-405f-8219-330c78106e13",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1940,
+        600
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Função para formatar a data\nfunction formatarData(data) {\n    let dia = data.getDate();\n    let mes = data.getMonth() + 1; // Os meses são indexados de 0 a 11\n    let ano = data.getFullYear();\n\n    // Adiciona zero à frente do dia e mês se forem menores que 10\n    if (dia < 10) {\n        dia = '0' + dia;\n    }\n\n    if (mes < 10) {\n        mes = '0' + mes;\n    }\n\n    return `${ano}-${mes}-${dia}`;\n}\n\n// Obtém a data atual\nlet dataAtual = new Date();\n\n// Calcula a primeira data futura (2 dias após a data atual)\nlet primeiraDataFutura = new Date(dataAtual);\nprimeiraDataFutura.setDate(dataAtual.getDate() + 2);\n\n// Calcula a segunda data futura (2 dias após a primeira data futura)\nlet segundaDataFutura = new Date(primeiraDataFutura);\nsegundaDataFutura.setDate(primeiraDataFutura.getDate() + 2);\n\n// Calcula a terceira data futura (2 dias após a segunda data futura)\nlet terceiraDataFutura = new Date(segundaDataFutura);\nterceiraDataFutura.setDate(segundaDataFutura.getDate() + 2);\n\n// Formata as datas para exibição\nlet primeiraDataFormatada = formatarData(primeiraDataFutura);\nlet segundaDataFormatada = formatarData(segundaDataFutura);\nlet terceiraDataFormatada = formatarData(terceiraDataFutura);\n\n// Exibe as datas formatadas\nconsole.log(\"1ª Data Futura:\", primeiraDataFormatada);\nconsole.log(\"2ª Data Futura:\", segundaDataFormatada);\nconsole.log(\"3ª Data Futura:\", terceiraDataFormatada);\n\n\nreturn {\n  datafutura1: primeiraDataFormatada,\n  datafutura2: segundaDataFormatada,\n  datafutura3: terceiraDataFormatada\n}\n"
+      },
+      "id": "fea13884-8ef2-437a-93f1-53acaebda608",
+      "name": "Datas de cobrança",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data da cobrança": "={{ $('Trata Webhook').item.json.payment.dueDate }}",
+            "Id_asaas": "={{ $('Trata Webhook').item.json.payment.customer }}",
+            "id_cobrança": "={{ $('Trata Webhook').item.json.payment.id }}",
+            "descrição_parcela": "={{ $('Trata Webhook').item.json.payment.description }}",
+            "link_boleto": "={{ $('Trata Webhook').item.json.payment.bankSlipUrl }}",
+            "Nome": "={{ $('Formata Telefone').item.json.name }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Telefone": "={{ $('Formata Telefone').item.json.mobilePhone }}",
+            "id": "={{ $('Trata Webhook').item.json.payment.customer }}{{ $('Trata Webhook').item.json.payment.id }}",
+            "n_parcela": "={{ $('Trata Webhook').item.json.payment.installmentNumber }}",
+            "tipo_pagamento": "={{ $('Trata Webhook').item.json.payment.billingType }}",
+            "id_parcelamento": "={{ $('Trata Webhook').item.json.payment.installment }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data da cobrança",
+              "displayName": "Data da cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Id_asaas",
+              "displayName": "Id_asaas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_cobrança",
+              "displayName": "id_cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_parcelamento",
+              "displayName": "id_parcelamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "n_parcela",
+              "displayName": "n_parcela",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "tipo_pagamento",
+              "displayName": "tipo_pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "link_boleto",
+              "displayName": "link_boleto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atrasado",
+              "displayName": "atrasado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_1",
+              "displayName": "cobrança_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_2",
+              "displayName": "cobrança_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_3",
+              "displayName": "cobrança_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pago",
+              "displayName": "pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "724de861-4da7-46f3-9ed0-479f30021ff1",
+      "name": "Add primeira cobrança na planilha",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1400,
+        -260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "insomnia/2023.5.8",
+            "content-length": "2037",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "186.235.185.56",
+            "cf-ipcountry": "BR",
+            "cf-ray": "82e3467ebae16454-GIG",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "x-forwarded-for": "162.158.193.219",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "162.158.193.219"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "PAYMENT_OVERDUE",
+            "payment": {
+              "object": "payment",
+              "id": "pay_0360887042256112",
+              "dateCreated": "2023-11-27",
+              "customer": "cus_000073193645",
+              "installment": "a61e28f9-dc39-4eef-9e11-60cd5ed11c8a",
+              "paymentLink": "041647673037",
+              "value": 1990,
+              "netValue": 1989.01,
+              "originalValue": null,
+              "interestValue": null,
+              "description": "Parcela 1 de 6.",
+              "billingType": "BOLETO",
+              "canBePaidAfterDueDate": true,
+              "confirmedDate": "2023-11-28",
+              "pixTransaction": null,
+              "status": "RECEIVED",
+              "dueDate": "2023-11-29",
+              "originalDueDate": "2023-11-29",
+              "paymentDate": "2023-11-28",
+              "clientPaymentDate": "2023-11-27",
+              "installmentNumber": 1,
+              "invoiceUrl": "https://www.asaas.com/payment/invoice/0360887042256112",
+              "invoiceNumber": "329920680",
+              "externalReference": null,
+              "deleted": false,
+              "anticipated": false,
+              "anticipable": false,
+              "creditDate": "2023-11-28",
+              "estimatedCreditDate": "2023-11-28",
+              "transactionReceiptUrl": "https://www.asaas.com/comprovantes/5545041864197280",
+              "nossoNumero": "176548703",
+              "bankSlipUrl": "https://www.asaas.com/b/pdf/0360887042256112",
+              "lastInvoiceViewedDate": null,
+              "lastBankSlipViewedDate": null,
+              "discount": {
+                "value": 0,
+                "limitDate": null,
+                "dueDateLimitDays": 0,
+                "type": "FIXED"
+              },
+              "fine": {
+                "value": 0,
+                "type": "FIXED"
+              },
+              "interest": {
+                "value": 0,
+                "type": "PERCENTAGE"
+              },
+              "postalService": false,
+              "custody": null,
+              "refunds": null
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-08T18:22:29.000Z",
+  "versionId": "6b2d9ce2-015e-4ce0-9929-09a3f1a95c90"
+}
