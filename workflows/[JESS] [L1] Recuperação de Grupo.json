@@ -1,0 +1,249 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata webhook": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "final 3986",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "final 2789",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-16T18:56:06.648Z",
+  "id": "F8pLTdxSYAlm7DIg",
+  "meta": null,
+  "name": "[JESS] [L1] Recuperação de Grupo",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "30f4606f-e306-4ff9-b8e7-d477a8d2da3e",
+        "options": {}
+      },
+      "id": "c5f3290c-c61b-450a-8b8f-3a99c7888e67",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        340,
+        340
+      ],
+      "webhookId": "30f4606f-e306-4ff9-b8e7-d477a8d2da3e"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $input.all()[0].json.body == 'string' ? JSON.parse($input.all()[0].json.body) : $input.all()[0].json.body"
+      },
+      "id": "0dfab7c4-5c5e-4ad9-9e03-3e0336aaf302",
+      "name": "Trata webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        540,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.variables.chip }}",
+              "value2": "3986"
+            }
+          ]
+        }
+      },
+      "id": "fcba4377-a08f-4543-80e6-b0055e6fb038",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        780,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $json[\"variables\"][\"Nome\"].split(\" \")[0] }}. 🫶🏼\n\nO *The BritEnglish* vai mudar a forma como você estuda inglês. 🤓\n\nVou revelar estratégias para *aprimorar o seu inglês* e melhorar o seu *Speaking & Listening.*\n\nPara garantir que você receba todos os *materiais especiais e o link da aula*, é importante estar fazendo parte do Grupo do Evento. \n\nBasta me responder com *Entrar no Grupo* que vou te enviar o link para entrar no grupo."
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b9b77969-d9e5-4d92-b5fa-8376576a3578",
+      "name": "final 3986",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $json[\"variables\"][\"Nome\"].split(\" \")[0] }}. 🫶🏼\n\nO *The BritEnglish* vai mudar a forma como você estuda inglês. 🤓\n\nVou revelar estratégias para *aprimorar o seu inglês* e melhorar o seu *Speaking & Listening.*\n\nPara garantir que você receba todos os *materiais especiais e o link da aula*, é importante estar fazendo parte do Grupo do Evento. \n\nBasta me responder com *Entrar no Grupo* que vou te enviar o link para entrar no grupo."
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4e02f133-48d5-4517-a21d-5acbd4fda0e6",
+      "name": "final 2789",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1180,
+        500
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0; SP Web Client/1.0",
+            "content-length": "570",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "188.40.60.215",
+            "cf-ipcountry": "DE",
+            "cf-ray": "8468a54c799d048a-CDG",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.71.134.225",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.71.134.225",
+            "x-sp-action": "request"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "title": "N8N",
+            "variables": {
+              "utm_campaign": "l1",
+              "Nome": "Ádila Fortunato Ribeiro",
+              "utm_content": "01 - IG + FB | Todos | 7D + Save | 180D + Directs | 365D",
+              "utm_source": "adsfb",
+              "utm_term": "Cp_03_em_18_anos",
+              "utm_medium": "[L1] [CP] [CADASTROS] [CONVERSÕES] [CBO] [Q] - Público quente",
+              "Pagina": "/inscricao-adsfb/",
+              "grupo": "teste",
+              "chip": "2789",
+              "subscribe_date": "2024-01-15"
+            },
+            "execution_date": {
+              "date": "2024-01-16 19:08:11.480780",
+              "timezone_type": 3,
+              "timezone": "UTC"
+            },
+            "automation": 17891,
+            "phone": "5581993515055",
+            "email": "adiladiula@gmail.com"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-07T16:35:41.227Z",
+      "updatedAt": "2024-01-07T16:35:41.227Z",
+      "id": "lnBfoQAPlkm8ew3T",
+      "name": "Jess"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-17T04:49:53.000Z",
+  "versionId": "6e8e2143-f92f-4125-97bd-acaeeeaad7ef"
+}
