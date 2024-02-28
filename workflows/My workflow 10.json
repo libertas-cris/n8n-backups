@@ -1,0 +1,106 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-24T20:07:20.550Z",
+  "id": "A5Xa8cnfnycwDEpB",
+  "meta": null,
+  "name": "My workflow 10",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "f53832c6-65ca-49b3-a1dd-b705cbd1284d",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/rcpcoucbpa8jqzvqols662vm1p9yrxrn",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "nome",
+              "value": "=João"
+            },
+            {
+              "name": "email",
+              "value": "=garbimplantes@gmail.com"
+            },
+            {
+              "name": "whatsapp",
+              "value": "=5511997331672"
+            },
+            {
+              "name": "utm_source",
+              "value": "=adsfb"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "=as1"
+            },
+            {
+              "name": "utm_medium",
+              "value": "=[AS8] [INGRESSOS] [CONVERSÕES] [COMPRA] [ABO] [F] - Advantage"
+            },
+            {
+              "name": "utm_content",
+              "value": "=Campanha de Compras Advantage"
+            },
+            {
+              "name": "utm_term",
+              "value": "=Z8_CP_112_musica1"
+            },
+            {
+              "name": "funil",
+              "value": "IC"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d7ddf821-16c2-46a9-af1e-9ceadac62fa6",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1020,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-24T20:08:58.000Z",
+  "versionId": "d889f7b5-9daf-45f4-af4a-b3b4a83c7ba8"
+}
