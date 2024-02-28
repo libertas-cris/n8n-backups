@@ -1,0 +1,129 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-24T17:05:59.140Z",
+  "id": "CaQTQdQr8NdGohO1",
+  "meta": null,
+  "name": "My workflow 6",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "97604a1b-d0c9-4b28-90bd-f9d4fc99a782",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -1340,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/group-metadata/120363221113589065-group",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d36adf5c-69da-44e3-b119-8eae1508f7a4",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -1100,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "participants",
+        "options": {}
+      },
+      "id": "ea4ca47f-c5e1-4d8d-abd4-2fa95ab63943",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -880,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.phone }}",
+              "value2": "5511993947636"
+            }
+          ]
+        }
+      },
+      "id": "660d36f7-83c8-4f5b-a707-880684ceaac7",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        -660,
+        240
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-24T17:12:43.000Z",
+  "versionId": "b3050ad2-f034-47a6-92fd-aca8054ea235"
+}
