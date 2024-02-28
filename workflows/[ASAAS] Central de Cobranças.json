@@ -1,0 +1,1901 @@
+{
+  "active": false,
+  "connections": {
+    "Data atual": {
+      "main": [
+        [
+          {
+            "node": "Formata data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata data": {
+      "main": [
+        [
+          {
+            "node": "Busca cobranças do dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Confere Pagamento | Boleto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Confere Pagamento | Cartão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete de Parcela |Boleto": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Lembrete de Parcela |Boleto",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Adiciona pago na planilha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Confere Pagamento | Boleto": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca cobranças do dia": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data atual1": {
+      "main": [
+        [
+          {
+            "node": "Convert one week after",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert one week after": {
+      "main": [
+        [
+          {
+            "node": "Convert one week after1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert one week after1": {
+      "main": [
+        [
+          {
+            "node": "Lembrete | 1 semana",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete | 1 semana": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Data formatada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Data formatada1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data formatada": {
+      "main": [
+        [
+          {
+            "node": "Lembrete de Parcela |Boleto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete de Parcela |Boleto1": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data formatada1": {
+      "main": [
+        [
+          {
+            "node": "Lembrete de Parcela |Cartão",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daily 12:00": {
+      "main": [
+        [
+          {
+            "node": "Data atual1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Data atual",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Data atual2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Data atual4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data atual2": {
+      "main": [
+        [
+          {
+            "node": "Data atual3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data atual3": {
+      "main": [
+        [
+          {
+            "node": "Busca atrasado dia 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca atrasado dia 1": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Confere Pagamento | Boleto1": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Lembrete de Parcela |Boleto2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Adiciona pago na planilha1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete de Parcela |Boleto2": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data atual4": {
+      "main": [
+        [
+          {
+            "node": "Data atual5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data atual5": {
+      "main": [
+        [
+          {
+            "node": "Busca atrasado dia 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone3": {
+      "main": [
+        [
+          {
+            "node": "Confere Pagamento | Boleto2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Confere Pagamento | Boleto2": {
+      "main": [
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "Lembrete de Parcela |Boleto3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Adiciona pago na planilha2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete de Parcela |Boleto3": {
+      "main": [
+        []
+      ]
+    },
+    "Busca atrasado dia 2": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-07T00:17:25.603Z",
+  "id": "FQsX67MRKsheEp6B",
+  "meta": null,
+  "name": "[ASAAS] Central de Cobranças",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "timezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "c41a7f35-3c48-446c-a3f6-0f83a579a9af",
+      "name": "Data atual",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        280,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "42449f2f-7391-4704-8eba-8d2ac51e4943",
+      "name": "Formata data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        540,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json.tipo_pagamento }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "BOLETO"
+            },
+            {
+              "value2": "CREDIT_CARD",
+              "output": 1
+            }
+          ]
+        }
+      },
+      "id": "077eacd9-1a5f-4704-8b2e-e7d15c095dec",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "value2": "PENDING"
+            }
+          ]
+        }
+      },
+      "id": "fe8bc08b-1b48-4373-b890-c43312947812",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-document/pdf",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.Telefone }}"
+            },
+            {
+              "name": "document",
+              "value": "={{ $('Busca cobranças do dia').item.json.link_boleto }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ $('Busca cobranças do dia').item.json.n_parcela }}º Parcela -  {{ $('Busca cobranças do dia').item.json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c50a7e78-6406-4d4d-970c-4d627dd19b60",
+      "name": "Envia Boleto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2240,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.Telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{$('Formata Telefone').item.json.Nome }}. Esse aqui é o boleto de pagamento da sua parcela Nº {{ $json.installmentNumber }} da Mentoria Sala Black."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ade23269-5eda-4f48-94bb-fa3197c7eb8e",
+      "name": "Lembrete de Parcela |Boleto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2000,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;"
+      },
+      "id": "de664034-3bf3-4b7d-a0fa-f1d3f5aa27e3",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Busca cobranças do dia').item.json.id }}",
+            "pago": "sim"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data da cobrança",
+              "displayName": "Data da cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Id_asaas",
+              "displayName": "Id_asaas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_cobrança",
+              "displayName": "id_cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_parcelamento",
+              "displayName": "id_parcelamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "n_parcela",
+              "displayName": "n_parcela",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_pagamento",
+              "displayName": "tipo_pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link_boleto",
+              "displayName": "link_boleto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atrasado",
+              "displayName": "atrasado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_1",
+              "displayName": "cobrança_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_2",
+              "displayName": "cobrança_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_3",
+              "displayName": "cobrança_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pago",
+              "displayName": "pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2eafc13e-1313-41ae-befd-a159a415e1d4",
+      "name": "Adiciona pago na planilha",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2000,
+        420
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments/{{ $json.id_cobrança }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "61066427-47fe-402f-ac8b-2b46725135a9",
+      "name": "Confere Pagamento | Cartão",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1480,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments/{{ $json.id_cobrança }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ded05287-d97c-46bf-b6b9-c76dfe5a7135",
+      "name": "Confere Pagamento | Boleto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1480,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "timezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "12390706-eada-4af0-806a-33bb16811f56",
+      "name": "Data atual1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        280,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Data da cobrança",
+              "lookupValue": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "options": {
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "id": "b9cddc91-a546-4300-babe-899fc70bba6d",
+      "name": "Busca cobranças do dia",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        800,
+        460
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "options": {
+          "returnAllMatches": "returnFirstMatch"
+        }
+      },
+      "id": "abfd75cf-a0ea-4401-9f99-783429c1a255",
+      "name": "Lembrete | 1 semana",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1080,
+        1020
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 7,
+        "outputFieldName": "oneWeek"
+      },
+      "id": "9b7d18c2-3102-4d8e-b4d6-1fedc8d2f332",
+      "name": "Convert one week after",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        540,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.oneWeek }}",
+        "format": "yyyy-MM-dd",
+        "outputFieldName": "oneWeek",
+        "options": {}
+      },
+      "id": "b19c197f-7d85-4519-80bd-f29bdb1be246",
+      "name": "Convert one week after1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        800,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;"
+      },
+      "id": "2a62f38e-8da0-4de3-8fa0-c05d7b785a61",
+      "name": "Formata Telefone1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.tipo_pagamento }}",
+              "value2": "BOLETO"
+            }
+          ]
+        }
+      },
+      "id": "67748e98-8f25-47f0-94ee-bb7d8b9ed602",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        1020
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.Telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{$('Formata Telefone').item.json.Nome }}. O boleto da sua parcela Nº {{ $json.installmentNumber }} da Mentoria Sala Black já está disponível.\n\nLembrando que a data de vencimento é  {{ $json.formattedDate }}\n\nQualquer dúvida é só me chamar por aqui."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0a92710a-b38a-4560-8522-8552efd6a00a",
+      "name": "Lembrete de Parcela |Boleto1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2100,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-document/pdf",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.Telefone }}"
+            },
+            {
+              "name": "document",
+              "value": "={{ $('Busca cobranças do dia').item.json.link_boleto }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ $('Busca cobranças do dia').item.json.n_parcela }}º Parcela -  {{ $('Busca cobranças do dia').item.json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ab2123a4-7ea1-45bd-ac86-f90989b49157",
+      "name": "Envia Boleto1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2360,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json['Data da cobrança'] }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "bd60319e-f61b-4a3b-a64e-ec5e77ac830e",
+      "name": "Data formatada",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json['Data da cobrança'] }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "288772e6-ca40-432b-83bb-18f07fb8424a",
+      "name": "Data formatada1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1840,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.Telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{$('Formata Telefone').item.json.Nome }}. O boleto da sua parcela Nº {{ $json.installmentNumber }} da Mentoria Sala Black já está disponível.\n\nLembrando que a data de vencimento é  {{ $json.formattedDate }}\n\nQualquer dúvida é só me chamar por aqui."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5f132a7c-6d45-4a34-924f-437ee72567c7",
+      "name": "Lembrete de Parcela |Cartão",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2100,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 12
+            }
+          ]
+        }
+      },
+      "id": "ddddce6f-abde-45a8-8e11-f91d5452b608",
+      "name": "Daily 12:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -180,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Verifica cobranças do dia atual",
+        "height": 85.93457943925236,
+        "width": 260.177570093458
+      },
+      "id": "9899c275-304c-49a0-b8c4-a4d68fcb9b7c",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        200,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Verifica cobranças que estão a uma semana do vencimento",
+        "height": 98.28037383177589,
+        "width": 375.3084112149536
+      },
+      "id": "3c2be9d9-98f3-4ea5-b60b-9ea5f97d5789",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        220,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "timezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "435651ec-f765-4ced-8212-439f411b7b12",
+      "name": "Data atual2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": false
+        }
+      },
+      "id": "0b2aba20-af63-466a-a5ad-25a57f2f06b7",
+      "name": "Data atual3",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        540,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Verifica cobranças atrasadas | 1º cobrança",
+        "height": 85.93457943925236,
+        "width": 260.177570093458
+      },
+      "id": "e00692b5-f502-4991-bba6-8082f5e32c56",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        280,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "cobrança_1",
+              "lookupValue": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "options": {
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "id": "3a563c42-2f4c-4ce6-957b-11b5d9db2c3f",
+      "name": "Busca atrasado dia 1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        760,
+        -180
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;"
+      },
+      "id": "f15e5afd-31e6-4136-aba0-6ab1e42ddd4e",
+      "name": "Formata Telefone2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments/{{ $json.id_cobrança }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7453b92a-6ce8-4d2e-a3f1-a6d9200c5c92",
+      "name": "Confere Pagamento | Boleto1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1220,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "value2": "PENDING"
+            }
+          ]
+        }
+      },
+      "id": "faef9c40-29c3-43dd-9df5-2d7d3534391d",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone2').item.json.Telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Tudo bem, {{$('Formata Telefone2').item.json.Nome }}? \n\nNão conseguimos identificar o pagamento do seu boleto Nº {{ $('Busca atrasado dia 1').item.json.n_parcela }} que se venceu ontem.\n\nAconteceu alguma coisa?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ca68b8cc-646c-4f65-a434-697e555e797d",
+      "name": "Lembrete de Parcela |Boleto2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1680,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Busca atrasado dia 1').item.json.id }}",
+            "pago": "sim"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data da cobrança",
+              "displayName": "Data da cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Id_asaas",
+              "displayName": "Id_asaas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_cobrança",
+              "displayName": "id_cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_parcelamento",
+              "displayName": "id_parcelamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "n_parcela",
+              "displayName": "n_parcela",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_pagamento",
+              "displayName": "tipo_pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link_boleto",
+              "displayName": "link_boleto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atrasado",
+              "displayName": "atrasado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_1",
+              "displayName": "cobrança_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_2",
+              "displayName": "cobrança_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_3",
+              "displayName": "cobrança_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pago",
+              "displayName": "pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "744f26b2-441a-48a5-82ea-e288f804df98",
+      "name": "Adiciona pago na planilha1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1680,
+        -60
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-document/pdf",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone2').item.json.Telefone }}"
+            },
+            {
+              "name": "document",
+              "value": "={{ $('Busca atrasado dia 1').item.json.link_boleto }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ $('Busca atrasado dia 1').item.json.n_parcela }}º Parcela -  {{ $('Busca atrasado dia 1').item.json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "97deb797-7db1-4104-b408-bbb7f3bcb0b4",
+      "name": "Envia Boleto2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1960,
+        -340
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "timezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "4e8f3b41-9909-4756-8649-ac2f9a396625",
+      "name": "Data atual4",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -740
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": false
+        }
+      },
+      "id": "015c4a74-d131-4863-8072-465fdd28c6dc",
+      "name": "Data atual5",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        540,
+        -740
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;"
+      },
+      "id": "791d518e-e29d-41a7-82f7-da2ab8b01012",
+      "name": "Formata Telefone3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        980,
+        -740
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments/{{ $json.id_cobrança }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6cf841b9-aecb-4d37-b039-54282ee6c683",
+      "name": "Confere Pagamento | Boleto2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1200,
+        -740
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.status }}",
+              "value2": "PENDING"
+            }
+          ]
+        }
+      },
+      "id": "0f0d33d1-cf1a-467d-a393-7788803bc051",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        -740
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone3').item.json.Telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá,  {{ $('Busca atrasado dia 2').item.json.Nome }}, tudo bem?\n\nAinda não conseguimos identificar o pagamento da sua parcela que se venceu há 3 dias.\n\nComo posso te ajudar a regularizar a situação?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "95b8cc22-868e-48ba-84aa-263669dd67e4",
+      "name": "Lembrete de Parcela |Boleto3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1640,
+        -940
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-document/pdf",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone2').item.json.Telefone }}"
+            },
+            {
+              "name": "document",
+              "value": "={{ $('Busca atrasado dia 1').item.json.link_boleto }}"
+            },
+            {
+              "name": "fileName",
+              "value": "={{ $('Busca atrasado dia 1').item.json.n_parcela }}º Parcela -  {{ $('Busca atrasado dia 1').item.json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "762ac3fd-f480-4a94-a752-71765495eda0",
+      "name": "Envia Boleto3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1900,
+        -940
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Busca atrasado dia 1').item.json.id }}",
+            "pago": "sim"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data da cobrança",
+              "displayName": "Data da cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Id_asaas",
+              "displayName": "Id_asaas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_cobrança",
+              "displayName": "id_cobrança",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id_parcelamento",
+              "displayName": "id_parcelamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "n_parcela",
+              "displayName": "n_parcela",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo_pagamento",
+              "displayName": "tipo_pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link_boleto",
+              "displayName": "link_boleto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "atrasado",
+              "displayName": "atrasado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_1",
+              "displayName": "cobrança_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_2",
+              "displayName": "cobrança_2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "cobrança_3",
+              "displayName": "cobrança_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "pago",
+              "displayName": "pago",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "442cf0bc-d58e-43e0-ba8b-b8fd6afe88a1",
+      "name": "Adiciona pago na planilha2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1640,
+        -640
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Verifica cobranças atrasadas | 2º cobrança",
+        "height": 85.93457943925236,
+        "width": 260.177570093458
+      },
+      "id": "681c4074-6ae4-4aa0-9a93-f92172b131de",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        300,
+        -580
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 666003984,
+          "mode": "list",
+          "cachedResultName": "Control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1TyYAmUONeRjp8H1Z5xFRpcWFNxuBbc8lTPJHoHDT4y8/edit#gid=666003984"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "cobrança_2",
+              "lookupValue": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "options": {
+          "returnAllMatches": "returnAllMatches"
+        }
+      },
+      "id": "7d8fec40-ba11-4b83-ae97-752517adcb95",
+      "name": "Busca atrasado dia 2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        760,
+        -740
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-07T15:11:30.000Z",
+  "versionId": "47dc6aed-e10d-4e2e-b3b0-2d2954d3bb4e"
+}
