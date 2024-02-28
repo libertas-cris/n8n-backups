@@ -1,0 +1,526 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Entrar no grupo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ok",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ok": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "BRITI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata webhook": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Entrar no grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BRITI1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-17T13:13:37.738Z",
+  "id": "BJc6Y8IX4lykERPU",
+  "meta": null,
+  "name": "[JESS] Recuperação de grupo + Envia pesquisa (chip final 3986)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b8d84005-b4d8-459d-8f5e-abee9a4e5c69",
+        "options": {}
+      },
+      "id": "b70cf631-b0ed-452e-b20e-5bac8450b055",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "b8d84005-b4d8-459d-8f5e-abee9a4e5c69"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $input.all()[0].json.body == 'string' ? JSON.parse($input.all()[0].json.body) : $input.all()[0].json.body"
+      },
+      "id": "3e1d0794-bbc4-48b5-af8f-818b96679d8f",
+      "name": "Trata webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Ótimo! O link para entrar no grupo é este aqui: \n👉🏻 https://chat.whatsapp.com/GckGDaFSljI9UhpTEhfIis"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            },
+            {
+              "name": "image",
+              "value": "=https://britenglish.com.br/wp-content/uploads/2024/01/DESKTOPJESS_BIO.webp"
+            },
+            {
+              "name": "linkUrl",
+              "value": "=https://chat.whatsapp.com/GckGDaFSljI9UhpTEhfIis"
+            },
+            {
+              "name": "title",
+              "value": "Entre no grupo oficial"
+            },
+            {
+              "name": "linkDescription",
+              "value": "Toque no link abaixo para entrar no grupo"
+            },
+            {
+              "name": "delayTyping",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1ba1c72d-3988-434d-82e6-71bab58b2845",
+      "name": "HTTP Request8",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1660,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Para responder a pesquisa e receber os presentes, é só tocar nesse link \n👉🏻 https://bit.ly/thebritenglish-pesquisa"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            },
+            {
+              "name": "image",
+              "value": "=https://britenglish.com.br/wp-content/uploads/2024/01/DESKTOPJESS_BIO.webp"
+            },
+            {
+              "name": "linkUrl",
+              "value": "=https://bit.ly/thebritenglish-pesquisa"
+            },
+            {
+              "name": "title",
+              "value": "Responda e pegue seus presentes"
+            },
+            {
+              "name": "linkDescription",
+              "value": "Toque no link abaixo para responder uma pesquisa rápida e receber dois presentes"
+            },
+            {
+              "name": "delayTyping",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7c6bd8ab-7487-43c5-886d-f930ef7c5717",
+      "name": "HTTP Request9",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1920,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Entrar no grupo"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "entrar no grupo"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "ENTRAR NO GRUPO"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Entrar no Grupo"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "2a8cab74-ad07-4c91-b446-86c3c12a8165",
+      "name": "Entrar no grupo",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "ok"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "entrar no grupo"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "OK"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Ok"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "bf893c53-f48e-43d4-a5c9-410e4d4bfe6f",
+      "name": "Ok",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.isGroup }}"
+            }
+          ]
+        }
+      },
+      "id": "691dc061-3755-4371-9b4a-ffb99fa445c5",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "briti"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "BRITI"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Briti"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "7cac9743-0c60-4659-8488-842bff6d8b9c",
+      "name": "BRITI",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        700
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "briti"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "BRITI"
+            },
+            {
+              "value1": "={{ $json.text.message }}",
+              "operation": "contains",
+              "value2": "Briti"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "a2311ea9-5592-4d87-aa74-07fac3027e0a",
+      "name": "BRITI1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Aqui está o link para fazer sua inscrição no BritiShize:\n\nhttps://jessicaparish.com.br/britishize?utm_source=1x1_espera"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            },
+            {
+              "name": "image",
+              "value": "=https://britenglish.com.br/wp-content/uploads/2024/01/DESKTOPJESS_BIO.webp"
+            },
+            {
+              "name": "linkUrl",
+              "value": "=https://jessicaparish.com.br/britishize?utm_source=1x1_espera"
+            },
+            {
+              "name": "title",
+              "value": "BritiShize"
+            },
+            {
+              "name": "linkDescription",
+              "value": "Toque no link abaixo para realizar a sua inscrição"
+            },
+            {
+              "name": "delayTyping",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "af8a8519-7579-4ae4-b132-b5e7867dfd5c",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2180,
+        1200
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36 Edg/111.0.1661.54",
+            "content-length": "746",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "144.22.246.183",
+            "cf-ipcountry": "BR",
+            "cf-ray": "846ae1ad9d6cda6f-MIA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "origin": "https://api.z-api.io",
+            "server": "Z-API",
+            "x-forwarded-for": "172.70.55.7",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.70.55.7",
+            "z-api-token": "DAEE58152CBC84AAAF621399"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "isStatusReply": false,
+            "chatLid": "272851034759380@lid",
+            "connectedPhone": "551151942789",
+            "waitingMessage": false,
+            "isEdit": false,
+            "isGroup": false,
+            "isNewsletter": false,
+            "instanceId": "3C92A5E4516CC0A421E9D604DAF2BCF1",
+            "messageId": "7499CDA1CD856EADC03BC55B877CCFAC",
+            "phone": "5581993515055",
+            "fromMe": false,
+            "momment": 1705455535759,
+            "status": "RECEIVED",
+            "chatName": "Danilo Xavier~",
+            "senderPhoto": null,
+            "senderName": "Danilo Xavier~",
+            "photo": "https://pps.whatsapp.net/v/t61.24694-24/386330618_1633767863778649_8299852710333303437_n.jpg?ccb=11-4&oh=01_AdR6Fiv-IasvvmcWb7Fq_JlbCrwU5X2g_DdAN58brHc3Eg&oe=65B449A6&_nc_sid=e6ed6c&_nc_cat=103",
+            "broadcast": false,
+            "participantLid": null,
+            "forwarded": false,
+            "type": "ReceivedCallback",
+            "fromApi": false,
+            "text": {
+              "message": "entrar no grupo"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-31T17:12:13.000Z",
+  "versionId": "4dc00ad2-06ae-471e-b001-0b4adfd317ab"
+}
