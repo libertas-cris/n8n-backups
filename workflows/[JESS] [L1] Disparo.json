@@ -1,0 +1,606 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Respondeu Pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Verifica Whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Whatsapp": {
+      "main": [
+        [
+          {
+            "node": "Existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 3986": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 2789": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Final 2789",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches1": {
+      "main": [
+        [
+          {
+            "node": "Final 3986",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 2789 p2": {
+      "main": [
+        []
+      ]
+    },
+    "Final 3986 p2": {
+      "main": [
+        []
+      ]
+    },
+    "Existe?": {
+      "main": [
+        [
+          {
+            "node": "Chip",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respondeu Pesquisa": {
+      "main": [
+        [
+          {
+            "node": "Respondeu Pesquisa1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chip": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respondeu Pesquisa1": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-02T12:58:28.848Z",
+  "id": "GgQMnSmGE5t3H0f2",
+  "meta": null,
+  "name": "[JESS] [L1] Disparo",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "49c728bc-4717-45cf-ae3a-6caa7726141c",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        20,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "5eeedb47-4734-4d11-93c0-b6b4ae0824c8",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        220,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    let ddi = '55';\n    number = number.toString().replace(/[^\\d]/g, \"\");\n\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        ddi = number.substring(0, 2);\n        ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n\n    } else {\n        return number;\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;\n"
+      },
+      "id": "64fb22f6-6d0c-4f7a-b727-ac9e30d19c19",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/phone-exists/{{ $json.Telefone }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "e00a0091-69cb-40d2-9c76-2ee424dc5707",
+      "name": "Verifica Whatsapp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1380,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.exists }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "7ec2b250-a5de-4f1b-be3c-1b69665143c4",
+      "name": "Existe?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1600,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $json[\"nome\"].split(\" \")[0] }}, está por aí?"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "38202fd7-b83d-478c-a14f-ee78cb5738e3",
+      "name": "Final 3986",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $json[\"nome\"].split(\" \")[0] }}, está por aí?"
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "79ac5142-8557-487e-881f-1b11144ba5e2",
+      "name": "Final 2789",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "12e179bf-4608-438b-b897-0e1301f947b1",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        2140,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "dfc2bcac-8302-4d47-8f23-6bb5cf3e93a5",
+      "name": "Split In Batches1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        2140,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Split In Batches').item.json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=*Quer que eu avalie o seu inglês?*\n\nComo você participou do *The BritEnglish* estou liberando um *teste de nivelamento gratuito*, onde eu mesma vou analisar o seu inglês e te falar se o meu curso ao vivo te ajudaria.\n\nPra fazer o teste, me responde com *“TESTE”* que te passo as orientações."
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "338ac9a8-699a-460a-918a-29db8e6309aa",
+      "name": "Final 2789 p2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2660,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Split In Batches1').item.json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=*Quer que eu avalie o seu inglês?*\n\nComo você participou do *The BritEnglish* estou liberando um *teste de nivelamento gratuito*, onde eu mesma vou analisar o seu inglês e te falar se o meu curso ao vivo te ajudaria.\n\nPra fazer o teste, me responde com *“TESTE”* que te passo as orientações."
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cf7326bc-d39b-49bb-8ec7-4be1cb035d04",
+      "name": "Final 3986 p2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2680,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $('Google Sheets').item.json.Chip }}",
+              "operation": "equal",
+              "value2": 2789
+            }
+          ]
+        }
+      },
+      "id": "426b9689-566a-40cc-82a2-67b3122ecbae",
+      "name": "Chip",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Idade }}",
+              "operation": "isNotEmpty"
+            },
+            {
+              "value1": "={{ $json['pre-checkout'] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "5cee7875-c081-4d4c-86e8-8bd33d57fb9b",
+      "name": "Respondeu Pesquisa",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        420,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "nome",
+              "stringValue": "={{ $('Google Sheets').item.json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "22182a22-2323-4b87-a062-a6ce369d4fe4",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [
+        1940,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "nome",
+              "stringValue": "={{ $('Google Sheets').item.json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c81dbb57-601c-4ec3-84ea-576331d0a1fb",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [
+        1940,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "largerEqual",
+              "value2": 36
+            }
+          ]
+        }
+      },
+      "id": "b72df048-c50a-45eb-80f1-532e41f96dcc",
+      "name": "Respondeu Pesquisa1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        700,
+        340
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-02-02T19:27:53.000Z",
+  "versionId": "d9dc39e5-a430-4b1e-b1f9-120c5bf83334"
+}
