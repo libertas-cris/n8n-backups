@@ -1,0 +1,616 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Grupo": {
+      "main": [
+        [
+          {
+            "node": "Pegar Info Grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Participante": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Add Participante",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Add Admin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Descrição Grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descrição Grupo": {
+      "main": [
+        [
+          {
+            "node": "Descrição Comunidade",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descrição Comunidade": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches1": {
+      "main": [
+        [
+          {
+            "node": "Criar Grupo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pegar Info Grupo": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-05T03:27:30.197Z",
+  "id": "rTqWPatioWqvYEaO",
+  "meta": null,
+  "name": "[JESS] Criação de Comunidades",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "eeec91dc-7121-4db1-94dc-f33594d9c35c",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 61832675,
+          "mode": "list",
+          "cachedResultName": "Comunidades",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=61832675"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Nome",
+              "lookupValue": "The Britenglish #09"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4537e243-b318-46fc-836a-11e96e2f199e",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        -660,
+        620
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/communities",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "name",
+              "value": "={{ $json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3d11ba90-40be-4cc1-a32c-61df32c32b8f",
+      "name": "Criar Grupo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        -160,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"groupId\": \"{{ $json[\"phone\"] }}\", \"phones\": [\"{{ $node[\"Google Sheets1\"].json[\"Admin 2\"], $node[\"Google Sheets1\"].json[\"Admin 3\"] }}\"]}",
+        "options": {}
+      },
+      "id": "b9d149d3-3b1a-4059-b1cb-92b01b58e872",
+      "name": "Add Participante",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        500,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-admin",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"groupId\": \"{{ $node[\"Google Sheets\"].json[\"phone\"] }}\", \"phones\": [\"{{ $node[\"Google Sheets1\"].json[\"Admin 2\"] }}\"]}",
+        "options": {}
+      },
+      "id": "92c0b487-3d0e-47c1-a962-ad8754806e84",
+      "name": "Add Admin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        940,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 61832675,
+          "mode": "list",
+          "cachedResultName": "Comunidades",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=61832675"
+        },
+        "columnToMatchOn": "Nome",
+        "valueToMatchOn": "={{ $json.subject }}",
+        "fieldsUi": {
+          "values": [
+            {
+              "column": "Phone",
+              "fieldValue": "={{ $json.phone }}"
+            },
+            {
+              "column": "ID",
+              "fieldValue": "={{ $json.communityId }}"
+            },
+            {
+              "column": "Link",
+              "fieldValue": "={{ $json.invitationLink }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e9b554e1-6f11-4aa1-9429-48007c0cf99e",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        280,
+        600
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "seconds"
+      },
+      "id": "f9145455-cca2-403d-9920-7dc084811ade",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        720,
+        600
+      ],
+      "webhookId": "66e044a0-ad95-4c7c-b4fd-78354c6f4284"
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "seconds"
+      },
+      "id": "ee937d76-2859-4e46-9043-594f0cfa50b6",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        600
+      ],
+      "webhookId": "cff72396-d518-4f06-a438-1f70c4309b92"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/SUA_INSTANCIA/token/SEU_TOKEN/update-group-description",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "groupId",
+              "value": "={{ $node[\"Pegar Info Grupo\"].json.phone }}"
+            },
+            {
+              "name": "groupDescription",
+              "value": "As Aulas irão acontecer nos dias 13/06, 14/06 e 15/06 sempre às 20h de Brasília.\n\n😉 Aqui você receberá todos os avisos e novidades do evento X, então fique de olho! \n\nVocê está dentro de uma Comunidade. é muito seguro porque você só pode visualizar os Administradores.\n\n⚠️ Importante: Caso alguém entre em contato com você, verifique se é algum admin do grupo ou denuncie para os administradores\n\n✅ Não utilizamos nenhum tipo de spam ou excesso de mensagens"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3839f298-3dc4-489d-b23e-f1d23dd66a78",
+      "name": "Descrição Grupo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1380,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/SUA_INSTANCIA/token/SEU_TOKEN/update-group-description",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "groupId",
+              "value": "={{ $node[\"Pegar Info Grupo\"].json.communityId }}"
+            },
+            {
+              "name": "groupDescription",
+              "value": "As Aulas irão acontecer nos dias 13/06, 14/06 e 15/06 sempre às 20h de Brasília.\n\n😉 Aqui você receberá todos os avisos e novidades do evento X, então fique de olho! \n\nVocê está dentro de uma Comunidade. é muito seguro porque você só pode visualizar os Administradores.\n\n⚠️ Importante: Caso alguém entre em contato com você, verifique se é algum admin do grupo ou denuncie para os administradores\n\n✅ Não utilizamos nenhum tipo de spam ou excesso de mensagens"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c5ad53a3-e4cb-4f93-8881-e10e924c79f5",
+      "name": "Descrição Comunidade",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1600,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "seconds"
+      },
+      "id": "5d3da916-25ba-4a8c-b681-b555cf19c3d4",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1820,
+        600
+      ],
+      "webhookId": "06eb6c43-5a54-4a9b-ba89-06476952d720"
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "3c2a6e98-3a2b-4c9b-9c1e-06e1fd048e9f",
+      "name": "Split In Batches1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/group-metadata/{{ $json.subGroups[0].phone }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c97effc4-33f2-4db4-813f-143512f289b3",
+      "name": "Pegar Info Grupo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        60,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "content": "ALTERAR:\nAuth2 Google\nLink da Planilha\nConfiguração da Planilha\n",
+        "height": 105.3125,
+        "width": 202.5
+      },
+      "id": "9684bbd0-44d1-4d20-80cc-551d48edffa3",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -700,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "content": "ALTERAR:\nINSTÂNCIA Z-API\nTOKEN Z-API",
+        "height": 89.6875,
+        "width": 150
+      },
+      "id": "c5bafaba-d2c9-4ea3-85fa-35ead2da2557",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "content": "ALTERAR:\nINSTÂNCIA Z-API\nTOKEN Z-API",
+        "height": 88.125,
+        "width": 150
+      },
+      "id": "895a620a-e26b-437c-bc19-d3afd28c9cd5",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        20,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "content": "ALTERAR:\nAuth2 Google\nLink da Planilha",
+        "height": 95.9375,
+        "width": 150
+      },
+      "id": "87c2326b-4465-41d5-977f-f7a573f4d04e",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        260,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "content": "\nALTERAR:\nINSTÂNCIA Z-API\nTOKEN Z-API\nCELULARES\n",
+        "height": 110,
+        "width": 185.3125
+      },
+      "id": "931933d5-afb0-4d70-94d3-b05c18a1ecc3",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "ALTERAR:\nINSTÂNCIA Z-API\nTOKEN Z-API\nCELULARES\n",
+        "height": 108.4375,
+        "width": 157.1875
+      },
+      "id": "dbfff314-50d3-4dbf-82c1-45214ac61769",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        900,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "ALTERAR:\nINSTÂNCIA Z-API\nTOKEN Z-API\nDESCRIÇÃO\n\n",
+        "height": 108.4375,
+        "width": 150
+      },
+      "id": "95fda846-e4d6-4378-a390-c5cae186258d",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1360,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "content": "ALTERAR:\nINSTÂNCIA Z-API\nTOKEN Z-API\nDESCRIÇÃO\n",
+        "height": 110,
+        "width": 150
+      },
+      "id": "a59fbe73-2fd2-47f1-94bc-39bddec84c9e",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1580,
+        460
+      ]
+    }
+  ],
+  "pinData": {
+    "Google Sheets": [
+      {
+        "json": {
+          "phone": "120363226497572898-group",
+          "description": "",
+          "owner": "551151942789",
+          "subject": "The Britenglish #09",
+          "creation": 1706102351000,
+          "invitationLink": "https://chat.whatsapp.com/GckGDaFSljI9UhpTEhfIis",
+          "communityId": "120363227428334853",
+          "adminOnlyMessage": true,
+          "adminOnlySettings": false,
+          "requireAdminApproval": false,
+          "isGroupAnnouncement": true,
+          "participants": [
+            {
+              "phone": "551151942789",
+              "isAdmin": false,
+              "isSuperAdmin": true
+            }
+          ],
+          "subjectTime": 1706102351000,
+          "subjectOwner": "551151942789"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-07T16:35:41.227Z",
+      "updatedAt": "2024-01-07T16:35:41.227Z",
+      "id": "lnBfoQAPlkm8ew3T",
+      "name": "Jess"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-24T13:44:25.000Z",
+  "versionId": "848f5c7e-3a37-42ef-9415-d7aede377ee5"
+}
