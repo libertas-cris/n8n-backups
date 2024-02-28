@@ -1,0 +1,35 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2024-01-26T13:18:27.142Z",
+  "id": "8RTNveQ03SBLhshe",
+  "meta": null,
+  "name": "[LIBERTAS] Assinatura de contratos",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6d37b72d-b5a7-4b56-b20b-fe242a828c6b",
+        "options": {}
+      },
+      "id": "d3df6492-ad3b-4809-bd9a-54da834590e2",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        840,
+        440
+      ],
+      "webhookId": "6d37b72d-b5a7-4b56-b20b-fe242a828c6b"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-26T18:43:20.000Z",
+  "versionId": "066ec819-e09c-4926-832c-03eace7493ca"
+}
