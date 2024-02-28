@@ -1,0 +1,273 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Pega Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega Data": {
+      "main": [
+        [
+          {
+            "node": "Formata Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-07T15:17:37.032Z",
+  "id": "MjFD2wSR9aEWGtCc",
+  "meta": null,
+  "name": "[REDESIGN] [TESTE A/B] Onboarding",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "10841f47-8e4a-45d9-8cc0-1735b79690d5",
+        "options": {}
+      },
+      "id": "e2c84c68-dd38-4a31-866e-36fc2c837f57",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        280
+      ],
+      "webhookId": "10841f47-8e4a-45d9-8cc0-1735b79690d5"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "deb6c37a-784a-4d4b-b131-e63f7f7dda4c",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        60,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w",
+          "mode": "list",
+          "cachedResultName": "[Redesign.360] - Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1550614725,
+          "mode": "list",
+          "cachedResultName": "Automações - Teste A/B",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit#gid=1550614725"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $json.formattedDate }}",
+            "Nome": "={{ $('Code1').item.json.nome }}",
+            "Telefone": "={{ $('Code1').item.json.telefone }}",
+            "Caminho": "={{ $json.teste }}",
+            "Email": "={{ $('Code1').item.json.email }}",
+            "ID_botconversa": "={{ $('Code1').item.json.id_botconversa }}",
+            "Teste A/B": "={{ $('Code1').item.json.caminho }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID_botconversa",
+              "displayName": "ID_botconversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Teste A/B",
+              "displayName": "Teste A/B",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Comprou?",
+              "displayName": "Comprou?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "99287d5c-a23a-4b60-bc08-bea67536278a",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        600,
+        280
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e793cf2f-88c4-4453-83e0-597f456c420b",
+      "name": "Pega Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        240,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "c1bf7f58-4274-458f-ac5b-1fa53c99653b",
+      "name": "Formata Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        420,
+        280
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "python-requests/2.26.0",
+            "content-length": "152",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "18.228.190.145",
+            "cf-ipcountry": "BR",
+            "cf-ray": "85248d15885301d8-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "sentry-trace": "03ca813b68524914a17c8d76f21411b2-9cef5ee42568d126-0",
+            "x-forwarded-for": "172.71.11.31",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.71.11.31"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "nome": "{primeiro-nome}",
+            "email": "{E-mail}",
+            "caminho": "upsell-direto",
+            "telefone": "{telefone-indicador}",
+            "id_botconversa": "{codigo-indicacao}"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-08T14:33:48.000Z",
+  "versionId": "457db125-4016-4ad6-a9b3-f121c2737ff2"
+}
