@@ -1,0 +1,3756 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Etapa 1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Busca Lead Etapa 2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Busca Lead Final",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data": {
+      "main": [
+        [
+          {
+            "node": "Formata Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Lead Etapa 2": {
+      "main": [
+        [
+          {
+            "node": "Existe? Etapa 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Existe? Etapa 2": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Etapa 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Lead Final": {
+      "main": [
+        [
+          {
+            "node": "Existe? Etapa 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Etapa 1": {
+      "main": [
+        [
+          {
+            "node": "10 Minutos E1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Etapa 2": {
+      "main": [
+        [
+          {
+            "node": "10 Minutos E2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Existe? Etapa 3": {
+      "main": [
+        [
+          {
+            "node": "Desqualificado CRC/Até 10Mil/Não investe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Desqualificado CRC/Até 10Mil/Não investe": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Etapa Final DQ",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Considerável",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Etapa Final DQ": {
+      "main": [
+        [
+          {
+            "node": "Add lead DQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Considerável": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Etapa Final CR",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Qualificado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Etapa Final CR": {
+      "main": [
+        [
+          {
+            "node": "Add lead CR",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Qualificado": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Etapa Final Q",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Atualiza Etapa Final MQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Etapa Final Q": {
+      "main": [
+        [
+          {
+            "node": "Add lead Q",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Etapa Final MQ": {
+      "main": [
+        [
+          {
+            "node": "Add lead MQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add lead Q": {
+      "main": [
+        [
+          {
+            "node": "5 Minutos Q",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5 Minutos Q": {
+      "main": [
+        [
+          {
+            "node": "MSG Q",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add lead MQ": {
+      "main": [
+        [
+          {
+            "node": "5 Minutos MQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5 Minutos MQ": {
+      "main": [
+        [
+          {
+            "node": "MSG MQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add lead DQ": {
+      "main": [
+        [
+          {
+            "node": "CRM DQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add lead CR": {
+      "main": [
+        [
+          {
+            "node": "CRM DQ1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MSG MQ": {
+      "main": [
+        [
+          {
+            "node": "CRM DQ3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MSG Q": {
+      "main": [
+        [
+          {
+            "node": "CRM DQ2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-02-16T09:21:40.196Z",
+  "id": "1K0sCvGSCbtoBiVY",
+  "meta": null,
+  "name": "[ILA & NICOLE] Análise Comercial",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "536ccbc5-b0a5-49ad-af92-c373c27ed0be",
+        "options": {}
+      },
+      "id": "672a5950-0068-4bb7-a9e0-f2503a3ab46c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        60,
+        360
+      ],
+      "webhookId": "536ccbc5-b0a5-49ad-af92-c373c27ed0be"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "25708a76-922b-4668-b710-f4f44be58d34",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        260,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['telefone'] = formataTelefone($node['Trata Webhook'].json['telefone'])\n\nreturn $input.all();"
+      },
+      "id": "5f83bab2-f9cf-4b11-9a02-01722b6de4b2",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        460,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $('Formata Telefone').item.json.etapa }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "=1"
+            },
+            {
+              "value2": "=2",
+              "output": 1
+            },
+            {
+              "value2": "=3",
+              "output": 2
+            }
+          ]
+        }
+      },
+      "id": "af751cbc-96e7-4cee-8117-08a5cbad70e8",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9b0801f2-aaaa-4f36-b89d-d0b119f8232c",
+      "name": "Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        660,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "82d8739c-a0e2-48c0-9956-238ea2486711",
+      "name": "Formata Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        840,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1069928038,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $json.formattedDate }}",
+            "Nome": "={{ $('Formata Telefone').item.json.nome }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Telefone": "={{ $('Formata Telefone').item.json.telefone }}",
+            "Chave(busca)": "={{ $('Formata Telefone').item.json.telefone.slice(-7) }}",
+            "Etapa_form": "1",
+            "Staus": "incompleto",
+            "Qualificado": "sem dados",
+            "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
+            "utm_source": "={{ $('Formata Telefone').item.json.utm_source == 'null' ? \"\" : $('Formata Telefone').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Formata Telefone').item.json.utm_campaign == 'null' ? \"\" : $('Formata Telefone').item.json.utm_campaign }}",
+            "utm_term": "={{ $('Formata Telefone').item.json.utm_term == 'null' ? \"\" : $('Formata Telefone').item.json.utm_term }}",
+            "utm_content": "={{ $('Formata Telefone').item.json.utm_content == 'null' ? \"\" : $('Formata Telefone').item.json.utm_content }}",
+            "utm_medium": "={{ $('Formata Telefone').item.json.utm_medium == 'null' ? \"\" : $('Formata Telefone').item.json.utm_medium }}",
+            "Função": "={{ $('Formata Telefone').item.json.função }}",
+            "Status": "incompleto",
+            "Qualificação": "sem dados"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Etapa_form",
+              "displayName": "Etapa_form",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e0d4fd98-8605-4e8e-b176-f9b86525caac",
+      "name": "Etapa 1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1280,
+        80
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1069928038,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Etapa_form": "2"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Etapa_form",
+              "displayName": "Etapa_form",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a38ca460-4017-48b7-b5e3-f7b4a55cd31e",
+      "name": "Atualiza Etapa 2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1760,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1069928038,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Chave(busca)",
+              "lookupValue": "={{ $('Formata Telefone').item.json.telefone.slice(-7) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3f6830ff-92e2-42e5-a36d-38600a332215",
+      "name": "Busca Lead Etapa 2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1280,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1069928038,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Chave(busca)",
+              "lookupValue": "={{ $('Formata Telefone').item.json.telefone.slice(-7) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7a9100af-716f-4b2f-8c7d-b72d6e35842e",
+      "name": "Busca Lead Final",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1280,
+        600
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "5ead2b8f-d040-418d-b257-49e9c9a3e635",
+      "name": "Existe? Etapa 2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3,
+        "unit": "minutes"
+      },
+      "id": "ad9dcdae-3e22-4f17-83b4-bd017e6aa309",
+      "name": "10 Minutos E1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        80
+      ],
+      "webhookId": "5825d061-fd70-453f-b2a6-b11f2ec22f7b",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 10,
+        "unit": "minutes"
+      },
+      "id": "56abda33-2c3c-44bd-a66d-a1cd46528e35",
+      "name": "10 Minutos E2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        320
+      ],
+      "webhookId": "8ed95ce1-2a56-4c39-9dab-33611ae724bd",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "68dd40d4-4834-494d-b902-96a72160bf11",
+      "name": "Recuperação E1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1760,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9aad4933-4b03-409c-b24f-5aa32c47d651",
+      "name": "Recuperação E2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2180,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "ceeaa378-7676-441e-af25-acf8306b718e",
+      "name": "Existe? Etapa 3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1480,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('Formata Telefone').item.json.função }}",
+              "value2": "CRC"
+            },
+            {
+              "value1": "={{ $('Formata Telefone').item.json.faturamento }}",
+              "value2": "Até R$ 10 mil"
+            },
+            {
+              "value1": "={{ $('Formata Telefone').item.json.investe }}",
+              "value2": "Não"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "fb7fab95-db67-4171-aff1-3d9c15cfc49e",
+      "name": "Desqualificado CRC/Até 10Mil/Não investe",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1069928038,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Pagamento": "={{ $json.Pagamento }}",
+            "Transformação": "={{ $json.Transformação }}",
+            "Etapa_form": "3",
+            "Staus": "Completo",
+            "Qualificado": "Não",
+            "Status": "completo",
+            "Qualificação": "desqualificado"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Etapa_form",
+              "displayName": "Etapa_form",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6e40e2a6-3f37-4339-a18c-139b1cff13dd",
+      "name": "Atualiza Etapa Final DQ",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2000,
+        560
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 102238581,
+          "mode": "list",
+          "cachedResultName": "[LEADS] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=102238581"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Pagamento": "={{ $('Formata Telefone').item.json.investimento }}",
+            "Transformação": "={{ $('Formata Telefone').item.json.transformacao }}",
+            "Etapa_form": "3",
+            "Staus": "Completo",
+            "Qualificado": "Não",
+            "utm_source": "={{ $('Busca Lead Final').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Busca Lead Final').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Busca Lead Final').item.json.utm_medium }}",
+            "utm_content": "={{ $('Busca Lead Final').item.json.utm_content }}",
+            "utm_term": "={{ $('Busca Lead Final').item.json.utm_term }}",
+            "Função": "={{ $('Formata Telefone').item.json.função }}",
+            "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
+            "Status": "completo",
+            "Telefone": "={{ $('Formata Telefone').item.json.telefone }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Nome": "={{ $('Formata Telefone').item.json.nome }}",
+            "Data": "={{ $('Formata Data').item.json.formattedDate }}",
+            "Qualificação": "desqualificado"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f97d35ae-c0e2-452d-85e4-a3e15361d346",
+      "name": "Add lead DQ",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2220,
+        560
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('Formata Telefone').item.json.investe }}",
+              "operation": "contains",
+              "value2": "Sim"
+            },
+            {
+              "value1": "={{ $('Formata Telefone').item.json.faturamento }}",
+              "value2": "Entre R$ 10 mil e R$ 20 mil"
+            }
+          ]
+        }
+      },
+      "id": "0d36177c-ed53-4a33-bfe0-eaf781743628",
+      "name": "Considerável",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1069928038,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Pagamento": "={{ $json.Pagamento }}",
+            "Transformação": "={{ $json.Transformação }}",
+            "Etapa_form": "3",
+            "Staus": "Completo",
+            "Status": "completo",
+            "Qualificado": "Considerável",
+            "Qualificação": "considerável"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Etapa_form",
+              "displayName": "Etapa_form",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2df8f578-ce57-4c7b-a7ff-a8b303d5b8ac",
+      "name": "Atualiza Etapa Final CR",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2240,
+        840
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 102238581,
+          "mode": "list",
+          "cachedResultName": "[LEADS] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=102238581"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Pagamento": "={{ $('Formata Telefone').item.json.investimento }}",
+            "Transformação": "={{ $('Formata Telefone').item.json.transformacao }}",
+            "Etapa_form": "3",
+            "Staus": "Completo",
+            "Qualificado": "Não",
+            "utm_source": "={{ $('Busca Lead Final').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Busca Lead Final').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Busca Lead Final').item.json.utm_medium }}",
+            "utm_content": "={{ $('Busca Lead Final').item.json.utm_content }}",
+            "utm_term": "={{ $('Busca Lead Final').item.json.utm_term }}",
+            "Função": "={{ $('Formata Telefone').item.json.função }}",
+            "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
+            "Status": "completo",
+            "Telefone": "={{ $('Formata Telefone').item.json.telefone }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Nome": "={{ $('Formata Telefone').item.json.nome }}",
+            "Data": "={{ $('Formata Data').item.json.formattedDate }}",
+            "Qualificação": "considerável"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f6ded813-e26f-448b-b71c-2ce53fc94431",
+      "name": "Add lead CR",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2460,
+        840
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('Formata Telefone').item.json.faturamento }}",
+              "operation": "notEqual",
+              "value2": "Entre R$ 100 mil e R$ 250 mil"
+            },
+            {
+              "value1": "={{ $('Formata Telefone').item.json.faturamento }}",
+              "value2": "Entre R$ 250 mil e R$ 500 mil"
+            },
+            {
+              "value1": "={{ $('Formata Telefone').item.json.faturamento }}",
+              "value2": "Mais que R$ 500 mil"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "a6828c7d-921e-415e-8d95-c095387efa26",
+      "name": "Qualificado",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2260,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1069928038,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Pagamento": "={{ $json.Pagamento }}",
+            "Transformação": "={{ $json.Transformação }}",
+            "Etapa_form": "3",
+            "Staus": "Completo",
+            "Status": "completo",
+            "Qualificado": "Considerável",
+            "Qualificação": "qualificado"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Etapa_form",
+              "displayName": "Etapa_form",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6508f449-f8bc-4475-86df-02419219e8c0",
+      "name": "Atualiza Etapa Final Q",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2480,
+        1160
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 102238581,
+          "mode": "list",
+          "cachedResultName": "[LEADS] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=102238581"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Pagamento": "={{ $('Formata Telefone').item.json.investimento }}",
+            "Transformação": "={{ $('Formata Telefone').item.json.transformacao }}",
+            "Etapa_form": "3",
+            "Staus": "Completo",
+            "Qualificado": "Não",
+            "utm_source": "={{ $('Busca Lead Final').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Busca Lead Final').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Busca Lead Final').item.json.utm_medium }}",
+            "utm_content": "={{ $('Busca Lead Final').item.json.utm_content }}",
+            "utm_term": "={{ $('Busca Lead Final').item.json.utm_term }}",
+            "Função": "={{ $('Formata Telefone').item.json.função }}",
+            "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
+            "Status": "completo",
+            "Telefone": "={{ $('Formata Telefone').item.json.telefone }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Nome": "={{ $('Formata Telefone').item.json.nome }}",
+            "Data": "={{ $('Formata Data').item.json.formattedDate }}",
+            "Qualificação": "qualificado"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9e268424-46ba-4e1b-9572-474f79f3842e",
+      "name": "Add lead Q",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2720,
+        1160
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1069928038,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Pagamento": "={{ $json.Pagamento }}",
+            "Transformação": "={{ $json.Transformação }}",
+            "Etapa_form": "3",
+            "Staus": "Completo",
+            "Status": "completo",
+            "Qualificado": "Considerável",
+            "Qualificação": "qualificado"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Etapa_form",
+              "displayName": "Etapa_form",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "06b64f38-5a7f-4f21-ad1f-bfa1e8928794",
+      "name": "Atualiza Etapa Final MQ",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2500,
+        1460
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 102238581,
+          "mode": "list",
+          "cachedResultName": "[LEADS] Análise Comercial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=102238581"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
+            "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
+            "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
+            "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
+            "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
+            "Pagamento": "={{ $('Formata Telefone').item.json.investimento }}",
+            "Transformação": "={{ $('Formata Telefone').item.json.transformacao }}",
+            "Etapa_form": "3",
+            "Staus": "Completo",
+            "Qualificado": "Não",
+            "utm_source": "={{ $('Busca Lead Final').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Busca Lead Final').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Busca Lead Final').item.json.utm_medium }}",
+            "utm_content": "={{ $('Busca Lead Final').item.json.utm_content }}",
+            "utm_term": "={{ $('Busca Lead Final').item.json.utm_term }}",
+            "Função": "={{ $('Formata Telefone').item.json.função }}",
+            "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
+            "Status": "completo",
+            "Telefone": "={{ $('Formata Telefone').item.json.telefone }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Nome": "={{ $('Formata Telefone').item.json.nome }}",
+            "Data": "={{ $('Formata Data').item.json.formattedDate }}",
+            "Qualificação": "qualificado"
+          },
+          "matchingColumns": [
+            "Chave(busca)"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(busca)",
+              "displayName": "Chave(busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualificação",
+              "displayName": "Qualificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Função",
+              "displayName": "Função",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Especialidade",
+              "displayName": "Especialidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Dificuldade",
+              "displayName": "Dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em tráfego",
+              "displayName": "Investe em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento",
+              "displayName": "Faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Transformação",
+              "displayName": "Transformação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c1961545-e90b-4e43-8819-dea288d76653",
+      "name": "Add lead MQ",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2740,
+        1460
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $node[\"Formata Telefone\"].json[\"nome\"].split(\" \")[0] }}, Marcos da equipe das Dras. ILA Flávia e Nicole aqui! \n\nAcabamos de receber seu formulário para sua reunião de análise. Vamos te ligar em breve para agendar o horário e entender mais sobre sua clínica (bate-papo de 5 minutos).\n\nRecomendo que fique de olho no seu celular (tire do modo silencioso). \n\nCaso esteja em atendimento, pode me falar o melhor horário para essa conversa rápida antes da reunião. Até já!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "39909c61-803e-42f1-bc4f-4c6f7ddc87ea",
+      "name": "MSG MQ",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3120,
+        1460
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "minutes"
+      },
+      "id": "2c083a6c-cde2-4ef2-bda1-b9b6566dfa96",
+      "name": "5 Minutos Q",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2920,
+        1160
+      ],
+      "webhookId": "258d9aa1-5d6b-40aa-8787-c26013d770ee"
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "minutes"
+      },
+      "id": "89da5916-b8a3-448e-b10a-47c9e144e90f",
+      "name": "5 Minutos MQ",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2920,
+        1460
+      ],
+      "webhookId": "2f644fec-808f-45d2-9ed2-2361a5dac233"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/zp4je6j4ppyvnogp9a5qqbolh7ipjv9q",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Data",
+              "value": "={{ $('Formata Data').item.json.formattedDate }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Formata Telefone').item.json.nome }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Formata Telefone').item.json.email }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Formata Telefone').item.json.telefone }}"
+            },
+            {
+              "name": "Qualificação",
+              "value": "=considerável"
+            },
+            {
+              "name": "Clínica",
+              "value": "={{ $('Formata Telefone').item.json.clinica }}"
+            },
+            {
+              "name": "Função",
+              "value": "={{ $('Formata Telefone').item.json.função }}"
+            },
+            {
+              "name": "Especialidade",
+              "value": "={{ $('Formata Telefone').item.json.especialidade }}"
+            },
+            {
+              "name": "Dificuldade",
+              "value": "={{ $('Formata Telefone').item.json.dificuldade }}"
+            },
+            {
+              "name": "Investe",
+              "value": "={{ $('Formata Telefone').item.json.investe }}"
+            },
+            {
+              "name": "Faturamento",
+              "value": "={{ $('Formata Telefone').item.json.faturamento }}"
+            },
+            {
+              "name": "Transformação",
+              "value": "={{ $('Formata Telefone').item.json.transformacao }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Formata Telefone').item.json.utm_source }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Formata Telefone').item.json.utm_campaign }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Formata Telefone').item.json.utm_medium }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Formata Telefone').item.json.utm_content }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Formata Telefone').item.json.utm_term }}"
+            },
+            {
+              "name": "chave",
+              "value": "={{ $('Formata Telefone').item.json.telefone.slice(-7) }}"
+            },
+            {
+              "name": "investimento",
+              "value": "={{ $('Formata Telefone').item.json.investimento }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4db950fe-6b04-42ba-a96c-10f469fe4ab0",
+      "name": "CRM DQ1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2680,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/zp4je6j4ppyvnogp9a5qqbolh7ipjv9q",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Data",
+              "value": "={{ $('Formata Data').item.json.formattedDate }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Formata Telefone').item.json.nome }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Formata Telefone').item.json.email }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Formata Telefone').item.json.telefone }}"
+            },
+            {
+              "name": "Qualificação",
+              "value": "=desqualificado"
+            },
+            {
+              "name": "Clínica",
+              "value": "={{ $('Formata Telefone').item.json.clinica }}"
+            },
+            {
+              "name": "Função",
+              "value": "={{ $('Formata Telefone').item.json.função }}"
+            },
+            {
+              "name": "Especialidade",
+              "value": "={{ $('Formata Telefone').item.json.especialidade }}"
+            },
+            {
+              "name": "Dificuldade",
+              "value": "={{ $('Formata Telefone').item.json.dificuldade }}"
+            },
+            {
+              "name": "Investe",
+              "value": "={{ $('Formata Telefone').item.json.investe }}"
+            },
+            {
+              "name": "Faturamento",
+              "value": "={{ $('Formata Telefone').item.json.faturamento }}"
+            },
+            {
+              "name": "Transformação",
+              "value": "={{ $('Formata Telefone').item.json.transformacao }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Formata Telefone').item.json.utm_source }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Formata Telefone').item.json.utm_campaign }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Formata Telefone').item.json.utm_medium }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Formata Telefone').item.json.utm_content }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Formata Telefone').item.json.utm_term }}"
+            },
+            {
+              "name": "chave",
+              "value": "={{ $('Formata Telefone').item.json.telefone.slice(-7) }}"
+            },
+            {
+              "name": "investimento",
+              "value": "={{ $('Formata Telefone').item.json.investimento }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "39a84de7-32a7-4af3-976b-9097044b2701",
+      "name": "CRM DQ",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2440,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/zp4je6j4ppyvnogp9a5qqbolh7ipjv9q",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Data",
+              "value": "={{ $('Formata Data').item.json.formattedDate }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Formata Telefone').item.json.nome }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Formata Telefone').item.json.email }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Formata Telefone').item.json.telefone }}"
+            },
+            {
+              "name": "Qualificação",
+              "value": "=qualificado"
+            },
+            {
+              "name": "Clínica",
+              "value": "={{ $('Formata Telefone').item.json.clinica }}"
+            },
+            {
+              "name": "Função",
+              "value": "={{ $('Formata Telefone').item.json.função }}"
+            },
+            {
+              "name": "Especialidade",
+              "value": "={{ $('Formata Telefone').item.json.especialidade }}"
+            },
+            {
+              "name": "Dificuldade",
+              "value": "={{ $('Formata Telefone').item.json.dificuldade }}"
+            },
+            {
+              "name": "Investe",
+              "value": "={{ $('Formata Telefone').item.json.investe }}"
+            },
+            {
+              "name": "Faturamento",
+              "value": "={{ $('Formata Telefone').item.json.faturamento }}"
+            },
+            {
+              "name": "Transformação",
+              "value": "={{ $('Formata Telefone').item.json.transformacao }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Formata Telefone').item.json.utm_source }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Formata Telefone').item.json.utm_campaign }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Formata Telefone').item.json.utm_medium }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Formata Telefone').item.json.utm_content }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Formata Telefone').item.json.utm_term }}"
+            },
+            {
+              "name": "chave",
+              "value": "={{ $('Formata Telefone').item.json.telefone.slice(-7) }}"
+            },
+            {
+              "name": "investimento",
+              "value": "={{ $('Formata Telefone').item.json.investimento }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4aa105e3-3342-4a62-a282-acf8719dba23",
+      "name": "CRM DQ2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3340,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $node[\"Formata Telefone\"].json[\"nome\"].split(\" \")[0] }}, Marcos da equipe das Dras. ILA Flávia e Nicole aqui! \n\nAcabamos de receber seu formulário para sua reunião de análise. Vamos te ligar em breve para agendar o horário e entender mais sobre sua clínica (bate-papo de 5 minutos).\n\nRecomendo que fique de olho no seu celular (tire do modo silencioso). \n\nCaso esteja em atendimento, pode me falar o melhor horário para essa conversa rápida antes da reunião. Até já!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7326effb-548d-4392-be44-1d8e5d250622",
+      "name": "MSG Q",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3120,
+        1160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/zp4je6j4ppyvnogp9a5qqbolh7ipjv9q",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Data",
+              "value": "={{ $('Formata Data').item.json.formattedDate }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Formata Telefone').item.json.nome }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Formata Telefone').item.json.email }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Formata Telefone').item.json.telefone }}"
+            },
+            {
+              "name": "Qualificação",
+              "value": "=muito qualificado"
+            },
+            {
+              "name": "Clínica",
+              "value": "={{ $('Formata Telefone').item.json.clinica }}"
+            },
+            {
+              "name": "Função",
+              "value": "={{ $('Formata Telefone').item.json.função }}"
+            },
+            {
+              "name": "Especialidade",
+              "value": "={{ $('Formata Telefone').item.json.especialidade }}"
+            },
+            {
+              "name": "Dificuldade",
+              "value": "={{ $('Formata Telefone').item.json.dificuldade }}"
+            },
+            {
+              "name": "Investe",
+              "value": "={{ $('Formata Telefone').item.json.investe }}"
+            },
+            {
+              "name": "Faturamento",
+              "value": "={{ $('Formata Telefone').item.json.faturamento }}"
+            },
+            {
+              "name": "Transformação",
+              "value": "={{ $('Formata Telefone').item.json.transformacao }}"
+            },
+            {
+              "name": "utm_source",
+              "value": "={{ $('Formata Telefone').item.json.utm_source }}"
+            },
+            {
+              "name": "utm_campaign",
+              "value": "={{ $('Formata Telefone').item.json.utm_campaign }}"
+            },
+            {
+              "name": "utm_medium",
+              "value": "={{ $('Formata Telefone').item.json.utm_medium }}"
+            },
+            {
+              "name": "utm_content",
+              "value": "={{ $('Formata Telefone').item.json.utm_content }}"
+            },
+            {
+              "name": "utm_term",
+              "value": "={{ $('Formata Telefone').item.json.utm_term }}"
+            },
+            {
+              "name": "chave",
+              "value": "={{ $('Formata Telefone').item.json.telefone.slice(-7) }}"
+            },
+            {
+              "name": "investimento",
+              "value": "={{ $('Formata Telefone').item.json.investimento }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a776e4e2-3738-4c83-94c6-3ef4d05778c5",
+      "name": "CRM DQ3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3340,
+        1460
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
+            "content-length": "1879",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "accept-language": "pt-BR,pt;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "186.235.185.56",
+            "cf-ipcountry": "BR",
+            "cf-ray": "857857289e462771-GIG",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary8cgLl8oVAJCRLmUK",
+            "origin": "https://dentistapower.com.br",
+            "priority": "u=1, i",
+            "referer": "https://dentistapower.com.br/",
+            "sec-ch-ua": "\"Not A(Brand\";v=\"99\", \"Microsoft Edge\";v=\"121\", \"Chromium\";v=\"121\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "172.69.90.68",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.69.90.68"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "nome": "Matheus",
+            "email": "matheus.cristhyan.libertas@gmail.com",
+            "telefone": "(81) 99351-5055",
+            "clinica": "Caruaru Odonto",
+            "função": "Dono/Sócio",
+            "dificuldade": "teste",
+            "especialidade": "implante",
+            "investe": "Sim, entre R$ 2.000 e R$ 5.000",
+            "faturamento": "Entre R$ 20 mil e R$ 50 mil",
+            "investimento": "No Cartão de Crédito",
+            "transformacao": "teste",
+            "etapa": "3",
+            "utm_campaign": "null",
+            "utm_source": "null",
+            "utm_medium": "null",
+            "utm_term": "null",
+            "utm_content": "null"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-27T18:52:24.000Z",
+  "versionId": "9c7e9d1f-d76e-4747-b983-2a1e77b7681f"
+}
