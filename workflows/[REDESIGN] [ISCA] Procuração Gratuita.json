@@ -1,0 +1,282 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-10T12:56:46.215Z",
+  "id": "X0obplbqA0w66Ads",
+  "meta": null,
+  "name": "[REDESIGN] [ISCA] Procuração Gratuita",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "878634e1-0bf3-4f9c-a116-587aa71e0936",
+        "options": {}
+      },
+      "id": "4fd8c615-f657-44f9-a21a-9da2849a01a4",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        380,
+        360
+      ],
+      "webhookId": "878634e1-0bf3-4f9c-a116-587aa71e0936"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w",
+          "mode": "list",
+          "cachedResultName": "[Redesign.360] - Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1045351128,
+          "mode": "list",
+          "cachedResultName": "Isca - Procuração",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit#gid=1045351128"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $json.formattedDate }}",
+            "Nome": "={{ $('Webhook').item.json.body['Nome:'] }}",
+            "Email": "={{ $('Webhook').item.json.body['E-mail:'] }}",
+            "Área de atuação": "={{ $('Webhook').item.json.body['Área de Atuação'] }}",
+            "Você já conhecia": "=",
+            "Principal dificuldade na advocacia": "={{ $('Webhook').item.json.body['Qual sua principal dificuldade para formatar documentos?'] }}",
+            "Principal dificuldade para formatar documentos": "={{ $('Webhook').item.json.body['Qual sua principal dificuldade para formatar documentos?'] }}",
+            "O que você espera obter com o uso de contratos em Visual Law?": "={{ $('Webhook').item.json.body['O que você espera obter com o uso de contratos em Visual Law?'] }}",
+            "Quais outros documentos você gostaria de obter?": "={{ $('Webhook').item.json.body['Quais outros documentos você gostaria de obter?'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Área de atuação",
+              "displayName": "Área de atuação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "O que você espera obter com o uso de contratos em Visual Law?",
+              "displayName": "O que você espera obter com o uso de contratos em Visual Law?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Principal dificuldade para formatar documentos",
+              "displayName": "Principal dificuldade para formatar documentos",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Quais outros documentos você gostaria de obter?",
+              "displayName": "Quais outros documentos você gostaria de obter?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Você já conhecia",
+              "displayName": "Você já conhecia",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Comprou",
+              "displayName": "Comprou",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e7103d20-3973-40a1-87c1-40149813b014",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1040,
+        360
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "56b5221c-12a8-46e8-bfdc-7e7a4445243a",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        600,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "51e36da7-03e7-46e9-acef-770e8cd1f024",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        820,
+        360
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "WordPress/6.4.3; https://www.redesign360.com.br",
+            "content-length": "346",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "177.234.149.194",
+            "cf-ipcountry": "BR",
+            "cf-ray": "84f343d7bfd96da4-MIA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "172.70.55.7",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.70.55.7"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Nome:": "Matheus Cristhyan",
+            "E-mail:": "matheus@gmail.com",
+            "Área de Atuação": "Civil",
+            "O que você espera obter com o uso de contratos em Visual Law?": "teste 1",
+            "Qual sua principal dificuldade para formatar documentos?": "teste 2",
+            "Quais outros documentos você gostaria de obter?": "teste 3",
+            "form_id": "33017bd",
+            "form_name": "Procuração"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-02-02T14:55:13.000Z",
+  "versionId": "2d38c4ae-713d-4bbe-893c-8a75942e1106"
+}
