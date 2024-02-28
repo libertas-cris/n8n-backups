@@ -1,0 +1,1108 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set5": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign2": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets3": {
+      "main": [
+        [
+          {
+            "node": "Set3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set3": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code4": {
+      "main": [
+        [
+          {
+            "node": "Code5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code5": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign3": {
+      "main": [
+        [
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time2": {
+      "main": [
+        [
+          {
+            "node": "Set4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set4": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-08T00:36:53.859Z",
+  "id": "psowMmEZdzpd4vXm",
+  "meta": null,
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bac67550-4004-4df9-973c-8abb083cc3e7",
+        "options": {}
+      },
+      "id": "05ca96a2-6ca2-4ddf-88be-afa49b3dbd9e",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -1900,
+        580
+      ],
+      "webhookId": "bac67550-4004-4df9-973c-8abb083cc3e7"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "7a04c31f-b2fb-4252-8ec8-d4a57a2af202",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -1680,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $node[\"Code\"].json[\"buyerVO\"] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "2d500f61-b1ea-46b0-bb8f-e0438f5144b2",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -1240,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $node[\"Code\"].json[\"email\"] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "31",
+                "value": "={{ $node[\"Code\"].json[\"original_offer_price\"].replace('.',',') }}"
+              },
+              {
+                "field": "32",
+                "value": "={{ $node[\"Code\"].json[\"cms_vendor\"].replace('.',',') }}"
+              },
+              {
+                "field": "35",
+                "value": "={{ $json.payment_type }}"
+              },
+              {
+                "field": "30",
+                "value": "={{ $json.transaction }}"
+              },
+              {
+                "field": "36",
+                "value": "={{ $json.installments_number }}"
+              },
+              {
+                "field": "34",
+                "value": "={{ $json.doc }}"
+              },
+              {
+                "field": "33",
+                "value": "={{$json[\"prod_name\"] }}"
+              },
+              {
+                "field": "20",
+                "value": "={{ $json[\"billet_url\"] }}"
+              },
+              {
+                "field": "37",
+                "value": "={{ $json.sck }}"
+              }
+            ]
+          },
+          "firstName": "={{ $json.first_name }}",
+          "lastName": "={{ $json.last_name }}",
+          "phone": "={{ $json.telefone }}"
+        }
+      },
+      "id": "148cd42e-c415-4329-a262-1959a91c795c",
+      "name": "ActiveCampaign",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        -1020,
+        440
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "6",
+          "name": "Active Bussola"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "value": "={{ $node[\"Code\"].json[\"confirmation_purchase_date\"] }}",
+        "custom": true,
+        "toFormat": "DD/MM/Y",
+        "options": {
+          "toTimezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "59d38f52-1fbf-434c-8111-61631db33347",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Nome",
+              "value": "={{ $node[\"Code\"].json[\"first_name\"] }}"
+            },
+            {
+              "name": "Sobrenome",
+              "value": "={{ $node[\"Code\"].json[\"last_name\"] }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $node[\"Code\"].json[\"email\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "53035745-bdbb-423a-b966-61c6fffebf6c",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let status = $node[\"Code\"].json[\"status\"]\n\nconst Status = {\n  approved: 'Aprovado',\n  chargeback: \"Reembolsado\",\n  canceled: \"Cancelado\",\n  billet_printed: \"Boleto\",\n  refunded: \"Reembolsado\",\n  waiting_payment: \"Pix\"\n}\n\nfor(el in Status){\n  status = $node[\"Code\"].json[\"status\"] == el ? Status[$node[\"Code\"].json[\"status\"]] : status\n}\n\n$input.all()[0].json.Status = status\n\nconst utm = $node[\"Code\"].json[\"sck\"].split('|')\n\n$input.all()[0].json['Utm Source'] = utm[0]\n$input.all()[0].json['Utm Medium'] = utm[1]\n$input.all()[0].json['Utm Campaign'] = utm[2]\n$input.all()[0].json['Utm Content'] = utm[4]\n$input.all()[0].json['Utm Term'] = utm[3]\n\nreturn $input.all()[0].json"
+      },
+      "id": "7393b3d1-f110-4c70-acb3-b223beeeba65",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json.telefone = formataTelefone($node[\"Code\"].json[\"phone_checkout_local_code\"] +''+ $input.all()[0].json[\"phone_checkout_number\"] )\n\nreturn $input.all();"
+      },
+      "id": "1913be34-1744-4ce9-9707-46e8a0e18f81",
+      "name": "Code2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -1460,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $json[\"Status\"] }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "Aprovado"
+            },
+            {
+              "value2": "Reembolsado",
+              "output": 1
+            },
+            {
+              "value2": "Pix",
+              "output": 2
+            },
+            {
+              "value2": "Boleto",
+              "output": 2
+            },
+            {
+              "value2": "Cancelado",
+              "output": 2
+            }
+          ]
+        },
+        "fallbackOutput": 2
+      },
+      "id": "81b8a681-e7d1-4a6e-add0-ecdd5342d0b7",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Telefone",
+              "value": "={{ $node[\"Code2\"].json[\"telefone\"] }}"
+            },
+            {
+              "name": "Data",
+              "value": "={{ $node[\"Date & Time\"].json[\"data\"] }}"
+            },
+            {
+              "name": "Link WhatsApp",
+              "value": "=https://wa.me/{{ $node[\"Code2\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0ebe37e8-b6a6-490d-a950-4ee5a14a094c",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        80,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=2034387076",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com(?:\\/.*|)\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1286475133,
+          "mode": "list",
+          "cachedResultName": "Recuperação",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=1286475133"
+        },
+        "dataMode": "autoMapInputData",
+        "columnToMatchOn": "Email",
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "6a86160d-0bd7-4625-9ee4-a398ca3c48b7",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        300,
+        560
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "22",
+          "name": "Google Sheets ACExpress"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=2034387076",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com(?:\\/.*|)\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2034387076,
+          "mode": "list",
+          "cachedResultName": "Compras",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=2034387076"
+        },
+        "dataMode": "autoMapInputData",
+        "columnToMatchOn": "Transação",
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "06ae4fb0-4c3f-4328-b9f2-8091509f0b21",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        300,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "22",
+          "name": "Google Sheets ACExpress"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Email",
+              "value": "={{ $node[\"Code1\"].json[\"Email\"] }}"
+            },
+            {
+              "name": "Status",
+              "value": "={{ $node[\"Code1\"].json[\"Status\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6e9159e3-0d5c-44f8-810b-a03d075cb886",
+      "name": "Set5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        80,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "contactId": "={{ $node[\"ActiveCampaign\"].json[\"id\"] }}"
+      },
+      "id": "0900ac87-4751-4d53-9c36-72eba1adc2ba",
+      "name": "ActiveCampaign2",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        300,
+        200
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "6",
+          "name": "Active Bussola"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let inputs = {}\n\n$input.all()[0].json.fieldValues.forEach(el=>{\n  el.field == 194 ? inputs['UTM SOURCE captura'] = el.value : ''\n  el.field == 195 ? inputs['UTM MEDIUM captura'] = el.value : ''\n  el.field == 196 ? inputs['UTM CAMPAIGN captura'] = el.value : ''\n  el.field == 197 ? inputs['UTM CONTENT captura'] = el.value : ''\n  el.field == 198 ? inputs['UTM TERM captura'] = el.value : ''\n    el.field == 204 ? inputs['Página Captura'] = el.value : ''\n  el.field == 21 ? inputs['UTM SOURCE venda'] = el.value : ''\n  el.field == 22 ? inputs['UTM MEDIUM venda'] = el.value : ''\n  el.field == 23 ? inputs['UTM CAMPAIGN venda'] = el.value : ''\n  el.field == 24 ? inputs['UTM CONTENT venda'] = el.value : ''\n  el.field == 25 ? inputs['UTM TERM venda'] = el.value : ''\n  \n})\n\ninputs['Data Criação'] =  $node[\"ActiveCampaign2\"].json[\"contact\"][\"cdate\"] \n\nreturn inputs;"
+      },
+      "id": "c31bca08-afee-4d60-ac47-db60a5e5ff1e",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        520,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "value": "={{ $json[\"Data Criação\"] }}",
+        "dataPropertyName": "Data Criação",
+        "custom": true,
+        "toFormat": "DD/MM/Y",
+        "options": {
+          "toTimezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "964134e6-5b40-4ef3-aeb1-09787e010e45",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        740,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "Transação",
+              "value": "={{ $node[\"Code\"].json[\"transaction\"] }}"
+            },
+            {
+              "name": "Preço Total",
+              "value": "={{ $node[\"Code\"].json[\"original_offer_price\"].replace('.',',') }}"
+            },
+            {
+              "name": "Produto",
+              "value": "={{ $node[\"Code\"].json[\"prod_name\"] }}"
+            },
+            {
+              "name": "Valor da Comissao",
+              "value": "={{ $node[\"Code\"].json[\"cms_vendor\"].replace('.',',') }}"
+            },
+            {
+              "name": "Número da Parcela",
+              "value": "={{ $node[\"Code\"].json[\"installments_number\"] }}"
+            },
+            {
+              "name": "Data de Venda",
+              "value": "={{ $node[\"Date & Time1\"].json[\"data\"] }}"
+            },
+            {
+              "name": "Status",
+              "value": "={{ $node[\"Code1\"].json[\"Status\"] }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $node[\"Code1\"].json[\"Nome\"] }}"
+            },
+            {
+              "name": "Sobrenome",
+              "value": "={{ $node[\"Code1\"].json[\"Sobrenome\"] }}"
+            },
+            {
+              "name": "Documento",
+              "value": "={{ $node[\"Code\"].json[\"doc\"] }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $node[\"Code\"].json[\"email\"] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $node.Code2.json.telefone }}"
+            },
+            {
+              "name": "Tipo de Pagamento",
+              "value": "={{ $node.Code2.json.payment_type }}"
+            },
+            {
+              "name": "SCK",
+              "value": "={{ $node.Code2.json.sck }}"
+            },
+            {
+              "name": "Planilha Captura",
+              "value": "={{ $node[\"Google Sheets2\"].json.row_number ? 'Sim' : 'Não' }} "
+            },
+            {
+              "name": "Respondeu Pesquisa",
+              "value": "={{ $node[\"Google Sheets2\"].json.Pesquisa }}"
+            },
+            {
+              "name": "Super Interessados",
+              "value": "={{ $node[\"Google Sheets2\"].json[\"Super Interessados\"] ? 'Sim' : 'Não' }}"
+            },
+            {
+              "name": "Entrou Grupo",
+              "value": "={{ $node[\"Google Sheets2\"].json[\"Entrou no Grupo?\"]  }}"
+            },
+            {
+              "name": "Temperatura",
+              "value": "={{ $node[\"Google Sheets2\"].json.Temperatura }}"
+            },
+            {
+              "name": "Salário",
+              "value": "={{ $node[\"Google Sheets2\"].json[\"Salário\"] }}"
+            },
+            {
+              "name": "Cargo",
+              "value": "={{ $node[\"Google Sheets2\"].json.Cargo }}"
+            },
+            {
+              "name": "Líder",
+              "value": "={{ $node[\"Google Sheets2\"].json[\"Líder\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "803fd795-966f-4583-829c-87a14062e1f4",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        960,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=2034387076",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com(?:\\/.*|)\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Captação",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $node[\"Code1\"].json[\"Email\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "89d64b7d-ca6c-4665-9d3f-2671b57e757b",
+      "name": "Google Sheets2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        80,
+        200
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "22",
+          "name": "Google Sheets ACExpress"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=2034387076",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com(?:\\/.*|)\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2034387076,
+          "mode": "list",
+          "cachedResultName": "Compras",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=2034387076"
+        },
+        "dataMode": "autoMapInputData",
+        "columnToMatchOn": "Transação",
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "820c33c4-9b18-4262-b286-d20e768b7da4",
+      "name": "Google Sheets3",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        1180,
+        200
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "22",
+          "name": "Google Sheets ACExpress"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Email",
+              "value": "={{ $node[\"Set2\"].json[\"Email\"] }}"
+            },
+            {
+              "name": "Status",
+              "value": "={{ $node[\"Set2\"].json[\"Status\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "965d14ab-85b0-4c30-93f0-fb0b55de48ea",
+      "name": "Set3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=2034387076",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com(?:\\/.*|)\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1286475133,
+          "mode": "list",
+          "cachedResultName": "Recuperação",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=1286475133"
+        },
+        "dataMode": "autoMapInputData",
+        "columnToMatchOn": "Email",
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "2be020dc-de9b-4bf4-a2f2-98dc07ba4796",
+      "name": "Google Sheets5",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        1620,
+        200
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "22",
+          "name": "Google Sheets ACExpress"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n   number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : \"Número de telefone inválido\")\n\n    } else {\n        return \"Número de telefone inválido\"\n    }\n}\n\n\nreturn {telefone:formataTelefone( $input.all()[0].json[\"buyerVO\"][\"phone\"] )}"
+      },
+      "id": "ed056b57-5bfa-4cbf-80fa-1c984c7ff4e5",
+      "name": "Code4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -1020,
+        720
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "let nome = {}\nlet name = $node[\"Code\"].json[\"buyerVO\"][\"name\"].split(' ')\n\nnome.f = name.shift()\nnome.l = name.join(' ')\n\nreturn {nome:nome}"
+      },
+      "id": "226d10f1-5208-4555-be6d-15e433e9322a",
+      "name": "Code5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "email": "={{ $node[\"Code\"].json[\"buyerVO\"][\"email\"] }}",
+        "updateIfExists": true,
+        "additionalFields": {
+          "fieldValues": {
+            "property": [
+              {
+                "field": "33",
+                "value": "={{ $node[\"Code\"].json[\"productName\"] }}"
+              }
+            ]
+          },
+          "firstName": "={{ $json.nome.f }}",
+          "lastName": "={{ $json.nome.l }}",
+          "phone": "={{ $node.Code4.json.telefone }}"
+        }
+      },
+      "id": "c191408e-b18a-45c7-9000-2f901a2ddb5e",
+      "name": "ActiveCampaign3",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        720
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "6",
+          "name": "Active Bussola"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "value": "={{$now}}",
+        "custom": true,
+        "toFormat": "DD/MM/Y",
+        "options": {
+          "toTimezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "55a39d93-5c78-451e-8059-e62df340fd37",
+      "name": "Date & Time2",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Data",
+              "value": "={{ $json[\"data\"] }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $node[\"Code5\"].json[\"nome\"][\"f\"] }}"
+            },
+            {
+              "name": "Sobrenome",
+              "value": "={{ $node[\"Code5\"].json[\"nome\"][\"l\"] }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $node[\"Code\"].json[\"buyerVO\"][\"email\"] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $node[\"Code4\"].json[\"telefone\"] }}"
+            },
+            {
+              "name": "Status",
+              "value": "Carrinho Abandonado"
+            },
+            {
+              "name": "Link WhatsApp",
+              "value": "=https://wa.me/{{ $node[\"Code4\"].json[\"telefone\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d23efb5e-27a1-46e4-9220-ea5bcdf3550e",
+      "name": "Set4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=2034387076",
+          "mode": "url",
+          "__regex": "https:\\/\\/(?:drive|docs)\\.google\\.com(?:\\/.*|)\\/d\\/([0-9a-zA-Z\\-_]+)(?:\\/.*|)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1286475133,
+          "mode": "list",
+          "cachedResultName": "Recuperação",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vaOrmnTiCGzSCI9iP3MzyKeQa22wmW7uHQP1yK1NWeI/edit#gid=1286475133"
+        },
+        "dataMode": "autoMapInputData",
+        "columnToMatchOn": "Email",
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "1ea52072-3e1f-458d-a1a6-910e95fc51bb",
+      "name": "Google Sheets4",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 3,
+      "position": [
+        80,
+        720
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "22",
+          "name": "Google Sheets ACExpress"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-08T00:37:47.000Z",
+  "versionId": "7853534f-6c79-4616-80d4-541326307015"
+}
