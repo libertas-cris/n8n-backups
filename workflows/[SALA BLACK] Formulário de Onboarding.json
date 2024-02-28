@@ -1,0 +1,988 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Grupo Papo de Dono": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Iniciar atendimento": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Português",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Português": {
+      "main": [
+        [
+          {
+            "node": "Wait2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Importação de Aluno",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets3": {
+      "main": [
+        [
+          {
+            "node": "Iniciar atendimento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Grupo Sala Black": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-09T04:32:11.472Z",
+  "id": "IVi1BACZfeLNTqre",
+  "meta": null,
+  "name": "[SALA BLACK] Formulário de Onboarding",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "57915a45-7a64-45e4-a753-02ea29e73305",
+        "options": {}
+      },
+      "id": "0454292a-bf91-494a-aaaa-314e1cac514f",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        360
+      ],
+      "webhookId": "57915a45-7a64-45e4-a753-02ea29e73305"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "e82a49a3-6b45-4332-844b-667a8ebd0bf5",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        460,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.all()[0].json['Acesso ao Grupo de Whatsapp: Papo de Dono'];\n\n// Dividir as entradas por linha\nconst entries = input.split('\\n');\n\n// Array para armazenar os objetos resultantes\nconst result = [];\n\n// Percorrer as entradas usando um loop for\nfor (let i = 0; i < entries.length; i++) {\n    const [name, phone] = entries[i].split(' - ');\n    result.push({ json: { name, phone } });\n}\n\nreturn result;\n"
+      },
+      "id": "6bc8314f-f5a4-49f3-ac89-9c2599e687a0",
+      "name": "Grupo Papo de Dono",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        720,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.all()[0].json['Acesso ao Grupo de Whatsapp: Mentoria'];\n\n// Dividir as entradas por linha\nconst entries = input.split('\\n');\n\n// Array para armazenar os objetos resultantes\nconst result = [];\n\n// Percorrer as entradas usando um loop for\nfor (let i = 0; i < entries.length; i++) {\n    const [name, phone] = entries[i].split(' - ');\n    result.push({ json: { name, phone } });\n}\n\nreturn result;\n"
+      },
+      "id": "c64483f9-bd99-4306-b9ac-d1bee2211ace",
+      "name": "Grupo Sala Black",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        720,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.all()[0].json['Acesso às Planilhas Sala Black'];\n\n// Dividir os emails por vírgula\nconst emails = input.split(',');\nconst trimmedEmails = [];\n\n// Iterar sobre os emails e remover espaços em branco\nfor (let i = 0; i < emails.length; i++) {\n    trimmedEmails.push({ json: { email: emails[i].trim() } });\n}\n\nreturn trimmedEmails;\n"
+      },
+      "id": "51c159f5-a418-4416-a338-78fbba414e83",
+      "name": "Emails Planilha",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        720,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Zvyj3-yhca42k2Q9RFKkQEvkdVF9nMLfYB7JVNILLIw/edit#gid=539845552",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 539845552,
+          "mode": "list",
+          "cachedResultName": "Jan/24",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Zvyj3-yhca42k2Q9RFKkQEvkdVF9nMLfYB7JVNILLIw/edit#gid=539845552"
+        },
+        "options": {}
+      },
+      "id": "3903cdc0-2d5d-483f-a187-e31d2847654d",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1160,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oySssnVS9U4DH0EY",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "largerEqual",
+              "value2": 28
+            },
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "smallerEqual",
+              "value2": 34
+            }
+          ]
+        }
+      },
+      "id": "82bd6f09-8193-4735-bce3-31ccf54d7943",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Responsável }}",
+              "value2": "-"
+            },
+            {
+              "value1": "={{ $json.col_4 }}",
+              "value2": "-"
+            }
+          ]
+        }
+      },
+      "id": "e01dd552-cc6c-43ac-80db-8b94a278ecda",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Zvyj3-yhca42k2Q9RFKkQEvkdVF9nMLfYB7JVNILLIw/edit#gid=539845552",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 539845552,
+          "mode": "list",
+          "cachedResultName": "Jan/24",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Zvyj3-yhca42k2Q9RFKkQEvkdVF9nMLfYB7JVNILLIw/edit#gid=539845552"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Responsável": "={{ $('Split In Batches').item.json.name }}",
+            "col_4": "={{ $('Split In Batches').item.json.phone }}",
+            "col_7": "-",
+            "col_9": "=FALSE"
+          },
+          "matchingColumns": [
+            "col_9"
+          ],
+          "schema": [
+            {
+              "id": "col_1",
+              "displayName": "col_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Responsável",
+              "displayName": "Responsável",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_3",
+              "displayName": "col_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_4",
+              "displayName": "col_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_5",
+              "displayName": "col_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Faturamento hoje",
+              "displayName": "Faturamento hoje",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_7",
+              "displayName": "col_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "<- Preencha aqui",
+              "displayName": "<- Preencha aqui",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_9",
+              "displayName": "col_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Meta",
+              "displayName": "Meta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Realizado",
+              "displayName": "Realizado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Falta",
+              "displayName": "Falta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_13",
+              "displayName": "col_13",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_14",
+              "displayName": "col_14",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "5d6049c1-b86a-44e4-b108-4f4578cf6b0f",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1760,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oySssnVS9U4DH0EY",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "8c06d69d-0992-441c-934d-f4627ed584be",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        940,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Zvyj3-yhca42k2Q9RFKkQEvkdVF9nMLfYB7JVNILLIw/edit#gid=539845552",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 539845552,
+          "mode": "list",
+          "cachedResultName": "Jan/24",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Zvyj3-yhca42k2Q9RFKkQEvkdVF9nMLfYB7JVNILLIw/edit#gid=539845552"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Responsável": "={{ $json.Responsável }}",
+            "col_4": "={{ $('Split In Batches').item.json.phone }}",
+            "col_7": "-",
+            "col_9": "=TRUE"
+          },
+          "matchingColumns": [
+            "Responsável"
+          ],
+          "schema": [
+            {
+              "id": "col_1",
+              "displayName": "col_1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Responsável",
+              "displayName": "Responsável",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_3",
+              "displayName": "col_3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_4",
+              "displayName": "col_4",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_5",
+              "displayName": "col_5",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Faturamento hoje",
+              "displayName": "Faturamento hoje",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_7",
+              "displayName": "col_7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "<- Preencha aqui",
+              "displayName": "<- Preencha aqui",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_9",
+              "displayName": "col_9",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Meta",
+              "displayName": "Meta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Realizado",
+              "displayName": "Realizado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Falta",
+              "displayName": "Falta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_13",
+              "displayName": "col_13",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "col_14",
+              "displayName": "col_14",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "ef92500d-db7f-4d78-9a28-0140ddd0d22f",
+      "name": "Google Sheets2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1960,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oySssnVS9U4DH0EY",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {\n    \"autoInvite\": true,\n    \"groupId\": \"120363166457519437-group\",\n    \"phones\": [\"{{ $json.phone }}\"]\n  }  ",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          }
+        }
+      },
+      "id": "3672163f-7655-4245-9cf2-31ecf278bf99",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        20,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "phone",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "id": "6fc9e871-0ff8-408f-8472-317e5054824b",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        -160,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "= {\n    \"autoInvite\": true,\n    \"groupId\": \"120363166457519437-group\",\n    \"phones\": [\"{{ $json.phone }}\"]\n  }  ",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1
+            }
+          }
+        }
+      },
+      "id": "841f8acd-2ea6-4540-9106-ed91bd5a94fd",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Iniciar atendimento"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "22edf697-49f8-45ba-9894-96f45d5d4a96",
+      "name": "Iniciar atendimento",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        900,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 8,
+        "unit": "seconds"
+      },
+      "id": "482fc780-e059-4d06-9d63-404b35c624ea",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1100,
+        1080
+      ],
+      "webhookId": "f1ad384f-ed2c-4b24-845e-38d2eadf5959"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Português"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9297d799-8b62-4953-a168-3217daf99e68",
+      "name": "Português",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1300,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 15,
+        "unit": "seconds"
+      },
+      "id": "b659147a-67f7-42bc-8b1f-1a3f89357894",
+      "name": "Wait2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1500,
+        1080
+      ],
+      "webhookId": "b5cb59ce-3395-4ee8-9995-2cf3178e243d"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Importação de aluno: \n\n{{ $('Google Sheets3').item.json.Nome }};{{ $('Trata Webhook').item.json['Qual seu email de compra?'] }}\n\nTurma 6\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234 "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "87d48141-2005-4065-9450-19a45b43f3d0",
+      "name": "Importação de Aluno",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1700,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Chave",
+              "lookupValue": "={{ $json['Qual o seu telefone?'].slice(-7) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f45b3296-084b-493c-82a3-03fcc9b9e70b",
+      "name": "Google Sheets3",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        680,
+        1080
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (compatible; Google-Apps-Script; beanserver; +https://script.google.com; id: UAEmdDd9ULkVuqstrItF-u5buIWjjlVau5w)",
+            "content-length": "422",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "107.178.203.130",
+            "cf-ipcountry": "US",
+            "cf-ray": "842a0152182f2844-SEA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "x-forwarded-for": "172.71.147.169",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.71.147.169"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "Qual seu email de compra?": "testeteste@gmail.com",
+            "Qual o seu telefone?": "5581993515055",
+            "Acesso à plataforma com as aulas gravadas": "matheus@gmail.com",
+            "Acesso às Planilhas Sala Black": "matheus@gmail.com, matheus2@gmail.com, matheus3@gmail.com",
+            "Acesso ao Grupo de Whatsapp: Papo de Dono": "Cris - 5581993515055\nTran - 553195148851",
+            "Acesso ao Grupo de Whatsapp: Mentoria": "Cris - 5581993515055\nTran - 553195148851"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-16T14:44:14.000Z",
+  "versionId": "7e19ed9b-0b2e-4ac6-bca7-00515ba095ee"
+}
