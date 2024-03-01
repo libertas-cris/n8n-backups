@@ -38,12 +38,12 @@
       "main": [
         [
           {
-            "node": "Google Sheets",
+            "node": "Wait",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Wait",
+            "node": "Google Sheets",
             "type": "main",
             "index": 0
           }
@@ -198,7 +198,7 @@
         ],
         [
           {
-            "node": "atualiza pe direta",
+            "node": "atualiza bvl direta1",
             "type": "main",
             "index": 0
           }
@@ -2628,219 +2628,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "ID coluna": "={{ $('Code1').item.json.email + $('Code1').item.json.produto }} ",
-            "Tipo de compra": "direta",
-            "Origem de compra": "direta"
-          },
-          "matchingColumns": [
-            "ID coluna"
-          ],
-          "schema": [
-            {
-              "id": "Data Produto Principal",
-              "displayName": "Data Produto Principal",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "ID coluna",
-              "displayName": "ID coluna",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Nome",
-              "displayName": "Nome",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Telefone",
-              "displayName": "Telefone",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Produto",
-              "displayName": "Produto",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Valor do produto",
-              "displayName": "Valor do produto",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Origem de compra",
-              "displayName": "Origem de compra",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "1º upsell",
-              "displayName": "1º upsell",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Upsell oferecido?",
-              "displayName": "Upsell oferecido?",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Comprou 1º upsell ?",
-              "displayName": "Comprou 1º upsell ?",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Origem de compra 1º upsell",
-              "displayName": "Origem de compra 1º upsell",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Data 1º upsell",
-              "displayName": "Data 1º upsell",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "2º upsell",
-              "displayName": "2º upsell",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "2º Upsell oferecido?",
-              "displayName": "2º Upsell oferecido?",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Comprou 2º upsell?",
-              "displayName": "Comprou 2º upsell?",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Origem de compra 2º upsell?",
-              "displayName": "Origem de compra 2º upsell?",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Data 2º upsell",
-              "displayName": "Data 2º upsell",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "3d3215ca-e0dd-4d03-a067-97930c6a6ac3",
-      "name": "atualiza pe direta",
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4,
-      "position": [
-        2380,
-        2560
-      ],
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "aqyCUOYp9QE28Sw2",
-          "name": "Cris - Libertas"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "documentId": {
-          "__rl": true,
-          "value": "1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w",
-          "mode": "list",
-          "cachedResultName": "[Redesign.360] - Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 2121283905,
-          "mode": "list",
-          "cachedResultName": "Automações - Vendas",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit#gid=2121283905"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "ID coluna": "={{ $('Code1').item.json.email + $('Code1').item.json.produto }} ",
             "Tipo de compra upsell 2?": "recuperação-automação",
             "Origem upsell 2": "fluxo de whatsapp",
             "Origem de compra": "fluxo-automação-upsell"
@@ -3509,6 +3296,219 @@
         2160,
         3700
       ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w",
+          "mode": "list",
+          "cachedResultName": "[Redesign.360] - Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2121283905,
+          "mode": "list",
+          "cachedResultName": "Automações - Vendas",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit#gid=2121283905"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID coluna": "={{ $('Code').item.json.email+$('Code').item.json.produto }}",
+            "Tipo de compra": "direta",
+            "Origem de compra": "direta"
+          },
+          "matchingColumns": [
+            "ID coluna"
+          ],
+          "schema": [
+            {
+              "id": "Data Produto Principal",
+              "displayName": "Data Produto Principal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID coluna",
+              "displayName": "ID coluna",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Produto",
+              "displayName": "Produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valor do produto",
+              "displayName": "Valor do produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Origem de compra",
+              "displayName": "Origem de compra",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "1º upsell",
+              "displayName": "1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Upsell oferecido?",
+              "displayName": "Upsell oferecido?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Comprou 1º upsell ?",
+              "displayName": "Comprou 1º upsell ?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Origem de compra 1º upsell",
+              "displayName": "Origem de compra 1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data 1º upsell",
+              "displayName": "Data 1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "2º upsell",
+              "displayName": "2º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "2º Upsell oferecido?",
+              "displayName": "2º Upsell oferecido?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Comprou 2º upsell?",
+              "displayName": "Comprou 2º upsell?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Origem de compra 2º upsell?",
+              "displayName": "Origem de compra 2º upsell?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data 2º upsell",
+              "displayName": "Data 2º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7ffd4e2b-c6c0-4413-9961-8b468170b7ee",
+      "name": "atualiza bvl direta1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2380,
+        2580
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
     }
   ],
   "pinData": {
@@ -3518,38 +3518,37 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "Make/production",
-            "content-length": "447",
+            "content-length": "288",
             "accept-encoding": "gzip",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "54.161.178.114",
+            "cf-connecting-ip": "54.80.47.193",
             "cf-ipcountry": "US",
-            "cf-ray": "84ebabdf4fd98f20-IAD",
+            "cf-ray": "85d0d3c97ac32d07-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "traceparent": "00-000000000000000024ba409d5e11fa37-24ba409d5e11fa37-00",
+            "traceparent": "00-000000000000000054ae9e922d602102-0d6b6b39b5bd46af-00",
             "tracestate": "dd=t.dm:1;s:0",
-            "x-datadog-parent-id": "2646498775665867319",
+            "x-datadog-parent-id": "966984440607491759",
             "x-datadog-sampling-priority": "0",
-            "x-datadog-trace-id": "2646498775665867319",
-            "x-forwarded-for": "172.70.135.80",
+            "x-datadog-trace-id": "6101988895797289218",
+            "x-forwarded-for": "172.71.223.82",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.70.135.80"
+            "x-real-ip": "172.71.223.82"
           },
           "params": {},
           "query": {},
           "body": {
-            "data": "2024-02-01T16:46:31Z",
-            "nome": "D A BARBOSA ",
-            "email": "danillocontabilidade.bg@gmail.com",
-            "telefone": "66984465787",
-            "produto": "Box Contábil 360",
-            "valor": 146.89,
-            "Comissão RD": 122.57,
-            "Comissão LB": 9.23,
-            "sck": "Meta|00 - [F] [AUTO] [26-65] Cont financ   Neg e Finanças   Contabilidade   Finanças|[BO] [CONVERSÕES] [COMPRA] [ABO] [F] - Teste de Públicos|null|AD008 [FDVD] [STVD] [AD0V ] Vídeo 01"
+            "data": "2024-02-29T12:14:23Z",
+            "nome": "Marcos Aurélio Pamplona da Silva",
+            "email": "marcos@maps.adv.br",
+            "telefone": "48999433939",
+            "produto": "Pacote Extra de Documentos em Visual Law",
+            "valor": 47,
+            "Comissão RD": 42.05,
+            "sck": "null|null|null|null|null"
           }
         }
       }
@@ -3568,6 +3567,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-02-08T17:57:33.000Z",
-  "versionId": "8cba8494-04de-43b1-addc-4d59b7cd9ad3"
+  "updatedAt": "2024-02-29T15:33:22.000Z",
+  "versionId": "78160b5d-2924-48bd-92d1-7e933a6ca32d"
 }
