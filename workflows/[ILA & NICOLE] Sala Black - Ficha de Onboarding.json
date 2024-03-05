@@ -34,14 +34,7 @@
         ],
         [
           {
-            "node": "Formata Telefone Responsavel",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Formata Telefone mentoria",
+            "node": "Existe precif",
             "type": "main",
             "index": 0
           }
@@ -93,17 +86,6 @@
         [
           {
             "node": "Formata Data",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Formata Data": {
-      "main": [
-        [
-          {
-            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -184,6 +166,46 @@
         [
           {
             "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "Atualiza email precif",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Atualiza email precif1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Existe precif": {
+      "main": [
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data": {
+      "main": [
+        [
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -349,7 +371,8 @@
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
             "Telefone": "={{ $('Trata Webhook').item.json.Telefone }}",
             "Email da plataforma": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}",
-            "Emails de acesso": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}"
+            "Emails de acesso": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}",
+            "Emails de acesso acompanhamento": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -390,13 +413,24 @@
               "canBeUsedToMatch": true
             },
             {
-              "id": "Emails de acesso",
-              "displayName": "Emails de acesso",
+              "id": "Emails de acesso acompanhamento",
+              "displayName": "Emails de acesso acompanhamento",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Emails de acesso precificação",
+              "displayName": "Emails de acesso precificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Grupo papo de dono",
@@ -487,7 +521,8 @@
           "mappingMode": "defineBelow",
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
-            "Emails de acesso": "={{ $('Existe').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}"
+            "Emails de acesso": "={{ $('Existe').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
+            "Emails de acesso acompanhamento": "={{ $('Existe').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}"
           },
           "matchingColumns": [
             "E-mail"
@@ -531,13 +566,24 @@
               "canBeUsedToMatch": true
             },
             {
-              "id": "Emails de acesso",
-              "displayName": "Emails de acesso",
+              "id": "Emails de acesso acompanhamento",
+              "displayName": "Emails de acesso acompanhamento",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Emails de acesso precificação",
+              "displayName": "Emails de acesso precificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Grupo papo de dono",
@@ -608,8 +654,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        1760,
-        540
+        1740,
+        940
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -635,8 +681,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1960,
-        540
+        1940,
+        940
       ]
     },
     {
@@ -705,13 +751,24 @@
               "canBeUsedToMatch": true
             },
             {
-              "id": "Emails de acesso",
-              "displayName": "Emails de acesso",
+              "id": "Emails de acesso acompanhamento",
+              "displayName": "Emails de acesso acompanhamento",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Emails de acesso precificação",
+              "displayName": "Emails de acesso precificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Grupo papo de dono",
@@ -740,8 +797,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2240,
-        460
+        2220,
+        840
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -817,13 +874,24 @@
               "canBeUsedToMatch": true
             },
             {
-              "id": "Emails de acesso",
-              "displayName": "Emails de acesso",
+              "id": "Emails de acesso acompanhamento",
+              "displayName": "Emails de acesso acompanhamento",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Emails de acesso precificação",
+              "displayName": "Emails de acesso precificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Grupo papo de dono",
@@ -852,8 +920,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2240,
-        660
+        2220,
+        1080
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -873,7 +941,7 @@
       "typeVersion": 1,
       "position": [
         1540,
-        540
+        940
       ]
     },
     {
@@ -892,8 +960,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1960,
-        1000
+        1940,
+        1380
       ]
     },
     {
@@ -906,7 +974,7 @@
       "typeVersion": 1,
       "position": [
         1540,
-        1000
+        1380
       ]
     },
     {
@@ -940,8 +1008,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        1760,
-        1000
+        1740,
+        1380
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1052,8 +1120,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2240,
-        920
+        2220,
+        1240
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1129,13 +1197,24 @@
               "canBeUsedToMatch": true
             },
             {
-              "id": "Emails de acesso",
-              "displayName": "Emails de acesso",
+              "id": "Emails de acesso acompanhamento",
+              "displayName": "Emails de acesso acompanhamento",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Emails de acesso precificação",
+              "displayName": "Emails de acesso precificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Grupo papo de dono",
@@ -1164,8 +1243,317 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2240,
-        1120
+        2220,
+        1520
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json['Emails de acesso precificação'] }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "af5032ad-2a2f-436c-b903-a2ca910e5d26",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1334154859,
+          "mode": "list",
+          "cachedResultName": "Ficha de Onboarding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1334154859"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "E-mail",
+              "lookupValue": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0b5fe24-c89b-4cda-bf39-5cd546dad672",
+      "name": "Existe precif",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1580,
+        540
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1334154859,
+          "mode": "list",
+          "cachedResultName": "Ficha de Onboarding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1334154859"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
+            "Emails de acesso": "={{ $('Existe precif').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
+            "Emails de acesso precificação": "={{ $json['Emails de acesso precificação'] }}"
+          },
+          "matchingColumns": [
+            "E-mail"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E-mail",
+              "displayName": "E-mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email da plataforma",
+              "displayName": "Email da plataforma",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Emails de acesso acompanhamento",
+              "displayName": "Emails de acesso acompanhamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Emails de acesso precificação",
+              "displayName": "Emails de acesso precificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Grupo papo de dono",
+              "displayName": "Grupo papo de dono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Grupo Mentoria",
+              "displayName": "Grupo Mentoria",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f0e160e6-f258-4347-aaa1-6374add2ed05",
+      "name": "Atualiza email precif",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2020,
+        460
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1334154859,
+          "mode": "list",
+          "cachedResultName": "Ficha de Onboarding",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1334154859"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
+            "Emails de acesso": "={{ $('Existe precif').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
+            "Emails de acesso acompanhamento": "={{ $('Existe precif').item.json['Emails de acesso precificação'] + \", \" + $('Trata Webhook').item.json['Email-Precificação'] }} ",
+            "Emails de acesso precificação": "={{ $json['Emails de acesso precificação'] }}"
+          },
+          "matchingColumns": [
+            "E-mail"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E-mail",
+              "displayName": "E-mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email da plataforma",
+              "displayName": "Email da plataforma",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Emails de acesso acompanhamento",
+              "displayName": "Emails de acesso acompanhamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Emails de acesso precificação",
+              "displayName": "Emails de acesso precificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Grupo papo de dono",
+              "displayName": "Grupo papo de dono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Grupo Mentoria",
+              "displayName": "Grupo Mentoria",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "47673f6e-e2ce-4ba9-95ce-ca3129653c5e",
+      "name": "Atualiza email precif1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2020,
+        680
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1183,39 +1571,35 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "got (https://github.com/sindresorhus/got)",
-            "content-length": "397",
-            "accept-encoding": "gzip",
-            "baggage": "sentry-environment=vercel-production,sentry-release=275ba1b1c40f4e79d42de7915e02fbe5ed1955b5-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=e34b2d4a418246f2bc13055e96bad29e",
+            "content-length": "277",
+            "accept-encoding": "gzip, br",
+            "baggage": "sentry-environment=vercel-production,sentry-release=daaca9f817251e59f25e987f62a9927c80c74803-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=165db27210ba4f2f9aef60348319dadc",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "18.130.223.204",
+            "cf-connecting-ip": "18.170.48.10",
             "cf-ipcountry": "GB",
-            "cf-ray": "85d359bf1a2d23c6-LHR",
+            "cf-ray": "85f3fb8e9ffb6547-LHR",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "sentry-trace": "e34b2d4a418246f2bc13055e96bad29e-bebd8ec00c20dcbd-0",
-            "x-forwarded-for": "172.71.242.194",
+            "sentry-trace": "165db27210ba4f2f9aef60348319dadc-acaa1dabdff260aa-0",
+            "x-forwarded-for": "172.69.195.152",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.71.242.194",
-            "x-vercel-id": "gru1::jksdr-1709235327672-5a8517f3cd4d"
+            "x-real-ip": "172.69.195.152",
+            "x-vercel-id": "gru1::hnwwl-1709577499751-cd433149dd0a"
           },
           "params": {},
           "query": {},
           "body": {
-            "message": "This is a sample result, it has been generated ⬇️",
-            "submittedAt": "2024-02-29T19:35:27.818Z",
-            "E-mail": "test@email.com",
-            "Telefone": "+33665566773",
-            "Email-Acesso": "test@email.com",
-            "Email-Extra": "test@email.com",
-            "Loop E-mails": "Sim",
-            "Nome-Responsável": "Tran",
-            "Número-Responsável": "81992602244",
-            "nome-mentoria": "content",
-            "numero-mentoria": "content",
-            "count": "content",
+            "submittedAt": "2024-03-04T18:38:19.892Z",
+            "E-mail": "matheus@gmaill.com",
+            "Telefone": "+5581993515055",
+            "Email-Acesso": "cris@gmail.com",
+            "Email-Extra": "crizao@gmail.com",
+            "Loop E-mails": "Não",
+            "Loop E-mails  precificação": "Sim",
+            "Email-Precificação": "cris7@gmail.com",
             "etapa": "2"
           }
         }
@@ -1228,6 +1612,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-29T20:09:38.000Z",
-  "versionId": "2d1842c8-012d-43c1-a632-efb7b9740cef"
+  "updatedAt": "2024-03-04T19:44:12.000Z",
+  "versionId": "d8da60f6-1c56-49b1-a506-4522eb8126eb"
 }
