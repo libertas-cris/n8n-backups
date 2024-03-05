@@ -38,6 +38,20 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Formata Telefone Responsavel",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Formata Telefone mentoria",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -272,6 +286,14 @@
             {
               "value2": "2",
               "output": 1
+            },
+            {
+              "value2": "3",
+              "output": 2
+            },
+            {
+              "value2": "4",
+              "output": 3
             }
           ]
         }
@@ -372,7 +394,7 @@
             "Telefone": "={{ $('Trata Webhook').item.json.Telefone }}",
             "Email da plataforma": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}",
             "Emails de acesso": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}",
-            "Emails de acesso acompanhamento": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}"
+            "Emails de acesso acompanhamento": "={{ $('Trata Webhook').item.json['Email-Extra'] }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -522,7 +544,7 @@
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
             "Emails de acesso": "={{ $('Existe').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
-            "Emails de acesso acompanhamento": "={{ $('Existe').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}"
+            "Emails de acesso acompanhamento": "={{ $('Existe').item.json['Emails de acesso acompanhamento'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}"
           },
           "matchingColumns": [
             "E-mail"
@@ -949,7 +971,7 @@
         "conditions": {
           "string": [
             {
-              "value1": "={{ $json['Grupo papo de dono'] }}",
+              "value1": "={{ $json['Grupo Mentoria'] }}",
               "operation": "isEmpty"
             }
           ]
@@ -1041,7 +1063,7 @@
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
             "Emails de acesso": "=",
-            "Grupo papo de dono": "={{ $('Trata Webhook').item.json['Nome-Responsável'] + \" - \" +  $('Trata Webhook').item.json['Número-Responsável']}} "
+            "Grupo Mentoria": "={{ $('Trata Webhook').item.json['nome-mentoria'] + \" - \" +  $('Trata Webhook').item.json['numero-mentoria']}} "
           },
           "matchingColumns": [
             "E-mail"
@@ -1085,13 +1107,24 @@
               "canBeUsedToMatch": true
             },
             {
-              "id": "Emails de acesso",
-              "displayName": "Emails de acesso",
+              "id": "Emails de acesso acompanhamento",
+              "displayName": "Emails de acesso acompanhamento",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Emails de acesso precificação",
+              "displayName": "Emails de acesso precificação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Grupo papo de dono",
@@ -1121,7 +1154,7 @@
       "typeVersion": 4,
       "position": [
         2220,
-        1240
+        1280
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1153,7 +1186,7 @@
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
             "Emails de acesso": "=",
-            "Grupo papo de dono": "={{ $json['Grupo papo de dono'] + \" | \" + $('Trata Webhook').item.json['Nome-Responsável'] + \" - \" +  $('Trata Webhook').item.json['Número-Responsável']}}"
+            "Grupo Mentoria": "={{ $json['Grupo Mentoria'] + \" | \" + $('Trata Webhook').item.json['nome-mentoria'] + \" - \" +  $('Trata Webhook').item.json['numero-mentoria']}}"
           },
           "matchingColumns": [
             "E-mail"
@@ -1338,7 +1371,7 @@
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
             "Emails de acesso": "={{ $('Existe precif').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
-            "Emails de acesso precificação": "={{ $json['Emails de acesso precificação'] }}"
+            "Emails de acesso precificação": "={{ $('Trata Webhook').item.json['Email-Precificação'] }}"
           },
           "matchingColumns": [
             "E-mail"
@@ -1461,8 +1494,7 @@
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
             "Emails de acesso": "={{ $('Existe precif').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
-            "Emails de acesso acompanhamento": "={{ $('Existe precif').item.json['Emails de acesso precificação'] + \", \" + $('Trata Webhook').item.json['Email-Precificação'] }} ",
-            "Emails de acesso precificação": "={{ $json['Emails de acesso precificação'] }}"
+            "Emails de acesso precificação": "={{ $('Existe precif').item.json['Emails de acesso precificação'] + \", \" + $('Trata Webhook').item.json['Email-Precificação']}} "
           },
           "matchingColumns": [
             "E-mail"
@@ -1571,36 +1603,41 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "got (https://github.com/sindresorhus/got)",
-            "content-length": "277",
+            "content-length": "428",
             "accept-encoding": "gzip, br",
-            "baggage": "sentry-environment=vercel-production,sentry-release=daaca9f817251e59f25e987f62a9927c80c74803-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=165db27210ba4f2f9aef60348319dadc",
+            "baggage": "sentry-environment=vercel-production,sentry-release=84d6c594af0fa9256610fc2f74669344e43aabc9-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=9cfb342a30e64b1d97a20cf1cf86384b",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "18.170.48.10",
+            "cf-connecting-ip": "18.170.64.119",
             "cf-ipcountry": "GB",
-            "cf-ray": "85f3fb8e9ffb6547-LHR",
+            "cf-ray": "85fa16430ce5638f-LHR",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "sentry-trace": "165db27210ba4f2f9aef60348319dadc-acaa1dabdff260aa-0",
-            "x-forwarded-for": "172.69.195.152",
+            "sentry-trace": "9cfb342a30e64b1d97a20cf1cf86384b-a61bd6edf6ce6739-0",
+            "x-forwarded-for": "172.69.43.185",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.69.195.152",
-            "x-vercel-id": "gru1::hnwwl-1709577499751-cd433149dd0a"
+            "x-real-ip": "172.69.43.185",
+            "x-vercel-id": "gru1::c6vbk-1709641508103-ea6ae9741c38"
           },
           "params": {},
           "query": {},
           "body": {
-            "submittedAt": "2024-03-04T18:38:19.892Z",
-            "E-mail": "matheus@gmaill.com",
+            "submittedAt": "2024-03-05T12:25:08.272Z",
+            "E-mail": "cris@gmail.com",
             "Telefone": "+5581993515055",
-            "Email-Acesso": "cris@gmail.com",
-            "Email-Extra": "crizao@gmail.com",
+            "Email-Acesso": "acesso@gmail.com",
+            "Email-Extra": "aco2@gmail.com",
             "Loop E-mails": "Não",
-            "Loop E-mails  precificação": "Sim",
-            "Email-Precificação": "cris7@gmail.com",
-            "etapa": "2"
+            "Email-Precificação": "preci2@gmail.com",
+            "Loop E-mails  precificação": "Não",
+            "Nome-Responsável": "tran",
+            "Número-Responsável": "+5581992602244",
+            "Loop papo de dono": "Não",
+            "nome-mentoria": "tran2",
+            "numero-mentoria": "+5581993515055",
+            "etapa": "4"
           }
         }
       }
@@ -1612,6 +1649,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-04T19:44:12.000Z",
-  "versionId": "d8da60f6-1c56-49b1-a506-4522eb8126eb"
+  "updatedAt": "2024-03-05T12:29:07.000Z",
+  "versionId": "f87a3a0d-7ba1-4c79-94ee-8e539e34ad55"
 }
