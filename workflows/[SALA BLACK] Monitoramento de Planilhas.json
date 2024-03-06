@@ -53,6 +53,13 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
@@ -152,13 +159,7 @@
     },
     "HTTP Request1": {
       "main": [
-        [
-          {
-            "node": "Google Sheets9",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Google Sheets7": {
@@ -209,7 +210,12 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Google Sheets9",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Item Lists",
             "type": "main",
             "index": 0
           }
@@ -268,8 +274,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "Wait": {
@@ -1076,8 +1081,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3040,
-        480
+        3740,
+        420
       ]
     },
     {
@@ -1104,8 +1109,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3240,
-        480
+        3980,
+        380
       ]
     },
     {
@@ -1457,7 +1462,7 @@
     },
     {
       "parameters": {
-        "amount": 10,
+        "amount": 2,
         "unit": "seconds"
       },
       "id": "facdbf9a-0b0d-4abf-8cef-7d7610424b34",
@@ -1472,7 +1477,7 @@
     },
     {
       "parameters": {
-        "amount": 10,
+        "amount": 2,
         "unit": "seconds"
       },
       "id": "ef496782-99a1-4ce8-9ead-58e700ea1a15",
@@ -1559,6 +1564,28 @@
         480
       ],
       "webhookId": "264e2ae7-25d1-4ab3-9128-b390eda6dd64"
+    },
+    {
+      "parameters": {
+        "operation": "summarize",
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "append",
+              "field": "Nome"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "45ee2002-bd14-4f9a-983a-8cebcad93e9d",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        3120,
+        760
+      ]
     }
   ],
   "pinData": {},
@@ -1568,6 +1595,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-01-04T21:31:54.000Z",
-  "versionId": "03f1ba3f-b518-4efd-8f67-f0e81d737a42"
+  "updatedAt": "2024-03-06T12:56:06.000Z",
+  "versionId": "5b6ee45c-a540-4dba-abab-d042d99981c5"
 }
