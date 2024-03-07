@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Trata Webhook": {
       "main": [
@@ -170,6 +170,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-18T19:23:55.000Z",
-  "versionId": "69ff908f-1a74-4e24-be20-f8d3095bdd3d"
+  "updatedAt": "2024-03-06T18:45:57.000Z",
+  "versionId": "df4bd0e4-b862-4720-a379-b4caaf1ec527"
 }
