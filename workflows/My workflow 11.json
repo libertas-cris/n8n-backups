@@ -1,0 +1,152 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-06T15:13:20.851Z",
+  "id": "u8J9BcTZBJHsWcq3",
+  "meta": null,
+  "name": "My workflow 11",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "88d5829b-2c7a-4c67-9ef8-c4d529c3fc7c",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1aGL27CzVZp7jUOsZnfWTdvSFEn6Oy7H-73h8ej4Djx8/edit#gid=1797918444",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1797918444,
+          "mode": "list",
+          "cachedResultName": "control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aGL27CzVZp7jUOsZnfWTdvSFEn6Oy7H-73h8ej4Djx8/edit#gid=1797918444"
+        },
+        "options": {}
+      },
+      "id": "0d966370-54b5-4b85-b1a8-cb96a98a37cd",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1040,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oySssnVS9U4DH0EY",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "nome"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9bcd1f67-47cd-4beb-b590-94669bb72d80",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        1260,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5581993515055"
+            },
+            {
+              "name": "message",
+              "value": "=Pessoas que não estão preenchendo a planilha:\n\n{{ $json.nome.join(\",\") }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dfe48e21-ac20-4097-9752-03b3d3c87124",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1480,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-03-06T15:26:02.000Z",
+  "versionId": "85f62652-89be-4bc1-9832-82ed43447329"
+}
