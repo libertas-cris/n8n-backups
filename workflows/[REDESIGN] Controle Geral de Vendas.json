@@ -162,13 +162,7 @@
     },
     "Produtos ABANDONO": {
       "main": [
-        [
-          {
-            "node": "BOT ABANDONO BVL",
-            "type": "main",
-            "index": 0
-          }
-        ],
+        [],
         [
           {
             "node": "BOT ABANDONO BI",
@@ -204,6 +198,39 @@
         [
           {
             "node": "Adiciona KLL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona BVL": {
+      "main": [
+        [
+          {
+            "node": "Comprou bvl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona BC": {
+      "main": [
+        [
+          {
+            "node": "Comprou bc",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona BI": {
+      "main": [
+        [
+          {
+            "node": "Comprou bi",
             "type": "main",
             "index": 0
           }
@@ -1163,7 +1190,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        320,
+        400,
         780
       ]
     },
@@ -1199,7 +1226,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        320,
+        400,
         980
       ]
     },
@@ -1235,7 +1262,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        320,
+        400,
         1220
       ]
     },
@@ -2023,6 +2050,102 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/OgoNBzJpf5aa/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "nome",
+              "value": "={{ $('Code').item.json.data.buyer.name.split(\" \")[0] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ 55 + $('Code').item.json.data.buyer.checkout_phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "03243a9c-7c22-4dce-a037-7b4c7923c458",
+      "name": "Comprou bvl",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        -300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/gPnRPBPbkwxL/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "nome",
+              "value": "={{ $('Code').item.json.data.buyer.name.split(\" \")[0] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ 55 + $('Code').item.json.data.buyer.checkout_phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "16b9e04c-79c0-4297-afde-9d1dc1c59c1f",
+      "name": "Comprou bc",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/l06ksjJhDlSE/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "nome",
+              "value": "={{ $('Code').item.json.data.buyer.name.split(\" \")[0] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ 55 + $('Code').item.json.data.buyer.checkout_phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fef61cbf-08b2-4941-aff6-19b7ba193102",
+      "name": "Comprou bi",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        -120
+      ]
     }
   ],
   "pinData": {
@@ -2032,21 +2155,21 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "Jodd HTTP",
-            "content-length": "1211",
-            "accept-encoding": "gzip",
+            "content-length": "1543",
+            "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "44.199.251.207",
+            "cf-connecting-ip": "54.89.41.223",
             "cf-ipcountry": "US",
-            "cf-ray": "85668300aaad827e-IAD",
+            "cf-ray": "86044c00aee93b59-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "x-forwarded-for": "172.70.174.85",
+            "x-forwarded-for": "172.70.42.247",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "af9052d35998",
             "x-hotmart-hottok": "rX99Tq4apaLftnsX3uaaYN6W5dbWeF13096923",
-            "x-real-ip": "172.70.174.85"
+            "x-real-ip": "172.70.42.247"
           },
           "params": {},
           "query": {},
@@ -2054,26 +2177,26 @@
             "data": {
               "product": {
                 "has_co_production": true,
-                "name": "Box Visual Law 360",
-                "id": 1821844,
-                "ucode": "ef53fa00-fa06-4c4a-9f0b-18aae48f1758"
+                "name": "Box Contábil 360",
+                "id": 2386202,
+                "ucode": "7d017ac9-e09e-4c69-a9ad-8ed2fe4fe744"
               },
               "commissions": [
                 {
                   "currency_value": "BRL",
                   "source": "MARKETPLACE",
-                  "value": 17.55
+                  "value": 13.34
                 },
                 {
                   "currency_value": "BRL",
                   "source": "PRODUCER",
-                  "value": 164.56
+                  "value": 121.89
                 }
               ],
               "purchase": {
                 "original_offer_price": {
                   "currency_value": "BRL",
-                  "value": 196.99
+                  "value": 146.89
                 },
                 "subscription_anticipation_purchase": false,
                 "checkout_country": {
@@ -2083,25 +2206,28 @@
                 "order_bump": {
                   "is_order_bump": false
                 },
-                "approved_date": 1708094063000,
+                "approved_date": 1709748562000,
                 "offer": {
-                  "code": "1lpcvct0"
+                  "code": "7qwoy9v2"
                 },
-                "order_date": 1708094060000,
+                "order_date": 1709748493000,
                 "price": {
                   "currency_value": "BRL",
-                  "value": 196.99
+                  "value": 146.89
                 },
                 "payment": {
+                  "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=65e8b10d0f0282a9e9f9f114a9209231a94586aa019f6fd9",
+                  "pix_expiration_date": 1709921294000,
                   "installments_number": 1,
-                  "type": "CREDIT_CARD"
+                  "type": "PIX",
+                  "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/14443F77A419C272CF53D1573D5DBD7D5204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304CF15"
                 },
                 "full_price": {
                   "currency_value": "BRL",
-                  "value": 196.99
+                  "value": 146.89
                 },
                 "invoice_by": "HOTMART",
-                "transaction": "HP3262800403",
+                "transaction": "HP1357341531",
                 "status": "APPROVED"
               },
               "affiliates": [
@@ -2118,14 +2244,14 @@
                   "country": "Brasil",
                   "country_iso": "BR"
                 },
-                "document": "27846519000141",
-                "name": "Jucá, Barbosa, Fontes cruz & Leal",
-                "checkout_phone": "91984662154",
-                "email": "contato@jbfl.com.br"
+                "document": "08676833000189",
+                "name": "Ativa Contabilidade LTDA",
+                "checkout_phone": "75988704252",
+                "email": "ativasajadm@hotmail.com"
               }
             },
-            "id": "c5ab34aa-45e2-4f94-b1fa-8131cc2c65a4",
-            "creation_date": 1708094068654,
+            "id": "728f5670-af7c-4342-967c-3885aba68da8",
+            "creation_date": 1709748565460,
             "event": "PURCHASE_APPROVED",
             "version": "2.0.0"
           }
@@ -2146,6 +2272,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-02-16T16:14:52.000Z",
-  "versionId": "b66a5185-0ea1-4496-a192-fa16cc3e48f4"
+  "updatedAt": "2024-03-06T18:51:15.000Z",
+  "versionId": "786cd1be-a2c2-402c-8762-c363e65408b3"
 }
