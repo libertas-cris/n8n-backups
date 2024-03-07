@@ -1,0 +1,182 @@
+{
+  "active": true,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "BOT ABANDONO BVL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-06T18:06:57.023Z",
+  "id": "E1EJ65syWq3vcc3y",
+  "meta": null,
+  "name": "[REDESIGN] BVL | Pré-Checkout",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "45e303cc-9957-4e99-8973-1b86a5dc99db",
+        "options": {}
+      },
+      "id": "76f9af6e-c037-49fd-8fb4-21fe919119d9",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "45e303cc-9957-4e99-8973-1b86a5dc99db"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "c3b2f355-ea3b-4868-938b-0e60c1870bbe",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['contact[phone]'] = formataTelefone($input.all()[0].json['contact[phone]']) \n\nreturn $input.all(); "
+      },
+      "id": "69a07c28-3ae5-49b8-9e67-b52cd2b5f557",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1180,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/m4xeW5HaNW7n/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $json[\"contact[first_name]\"] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $json[\"contact[phone]\"] }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $json[\"contact[email]\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8ba89d87-787f-4018-adde-6a442581c2fc",
+      "name": "BOT ABANDONO BVL",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1360,
+        380
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "GuzzleHttp/6.5.5 curl/8.3.0 PHP/7.4.33",
+            "content-length": "939",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "52.2.43.221",
+            "cf-ipcountry": "US",
+            "cf-ray": "86049dea5ff438a9-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "172.70.38.233",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.70.38.233"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "contact[id]": "62155",
+            "contact[email]": "precheckout@gmail.com",
+            "contact[first_name]": "Cris",
+            "contact[last_name]": "",
+            "contact[phone]": "(81) 99351-5055",
+            "contact[orgname]": "",
+            "contact[customer_acct_name]": "",
+            "contact[tags]": "BVL | Pré Checkout",
+            "contact[ip4]": "186.235.185.56",
+            "contact[fields][link_boleto]": "",
+            "contact[fields][ultima_interacao]": "",
+            "contact[fields][valor]": "",
+            "contact[fields][utmsource]": "",
+            "contact[fields][utmcampaign]": "",
+            "contact[fields][utmterm]": "",
+            "contact[fields][utmmedium]": "",
+            "contact[fields][utmcontent]": "",
+            "contact[fields][black_law_date]": "",
+            "contact[fields][bvl_initiate_checkout_date]": "",
+            "contact[fields][utmsourcebvl]": "direto",
+            "contact[fields][utmcampaignbvl]": "",
+            "contact[fields][utmmediumbvl]": "",
+            "contact[fields][utmcontentbvl]": "",
+            "contact[fields][utmtermbvl]": "",
+            "contact[fields][pagina]": "teste-checkout/",
+            "seriesid": "44"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-06T19:12:43.000Z",
+  "versionId": "35e4a174-db29-458e-af7f-f2677a3e0639"
+}
