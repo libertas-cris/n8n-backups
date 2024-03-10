@@ -16,6 +16,17 @@
       "main": [
         [
           {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
             "node": "Google Sheets",
             "type": "main",
             "index": 0
@@ -61,10 +72,10 @@
         },
         "repository": {
           "__rl": true,
-          "value": "audios-follow-up",
+          "value": "ingressos-normal-09-03",
           "mode": "list",
-          "cachedResultName": "audios-follow-up",
-          "cachedResultUrl": "https://github.com/libertas-cris/audios-follow-up"
+          "cachedResultName": "ingressos-normal-09-03",
+          "cachedResultUrl": "https://github.com/libertas-cris/ingressos-normal-09-03"
         }
       },
       "id": "25dab383-b0e2-4417-a3e6-b58b7d9ada2b",
@@ -72,7 +83,7 @@
       "type": "n8n-nodes-base.github",
       "typeVersion": 1,
       "position": [
-        840,
+        760,
         300
       ],
       "credentials": {
@@ -94,10 +105,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 681594340,
+          "value": 117193026,
           "mode": "list",
-          "cachedResultName": "Áudios - Follow up",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=681594340"
+          "cachedResultName": "ing-rs8",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=117193026"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -118,14 +129,13 @@
               "canBeUsedToMatch": true
             },
             {
-              "id": "link",
-              "displayName": "link",
+              "id": "url",
+              "displayName": "url",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
+              "canBeUsedToMatch": true
             }
           ]
         },
@@ -136,7 +146,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        1180,
+        1200,
         300
       ],
       "credentials": {
@@ -162,8 +172,36 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 1,
       "position": [
-        840,
-        500
+        720,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "4c76844c-e2f6-42d4-b8f9-25f463c4c643",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        1140,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function extrairNomeDoArquivo(nomeArquivo) {\n    // Extrair o nome entre \"Ingresso - \" e \".pdf\"\n    var nomeExtraido = nomeArquivo.match(/ingresso - (.+?)\\.pdf/);\n\n    // Verificar se foi encontrado um nome\n    if (nomeExtraido && nomeExtraido.length > 1) {\n        // Converter para minúsculas e substituir _ por espaço\n        var nomeFormatado = nomeExtraido[1].toLowerCase().replace(/_/g, ' ');\n        // Capitalizar o nome\n        nomeFormatado = nomeFormatado.replace(/\\b\\w/g, function(char) {\n            return char.toUpperCase();\n        });\n        // Substituir espaços por underline\n        nomeFormatado = nomeFormatado.replace(/\\s/g, '_');\n        return nomeFormatado;\n    } else {\n        return \"Nome não encontrado\";\n    }\n}\n\n// Exemplo de uso:\nvar nomeArquivo = $input.item.json['name'];\n$input.item.json['name'] = extrairNomeDoArquivo(nomeArquivo);\n\nreturn $input.item;"
+      },
+      "id": "fca7e644-3d19-4c83-8a8c-35baacc687e4",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        980,
+        300
       ]
     }
   ],
@@ -174,6 +212,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-02-29T21:32:11.000Z",
-  "versionId": "c5d46572-507f-4bea-94fe-55cf1d2c6bed"
+  "updatedAt": "2024-03-09T16:36:04.000Z",
+  "versionId": "14519337-ea8b-4063-9ad4-f2d54817df57"
 }
