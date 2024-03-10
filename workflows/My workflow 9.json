@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Split In Batches",
+            "node": "Filter1",
             "type": "main",
             "index": 0
           }
@@ -56,16 +56,22 @@
         ]
       ]
     },
-    "Filter": {
-      "main": [
-        []
-      ]
-    },
     "Wait": {
       "main": [
         [
           {
             "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
             "type": "main",
             "index": 0
           }
@@ -108,10 +114,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 130117977,
+          "value": 619382168,
           "mode": "list",
-          "cachedResultName": "Ingressos [RS8]",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=130117977"
+          "cachedResultName": "[AUTO] Inscritos [AS8]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=619382168"
         },
         "options": {}
       },
@@ -146,7 +152,7 @@
     },
     {
       "parameters": {
-        "jsCode": "function capitalizarString(str) {\n    str = str.trim();\n    let palavras = str.toLowerCase().split(' ');\n\n    // Capitalizar a primeira letra de cada palavra\n    for (let i = 0; i < palavras.length; i++) {\n        palavras[i] = palavras[i].charAt(0).toUpperCase() + palavras[i].slice(1);\n    }\n\n    // Juntar as palavras de volta em uma string\n    return palavras.join(' ');\n}\n\n// Exemplo de uso\nlet stringOriginal = $input.all()[0].json['nome'];\n$input.all()[0].json['nome'] = capitalizarString(stringOriginal);\n\nreturn $input.all();\n"
+        "jsCode": "function capitalizarString(str) {\n    str = str.trim();\n    let palavras = str.toLowerCase().split(' ');\n\n    // Capitalizar a primeira letra de cada palavra\n    for (let i = 0; i < palavras.length; i++) {\n        palavras[i] = palavras[i].charAt(0).toUpperCase() + palavras[i].slice(1);\n    }\n\n    // Juntar as palavras de volta em uma string\n    return palavras.join(' ');\n}\n\n// Exemplo de uso\nlet stringOriginal = $input.all()[0].json['Nome Ingresso'];\n$input.all()[0].json['Nome Ingresso'] = capitalizarString(stringOriginal);\n\nreturn $input.all();\n"
       },
       "id": "d25e0642-056d-44b5-9782-954a9e99722d",
       "name": "Code",
@@ -169,26 +175,51 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 130117977,
+          "value": 619382168,
           "mode": "list",
-          "cachedResultName": "Ingressos [RS8]",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=130117977"
+          "cachedResultName": "[AUTO] Inscritos [AS8]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=619382168"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Chave (busca)": "={{ $('Split In Batches').item.json['Chave (busca)'] }}",
-            "Nome Ingresso": "={{ $json['Nome Ingresso'] }}",
-            "nome": "={{ $('Code').item.json.nome }}",
-            "url": "={{ $('Split In Batches').item.json.url }}"
+            "Email": "={{ $('Split In Batches').item.json.Email }}",
+            "Nome Ingresso": "={{ $('Code').item.json['Nome Ingresso'] }}"
           },
           "matchingColumns": [
-            "url"
+            "Email"
           ],
           "schema": [
             {
-              "id": "nome",
-              "displayName": "nome",
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave (busca)",
+              "displayName": "Chave (busca)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -197,14 +228,311 @@
               "removed": false
             },
             {
-              "id": "url",
-              "displayName": "url",
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "temperatura",
+              "displayName": "temperatura",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Página",
+              "displayName": "Página",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Checkout direto",
+              "displayName": "Checkout direto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Idade",
+              "displayName": "Idade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "O que espera da reunião",
+              "displayName": "O que espera da reunião",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Investe em anúncios",
+              "displayName": "Investe em anúncios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tempo de atuação",
+              "displayName": "Tempo de atuação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Procedimento que mais vende na clínica",
+              "displayName": "Procedimento que mais vende na clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Vendas por mês",
+              "displayName": "Vendas por mês",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Costuma bater as metas do mês",
+              "displayName": "Costuma bater as metas do mês",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Maior dificuldade para captar clientes",
+              "displayName": "Maior dificuldade para captar clientes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Faturamento ",
+              "displayName": "Faturamento ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Satisfeito com o faturamento atual",
+              "displayName": "Satisfeito com o faturamento atual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Quanto tempo conhece Ila & Nicole",
+              "displayName": "Quanto tempo conhece Ila & Nicole",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Por onde conheceu Ila & Nicole",
+              "displayName": "Por onde conheceu Ila & Nicole",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome Ingresso",
+              "displayName": "Nome Ingresso",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true,
               "removed": false
+            },
+            {
+              "id": "Ingresso",
+              "displayName": "Ingresso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ingresso Vip",
+              "displayName": "Ingresso Vip",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ticket",
+              "displayName": "Ticket",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Chave(audio)",
+              "displayName": "Chave(audio)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Link audio",
+              "displayName": "Link audio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID Clickup",
+              "displayName": "ID Clickup",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Link Clickup",
+              "displayName": "Link Clickup",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Respondeu Aplicação",
+              "displayName": "Respondeu Aplicação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Recuperação de Pesquisa",
+              "displayName": "Recuperação de Pesquisa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Respondeu Pesquisa",
+              "displayName": "Respondeu Pesquisa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "chave (ingresso)",
+              "displayName": "chave (ingresso)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "url",
+              "displayName": "url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
             }
           ]
         },
@@ -248,6 +576,7 @@
     },
     {
       "parameters": {
+        "amount": 4,
         "unit": "seconds"
       },
       "id": "6621447b-6253-4628-bb3a-b0e6448bd765",
@@ -259,6 +588,27 @@
         360
       ],
       "webhookId": "130617d8-c77f-4479-be45-92d70137a705"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "largerEqual",
+              "value2": 94
+            }
+          ]
+        }
+      },
+      "id": "611de8fd-6aa4-44ef-904e-4c2d97fd3acf",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        380
+      ]
     }
   ],
   "pinData": {},
@@ -268,6 +618,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-02-23T18:05:16.000Z",
-  "versionId": "42da4bbd-6253-4bbf-b27d-8ae6757383a0"
+  "updatedAt": "2024-03-09T15:14:38.000Z",
+  "versionId": "728389d4-b766-493f-820e-4f7e88e1e05b"
 }
