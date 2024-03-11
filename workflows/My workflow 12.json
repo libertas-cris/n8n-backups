@@ -126,10 +126,10 @@
         },
         "repository": {
           "__rl": true,
-          "value": "ingressos-normal-09-03",
+          "value": "ingressos-vip-09-03",
           "mode": "list",
-          "cachedResultName": "ingressos-normal-09-03",
-          "cachedResultUrl": "https://github.com/libertas-cris/ingressos-normal-09-03"
+          "cachedResultName": "ingressos-vip-09-03",
+          "cachedResultUrl": "https://github.com/libertas-cris/ingressos-vip-09-03"
         }
       },
       "id": "40f93d3f-1a16-44d9-becd-8f889fa97ae4",
@@ -702,6 +702,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-03-09T16:05:15.000Z",
-  "versionId": "b215f3ab-4119-441e-aa70-d5452a6aa1c9"
+  "updatedAt": "2024-03-11T14:00:42.000Z",
+  "versionId": "94e50c68-1b50-49a2-be75-2bc67863a34f"
 }
