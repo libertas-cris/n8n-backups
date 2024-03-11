@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Google Sheets",
+            "node": "Data Atual",
             "type": "main",
             "index": 0
           }
@@ -1745,6 +1745,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-11T02:35:46.000Z",
-  "versionId": "ea2aa321-b214-401a-827d-27b0e5518719"
+  "updatedAt": "2024-03-11T03:52:53.000Z",
+  "versionId": "0a787c8a-152e-437f-b7be-3e304756b422"
 }
