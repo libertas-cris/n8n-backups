@@ -50,13 +50,7 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Busca Lead Final",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Data": {
@@ -116,27 +110,10 @@
     },
     "Etapa 1": {
       "main": [
-        [
-          {
-            "node": "10 Minutos E1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Atualiza Etapa 2": {
-      "main": [
-        [
-          {
-            "node": "10 Minutos E2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Existe? Etapa 3": {
       "main": [
         [
           {
@@ -145,6 +122,11 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Existe? Etapa 3": {
+      "main": [
+        []
       ]
     },
     "Desqualificado CRC/Até 10Mil/Não investe": {
@@ -729,12 +711,12 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Chave(busca)": "={{ $json['Chave(busca)'] }}",
             "Dificuldade": "={{ $('Formata Telefone').item.json.dificuldade }}",
             "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
             "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
             "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
-            "Etapa_form": "2"
+            "Etapa_form": "2",
+            "Chave(busca)": "={{ $json['Chave(busca)'] }}"
           },
           "matchingColumns": [
             "Chave(busca)"
@@ -1052,64 +1034,6 @@
       "position": [
         1500,
         340
-      ]
-    },
-    {
-      "parameters": {
-        "amount": 3,
-        "unit": "minutes"
-      },
-      "id": "ad9dcdae-3e22-4f17-83b4-bd017e6aa309",
-      "name": "10 Minutos E1",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1,
-      "position": [
-        1500,
-        80
-      ],
-      "webhookId": "5825d061-fd70-453f-b2a6-b11f2ec22f7b",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "amount": 10,
-        "unit": "minutes"
-      },
-      "id": "56abda33-2c3c-44bd-a66d-a1cd46528e35",
-      "name": "10 Minutos E2",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1,
-      "position": [
-        1980,
-        320
-      ],
-      "webhookId": "8ed95ce1-2a56-4c39-9dab-33611ae724bd",
-      "disabled": true
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "68dd40d4-4834-494d-b902-96a72160bf11",
-      "name": "Recuperação E1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        1760,
-        80
-      ]
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "9aad4933-4b03-409c-b24f-5aa32c47d651",
-      "name": "Recuperação E2",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        2180,
-        320
       ]
     },
     {
@@ -1435,16 +1359,16 @@
             "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
             "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
             "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
-            "Pagamento": "={{ $('Formata Telefone').item.json.investimento }}",
-            "Transformação": "={{ $('Formata Telefone').item.json.transformacao }}",
+            "Pagamento": "=",
+            "Transformação": "=",
             "Etapa_form": "3",
             "Staus": "Completo",
             "Qualificado": "Não",
-            "utm_source": "={{ $('Busca Lead Final').item.json.utm_source }}",
-            "utm_campaign": "={{ $('Busca Lead Final').item.json.utm_campaign }}",
-            "utm_medium": "={{ $('Busca Lead Final').item.json.utm_medium }}",
-            "utm_content": "={{ $('Busca Lead Final').item.json.utm_content }}",
-            "utm_term": "={{ $('Busca Lead Final').item.json.utm_term }}",
+            "utm_source": "={{ $('Busca Lead Etapa 2').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Busca Lead Etapa 2').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Busca Lead Etapa 2').item.json.utm_medium }}",
+            "utm_content": "={{ $('Busca Lead Etapa 2').item.json.utm_content }}",
+            "utm_term": "={{ $('Busca Lead Etapa 2').item.json.utm_term }}",
             "Função": "={{ $('Formata Telefone').item.json.função }}",
             "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
             "Status": "completo",
@@ -1960,16 +1884,16 @@
             "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
             "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
             "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
-            "Pagamento": "={{ $('Formata Telefone').item.json.investimento }}",
-            "Transformação": "={{ $('Formata Telefone').item.json.transformacao }}",
+            "Pagamento": "=",
+            "Transformação": "=",
             "Etapa_form": "3",
             "Staus": "Completo",
             "Qualificado": "Não",
-            "utm_source": "={{ $('Busca Lead Final').item.json.utm_source }}",
-            "utm_campaign": "={{ $('Busca Lead Final').item.json.utm_campaign }}",
-            "utm_medium": "={{ $('Busca Lead Final').item.json.utm_medium }}",
-            "utm_content": "={{ $('Busca Lead Final').item.json.utm_content }}",
-            "utm_term": "={{ $('Busca Lead Final').item.json.utm_term }}",
+            "utm_source": "={{ $('Busca Lead Etapa 2').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Busca Lead Etapa 2').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Busca Lead Etapa 2').item.json.utm_medium }}",
+            "utm_content": "={{ $('Busca Lead Etapa 2').item.json.utm_content }}",
+            "utm_term": "={{ $('Busca Lead Etapa 2').item.json.utm_term }}",
             "Função": "={{ $('Formata Telefone').item.json.função }}",
             "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
             "Status": "completo",
@@ -2490,16 +2414,16 @@
             "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
             "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
             "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
-            "Pagamento": "={{ $('Formata Telefone').item.json.investimento }}",
-            "Transformação": "={{ $('Formata Telefone').item.json.transformacao }}",
+            "Pagamento": "=",
+            "Transformação": "=",
             "Etapa_form": "3",
             "Staus": "Completo",
             "Qualificado": "Não",
-            "utm_source": "={{ $('Busca Lead Final').item.json.utm_source }}",
-            "utm_campaign": "={{ $('Busca Lead Final').item.json.utm_campaign }}",
-            "utm_medium": "={{ $('Busca Lead Final').item.json.utm_medium }}",
-            "utm_content": "={{ $('Busca Lead Final').item.json.utm_content }}",
-            "utm_term": "={{ $('Busca Lead Final').item.json.utm_term }}",
+            "utm_source": "={{ $('Busca Lead Etapa 2').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Busca Lead Etapa 2').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Busca Lead Etapa 2').item.json.utm_medium }}",
+            "utm_content": "={{ $('Busca Lead Etapa 2').item.json.utm_content }}",
+            "utm_term": "={{ $('Busca Lead Etapa 2').item.json.utm_term }}",
             "Função": "={{ $('Formata Telefone').item.json.função }}",
             "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
             "Status": "completo",
@@ -2741,8 +2665,8 @@
             "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
             "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
             "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
-            "Pagamento": "={{ $json.Pagamento }}",
-            "Transformação": "={{ $json.Transformação }}",
+            "Pagamento": "=",
+            "Transformação": "=",
             "Etapa_form": "3",
             "Staus": "Completo",
             "Status": "completo",
@@ -2990,16 +2914,16 @@
             "Especialidade": "={{ $('Formata Telefone').item.json.especialidade }}",
             "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
             "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
-            "Pagamento": "={{ $('Formata Telefone').item.json.investimento }}",
-            "Transformação": "={{ $('Formata Telefone').item.json.transformacao }}",
+            "Pagamento": "=",
+            "Transformação": "=",
             "Etapa_form": "3",
             "Staus": "Completo",
             "Qualificado": "Não",
-            "utm_source": "={{ $('Busca Lead Final').item.json.utm_source }}",
-            "utm_campaign": "={{ $('Busca Lead Final').item.json.utm_campaign }}",
-            "utm_medium": "={{ $('Busca Lead Final').item.json.utm_medium }}",
-            "utm_content": "={{ $('Busca Lead Final').item.json.utm_content }}",
-            "utm_term": "={{ $('Busca Lead Final').item.json.utm_term }}",
+            "utm_source": "={{ $('Busca Lead Etapa 2').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Busca Lead Etapa 2').item.json.utm_campaign }}",
+            "utm_medium": "={{ $('Busca Lead Etapa 2').item.json.utm_medium }}",
+            "utm_content": "={{ $('Busca Lead Etapa 2').item.json.utm_content }}",
+            "utm_term": "={{ $('Busca Lead Etapa 2').item.json.utm_term }}",
             "Função": "={{ $('Formata Telefone').item.json.função }}",
             "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
             "Status": "completo",
@@ -3693,48 +3617,46 @@
         "json": {
           "headers": {
             "host": "n8n.marcosfoks.com.br",
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
-            "content-length": "1879",
+            "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Mobile Safari/537.36 Edg/122.0.0.0",
+            "content-length": "1668",
             "accept": "*/*",
-            "accept-encoding": "gzip",
+            "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
             "cdn-loop": "cloudflare",
             "cf-connecting-ip": "186.235.185.56",
             "cf-ipcountry": "BR",
-            "cf-ray": "857857289e462771-GIG",
+            "cf-ray": "8628a8c718501174-GIG",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary8cgLl8oVAJCRLmUK",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary8dUrzl8QAvEcgqJ0",
             "origin": "https://dentistapower.com.br",
             "priority": "u=1, i",
             "referer": "https://dentistapower.com.br/",
-            "sec-ch-ua": "\"Not A(Brand\";v=\"99\", \"Microsoft Edge\";v=\"121\", \"Chromium\";v=\"121\"",
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Microsoft Edge\";v=\"122\"",
+            "sec-ch-ua-mobile": "?1",
+            "sec-ch-ua-platform": "\"Android\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "172.69.90.68",
+            "x-forwarded-for": "172.69.91.86",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.69.90.68"
+            "x-real-ip": "172.69.91.86"
           },
           "params": {},
           "query": {},
           "body": {
             "nome": "Matheus",
             "email": "matheus.cristhyan.libertas@gmail.com",
-            "telefone": "(81) 99351-5055",
-            "clinica": "Caruaru Odonto",
+            "telefone": "5581993515055",
+            "clinica": "Matheus Cristhyan",
             "função": "Dono/Sócio",
-            "dificuldade": "teste",
+            "dificuldade": "Captar pacientes",
             "especialidade": "implante",
-            "investe": "Sim, entre R$ 2.000 e R$ 5.000",
-            "faturamento": "Entre R$ 20 mil e R$ 50 mil",
-            "investimento": "No Cartão de Crédito",
-            "transformacao": "teste",
-            "etapa": "3",
+            "investe": "Sim, entre R$ 5.000 e R$ 10.000",
+            "faturamento": "Entre R$ 100 mil e R$ 250 mil",
+            "etapa": "2",
             "utm_campaign": "null",
             "utm_source": "null",
             "utm_medium": "null",
@@ -3751,6 +3673,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-27T18:52:24.000Z",
-  "versionId": "9c7e9d1f-d76e-4747-b983-2a1e77b7681f"
+  "updatedAt": "2024-03-11T04:09:12.000Z",
+  "versionId": "e6527250-37e0-4918-9e3c-f28b0150918c"
 }
