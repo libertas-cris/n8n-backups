@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Data Atual",
+            "node": "add papo de dono2",
             "type": "main",
             "index": 0
           }
@@ -230,22 +230,148 @@
       "main": [
         [
           {
-            "node": "Google Sheets",
+            "node": "busca infos mentorado2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Google Sheets": {
+    "Adiciona": {
       "main": [
         [
           {
-            "node": "Google Drive1",
+            "node": "busca infos mentorado",
             "type": "main",
             "index": 0
           }
         ]
+      ]
+    },
+    "busca infos mentorado": {
+      "main": [
+        [
+          {
+            "node": "permissao acomp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza": {
+      "main": [
+        [
+          {
+            "node": "busca infos mentorado1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca infos mentorado1": {
+      "main": [
+        [
+          {
+            "node": "permissao acomp1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca infos mentorado2": {
+      "main": [
+        [
+          {
+            "node": "permissao precif",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza email precif1": {
+      "main": [
+        [
+          {
+            "node": "busca infos mentorado3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "busca infos mentorado3": {
+      "main": [
+        [
+          {
+            "node": "permissao precif1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona papo de dono": {
+      "main": [
+        [
+          {
+            "node": "add papo de dono",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza papo de dono": {
+      "main": [
+        [
+          {
+            "node": "add papo de dono1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona mentoria": {
+      "main": [
+        [
+          {
+            "node": "add mentoria",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza mentoria": {
+      "main": [
+        [
+          {
+            "node": "add mentoria1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "permissao acomp": {
+      "main": [
+        [
+          {
+            "node": "add papo de dono2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "add papo de dono2": {
+      "main": [
+        []
       ]
     }
   },
@@ -842,7 +968,7 @@
       "typeVersion": 4,
       "position": [
         2220,
-        840
+        880
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -1619,6 +1745,195 @@
     },
     {
       "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1219484480,
+          "mode": "list",
+          "cachedResultName": "Turma 8",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d0fb687b-b42b-4fa8-82bf-2560e01dc4ee",
+      "name": "busca infos mentorado",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2460,
+        60
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1219484480,
+          "mode": "list",
+          "cachedResultName": "Turma 8",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f1aaa406-78dd-4f13-8f7d-54d941c4af69",
+      "name": "busca infos mentorado1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2460,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "share",
+        "folderNoRootId": {
+          "__rl": true,
+          "value": "={{ $json['ID Pasta Precificacao'] }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "bfee31f1-73eb-4037-a628-076e031e84db",
+      "name": "permissao acomp",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2700,
+        60
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ip47vcSKsulzZM52",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "share",
+        "folderNoRootId": {
+          "__rl": true,
+          "value": "={{ $json['ID Pasta Precificacao'] }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Trata Webhook').item.json['Email-Extra'] }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "a205cd13-62d2-41f5-9423-2b1a1240bb4e",
+      "name": "permissao acomp1",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2700,
+        260
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ip47vcSKsulzZM52",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1219484480,
+          "mode": "list",
+          "cachedResultName": "Turma 8",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dbf9172b-e611-4c46-8a6c-35bfaff0e335",
+      "name": "busca infos mentorado2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2240,
+        460
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
         "resource": "folder",
         "operation": "share",
         "folderNoRootId": {
@@ -1636,7 +1951,7 @@
         "options": {}
       },
       "id": "4ad47cb2-f6ab-49fa-bd9d-dc98862fb903",
-      "name": "Google Drive1",
+      "name": "permissao precif",
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
@@ -1676,13 +1991,13 @@
         },
         "options": {}
       },
-      "id": "dbf9172b-e611-4c46-8a6c-35bfaff0e335",
-      "name": "Google Sheets",
+      "id": "913d3e62-377a-4c12-a780-9fa1f8f2ec80",
+      "name": "busca infos mentorado3",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
         2240,
-        460
+        680
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -1690,6 +2005,197 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "share",
+        "folderNoRootId": {
+          "__rl": true,
+          "value": "={{ $json['ID Pasta Precificacao'] }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Trata Webhook').item.json['Email-Precificação'] }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "f16a939a-0f45-4cb2-8b74-aeb724a8fc40",
+      "name": "permissao precif1",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2460,
+        680
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ip47vcSKsulzZM52",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phones",
+              "value": "={{ $('Trata Webhook').item.json['Número-Responsável'] }}"
+            },
+            {
+              "name": "groupId\t",
+              "value": "=120363191248187347-group"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5ef8f8d7-d294-4d4c-b9d1-315f9034a457",
+      "name": "add papo de dono",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2460,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phones",
+              "value": "={{ $('Trata Webhook').item.json['Número-Responsável'] }}"
+            },
+            {
+              "name": "groupId\t",
+              "value": "=120363191248187347-group"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f518906e-b9be-451f-9588-86869368c3da",
+      "name": "add papo de dono1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2460,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phones",
+              "value": "={{  $('Trata Webhook').item.json['numero-mentoria']}} "
+            },
+            {
+              "name": "groupId\t",
+              "value": "=120363198216362637-group"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "12ac5e08-0692-4091-8087-5a955b438b76",
+      "name": "add mentoria",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2460,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phones",
+              "value": "={{  $('Trata Webhook').item.json['numero-mentoria']}} "
+            },
+            {
+              "name": "groupId\t",
+              "value": "=120363198216362637-group"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3b865c7c-5374-4f29-b746-a9adc7cd8a4d",
+      "name": "add mentoria1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2460,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"autoInvite\": false,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
+        "options": {}
+      },
+      "id": "07e18729-816b-4748-9370-5bb2b22d4133",
+      "name": "add papo de dono2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2940,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phones",
+              "value": "={{ $('Trata Webhook').item.json.Telefone }}"
+            },
+            {
+              "name": "groupId\t",
+              "value": "=120363198216362637-group"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8903b15e-5271-418d-8837-94eb999b11df",
+      "name": "add mentoria2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3180,
+        60
+      ]
     }
   ],
   "pinData": {
@@ -1699,41 +2205,33 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "got (https://github.com/sindresorhus/got)",
-            "content-length": "428",
+            "content-length": "213",
             "accept-encoding": "gzip, br",
-            "baggage": "sentry-environment=vercel-production,sentry-release=84d6c594af0fa9256610fc2f74669344e43aabc9-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=9cfb342a30e64b1d97a20cf1cf86384b",
+            "baggage": "sentry-environment=vercel-production,sentry-release=bbeb12cad2bad3ed9899cc04a70563ef67fdabc6-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=df86e9bb064c41ae970955f7d2aca1f1",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "18.170.64.119",
+            "cf-connecting-ip": "18.171.232.147",
             "cf-ipcountry": "GB",
-            "cf-ray": "85fa16430ce5638f-LHR",
+            "cf-ray": "8630313f591824e6-LHR",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "sentry-trace": "9cfb342a30e64b1d97a20cf1cf86384b-a61bd6edf6ce6739-0",
-            "x-forwarded-for": "172.69.43.185",
+            "sentry-trace": "df86e9bb064c41ae970955f7d2aca1f1-b002fe25bc572d1a-0",
+            "x-forwarded-for": "172.71.242.166",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.69.43.185",
-            "x-vercel-id": "gru1::c6vbk-1709641508103-ea6ae9741c38"
+            "x-real-ip": "172.71.242.166",
+            "x-vercel-id": "gru1::xhhhn-1710208844504-bb4350ea0823"
           },
           "params": {},
           "query": {},
           "body": {
-            "submittedAt": "2024-03-05T12:25:08.272Z",
+            "submittedAt": "2024-03-12T02:00:44.654Z",
             "E-mail": "matheuscristhyan.2@gmail.com",
             "Telefone": "+5581993515055",
-            "Email-Acesso": "acesso@gmail.com",
-            "Email-Extra": "aco2@gmail.com",
-            "Loop E-mails": "Não",
-            "Email-Precificação": "matheuscristhyan.1@gmail.com",
-            "Loop E-mails  precificação": "Não",
-            "Nome-Responsável": "tran",
-            "Número-Responsável": "+5581992602244",
-            "Loop papo de dono": "Não",
-            "nome-mentoria": "tran2",
-            "numero-mentoria": "+5581993515055",
-            "etapa": "4"
+            "Email-Acesso": "matheuscristhyan.2@gmail.com",
+            "Email-Extra": "matheuscristhyan.1@gmail.com",
+            "etapa": "1"
           }
         }
       }
@@ -1745,6 +2243,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-11T03:52:53.000Z",
-  "versionId": "0a787c8a-152e-437f-b7be-3e304756b422"
+  "updatedAt": "2024-03-12T02:04:37.000Z",
+  "versionId": "de54d60a-f000-4d15-a7e9-3a60a339edb3"
 }
