@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Code",
+            "node": "Google Sheets",
             "type": "main",
             "index": 0
           }
@@ -25,13 +25,7 @@
     },
     "Code": {
       "main": [
-        [
-          {
-            "node": "Google Sheets",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
@@ -72,10 +66,10 @@
         },
         "repository": {
           "__rl": true,
-          "value": "ingressos-vip-09-03",
+          "value": "audio-rs8",
           "mode": "list",
-          "cachedResultName": "ingressos-vip-09-03",
-          "cachedResultUrl": "https://github.com/libertas-cris/ingressos-vip-09-03"
+          "cachedResultName": "audio-rs8",
+          "cachedResultUrl": "https://github.com/libertas-cris/audio-rs8"
         }
       },
       "id": "25dab383-b0e2-4417-a3e6-b58b7d9ada2b",
@@ -105,37 +99,61 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 117193026,
+          "value": 983381668,
           "mode": "list",
-          "cachedResultName": "ing-rs8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=117193026"
+          "cachedResultName": "Dados - Áudios [TODOS]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=983381668"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
             "nome": "={{ $json.name }}",
             "url": "={{ $json.download_url }}",
-            "link": "={{ $json.download_url }}"
+            "link": "={{ $json.download_url }}",
+            "Nome": "={{ $json.name }}",
+            "Link": "={{ $json.download_url }}"
           },
           "matchingColumns": [],
           "schema": [
             {
-              "id": "nome",
-              "displayName": "nome",
+              "id": "Nome",
+              "displayName": "Nome",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
-              "id": "url",
-              "displayName": "url",
+              "id": "Link",
+              "displayName": "Link",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "https://raw.githubusercontent.com/math-cristhyan/audiosreuni-osecreta/main/audio-sem-nome-reuniao-secreta.mp3",
+              "displayName": "https://raw.githubusercontent.com/math-cristhyan/audiosreuni-osecreta/main/audio-sem-nome-reuniao-secreta.mp3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "geral <-",
+              "displayName": "geral <-",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ]
         },
@@ -146,7 +164,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        1200,
+        980,
         300
       ],
       "credentials": {
@@ -172,8 +190,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 1,
       "position": [
-        720,
-        600
+        640,
+        680
       ]
     },
     {
@@ -186,8 +204,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 2,
       "position": [
-        1140,
-        620
+        1300,
+        800
       ]
     },
     {
@@ -200,8 +218,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        980,
-        300
+        1020,
+        720
       ]
     }
   ],
@@ -212,6 +230,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-03-11T21:23:19.000Z",
-  "versionId": "18d1c157-e784-42a6-be4c-09aa6ad1dcae"
+  "updatedAt": "2024-03-12T14:09:32.000Z",
+  "versionId": "820294c1-9a1e-4206-9254-10d073b38202"
 }
