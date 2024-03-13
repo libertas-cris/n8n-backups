@@ -16,7 +16,7 @@
       "main": [
         [
           {
-            "node": "Google Sheets",
+            "node": "Code",
             "type": "main",
             "index": 0
           }
@@ -25,7 +25,13 @@
     },
     "Code": {
       "main": [
-        []
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -66,10 +72,10 @@
         },
         "repository": {
           "__rl": true,
-          "value": "audio-rs8",
+          "value": "ingressos-vip-12-03",
           "mode": "list",
-          "cachedResultName": "audio-rs8",
-          "cachedResultUrl": "https://github.com/libertas-cris/audio-rs8"
+          "cachedResultName": "ingressos-vip-12-03",
+          "cachedResultUrl": "https://github.com/libertas-cris/ingressos-vip-12-03"
         }
       },
       "id": "25dab383-b0e2-4417-a3e6-b58b7d9ada2b",
@@ -99,61 +105,36 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 983381668,
+          "value": 130117977,
           "mode": "list",
-          "cachedResultName": "Dados - Áudios [TODOS]",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=983381668"
+          "cachedResultName": "Ingressos [RS8]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=130117977"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
             "nome": "={{ $json.name }}",
-            "url": "={{ $json.download_url }}",
-            "link": "={{ $json.download_url }}",
-            "Nome": "={{ $json.name }}",
-            "Link": "={{ $json.download_url }}"
+            "url": "={{ $json.download_url }}"
           },
           "matchingColumns": [],
           "schema": [
             {
-              "id": "Nome",
-              "displayName": "Nome",
+              "id": "nome",
+              "displayName": "nome",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
+              "canBeUsedToMatch": true
             },
             {
-              "id": "Link",
-              "displayName": "Link",
+              "id": "url",
+              "displayName": "url",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "https://raw.githubusercontent.com/math-cristhyan/audiosreuni-osecreta/main/audio-sem-nome-reuniao-secreta.mp3",
-              "displayName": "https://raw.githubusercontent.com/math-cristhyan/audiosreuni-osecreta/main/audio-sem-nome-reuniao-secreta.mp3",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "geral <-",
-              "displayName": "geral <-",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
+              "canBeUsedToMatch": true
             }
           ]
         },
@@ -164,7 +145,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        980,
+        1180,
         300
       ],
       "credentials": {
@@ -211,15 +192,15 @@
     {
       "parameters": {
         "mode": "runOnceForEachItem",
-        "jsCode": "function extrairNomeDoArquivo(nomeArquivo) {\n    // Extrair o nome entre \"Ingresso - \" e \".pdf\"\n    var nomeExtraido = nomeArquivo.match(/ingresso - (.+?)\\.pdf/);\n\n    // Verificar se foi encontrado um nome\n    if (nomeExtraido && nomeExtraido.length > 1) {\n        // Converter para minúsculas e substituir _ por espaço\n        var nomeFormatado = nomeExtraido[1].toLowerCase().replace(/_/g, ' ');\n        // Capitalizar o nome\n        nomeFormatado = nomeFormatado.replace(/\\b\\w/g, function(char) {\n            return char.toUpperCase();\n        });\n        // Substituir espaços por underline\n        nomeFormatado = nomeFormatado.replace(/\\s/g, '_');\n        return nomeFormatado;\n    } else {\n        return \"Nome não encontrado\";\n    }\n}\n\n// Exemplo de uso:\nvar nomeArquivo = $input.item.json['name'];\n$input.item.json['name'] = extrairNomeDoArquivo(nomeArquivo);\n\nreturn $input.item;"
+        "jsCode": "function removerExtensao(nomeArquivo) {\n    // Substitui a extensão .pdf por uma string vazia\n    return nomeArquivo.replace(/\\.pdf$/, '');\n}\n\n// Exemplo de uso\nvar nomeArquivo = $input.item.json['name'];\n$input.item.json['name'] = removerExtensao(nomeArquivo);\n\nreturn $input.item\n"
       },
       "id": "fca7e644-3d19-4c83-8a8c-35baacc687e4",
       "name": "Code",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1020,
-        720
+        960,
+        300
       ]
     }
   ],
@@ -230,6 +211,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-03-12T14:09:32.000Z",
-  "versionId": "820294c1-9a1e-4206-9254-10d073b38202"
+  "updatedAt": "2024-03-12T16:22:45.000Z",
+  "versionId": "087183c0-65fa-46c0-ba54-ce1414d7521d"
 }
