@@ -186,8 +186,8 @@
       "name": "On clicking 'execute'",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        835,
-        335
+        840,
+        320
       ],
       "typeVersion": 1
     },
@@ -488,6 +488,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-28T20:06:54.000Z",
-  "versionId": "ceff5879-3074-42cf-8f14-7f95e3b9bdd9"
+  "updatedAt": "2024-03-13T23:57:22.000Z",
+  "versionId": "3c217372-907a-4817-ad41-ed9ed7f0803e"
 }
