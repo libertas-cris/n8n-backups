@@ -1,0 +1,512 @@
+{
+  "active": true,
+  "connections": {
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Atual": {
+      "main": [
+        [
+          {
+            "node": "Formata Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Data Atual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-13T18:48:02.060Z",
+  "id": "982PXIdnALLcrB6n",
+  "meta": null,
+  "name": "[JESS] Newsletter",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "432614a7-a20c-4e74-9136-5f68eb420b9e",
+      "name": "Code1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        660,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1404754991,
+          "mode": "list",
+          "cachedResultName": "Initiate Checkout - Britshize",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=1404754991"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Telefone",
+              "lookupValue": "={{ $json.phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6d9ecbf1-5969-42ba-aaa5-738ac80d6c81",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1100,
+        620
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    let ddi = '55';\n    number = number.toString().replace(/[^\\d]/g, \"\");\n\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        ddi = number.substring(0, 2);\n        ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n\n    } else {\n        return number;\n    }\n}\n\n$input.all()[0].json['phone'] = formataTelefone($input.all()[0].json['phone']);\n\nreturn $input.all();\n"
+      },
+      "id": "461e02a3-2c00-48eb-8cbf-22362f226580",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        880,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "isEmpty"
+            }
+          ]
+        }
+      },
+      "id": "3109f9cd-fdda-46f8-91bc-fea3203bab12",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1404754991,
+          "mode": "list",
+          "cachedResultName": "Initiate Checkout - Britshize",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=1404754991"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data ": "={{ $json.formattedDate }}",
+            "Nome": "={{ $('Formata Telefone').item.json.name }}",
+            "Email": "={{ $('Formata Telefone').item.json.email }}",
+            "Telefone": "={{ $('Formata Telefone').item.json.phone }}",
+            "utm_source": "={{ $('Formata Telefone').item.json.utm_source == null ? \"\" : $('Formata Telefone').item.json.utm_source }}",
+            "utm_medium": "={{ $('Formata Telefone').item.json.utm_medium == null ? \"\" : $('Formata Telefone').item.json.utm_medium }}",
+            "utm_campaign": "={{ $('Formata Telefone').item.json.utm_campaign == null ? \"\" : $('Formata Telefone').item.json.utm_campaign}}",
+            "utm_term": "={{ $('Formata Telefone').item.json.utm_term == null ? \"\" : $('Formata Telefone').item.json.utm_term }}",
+            "utm_content": "={{ $('Formata Telefone').item.json.utm_content == null ? \"\" : $('Formata Telefone').item.json.utm_content }}",
+            "página": "={{ $('Formata Telefone').item.json.path }}",
+            "link whatsapp": "=wa.me/{{ $('Formata Telefone').item.json.phone }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data ",
+              "displayName": "Data ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "página",
+              "displayName": "página",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link whatsapp",
+              "displayName": "link whatsapp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "comprou?",
+              "displayName": "comprou?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d49e6ec2-240e-415d-900f-f581841e06ee",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1900,
+        620
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "556ed68a-dfc2-4dc8-9ee9-53e905ae4015",
+      "name": "Data Atual",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "038bbf35-d1f3-4e9c-ad15-59a93fba6804",
+      "name": "Formata Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3,
+        "unit": "seconds"
+      },
+      "id": "38f5c7b3-d32e-4341-af8c-f79a99a9bbad",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        240
+      ],
+      "webhookId": "af9ae4f2-026a-4718-8db5-b607079a7d3b"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d9751a4e-9d84-4bf8-a25f-cf2a20d4adf1",
+        "options": {}
+      },
+      "id": "9f02f804-a4d0-437e-bd58-f866f0f07f97",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        460,
+        380
+      ],
+      "webhookId": "d9751a4e-9d84-4bf8-a25f-cf2a20d4adf1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/addressbooks/615389/emails",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.access_token }}"
+            },
+            {
+              "name": "token_type",
+              "value": "Bearer"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n   \"emails\":[\n      {\n         \"email\":\"{{ $node[\"Formata Telefone\"].json[\"email\"] }}\",\n         \"variables\":{\n            \"Nome\":\"{{ $node[\"Formata Telefone\"].json[\"name\"] }}\",\n\"Phone\":\"{{ $node[\"Formata Telefone\"].json[\"phone\"] }}\",\n\"subscribe_date\":\"{{ $node[\"Data Atual\"].json[\"currentDate\"] }}\",\n\"utm_source\":\"{{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\",\n\"utm_campaign\":\"{{ $node[\"Formata Telefone\"].json[\"utm_campaign\"] }}\",\n\"utm_medium\":\"{{ $node[\"Formata Telefone\"].json[\"utm_medium\"] }}\",\n\"utm_content\":\"{{ $node[\"Formata Telefone\"].json[\"utm_content\"] }}\",\n\"utm_term\":\"{{ $node[\"Formata Telefone\"].json[\"utm_term\"] }}\",\n\"Pagina\":\"{{ $node[\"Formata Telefone\"].json[\"path\"] }}\"\n         }\n      }\n   ]\n}",
+        "options": {}
+      },
+      "id": "bc8b148b-134b-4a63-8e48-85bea8c4f145",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1880,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sendpulse.com/oauth/access_token",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={    \"grant_type\":\"client_credentials\",    \"client_id\":\"3ff5527b0f45a4d1c46ccace02f53347\",    \"client_secret\":\"1ca1c037309edf7fd9d12d1d8e343da5\" }",
+        "options": {}
+      },
+      "id": "d6c542d4-e5ff-4828-ab3a-e27a772fa113",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1700,
+        240
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (Linux; Android 12; SAMSUNG SM-S908E) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/23.0 Chrome/115.0.0.0 Mobile Safari/537.36",
+            "content-length": "203",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "2804:14c:65d7:8104:e304:aec8:451c:e10",
+            "cf-ipcountry": "BR",
+            "cf-ray": "84dd5ea6ae9153d1-GYN",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "text/plain;charset=UTF-8",
+            "origin": "https://britenglish.com.br",
+            "referer": "https://britenglish.com.br/",
+            "sec-ch-ua": "\"Not/A)Brand\";v=\"99\", \"Samsung Internet\";v=\"23.0\", \"Chromium\";v=\"115\"",
+            "sec-ch-ua-mobile": "?1",
+            "sec-ch-ua-platform": "\"Android\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "cross-site",
+            "x-forwarded-for": "172.68.114.136",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.68.114.136"
+          },
+          "params": {},
+          "query": {},
+          "body": "{\"email\":\"matheuscristhyan.2@gmail.com\",\"name\":\"Isabela Nazareno\",\"phone\":\"(61)992483590\",\"utm_source\":null,\"utm_medium\":null,\"utm_campaign\":null,\"utm_term\":null,\"utm_content\":null,\"path\":\"/pre-checkout/\"}"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-07T16:35:41.227Z",
+      "updatedAt": "2024-01-07T16:35:41.227Z",
+      "id": "lnBfoQAPlkm8ew3T",
+      "name": "Jess"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-13T19:05:26.000Z",
+  "versionId": "df4022c2-e711-48a7-ba33-e41a58148cd1"
+}
