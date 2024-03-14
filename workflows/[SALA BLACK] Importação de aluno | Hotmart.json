@@ -1,28 +1,6 @@
 {
   "active": true,
   "connections": {
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "Code1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code1": {
-      "main": [
-        [
-          {
-            "node": "Iniciar atendimento",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Iniciar atendimento": {
       "main": [
         [
@@ -67,11 +45,80 @@
         ]
       ]
     },
-    "Wait2": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
       "main": [
         [
           {
             "node": "Importação de Aluno",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Importação de Aluno1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Importação de Aluno2",
             "type": "main",
             "index": 0
           }
@@ -95,8 +142,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        700,
-        260
+        720,
+        100
       ],
       "webhookId": "442f200e-3c3f-447f-9c8e-f51fa93ffc80"
     },
@@ -109,8 +156,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        920,
-        260
+        900,
+        720
       ]
     },
     {
@@ -209,7 +256,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1,
       "position": [
-        2160,
+        1820,
         260
       ],
       "webhookId": "b5cb59ce-3395-4ee8-9995-2cf3178e243d"
@@ -255,7 +302,7 @@
             },
             {
               "name": "message",
-              "value": "=Importação de aluno: \n\n{{ $('Code1').item.json.name }};{{ $('Code1').item.json.email }}\n\nTurma 7\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234  "
+              "value": "=Importação de aluno: \n\n{{ $json.Nome }};{{ $('Formata Telefone').item.json['Email-Acesso'] }}\n\nTurma 8\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234"
             }
           ]
         },
@@ -266,18 +313,235 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2380,
+        2540,
+        240
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "86dbafd6-8578-4338-a28d-83e4f42dfbe5",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        700,
         260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['Telefone'] = formataTelefone($input.all()[0].json['Telefone'])\n\nreturn $input.all();"
+      },
+      "id": "24f27a7f-854e-4c72-8aa1-9282e1ee6e4e",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        940,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1219484480,
+          "mode": "list",
+          "cachedResultName": "Turma 8",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Email",
+              "lookupValue": "={{ $('Formata Telefone').item.json['E-mail'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0b449a67-42fc-4013-9cf0-07e34023cbf7",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2040,
+        260
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Nome }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "9fbdc031-960a-40ab-931e-20c9763d1e59",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2260,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI",
+          "mode": "list",
+          "cachedResultName": "Controle de Automações | Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1219484480,
+          "mode": "list",
+          "cachedResultName": "Turma 8",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Chave",
+              "lookupValue": "={{ $('Formata Telefone').item.json.Telefone.slice(-7) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e3c60d3a-44fc-4339-831e-0ea655f5b66d",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2440,
+        560
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Nome }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "a1878fc7-b9e2-484d-8aa7-a6ea50a8eb0c",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Importação de aluno: \n\n{{ $json.Nome }};{{ $('Formata Telefone').item.json['Email-Acesso'] }}\n\nTurma 8\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "032dcd54-4f39-42d9-8c3b-dfd7efd6b6ed",
+      "name": "Importação de Aluno1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2980,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5581993515055"
+            },
+            {
+              "name": "message",
+              "value": "=Aluno não encontrado para importação!\n\nEmail informado: {{ $('Formata Telefone').item.json['E-mail'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8eaeb67e-852a-448a-8545-12d2e54213fd",
+      "name": "Importação de Aluno2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2980,
+        800
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Execute Workflow Trigger": [
+      {
+        "json": {
+          "submittedAt": "2024-03-12T02:00:44.654Z",
+          "E-mail": "matheuscristhyan.2@gmail.com",
+          "Telefone": "+5581993515055",
+          "Email-Acesso": "matheuscristhyan.2@gmail.com",
+          "Email-Extra": "matheuscristhyan.1@gmail.com",
+          "etapa": "1"
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-02-21T20:41:44.000Z",
-  "versionId": "e9aec79a-7158-4c0a-875f-e88f0a3498d6"
+  "updatedAt": "2024-03-14T14:53:52.000Z",
+  "versionId": "5f4b99b9-5492-4d5e-a983-f3578ea4c855"
 }
