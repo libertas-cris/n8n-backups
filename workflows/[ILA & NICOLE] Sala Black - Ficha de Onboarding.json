@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "add papo de dono2",
+            "node": "Data Atual",
             "type": "main",
             "index": 0
           }
@@ -316,60 +316,25 @@
     },
     "Adiciona papo de dono": {
       "main": [
-        [
-          {
-            "node": "add papo de dono",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Atualiza papo de dono": {
       "main": [
-        [
-          {
-            "node": "add papo de dono1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Adiciona mentoria": {
       "main": [
-        [
-          {
-            "node": "add mentoria",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Atualiza mentoria": {
       "main": [
-        [
-          {
-            "node": "add mentoria1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "permissao acomp": {
-      "main": [
-        [
-          {
-            "node": "add papo de dono2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "add papo de dono2": {
       "main": [
         []
       ]
@@ -2044,18 +2009,8 @@
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
         "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phones",
-              "value": "={{ $('Trata Webhook').item.json['Número-Responsável'] }}"
-            },
-            {
-              "name": "groupId\t",
-              "value": "=120363191248187347-group"
-            }
-          ]
-        },
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json['Número-Responsável'] }}\"]\n  } ",
         "options": {}
       },
       "id": "5ef8f8d7-d294-4d4c-b9d1-315f9034a457",
@@ -2072,46 +2027,8 @@
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
         "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phones",
-              "value": "={{ $('Trata Webhook').item.json['Número-Responsável'] }}"
-            },
-            {
-              "name": "groupId\t",
-              "value": "=120363191248187347-group"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "f518906e-b9be-451f-9588-86869368c3da",
-      "name": "add papo de dono1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        2460,
-        1080
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phones",
-              "value": "={{  $('Trata Webhook').item.json['numero-mentoria']}} "
-            },
-            {
-              "name": "groupId\t",
-              "value": "=120363198216362637-group"
-            }
-          ]
-        },
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{  $('Trata Webhook').item.json['numero-mentoria']}} \"]\n  } ",
         "options": {}
       },
       "id": "12ac5e08-0692-4091-8087-5a955b438b76",
@@ -2128,36 +2045,8 @@
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
         "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phones",
-              "value": "={{  $('Trata Webhook').item.json['numero-mentoria']}} "
-            },
-            {
-              "name": "groupId\t",
-              "value": "=120363198216362637-group"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "3b865c7c-5374-4f29-b746-a9adc7cd8a4d",
-      "name": "add mentoria1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        2460,
-        1520
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
-        "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"autoInvite\": false,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
         "options": {}
       },
       "id": "07e18729-816b-4748-9370-5bb2b22d4133",
@@ -2195,6 +2084,42 @@
       "position": [
         3180,
         60
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json['Número-Responsável'] }}\"]\n  } ",
+        "options": {}
+      },
+      "id": "2cfd1818-e0ac-48f1-a10d-1662d42bbb5e",
+      "name": "add papo de dono1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2460,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{  $('Trata Webhook').item.json['numero-mentoria']}} \"]\n  } ",
+        "options": {}
+      },
+      "id": "4a17de05-b437-4d90-840e-fa824379b785",
+      "name": "add mentoria1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2460,
+        1520
       ]
     }
   ],
@@ -2243,6 +2168,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-12T02:04:37.000Z",
-  "versionId": "de54d60a-f000-4d15-a7e9-3a60a339edb3"
+  "updatedAt": "2024-03-13T23:36:37.000Z",
+  "versionId": "c5dbf0ca-e3e2-4f44-874a-2bc07c10cee6"
 }
