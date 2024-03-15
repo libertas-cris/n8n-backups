@@ -47,24 +47,12 @@
     },
     "Execute Workflow Trigger": {
       "main": [
-        [
-          {
-            "node": "Formata Telefone",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Formata Telefone": {
       "main": [
-        [
-          {
-            "node": "Google Sheets",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Google Sheets": {
@@ -111,7 +99,7 @@
       "main": [
         [
           {
-            "node": "Importação de Aluno1",
+            "node": "Importação de Aluno3",
             "type": "main",
             "index": 0
           }
@@ -119,6 +107,39 @@
         [
           {
             "node": "Importação de Aluno2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait2": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Iniciar atendimento",
             "type": "main",
             "index": 0
           }
@@ -143,7 +164,7 @@
       "typeVersion": 1,
       "position": [
         720,
-        100
+        260
       ],
       "webhookId": "442f200e-3c3f-447f-9c8e-f51fa93ffc80"
     },
@@ -156,8 +177,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        900,
-        720
+        940,
+        260
       ]
     },
     {
@@ -302,7 +323,7 @@
             },
             {
               "name": "message",
-              "value": "=Importação de aluno: \n\n{{ $json.Nome }};{{ $('Formata Telefone').item.json['Email-Acesso'] }}\n\nTurma 8\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234"
+              "value": "=Importação de aluno: \n\n{{ $json.Nome }};{{ $('Code1').item.json.email }}\n\nTurma 8\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234 "
             }
           ]
         },
@@ -324,8 +345,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1,
       "position": [
-        700,
-        260
+        680,
+        580
       ]
     },
     {
@@ -337,8 +358,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        940,
-        260
+        1240,
+        680
       ]
     },
     {
@@ -361,7 +382,7 @@
           "values": [
             {
               "lookupColumn": "Email",
-              "lookupValue": "={{ $('Formata Telefone').item.json['E-mail'] }}"
+              "lookupValue": "={{ $('Code1').item.json.email }}"
             }
           ]
         },
@@ -423,7 +444,7 @@
           "values": [
             {
               "lookupColumn": "Chave",
-              "lookupValue": "={{ $('Formata Telefone').item.json.Telefone.slice(-7) }}"
+              "lookupValue": "={{ $('Code1').item.json.telefone.slice(-7) }}"
             }
           ]
         },
@@ -474,34 +495,6 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "=553197688563"
-            },
-            {
-              "name": "message",
-              "value": "=Importação de aluno: \n\n{{ $json.Nome }};{{ $('Formata Telefone').item.json['Email-Acesso'] }}\n\nTurma 8\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "032dcd54-4f39-42d9-8c3b-dfd7efd6b6ed",
-      "name": "Importação de Aluno1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        2980,
-        540
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
               "value": "=5581993515055"
             },
             {
@@ -517,8 +510,36 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2980,
+        2960,
         800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553197688563"
+            },
+            {
+              "name": "message",
+              "value": "=Importação de aluno: \n\n{{ $json.Nome }};{{ $('Code1').item.json.email }}\n\nTurma 8\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234 "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6ed50e3f-6fce-4e0a-8635-b868e70d0dce",
+      "name": "Importação de Aluno3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2940,
+        540
       ]
     }
   ],
@@ -534,6 +555,37 @@
           "etapa": "1"
         }
       }
+    ],
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "axios/0.21.4",
+            "content-length": "68",
+            "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "194.163.167.202",
+            "cf-ipcountry": "DE",
+            "cf-ray": "864544dbfabe7a5a-DUS",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "x-forwarded-for": "198.41.242.227",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "198.41.242.227"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "email": "matheuscristhyan.2@gmail.com",
+            "telefone": "+5581993515055"
+          }
+        }
+      }
     ]
   },
   "settings": {
@@ -542,6 +594,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-14T14:53:52.000Z",
-  "versionId": "5f4b99b9-5492-4d5e-a983-f3578ea4c855"
+  "updatedAt": "2024-03-14T15:25:53.000Z",
+  "versionId": "8e34147e-38b7-4d38-a538-565046a7bdfd"
 }
