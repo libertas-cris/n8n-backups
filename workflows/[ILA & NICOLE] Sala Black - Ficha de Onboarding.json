@@ -575,11 +575,6 @@
           }
         ]
       ]
-    },
-    "permissao acomp5": {
-      "main": [
-        []
-      ]
     }
   },
   "createdAt": "2024-02-29T19:31:31.334Z",
@@ -1343,7 +1338,7 @@
     },
     {
       "parameters": {
-        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$('Trata Webhook').all()[0].json['Número-Responsável'] = formataTelefone($('Trata Webhook').all()[0].json['Número-Responsável'])\n\nreturn $('Trata Webhook').all();"
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$('Trata Webhook').all()[0].json['numero-mentoria'] = formataTelefone($('Trata Webhook').all()[0].json['numero-mentoria'])\n\nreturn $('Trata Webhook').all();"
       },
       "id": "532d7748-1965-460f-8067-b11ef3f332d1",
       "name": "Formata Telefone mentoria",
@@ -2222,7 +2217,7 @@
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json['Número-Responsável'] }}\"]\n  } ",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Formata Telefone Responsavel').item.json['Número-Responsável'] }}\"]\n  }  ",
         "options": {}
       },
       "id": "5ef8f8d7-d294-4d4c-b9d1-315f9034a457",
@@ -2240,7 +2235,7 @@
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{  $('Trata Webhook').item.json['numero-mentoria']}} \"]\n  } ",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Formata Telefone mentoria').item.json['numero-mentoria'] }}\"]\n  }  ",
         "options": {}
       },
       "id": "12ac5e08-0692-4091-8087-5a955b438b76",
@@ -2294,7 +2289,7 @@
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json['Número-Responsável'] }}\"]\n  } ",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Formata Telefone Responsavel').item.json['Número-Responsável'] }}\"]\n  } ",
         "options": {}
       },
       "id": "2cfd1818-e0ac-48f1-a10d-1662d42bbb5e",
@@ -2312,7 +2307,7 @@
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{  $('Trata Webhook').item.json['numero-mentoria']}} \"]\n  } ",
+        "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Formata Telefone mentoria').item.json['numero-mentoria'] }}\"]\n  } ",
         "options": {}
       },
       "id": "4a17de05-b437-4d90-840e-fa824379b785",
@@ -2952,33 +2947,41 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "got (https://github.com/sindresorhus/got)",
-            "content-length": "195",
+            "content-length": "486",
             "accept-encoding": "gzip, br",
-            "baggage": "sentry-environment=vercel-production,sentry-release=ecec7023b9b73f96674c88bf53352764c376892c-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=780be8a4afd341cfb50ecf47065708e9",
+            "baggage": "sentry-environment=vercel-production,sentry-release=ecec7023b9b73f96674c88bf53352764c376892c-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=52c2254060ee4a16a0d3bc3460e4a3bd",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "18.134.179.66",
+            "cf-connecting-ip": "35.176.55.217",
             "cf-ipcountry": "GB",
-            "cf-ray": "86461459fbbf776f-LHR",
+            "cf-ray": "8648576fed703865-LHR",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "sentry-trace": "780be8a4afd341cfb50ecf47065708e9-88c1ca646ce2977c-0",
-            "x-forwarded-for": "141.101.99.47",
+            "sentry-trace": "52c2254060ee4a16a0d3bc3460e4a3bd-947333457cd58b77-0",
+            "x-forwarded-for": "172.70.90.42",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "141.101.99.47",
-            "x-vercel-id": "gru1::9dv87-1710438347648-914b034b84a9"
+            "x-real-ip": "172.70.90.42",
+            "x-vercel-id": "iad1::fb5cn-1710462067084-35b732036fbb"
           },
           "params": {},
           "query": {},
           "body": {
-            "submittedAt": "2024-03-14T17:45:47.786Z",
-            "E-mail": "amandapradoo@gmail.com",
-            "Telefone": "+5567999108131",
-            "Email-Acesso": "amandapradoo@gmail.com",
-            "Email-Extra": "amandapradoo@gmail.com",
-            "etapa": "1"
+            "submittedAt": "2024-03-15T00:21:07.170Z",
+            "E-mail": "ronancostasilva@gmail.com",
+            "Telefone": "+5561999158060",
+            "Email-Acesso": "clinicacoex@gmail.com",
+            "Email-Extra": "ronancostasilva@gmail.com",
+            "Loop E-mails": "Não",
+            "Email-Precificação": "ronancostasilva@gmail.com",
+            "Loop E-mails  precificação": "Não",
+            "Nome-Responsável": "Ronan da Costa e Silva ",
+            "Número-Responsável": "+5561999158060",
+            "Loop papo de dono": "Não",
+            "nome-mentoria": "Viviane ",
+            "numero-mentoria": "+5561998128725",
+            "etapa": "4"
           }
         }
       }
@@ -2990,6 +2993,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-14T18:45:54.000Z",
-  "versionId": "1e6b2279-dcc1-4fe2-83fc-8d52b9965825"
+  "updatedAt": "2024-03-15T15:20:56.000Z",
+  "versionId": "e2b5c1bc-6621-429b-8715-6958eee82b84"
 }
