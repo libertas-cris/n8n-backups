@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Schedule Trigger": {
       "main": [
@@ -56,7 +56,7 @@
         ],
         [
           {
-            "node": "Item Lists",
+            "node": "Google Sheets12",
             "type": "main",
             "index": 0
           }
@@ -157,11 +157,6 @@
         ]
       ]
     },
-    "HTTP Request1": {
-      "main": [
-        []
-      ]
-    },
     "Google Sheets7": {
       "main": [
         [
@@ -177,7 +172,7 @@
       "main": [
         [
           {
-            "node": "Split In Batches",
+            "node": "Google Sheets11",
             "type": "main",
             "index": 0
           }
@@ -211,11 +206,6 @@
         [
           {
             "node": "Google Sheets9",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Item Lists",
             "type": "main",
             "index": 0
           }
@@ -353,6 +343,72 @@
           }
         ]
       ]
+    },
+    "Google Sheets12": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Tran",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tran": {
+      "main": [
+        [
+          {
+            "node": "Valéria",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Valéria": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets11": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-12-21T00:01:40.786Z",
@@ -365,7 +421,7 @@
         "rule": {
           "interval": [
             {
-              "field": "cronExpression"
+              "triggerAtHour": 23
             }
           ]
         }
@@ -552,7 +608,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2260,
+        2320,
         -240
       ],
       "credentials": {
@@ -1214,7 +1270,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        3420,
+        3060,
         480
       ],
       "credentials": {
@@ -1223,34 +1279,6 @@
           "name": "Sala Black"
         }
       }
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "=5581993515055"
-            },
-            {
-              "name": "message",
-              "value": "=Automação das planilhas rodou"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "7293cd40-187d-4b5a-aea3-229c3a23bd9e",
-      "name": "HTTP Request2",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        1280,
-        780
-      ]
     },
     {
       "parameters": {
@@ -1567,24 +1595,209 @@
     },
     {
       "parameters": {
-        "operation": "summarize",
-        "fieldsToSummarize": {
-          "values": [
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1aGL27CzVZp7jUOsZnfWTdvSFEn6Oy7H-73h8ej4Djx8",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1797918444,
+          "mode": "list",
+          "cachedResultName": "control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aGL27CzVZp7jUOsZnfWTdvSFEn6Oy7H-73h8ej4Djx8/edit#gid=1797918444"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nome": "={{ $('Split In Batches').item.json.Nome }}"
+          },
+          "matchingColumns": [
+            "nome"
+          ],
+          "schema": [
             {
-              "aggregation": "append",
-              "field": "Nome"
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ]
         },
         "options": {}
       },
-      "id": "45ee2002-bd14-4f9a-983a-8cebcad93e9d",
+      "id": "c3c88049-c1c5-4258-89fd-acc571a9fcb4",
+      "name": "Google Sheets11",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        3280,
+        480
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oySssnVS9U4DH0EY",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1aGL27CzVZp7jUOsZnfWTdvSFEn6Oy7H-73h8ej4Djx8",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1797918444,
+          "mode": "list",
+          "cachedResultName": "control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aGL27CzVZp7jUOsZnfWTdvSFEn6Oy7H-73h8ej4Djx8/edit#gid=1797918444"
+        },
+        "options": {}
+      },
+      "id": "718bfe57-8cf0-4ded-a288-8e705f21a3b1",
+      "name": "Google Sheets12",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1680,
+        860
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oySssnVS9U4DH0EY",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "nome"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "abf30464-e5de-4976-9f9b-9ed96834082a",
       "name": "Item Lists",
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 3,
       "position": [
-        3120,
-        760
+        1920,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Array de nomes\nconst nomes = $input.all()[0].json['nome'];\n\n// Função para formatar os nomes em linhas separadas\nfunction formatarNomes(array) {\n    return array.join('\\n');\n}\n\n// Chamada da função para formatar os nomes\nconst nomesFormatados = formatarNomes(nomes);\n\n// Saída dos nomes formatados\nreturn {nomesFormatados};\n"
+      },
+      "id": "ee359919-7d8e-4f7a-a8ec-aa91147946bb",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2140,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "1aGL27CzVZp7jUOsZnfWTdvSFEn6Oy7H-73h8ej4Djx8",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1797918444,
+          "mode": "list",
+          "cachedResultName": "control",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aGL27CzVZp7jUOsZnfWTdvSFEn6Oy7H-73h8ej4Djx8/edit#gid=1797918444"
+        },
+        "startIndex": "=2",
+        "numberToDelete": 100
+      },
+      "id": "d7c822cc-0122-4fb2-ba50-1d41b7ee9b58",
+      "name": "Google Sheets13",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2740,
+        860
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oySssnVS9U4DH0EY",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=553195148851"
+            },
+            {
+              "name": "message",
+              "value": "=Relatório: \n\n*Mentorados que estão há 3 dias ou mais sem preencher a planilha de acompanhamento:*\n\n{{ $json.nomesFormatados }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7293cd40-187d-4b5a-aea3-229c3a23bd9e",
+      "name": "Tran",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2340,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=558199244176"
+            },
+            {
+              "name": "message",
+              "value": "=Relatório: \n\n*Mentorados que estão há 3 dias ou mais sem preencher a planilha de acompanhamento:*\n\n{{ $json.nomesFormatados }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "05bd0520-129f-43f9-9384-b31dd6ca5aed",
+      "name": "Valéria",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2540,
+        860
       ]
     }
   ],
@@ -1592,9 +1805,13 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2024-03-06T12:56:06.000Z",
-  "versionId": "5b6ee45c-a540-4dba-abab-d042d99981c5"
+  "triggerCount": 1,
+  "updatedAt": "2024-03-18T13:51:51.000Z",
+  "versionId": "5004b602-40d6-4a01-8ec2-06816ef4d0dc"
 }
