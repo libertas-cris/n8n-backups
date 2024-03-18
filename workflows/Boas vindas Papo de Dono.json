@@ -1,0 +1,250 @@
+{
+  "active": true,
+  "connections": {
+    "Trata webhook": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Valéria",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-18T14:46:11.224Z",
+  "id": "yulekJ4w5QmQ0aLr",
+  "meta": null,
+  "name": "Boas vindas Papo de Dono",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f916e6d0-b529-4745-816e-7e8dbd6774d1",
+        "options": {}
+      },
+      "id": "c9896d8c-e620-4e1a-8638-0680277c1f80",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "f916e6d0-b529-4745-816e-7e8dbd6774d1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $node[\"Trata webhook\"].json[\"notification\"] }}",
+              "value2": "GROUP_PARTICIPANT_INVITE"
+            }
+          ],
+          "boolean": [
+            {
+              "value1": "={{ $json.Comunidade }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "6d36131a-a476-42cb-a8ef-f4e8718f5d19",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $input.all()[0].json.body == 'string' ? JSON.parse($input.all()[0].json.body) : $input.all()[0].json.body"
+      },
+      "id": "5ec01b1e-8110-40d7-b6cb-3b385fb22966",
+      "name": "Trata webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        980,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let IDs = [\n\"120363265429018868-group\"]\n\n\nlet Comunidade = IDs.includes($node[\"Trata webhook\"].json[\"phone\"])\n\nreturn {Comunidade:Comunidade}"
+      },
+      "id": "d35ee31d-083d-4219-9a4d-0789829b4b8e",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1320,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.isGroup }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "cc3f145a-d77f-4134-b4d1-f912d28ae175",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363265429018868-group"
+            },
+            {
+              "name": "message",
+              "value": "=Seja bem vindo ao grupo Papo de Dono @{{ $('Trata webhook').item.json.notificationParameters[0] }}"
+            },
+            {
+              "name": "=mentioned",
+              "value": "={{ [ $('Trata webhook').item.json.notificationParameters[0]] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f04775e1-b623-443d-8e6e-b44c0eb91709",
+      "name": "Valéria",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1660,
+        340
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:111.0) Gecko/20100101 Firefox/111.0",
+            "content-length": "517",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "168.75.94.18",
+            "cf-ipcountry": "BR",
+            "cf-ray": "8666047a2f43a4e9-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "origin": "https://api.z-api.io",
+            "server": "Z-API",
+            "x-forwarded-for": "172.71.10.217",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.71.10.217",
+            "z-api-token": "6A577D749FF578BF542A8521"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "isGroup": true,
+            "isNewsletter": false,
+            "instanceId": "3BEDDFEC0E038099BE94661BB58ECC45",
+            "messageId": "409015235",
+            "phone": "120363265429018868-group",
+            "connectedPhone": "551151070716",
+            "fromMe": false,
+            "momment": 1710773241000,
+            "status": "RECEIVED",
+            "chatName": "Teste",
+            "senderPhoto": null,
+            "senderName": "invite",
+            "photo": null,
+            "broadcast": false,
+            "referenceMessageId": null,
+            "externalAdReply": null,
+            "forwarded": false,
+            "type": "ReceivedCallback",
+            "notification": "GROUP_PARTICIPANT_INVITE",
+            "notificationParameters": [
+              "558193515055"
+            ],
+            "callId": null
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-18T14:55:41.000Z",
+  "versionId": "b4e3a390-4e9d-475b-a089-a0fe15e0eb63"
+}
