@@ -104,20 +104,8 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Formata data de vencimento | Pix",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Formata data de vencimento | Cartão",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        [],
+        []
       ]
     },
     "1º Parcela |Boleto": {
@@ -1933,6 +1921,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-12-08T18:22:29.000Z",
-  "versionId": "6b2d9ce2-015e-4ce0-9929-09a3f1a95c90"
+  "updatedAt": "2024-03-18T18:47:15.000Z",
+  "versionId": "cee0b0ee-f683-4aac-9be8-2239012a154f"
 }
