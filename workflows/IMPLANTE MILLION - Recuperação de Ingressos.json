@@ -1,0 +1,35 @@
+{
+  "active": true,
+  "connections": {},
+  "createdAt": "2024-03-19T22:08:37.099Z",
+  "id": "zwTRcsGjJcG6SEhE",
+  "meta": null,
+  "name": "IMPLANTE MILLION - Recuperação de Ingressos",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "eb009a0b-e612-4a76-866b-f65e8ecdb4f6",
+        "options": {}
+      },
+      "id": "7d98c787-1c01-4ecf-8d1a-1eedaba2922d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "eb009a0b-e612-4a76-866b-f65e8ecdb4f6"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-19T22:10:08.000Z",
+  "versionId": "5e222344-66fc-4a1e-b466-b62a1d378d65"
+}
