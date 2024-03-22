@@ -88,6 +88,17 @@
           }
         ]
       ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-03-13T18:48:02.060Z",
@@ -453,6 +464,149 @@
         1700,
         240
       ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 397678905,
+          "mode": "list",
+          "cachedResultName": "[LEADS] Newsletter",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=397678905"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{ $('Formata Data').item.json.formattedDate }}",
+            "nome": "={{ $('Formata Telefone').item.json.name }}",
+            "email": "={{ $('Formata Telefone').item.json.email }}",
+            "telefone": "={{ $('Formata Telefone').item.json.phone }}",
+            "utm_source": "={{ $('Formata Telefone').item.json.utm_source == null ? \"\" : $('Formata Telefone').item.json.utm_source }}",
+            "utm_campaign": "={{ $('Formata Telefone').item.json.utm_campaign == null ? \"\" : $('Formata Telefone').item.json.utm_campaign}}",
+            "utm_medium": "={{ $('Formata Telefone').item.json.utm_medium == null ? \"\" : $('Formata Telefone').item.json.utm_medium }}",
+            "utm_content": "={{ $('Formata Telefone').item.json.utm_content == null ? \"\" : $('Formata Telefone').item.json.utm_content }}",
+            "utm_term": "={{ $('Formata Telefone').item.json.utm_term == null ? \"\" : $('Formata Telefone').item.json.utm_term }}",
+            "página": "={{ $('Formata Telefone').item.json.path }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "página",
+              "displayName": "página",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "08092e45-eb4d-4fc1-85bd-9c08bbc111d3",
+      "name": "Google Sheets2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2060,
+        240
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
     }
   ],
   "pinData": {
@@ -507,6 +661,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-03-13T19:05:26.000Z",
-  "versionId": "df4022c2-e711-48a7-ba33-e41a58148cd1"
+  "updatedAt": "2024-03-21T19:39:31.000Z",
+  "versionId": "40e9cafc-7c1d-406a-9192-f13238ae79d7"
 }
