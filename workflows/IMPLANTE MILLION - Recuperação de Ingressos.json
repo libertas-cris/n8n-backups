@@ -1,6 +1,87 @@
 {
   "active": true,
-  "connections": {},
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Essencial",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Vip",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Vip1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2024-03-19T22:08:37.099Z",
   "id": "zwTRcsGjJcG6SEhE",
   "meta": null,
@@ -17,19 +98,608 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        820,
+        500,
         380
       ],
       "webhookId": "eb009a0b-e612-4a76-866b-f65e8ecdb4f6"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "a2eacb0b-1e0a-4713-95a5-0978ebffdf87",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        700,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['contact[phone]'] = formataTelefone($node['Trata Webhook'].json['contact[phone]'])\n\nreturn $input.all();"
+      },
+      "id": "dbd6f819-187f-4c62-8589-357cbbac8741",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        880,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $('Formata Telefone').item.json['contact[fields][ingresso]'] }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "essencial"
+            },
+            {
+              "value2": "vip",
+              "output": 1
+            },
+            {
+              "value2": "black",
+              "output": 2
+            }
+          ]
+        }
+      },
+      "id": "bdf07210-e88a-404d-b4fc-84d025197812",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e1cb8ac2-3a12-42cf-895e-127c9645bee4",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "c7e07b13-fa3a-4413-972e-8b65b2f582d1",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I",
+          "mode": "list",
+          "cachedResultName": "Dados - Ingressos Evento",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 54888452,
+          "mode": "list",
+          "cachedResultName": "InitiateCheckout Essencial",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I/edit#gid=54888452"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{ $('Date & Time1').item.json.formattedDate }}",
+            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'+ $('Formata Telefone').item.json['contact[last_name]']] }}",
+            "email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
+            "telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}",
+            "chave": "={{ $('Formata Telefone').item.json['contact[phone]'].slice(-7) }}",
+            "utm_source": "={{ $('Formata Telefone').item.json['contact[fields][utmsourceim]'] }}",
+            "utm_campaign": "={{ $('Formata Telefone').item.json['contact[fields][utmcampaignim]'] }}",
+            "utm_medium": "={{ $('Formata Telefone').item.json['contact[fields][utmmediumim]'] }}",
+            "utm_term": "={{ $('Formata Telefone').item.json['contact[fields][utmtermim]'] }}",
+            "utm_content": "={{ $('Formata Telefone').item.json['contact[fields][utmcontentim]'] }}",
+            "página": "={{ $('Formata Telefone').item.json['contact[fields][paginaim]'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "chave",
+              "displayName": "chave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "página",
+              "displayName": "página",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0b0ee8e4-4e68-44a1-a535-d72072392497",
+      "name": "Essencial",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1700,
+        160
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I",
+          "mode": "list",
+          "cachedResultName": "Dados - Ingressos Evento",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1151253055,
+          "mode": "list",
+          "cachedResultName": "InitiateCheckout VIP",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I/edit#gid=1151253055"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{ $('Date & Time1').item.json.formattedDate }}",
+            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'+ $('Formata Telefone').item.json['contact[last_name]']] }}",
+            "email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
+            "telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}",
+            "chave": "={{ $('Formata Telefone').item.json['contact[phone]'].slice(-7) }}",
+            "utm_source": "={{ $('Formata Telefone').item.json['contact[fields][utmsourceim]'] }}",
+            "utm_campaign": "={{ $('Formata Telefone').item.json['contact[fields][utmcampaignim]'] }}",
+            "utm_medium": "={{ $('Formata Telefone').item.json['contact[fields][utmmediumim]'] }}",
+            "utm_term": "={{ $('Formata Telefone').item.json['contact[fields][utmtermim]'] }}",
+            "utm_content": "={{ $('Formata Telefone').item.json['contact[fields][utmcontentim]'] }}",
+            "página": "={{ $('Formata Telefone').item.json['contact[fields][paginaim]'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "chave",
+              "displayName": "chave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "página",
+              "displayName": "página",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ecf490ca-2946-496b-b116-1ccadd22ee0a",
+      "name": "Vip",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1700,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I",
+          "mode": "list",
+          "cachedResultName": "Dados - Ingressos Evento",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 110543554,
+          "mode": "list",
+          "cachedResultName": "InitiateCheckout Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PF3vYqcRD7TmCoc-6t8JACFULkuBAamcUNtPa4q236I/edit#gid=110543554"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{ $('Date & Time1').item.json.formattedDate }}",
+            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'+ $('Formata Telefone').item.json['contact[last_name]']] }}",
+            "email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
+            "telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}",
+            "chave": "={{ $('Formata Telefone').item.json['contact[phone]'].slice(-7) }}",
+            "utm_source": "={{ $('Formata Telefone').item.json['contact[fields][utmsourceim]'] }}",
+            "utm_campaign": "={{ $('Formata Telefone').item.json['contact[fields][utmcampaignim]'] }}",
+            "utm_medium": "={{ $('Formata Telefone').item.json['contact[fields][utmmediumim]'] }}",
+            "utm_term": "={{ $('Formata Telefone').item.json['contact[fields][utmtermim]'] }}",
+            "utm_content": "={{ $('Formata Telefone').item.json['contact[fields][utmcontentim]'] }}",
+            "página": "={{ $('Formata Telefone').item.json['contact[fields][paginaim]'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "chave",
+              "displayName": "chave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "página",
+              "displayName": "página",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4f98c212-2c4c-4391-82df-e031e1694235",
+      "name": "Vip1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1700,
+        600
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "GuzzleHttp/6.5.5 curl/8.3.0 PHP/8.1.23",
+            "content-length": "801",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "54.225.1.90",
+            "cf-ipcountry": "US",
+            "cf-ray": "8670d38d9c3917b8-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "172.70.34.104",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.70.34.104"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "contact[id]": "3535",
+            "contact[email]": "testeflows2@gmail.com",
+            "contact[first_name]": "teste",
+            "contact[last_name]": "",
+            "contact[phone]": "(81) 99351-5055",
+            "contact[orgname]": "",
+            "contact[customer_acct_name]": "",
+            "contact[tags]": "IM - PréCheckout",
+            "contact[ip4]": "186.235.185.56",
+            "contact[fields][utmsourceim]": "direto",
+            "contact[fields][utmcampaignim]": "",
+            "contact[fields][utmmediumim]": "",
+            "contact[fields][utmtermim]": "",
+            "contact[fields][utmcontentim]": "",
+            "contact[fields][paginaim]": "implante-million-b/",
+            "contact[fields][ingresso]": "essencial",
+            "contact[fields][url]": "pay.hotmart.com/M91749281X?off=q4e8q4on&name=teste&email=testeflows2@gmail.com&phonenumber=(81) 99351-5055",
+            "contact[fields][checkoutdate]": "2024-03-19",
+            "seriesid": "65"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-19T22:10:08.000Z",
-  "versionId": "5e222344-66fc-4a1e-b466-b62a1d378d65"
+  "updatedAt": "2024-03-22T13:38:47.000Z",
+  "versionId": "d5745d26-93fd-4173-8622-1e81587abb41"
 }
