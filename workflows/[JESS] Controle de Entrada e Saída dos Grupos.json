@@ -292,13 +292,7 @@
             "index": 0
           }
         ],
-        [
-          {
-            "node": "Entrar no grupo",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Entrar no grupo": {
@@ -724,7 +718,7 @@
       "typeVersion": 1,
       "position": [
         460,
-        440
+        420
       ]
     },
     {
@@ -1809,6 +1803,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-31T17:12:27.000Z",
-  "versionId": "e3e6cee6-ed6a-463b-8621-cc3ae7b9d35a"
+  "updatedAt": "2024-03-25T14:33:36.000Z",
+  "versionId": "2ec7bde8-95ad-4763-8c13-f4ca591844c8"
 }
