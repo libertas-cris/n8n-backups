@@ -1,0 +1,591 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Respondeu Pesquisa",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches": {
+      "main": [
+        [
+          {
+            "node": "Final 2789",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Existe?": {
+      "main": [
+        [
+          {
+            "node": "Chip",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respondeu Pesquisa": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chip": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone1": {
+      "main": [
+        [
+          {
+            "node": "Verifica Whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split In Batches1": {
+      "main": [
+        [
+          {
+            "node": "Final 3986",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 2789": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Final 3986": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Whatsapp": {
+      "main": [
+        [
+          {
+            "node": "Existe?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-25T12:49:43.499Z",
+  "id": "KKyWB9DSNToSF80j",
+  "meta": null,
+  "name": "[JESS] Ação de vendas britshize",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "2c36270f-70da-4df7-abc5-aba339672c97",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        20,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "0f7a988d-c52d-4148-9f18-2e56a1d8f3fd",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        220,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    let ddi = '55';\n    number = number.toString().replace(/[^\\d]/g, \"\");\n\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        ddi = number.substring(0, 2);\n        ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n\n    } else {\n        return number;\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;\n"
+      },
+      "id": "292a181c-205a-4fa6-9886-a55ffed73575",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        580,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/phone-exists/{{ $json.Telefone }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "d3257444-26d7-4a0f-b3ff-e92a0a5dd837",
+      "name": "Verifica Whatsapp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        800,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.exists }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "579a4b9c-dfb3-4c4f-8516-5c3bed650bf2",
+      "name": "Existe?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        980,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=*{{ $json[\"nome\"].split(\" \")[0].toLowerCase() }}, vim pessoalmente te passar um recadinho.*\n\nMuita gente me mandou mensagem pedindo pra abrir uma nova turma do *BritiShize*...\n\nEu costumo abrir apenas uma turma por ano, mas eu *decidi fazer diferente dessa vez.*\n\nPorque eu acredito que isso pode te ajudar a *aperfeiçoar seu inglês* e *falar com mais naturalidade.*\n\nVou abrir, por tempo mega limitado, as inscrições do *BritiShize.*\n\nVocê terá *12 aulas AO VIVO* com o meu acompanhamento pra *turbinar o seu inglês!*\n\nMe responde com *BRITI* pra saber como garantir sua vaga.\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "={{ Math.floor(Math.random()* 21) + 15 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7b051f38-d6bc-4b5b-a7f1-72897717562b",
+      "name": "Final 3986",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=*{{ $json[\"nome\"].split(\" \")[0].toLowerCase() }}, vim pessoalmente te passar um recadinho.*\n\nMuita gente me mandou mensagem pedindo pra abrir uma nova turma do *BritiShize*...\n\nEu costumo abrir apenas uma turma por ano, mas eu *decidi fazer diferente dessa vez.*\n\nPorque eu acredito que isso pode te ajudar a *aperfeiçoar seu inglês* e *falar com mais naturalidade.*\n\nVou abrir, por tempo mega limitado, as inscrições do *BritiShize.*\n\nVocê terá *12 aulas AO VIVO* com o meu acompanhamento pra *turbinar o seu inglês!*\n\nMe responde com *BRITI* pra saber como garantir sua vaga.\n"
+            },
+            {
+              "name": "delayMessage",
+              "value": "={{ Math.floor(Math.random()* 21) + 15 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b6f294cb-ea30-457f-b320-ff92f0abd015",
+      "name": "Final 2789",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "9b0b86ca-c9ad-4c84-90c9-6b71a9e76797",
+      "name": "Split In Batches",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        2140,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "5185dc59-bf85-4416-9b08-43b4ca845a9b",
+      "name": "Split In Batches1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        2140,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Split In Batches').item.json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=*Quer que eu avalie o seu inglês?*\n\nComo você participou do *The BritEnglish* estou liberando um *teste de nivelamento gratuito*, onde eu mesma vou analisar o seu inglês e te falar se o meu curso ao vivo te ajudaria.\n\nPra fazer o teste, me responde com *“TESTE”* que te passo as orientações."
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5cd8f43d-8cb5-41a4-b66e-598f2b51ee2a",
+      "name": "Final 2789 p2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2660,
+        -280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A60A521FA0F0D44CD604DAF2BCF1/token/1E6E6072CD8B04C734F62016/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Split In Batches1').item.json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=*Quer que eu avalie o seu inglês?*\n\nComo você participou do *The BritEnglish* estou liberando um *teste de nivelamento gratuito*, onde eu mesma vou analisar o seu inglês e te falar se o meu curso ao vivo te ajudaria.\n\nPra fazer o teste, me responde com *“TESTE”* que te passo as orientações."
+            },
+            {
+              "name": "delayMessage",
+              "value": "= {{ Math.floor(Math.random()* 13) + 8 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a9781514-82e5-4e80-b526-591ac4a850a4",
+      "name": "Final 3986 p2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2680,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $('Google Sheets').item.json.Chip }}",
+              "operation": "equal",
+              "value2": 2789
+            }
+          ]
+        }
+      },
+      "id": "1ecf14b7-61d8-4fb5-af27-6439201be90f",
+      "name": "Chip",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json['Nível de inglês'] }}",
+              "operation": "notEqual",
+              "value2": "Começando do Zero - se sei, é bem pouquinho mesmo"
+            },
+            {
+              "value1": "={{ $json['Nível de inglês'] }}",
+              "operation": "notEqual",
+              "value2": "Básico - sei algumas coisas mas falar não"
+            },
+            {
+              "value1": "={{ $json.aluno }}",
+              "operation": "isEmpty"
+            }
+          ],
+          "number": [
+            {
+              "value1": "={{ $json.row_number }}",
+              "operation": "largerEqual",
+              "value2": 21
+            }
+          ]
+        }
+      },
+      "id": "f438149c-4570-4e0f-9fd6-da6f8b9f9e72",
+      "name": "Respondeu Pesquisa",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        420,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "nome",
+              "stringValue": "={{ $('Google Sheets').item.json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1bf0037b-eb6a-4e2d-858f-903ea7e52946",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [
+        1940,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "nome",
+              "stringValue": "={{ $('Google Sheets').item.json.Nome }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "103b49a1-4b72-4f30-9019-3312fdf9fc2b",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.1,
+      "position": [
+        1940,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;"
+      },
+      "id": "c9d8ba8f-abdd-4d3c-a89b-1cca12f74f54",
+      "name": "Formata Telefone1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        600,
+        160
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-03-25T14:42:02.000Z",
+  "versionId": "0d5138c5-c404-4e27-a454-5224bda6a77a"
+}
