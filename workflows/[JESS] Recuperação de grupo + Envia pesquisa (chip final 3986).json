@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Webhook": {
       "main": [
@@ -61,13 +61,7 @@
     },
     "IF": {
       "main": [
-        [
-          {
-            "node": "Entrar no grupo",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "BRITI1": {
@@ -521,6 +515,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-01-31T17:12:13.000Z",
-  "versionId": "4dc00ad2-06ae-471e-b001-0b4adfd317ab"
+  "updatedAt": "2024-03-25T17:05:36.000Z",
+  "versionId": "24e60c09-53ff-4b90-a7f0-25e5bb5af0bd"
 }
