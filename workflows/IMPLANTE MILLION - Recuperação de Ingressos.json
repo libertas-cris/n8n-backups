@@ -80,11 +80,35 @@
           }
         ]
       ]
+    },
+    "Essencial": {
+      "main": [
+        [
+          {
+            "node": "ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp2": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-03-19T22:08:37.099Z",
   "id": "zwTRcsGjJcG6SEhE",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "IMPLANTE MILLION - Recuperação de Ingressos",
   "nodes": [
     {
@@ -643,6 +667,90 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901300794753",
+        "name": "={{ $('Trata Webhook').item.json['contact[first_name]'] }}",
+        "additionalFields": {
+          "assignees": [],
+          "customFieldsJson": "[\n  {\n    \"a3f49eda-ec95-4118-875f-58a532a93873\":\"1d706fb2-4e93-4d0d-b4ec-1220bf54a0da\"    \n  }\n]",
+          "status": "sem contato"
+        }
+      },
+      "id": "689d212b-e7fb-4dbf-9b6d-676891d00cd4",
+      "name": "ClickUp",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        1940,
+        160
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "list",
+        "team": "30971486",
+        "space": "Ila/Nicole",
+        "folder": "90130377914",
+        "list": "901300794753"
+      },
+      "id": "76d4d882-f0b1-4d30-b9fe-33d527d47b07",
+      "name": "ClickUp2",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        740,
+        680
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "77e55237-f8c3-4cbc-9c9e-6bc16ee2a88b",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "=Evento Presencial",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "4a9b3227-5297-4087-87ea-ec980a5ef25e",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        960,
+        680
+      ]
     }
   ],
   "pinData": {
@@ -700,6 +808,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-22T13:38:47.000Z",
-  "versionId": "d5745d26-93fd-4173-8622-1e81587abb41"
+  "updatedAt": "2024-03-26T20:39:27.000Z",
+  "versionId": "5a3a4fed-d241-4268-b764-4325a3e4ae57"
 }
