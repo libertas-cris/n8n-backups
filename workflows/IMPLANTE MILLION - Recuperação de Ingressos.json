@@ -85,7 +85,7 @@
       "main": [
         [
           {
-            "node": "ClickUp",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -670,34 +670,6 @@
     },
     {
       "parameters": {
-        "team": "30971486",
-        "space": "90070031834",
-        "folder": "90130377914",
-        "list": "901300794753",
-        "name": "={{ $('Trata Webhook').item.json['contact[first_name]'] }}",
-        "additionalFields": {
-          "assignees": [],
-          "customFieldsJson": "[\n  {\n    \"a3f49eda-ec95-4118-875f-58a532a93873\":\"1d706fb2-4e93-4d0d-b4ec-1220bf54a0da\"    \n  }\n]",
-          "status": "sem contato"
-        }
-      },
-      "id": "689d212b-e7fb-4dbf-9b6d-676891d00cd4",
-      "name": "ClickUp",
-      "type": "n8n-nodes-base.clickUp",
-      "typeVersion": 1,
-      "position": [
-        1940,
-        160
-      ],
-      "credentials": {
-        "clickUpApi": {
-          "id": "fy7YLKgPN9XVKscl",
-          "name": "Space Libertas"
-        }
-      }
-    },
-    {
-      "parameters": {
         "resource": "list",
         "team": "30971486",
         "space": "Ila/Nicole",
@@ -750,6 +722,29 @@
       "position": [
         960,
         680
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/qdrhb2wbpktaykgjqf4ql8v8y90h8ie5",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "batching": {}
+        }
+      },
+      "id": "e689fa01-407b-4a43-8013-b9b9ac4c8d1d",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1920,
+        160
       ]
     }
   ],
@@ -808,6 +803,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-26T20:39:27.000Z",
-  "versionId": "5a3a4fed-d241-4268-b764-4325a3e4ae57"
+  "updatedAt": "2024-03-27T03:18:20.000Z",
+  "versionId": "ab5c0756-c76f-4b7a-b17f-52993e3cd0d5"
 }
