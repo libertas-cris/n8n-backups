@@ -53,8 +53,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "Google Sheets3": {
@@ -243,7 +242,7 @@
       "main": [
         [
           {
-            "node": "Split In Batches",
+            "node": "Filter2",
             "type": "main",
             "index": 0
           }
@@ -403,11 +402,24 @@
           }
         ]
       ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "Split In Batches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-12-21T00:01:40.786Z",
   "id": "HWwVRGBqoKT45grI",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[SALA BLACK] Monitoramento de Planilhas",
   "nodes": [
     {
@@ -1407,7 +1419,7 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        260,
+        180,
         380
       ]
     },
@@ -1424,7 +1436,7 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        480,
+        380,
         380
       ]
     },
@@ -1447,7 +1459,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        700,
+        580,
         380
       ],
       "credentials": {
@@ -1478,7 +1490,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
       "position": [
-        40,
+        -40,
         380
       ]
     },
@@ -1793,6 +1805,38 @@
         2540,
         860
       ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b6238ef1-1531-44b2-a057-a6bb76302747",
+              "leftValue": "={{ $json.row_number }}",
+              "rightValue": 27,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9a528c9c-8406-416b-b10b-af13cd0a7f75",
+      "name": "Filter2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        800,
+        380
+      ]
     }
   ],
   "pinData": {},
@@ -1806,6 +1850,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-22T03:50:54.000Z",
-  "versionId": "17cb8e9c-4e0c-4dd2-9c12-1fa32f7ac5cb"
+  "updatedAt": "2024-03-27T19:17:26.000Z",
+  "versionId": "348b74b5-29f2-4914-872e-0ca59800c89f"
 }
