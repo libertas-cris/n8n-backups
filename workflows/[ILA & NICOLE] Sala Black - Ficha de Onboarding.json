@@ -579,7 +579,9 @@
   },
   "createdAt": "2024-02-29T19:31:31.334Z",
   "id": "F3xgSYJUEYUjFzaP",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[ILA & NICOLE] Sala Black - Ficha de Onboarding",
   "nodes": [
     {
@@ -2214,7 +2216,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Formata Telefone Responsavel').item.json['Número-Responsável'] }}\"]\n  }  ",
@@ -2232,7 +2234,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Formata Telefone mentoria').item.json['numero-mentoria'] }}\"]\n  }  ",
@@ -2250,7 +2252,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
@@ -2268,7 +2270,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
@@ -2286,7 +2288,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Formata Telefone Responsavel').item.json['Número-Responsável'] }}\"]\n  } ",
@@ -2304,7 +2306,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Formata Telefone mentoria').item.json['numero-mentoria'] }}\"]\n  } ",
@@ -2993,6 +2995,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-15T15:20:56.000Z",
-  "versionId": "e2b5c1bc-6621-429b-8715-6958eee82b84"
+  "updatedAt": "2024-03-27T18:53:15.000Z",
+  "versionId": "e3ed69a8-b7ca-4e43-b409-cdd5222ae89b"
 }
