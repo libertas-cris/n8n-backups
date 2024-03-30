@@ -45,23 +45,6 @@
         ]
       ]
     },
-    "Filter2": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [],
-        []
-      ]
-    },
     "HTTP Request4": {
       "main": [
         [
@@ -100,6 +83,160 @@
         [
           {
             "node": "Filter3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Número1": {
+      "main": [
+        [
+          {
+            "node": "Filter4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone1": {
+      "main": [
+        [
+          {
+            "node": "Verifica Número1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Número2": {
+      "main": [
+        [
+          {
+            "node": "Filter5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone2": {
+      "main": [
+        [
+          {
+            "node": "Verifica Número2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter3": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Número3": {
+      "main": [
+        [
+          {
+            "node": "Filter6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone3": {
+      "main": [
+        [
+          {
+            "node": "Verifica Número3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RS4": {
+      "main": [
+        [
+          {
+            "node": "Filter7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter7": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        []
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter4": {
+      "main": [
+        []
+      ]
+    },
+    "Filter5": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -174,14 +311,6 @@
           "mode": "list",
           "cachedResultName": "AUTO Inscritos",
           "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IZh2wHV3k53c7oSYEQ1HhNLhIYm5wwgZyoFFde4151A/edit#gid=1822345740"
-        },
-        "filtersUI": {
-          "values": [
-            {
-              "lookupColumn": "Telefone",
-              "lookupValue": "5581993515055"
-            }
-          ]
         },
         "options": {}
       },
@@ -323,7 +452,7 @@
             },
             {
               "name": "message",
-              "value": "=Dá uma olhada no que está por vir 👆🏻\n\nÉ… Finalmente vai acontecer, mas não por qualquer motivo.\n\nHoje nosso grupo mentora 90 clínicas no Brasil e agencia o marketing de mais outras 300.\n\nE mesmo gerando tanto resultado para nossos clientes, muitos pediam para conhecer minha clínica em Goiânia para ver tudo na prática.\n\nBom… Seria impossível levar tanta gente e foi por isso que eu tomei uma decisão diferente.\n\nSe eu não posso te levar até a minha clínica, vou levar ela até você. Ou melhor, até uma imersão em São Paulo.\n\nNos dias 8 e 9 de junho, vamos mostrar na prática os 3 pilares das minhas clínicas para vender 1 milhão por mês com implantes.\n\nSim, você vai conhecer meu time e vai aprender com eles.\n\nVocê vai viver os nossos processos para faturar de 200 a 400 mil, dependendo da sua realidade.\n\nSe você viu nosso nível de entrega em 2 horas, imagina em 2 dias, [FNAME]?\n\nEstamos na pré-venda com o menor preço possível, que vai aumentar em breve.\n\nMe reponde com MILLION pra garantir seu ingresso.\n\nE para quem não é de São Paulo, conseguimos desconto em hotéis e uma agência de viagens para passagens mais baratas. Tudo para te ajudar a viver esses 2 dias únicos"
+              "value": "=Dá uma olhada no que está por vir 👆🏻\n\nÉ… *Finalmente vai acontecer*, mas não por qualquer motivo.\n\nHoje nosso grupo mentora 90 clínicas no Brasil e agencia o marketing de mais outras 300.\n\nE mesmo gerando tanto resultado para nossos clientes, muitos pediam para conhecer minha clínica em Goiânia para ver tudo na prática.\n\nBom… Seria impossível levar tanta gente e foi por isso que eu tomei uma decisão diferente.\n\nSe eu não posso te levar até a minha clínica, vou levar ela até você. Ou melhor, até uma imersão em São Paulo.\n\nNos dias 8 e 9 de junho, vamos mostrar na prática os 3 pilares das minhas clínicas para vender 1 milhão por mês com implantes.\n\nSim, você vai conhecer meu time e vai aprender com eles.\n\nVocê vai viver os nossos processos para faturar de 200 a 400 mil, dependendo da sua realidade.\n\nSe você viu nosso nível de entrega em 2 horas, imagina em 2 dias, {{ $('Loop Over Items').item.json.Nome.split(\" \")[0].toTitleCase() }}?\n\nEstamos na pré-venda com o menor preço possível, que vai aumentar em breve.\n\nMe reponde com *MILLION* pra garantir seu ingresso.\n\nE para quem não é de São Paulo, conseguimos desconto em hotéis e uma agência de viagens para passagens mais baratas. Tudo para te ajudar a viver esses 2 dias únicos "
             },
             {
               "name": "delayMessage",
@@ -401,7 +530,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1040,
+        1020,
         600
       ]
     },
@@ -469,6 +598,263 @@
         1020,
         800
       ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function verificarNumero(numero) {\n    const numerosValidos = [\n        \"5522999448222\", \"5521996840064\", \"5519981110996\", \"5518997714212\", \"5522999647778\", \"555599941500\", \"556796991634\",\n        \"553284526646\", \"555499931747\", \"5511971565956\", \"558299977474\", \"556183031314\", \"558197374771\", \"5527998329988\",\n        \"558694829101\", \"5522981219875\", \"5511965514462\", \"556299805021\", \"557192200123\", \"559481270037\", \"359900064755\",\n        \"559281144361\", \"558191667050\", \"5511999774398\", \"554896613003\", \"556399958116\", \"5516981969102\", \"554599120943\",\n        \"553588980035\", \"554784807777\", \"5513997353507\", \"5511981427570\", \"558599120201\", \"5518998149718\", \"559181602783\",\n        \"5511968415591\", \"5522988482223\", \"556484190427\", \"559881134560\", \"557381245200\", \"555596906361\", \"557599165575\",\n        \"556781583221\", \"556399447227\", \"5517997354177\", \"5511998781699\", \"5512981577530\", \"5511981444311\", \"553491261211\",\n        \"556199775677\", \"559281178870\", \"555397079997\", \"556196368800\", \"555196208457\", \"554898437356\", \"556191333959\",\n        \"5511999509427\", \"5511950523665\", \"5511950244722\", \"556183191500\", \"5521994569367\", \"5521999396397\", \"5518991050929\",\n        \"555559642226\", \"5521968091832\", \"5511999509427\", \"556799186028\", \"553791033252\", \"5511970399696\", \"559581230043\",\n        \"556696946766\", \"554799290591\", \"558698637188\", \"557199335904\", \"556481121794\", \"554399341399\", \"554699401100\",\n        \"557597063612\", \"556999993745\", \"556199426312\", \"558695227293\", \"5511998040947\", \"554188096224\", \"556799108131\",\n        \"556199158060\"\n    ];\n\n    if(numerosValidos.includes(numero)){\n      return 'sim';\n    } else {\n      return 'não';\n    }\n}\n\nconst isNumber = verificarNumero($input.item.json['col_9']);\n$input.item.json['isNumber'] = isNumber;\n\nreturn $input.item "
+      },
+      "id": "cc15bf6b-9600-4f52-9ed9-10eb10d2c1fc",
+      "name": "Verifica Número1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    // Verifica se 'number' não é undefined\n    if (number === undefined) {\n        return ''; // Retorna uma string vazia\n    }\n    \n    number = number.toString().replace(/[^\\d]/g, \"\");\n    let ddi = '55';\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2);\n        let ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n    } else {\n        return number;\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;\n"
+      },
+      "id": "9101eee1-db9f-4552-9eca-4665b28f1ccf",
+      "name": "Formata Telefone1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "6226c4c9-614c-47e3-9371-6728c24f092b",
+              "leftValue": "={{ $json.isNumber }}",
+              "rightValue": "=não",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0e6cc81f-100d-410c-97ef-0c2f0c7265d4",
+      "name": "Filter4",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function verificarNumero(numero) {\n    const numerosValidos = [\n        \"5522999448222\", \"5521996840064\", \"5519981110996\", \"5518997714212\", \"5522999647778\", \"555599941500\", \"556796991634\",\n        \"553284526646\", \"555499931747\", \"5511971565956\", \"558299977474\", \"556183031314\", \"558197374771\", \"5527998329988\",\n        \"558694829101\", \"5522981219875\", \"5511965514462\", \"556299805021\", \"557192200123\", \"559481270037\", \"359900064755\",\n        \"559281144361\", \"558191667050\", \"5511999774398\", \"554896613003\", \"556399958116\", \"5516981969102\", \"554599120943\",\n        \"553588980035\", \"554784807777\", \"5513997353507\", \"5511981427570\", \"558599120201\", \"5518998149718\", \"559181602783\",\n        \"5511968415591\", \"5522988482223\", \"556484190427\", \"559881134560\", \"557381245200\", \"555596906361\", \"557599165575\",\n        \"556781583221\", \"556399447227\", \"5517997354177\", \"5511998781699\", \"5512981577530\", \"5511981444311\", \"553491261211\",\n        \"556199775677\", \"559281178870\", \"555397079997\", \"556196368800\", \"555196208457\", \"554898437356\", \"556191333959\",\n        \"5511999509427\", \"5511950523665\", \"5511950244722\", \"556183191500\", \"5521994569367\", \"5521999396397\", \"5518991050929\",\n        \"555559642226\", \"5521968091832\", \"5511999509427\", \"556799186028\", \"553791033252\", \"5511970399696\", \"559581230043\",\n        \"556696946766\", \"554799290591\", \"558698637188\", \"557199335904\", \"556481121794\", \"554399341399\", \"554699401100\",\n        \"557597063612\", \"556999993745\", \"556199426312\", \"558695227293\", \"5511998040947\", \"554188096224\", \"556799108131\",\n        \"556199158060\"\n    ];\n\n    if(numerosValidos.includes(numero)){\n      return 'sim';\n    } else {\n      return 'não';\n    }\n}\n\nconst isNumber = verificarNumero($input.item.json['col_9']);\n$input.item.json['isNumber'] = isNumber;\n\nreturn $input.item "
+      },
+      "id": "ad5537d1-9015-4a3c-975c-095d4635f8a0",
+      "name": "Verifica Número2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    // Verifica se 'number' não é undefined\n    if (number === undefined) {\n        return ''; // Retorna uma string vazia\n    }\n    \n    number = number.toString().replace(/[^\\d]/g, \"\");\n    let ddi = '55';\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2);\n        let ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n    } else {\n        return number;\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;\n"
+      },
+      "id": "a930ad18-6c91-4d6f-a717-161b4c0d3dc5",
+      "name": "Formata Telefone2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "6226c4c9-614c-47e3-9371-6728c24f092b",
+              "leftValue": "={{ $json.isNumber }}",
+              "rightValue": "=não",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8a0ab135-00f9-4358-8d21-e200a18c2d63",
+      "name": "Filter5",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc",
+          "mode": "list",
+          "cachedResultName": " [ILA] [CICLO 2] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1010776085,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos [AS4]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit#gid=1010776085"
+        },
+        "options": {}
+      },
+      "id": "5f89a907-bf63-4421-aee3-239486377a1d",
+      "name": "RS4",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        800,
+        1000
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function verificarNumero(numero) {\n    const numerosValidos = [\n        \"5522999448222\", \"5521996840064\", \"5519981110996\", \"5518997714212\", \"5522999647778\", \"555599941500\", \"556796991634\",\n        \"553284526646\", \"555499931747\", \"5511971565956\", \"558299977474\", \"556183031314\", \"558197374771\", \"5527998329988\",\n        \"558694829101\", \"5522981219875\", \"5511965514462\", \"556299805021\", \"557192200123\", \"559481270037\", \"359900064755\",\n        \"559281144361\", \"558191667050\", \"5511999774398\", \"554896613003\", \"556399958116\", \"5516981969102\", \"554599120943\",\n        \"553588980035\", \"554784807777\", \"5513997353507\", \"5511981427570\", \"558599120201\", \"5518998149718\", \"559181602783\",\n        \"5511968415591\", \"5522988482223\", \"556484190427\", \"559881134560\", \"557381245200\", \"555596906361\", \"557599165575\",\n        \"556781583221\", \"556399447227\", \"5517997354177\", \"5511998781699\", \"5512981577530\", \"5511981444311\", \"553491261211\",\n        \"556199775677\", \"559281178870\", \"555397079997\", \"556196368800\", \"555196208457\", \"554898437356\", \"556191333959\",\n        \"5511999509427\", \"5511950523665\", \"5511950244722\", \"556183191500\", \"5521994569367\", \"5521999396397\", \"5518991050929\",\n        \"555559642226\", \"5521968091832\", \"5511999509427\", \"556799186028\", \"553791033252\", \"5511970399696\", \"559581230043\",\n        \"556696946766\", \"554799290591\", \"558698637188\", \"557199335904\", \"556481121794\", \"554399341399\", \"554699401100\",\n        \"557597063612\", \"556999993745\", \"556199426312\", \"558695227293\", \"5511998040947\", \"554188096224\", \"556799108131\",\n        \"556199158060\"\n    ];\n\n    if(numerosValidos.includes(numero)){\n      return 'sim';\n    } else {\n      return 'não';\n    }\n}\n\nconst isNumber = verificarNumero($input.item.json['col_9']);\n$input.item.json['isNumber'] = isNumber;\n\nreturn $input.item "
+      },
+      "id": "ba5a5f9b-0fc9-4c2a-b3e1-ac4e72d7a69a",
+      "name": "Verifica Número3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    // Verifica se 'number' não é undefined\n    if (number === undefined) {\n        return ''; // Retorna uma string vazia\n    }\n    \n    number = number.toString().replace(/[^\\d]/g, \"\");\n    let ddi = '55';\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2);\n        let ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n    } else {\n        return number;\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;\n"
+      },
+      "id": "91bad4f4-86e5-4d83-b935-c1d673e3b27c",
+      "name": "Formata Telefone3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "6226c4c9-614c-47e3-9371-6728c24f092b",
+              "leftValue": "={{ $json.isNumber }}",
+              "rightValue": "=não",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8ba4d558-e147-4504-bd32-977c71cada03",
+      "name": "Filter6",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "def2867c-f399-4f62-a8fb-5976bc893077",
+              "leftValue": "={{ $json['comprou?'] }}",
+              "rightValue": "=sim",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "e3c78bf0-06a9-403e-9c44-1cdcb18b3aaf",
+              "leftValue": "={{ $json['comprou?'] }}",
+              "rightValue": "=@",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7d945e17-95b3-45dd-8fff-62cf7343e186",
+      "name": "Filter7",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1020,
+        1000
+      ]
     }
   ],
   "pinData": {},
@@ -478,6 +864,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-03-29T21:36:42.000Z",
-  "versionId": "76fe4600-0f40-47bf-b9dd-62fd4f60cf88"
+  "updatedAt": "2024-03-30T12:21:49.000Z",
+  "versionId": "c46e041f-933e-4ebf-9289-7f04c3d74d72"
 }
