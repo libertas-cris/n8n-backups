@@ -1,0 +1,483 @@
+{
+  "active": false,
+  "connections": {
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Verifica Número",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RS1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verifica Número": {
+      "main": [
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RS2": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RS3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RS3": {
+      "main": [
+        [
+          {
+            "node": "Filter3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-29T17:37:55.467Z",
+  "id": "icQgGPSaNa2Ukclj",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 14",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "db2a3f7f-dea2-4b46-bd9f-6c2e1ffb5c8e",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        600,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function verificarNumero(numero) {\n    const numerosValidos = [\n        \"5522999448222\", \"5521996840064\", \"5519981110996\", \"5518997714212\", \"5522999647778\", \"555599941500\", \"556796991634\",\n        \"553284526646\", \"555499931747\", \"5511971565956\", \"558299977474\", \"556183031314\", \"558197374771\", \"5527998329988\",\n        \"558694829101\", \"5522981219875\", \"5511965514462\", \"556299805021\", \"557192200123\", \"559481270037\", \"359900064755\",\n        \"559281144361\", \"558191667050\", \"5511999774398\", \"554896613003\", \"556399958116\", \"5516981969102\", \"554599120943\",\n        \"553588980035\", \"554784807777\", \"5513997353507\", \"5511981427570\", \"558599120201\", \"5518998149718\", \"559181602783\",\n        \"5511968415591\", \"5522988482223\", \"556484190427\", \"559881134560\", \"557381245200\", \"555596906361\", \"557599165575\",\n        \"556781583221\", \"556399447227\", \"5517997354177\", \"5511998781699\", \"5512981577530\", \"5511981444311\", \"553491261211\",\n        \"556199775677\", \"559281178870\", \"555397079997\", \"556196368800\", \"555196208457\", \"554898437356\", \"556191333959\",\n        \"5511999509427\", \"5511950523665\", \"5511950244722\", \"556183191500\", \"5521994569367\", \"5521999396397\", \"5518991050929\",\n        \"555559642226\", \"5521968091832\", \"5511999509427\", \"556799186028\", \"553791033252\", \"5511970399696\", \"559581230043\",\n        \"556696946766\", \"554799290591\", \"558698637188\", \"557199335904\", \"556481121794\", \"554399341399\", \"554699401100\",\n        \"557597063612\", \"556999993745\", \"556199426312\", \"558695227293\", \"5511998040947\", \"554188096224\", \"556799108131\",\n        \"556199158060\"\n    ];\n\n    if(numerosValidos.includes(numero)){\n      return 'sim';\n    } else {\n      return 'não';\n    }\n}\n\nconst isNumber = verificarNumero($input.item.json['col_9']);\n$input.item.json['isNumber'] = isNumber;\n\nreturn $input.item "
+      },
+      "id": "a4b7ed61-e23b-46f4-9b4f-0925394ddf75",
+      "name": "Verifica Número",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1420,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    // Verifica se 'number' não é undefined\n    if (number === undefined) {\n        return ''; // Retorna uma string vazia\n    }\n    \n    number = number.toString().replace(/[^\\d]/g, \"\");\n    let ddi = '55';\n    let ddd = number.substring(0, 2);\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2);\n        let ddd = number.substring(2, 4);\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11);\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number);\n    } else {\n        return number;\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone']);\n\nreturn $input.item;\n"
+      },
+      "id": "3a27efd8-6d13-47e5-8138-e28b384316df",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1IZh2wHV3k53c7oSYEQ1HhNLhIYm5wwgZyoFFde4151A/edit#gid=1822345740",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1822345740,
+          "mode": "list",
+          "cachedResultName": "AUTO Inscritos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IZh2wHV3k53c7oSYEQ1HhNLhIYm5wwgZyoFFde4151A/edit#gid=1822345740"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Telefone",
+              "lookupValue": "5581993515055"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "48620f4d-b3c9-4807-ba11-12d73908e36d",
+      "name": "RS1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        800,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "def2867c-f399-4f62-a8fb-5976bc893077",
+              "leftValue": "={{ $json['Comprou mentoria'] }}",
+              "rightValue": "=sim",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "1860c3d6-fe20-4393-be9b-09bd3d31127a",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1020,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "6226c4c9-614c-47e3-9371-6728c24f092b",
+              "leftValue": "={{ $json.isNumber }}",
+              "rightValue": "=não",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5f5f3d20-ef29-44be-83f3-7ed4b743a1d9",
+      "name": "Filter2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1620,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "19b812bb-faa1-4c53-acbf-de74593d0a7a",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1960,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-video",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.Telefone }}"
+            },
+            {
+              "name": "video",
+              "value": "https://raw.githubusercontent.com/libertas-cris/arquivos-salablack/main/video-ila-im%20(1).mp4"
+            },
+            {
+              "name": "delayMessage",
+              "value": "={{ Math.floor(Math.random() * 9) + 5 }}\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9b9e4354-5dca-4a20-92ee-16cd64b5debb",
+      "name": "HTTP Request4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2200,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Loop Over Items').item.json.Telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Dá uma olhada no que está por vir 👆🏻\n\nÉ… Finalmente vai acontecer, mas não por qualquer motivo.\n\nHoje nosso grupo mentora 90 clínicas no Brasil e agencia o marketing de mais outras 300.\n\nE mesmo gerando tanto resultado para nossos clientes, muitos pediam para conhecer minha clínica em Goiânia para ver tudo na prática.\n\nBom… Seria impossível levar tanta gente e foi por isso que eu tomei uma decisão diferente.\n\nSe eu não posso te levar até a minha clínica, vou levar ela até você. Ou melhor, até uma imersão em São Paulo.\n\nNos dias 8 e 9 de junho, vamos mostrar na prática os 3 pilares das minhas clínicas para vender 1 milhão por mês com implantes.\n\nSim, você vai conhecer meu time e vai aprender com eles.\n\nVocê vai viver os nossos processos para faturar de 200 a 400 mil, dependendo da sua realidade.\n\nSe você viu nosso nível de entrega em 2 horas, imagina em 2 dias, [FNAME]?\n\nEstamos na pré-venda com o menor preço possível, que vai aumentar em breve.\n\nMe reponde com MILLION pra garantir seu ingresso.\n\nE para quem não é de São Paulo, conseguimos desconto em hotéis e uma agência de viagens para passagens mais baratas. Tudo para te ajudar a viver esses 2 dias únicos"
+            },
+            {
+              "name": "delayMessage",
+              "value": "={{ Math.floor(Math.random() * 9) + 5 }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "34f8d512-b241-48c4-8b10-214847928a7d",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1IZh2wHV3k53c7oSYEQ1HhNLhIYm5wwgZyoFFde4151A/edit#gid=1822345740",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1848896607,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos [AS2]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IZh2wHV3k53c7oSYEQ1HhNLhIYm5wwgZyoFFde4151A/edit#gid=1848896607"
+        },
+        "options": {}
+      },
+      "id": "0cfd0cd7-b550-46a2-946d-6ff0a6ac822b",
+      "name": "RS2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        800,
+        600
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "def2867c-f399-4f62-a8fb-5976bc893077",
+              "leftValue": "={{ $json.Comprou }}",
+              "rightValue": "=@",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e4ced894-bc35-4b76-9ec3-17f0b14582c8",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IZh2wHV3k53c7oSYEQ1HhNLhIYm5wwgZyoFFde4151A",
+          "mode": "list",
+          "cachedResultName": "[ILA] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IZh2wHV3k53c7oSYEQ1HhNLhIYm5wwgZyoFFde4151A/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1010776085,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos [AS3]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IZh2wHV3k53c7oSYEQ1HhNLhIYm5wwgZyoFFde4151A/edit#gid=1010776085"
+        },
+        "options": {}
+      },
+      "id": "ce752b1f-9f04-48b2-aea7-e792e1b17d64",
+      "name": "RS3",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        800,
+        800
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "def2867c-f399-4f62-a8fb-5976bc893077",
+              "leftValue": "={{ $json.Comprou }}",
+              "rightValue": "=@",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "910ad835-437c-4037-8c80-10ebf4b6c78a",
+      "name": "Filter3",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1020,
+        800
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-03-29T21:36:42.000Z",
+  "versionId": "76fe4600-0f40-47bf-b9dd-62fd4f60cf88"
+}
