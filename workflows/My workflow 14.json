@@ -12,17 +12,6 @@
         ]
       ]
     },
-    "RS1": {
-      "main": [
-        [
-          {
-            "node": "Filter1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Filter1": {
       "main": [
         [
@@ -50,50 +39,6 @@
         [
           {
             "node": "HTTP Request1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "RS2": {
-      "main": [
-        [
-          {
-            "node": "Filter",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "RS3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "RS3": {
-      "main": [
-        [
-          {
-            "node": "Filter3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter": {
-      "main": [
-        [
-          {
-            "node": "Formata Telefone1",
             "type": "main",
             "index": 0
           }
@@ -177,17 +122,6 @@
         ]
       ]
     },
-    "RS4": {
-      "main": [
-        [
-          {
-            "node": "Filter7",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Filter7": {
       "main": [
         [
@@ -197,11 +131,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Filter2": {
-      "main": [
-        []
       ]
     },
     "Loop Over Items": {
@@ -227,12 +156,67 @@
         ]
       ]
     },
-    "Filter4": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "RS5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RS4": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RS6": {
+      "main": [
+        [
+          {
+            "node": "Filter3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RS5": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
       "main": [
         []
       ]
     },
-    "Filter5": {
+    "Filter4": {
       "main": [
         [
           {
@@ -319,8 +303,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        800,
-        400
+        820,
+        -380
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -340,11 +324,20 @@
           "conditions": [
             {
               "id": "def2867c-f399-4f62-a8fb-5976bc893077",
-              "leftValue": "={{ $json['Comprou mentoria'] }}",
+              "leftValue": "={{ $json['comprou?'] }}",
               "rightValue": "=sim",
               "operator": {
                 "type": "string",
                 "operation": "notEquals"
+              }
+            },
+            {
+              "id": "a7b316fd-4936-4cb2-bee6-b0f0671cd90a",
+              "leftValue": "={{ $json['comprou?'] }}",
+              "rightValue": "=@",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
               }
             }
           ],
@@ -492,8 +485,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        800,
-        600
+        820,
+        -180
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -513,8 +506,8 @@
           "conditions": [
             {
               "id": "def2867c-f399-4f62-a8fb-5976bc893077",
-              "leftValue": "={{ $json.Comprou }}",
-              "rightValue": "=@",
+              "leftValue": "={{ $json['comprou?'] }}",
+              "rightValue": "=sim",
               "operator": {
                 "type": "string",
                 "operation": "notContains"
@@ -557,8 +550,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        800,
-        800
+        820,
+        20
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -578,8 +571,8 @@
           "conditions": [
             {
               "id": "def2867c-f399-4f62-a8fb-5976bc893077",
-              "leftValue": "={{ $json.Comprou }}",
-              "rightValue": "=@",
+              "leftValue": "={{ $json['Comprou?'] }}",
+              "rightValue": "=sim",
               "operator": {
                 "type": "string",
                 "operation": "notContains"
@@ -744,8 +737,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        800,
-        1000
+        820,
+        400
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -855,6 +848,68 @@
         1020,
         1000
       ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1423227382,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos [AS5]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit#gid=1423227382"
+        },
+        "options": {}
+      },
+      "id": "57502dfe-99dc-45c1-af6c-8ba31c34aace",
+      "name": "RS5",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        820,
+        600
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1930318114,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos [AS6]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit#gid=1930318114"
+        },
+        "options": {}
+      },
+      "id": "d19fbb35-ea69-452d-a2b7-01a96bd81f55",
+      "name": "RS6",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        820,
+        800
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -864,6 +919,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-03-30T12:21:49.000Z",
-  "versionId": "c46e041f-933e-4ebf-9289-7f04c3d74d72"
+  "updatedAt": "2024-04-01T13:58:19.000Z",
+  "versionId": "2d102081-0f99-436b-8f51-436e7a27a861"
 }
