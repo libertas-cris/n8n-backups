@@ -158,16 +158,10 @@
     },
     "Schedule Trigger": {
       "main": [
-        [
-          {
-            "node": "RS6",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
-    "RS4": {
+    "RS7": {
       "main": [
         [
           {
@@ -178,18 +172,7 @@
         ]
       ]
     },
-    "RS6": {
-      "main": [
-        [
-          {
-            "node": "Filter3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "RS5": {
+    "RS8": {
       "main": [
         [
           {
@@ -198,6 +181,11 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        []
       ]
     },
     "Filter": {
@@ -211,19 +199,15 @@
         ]
       ]
     },
-    "Filter2": {
-      "main": [
-        []
-      ]
-    },
     "Filter4": {
       "main": [
-        []
-      ]
-    },
-    "Filter5": {
-      "main": [
-        []
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -302,8 +286,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        820,
-        -380
+        800,
+        -900
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -323,7 +307,7 @@
           "conditions": [
             {
               "id": "def2867c-f399-4f62-a8fb-5976bc893077",
-              "leftValue": "={{ $json['comprou?'] }}",
+              "leftValue": "={{ $json['Respondeu Aplicação'] }}",
               "rightValue": "=sim",
               "operator": {
                 "type": "string",
@@ -331,12 +315,12 @@
               }
             },
             {
-              "id": "a7b316fd-4936-4cb2-bee6-b0f0671cd90a",
-              "leftValue": "={{ $json['comprou?'] }}",
-              "rightValue": "=@",
+              "id": "c63eb0d3-7cdb-41b9-9b9e-e1e035a64dd2",
+              "leftValue": "={{ $json.row_number }}",
+              "rightValue": "={{ 3 }}",
               "operator": {
-                "type": "string",
-                "operation": "notContains"
+                "type": "number",
+                "operation": "gte"
               }
             }
           ],
@@ -484,8 +468,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        820,
-        -180
+        800,
+        -700
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -505,11 +489,11 @@
           "conditions": [
             {
               "id": "def2867c-f399-4f62-a8fb-5976bc893077",
-              "leftValue": "={{ $json['comprou?'] }}",
+              "leftValue": "={{ $json['Respondeu Aplicação'] }}",
               "rightValue": "=sim",
               "operator": {
                 "type": "string",
-                "operation": "notContains"
+                "operation": "notEquals"
               }
             }
           ],
@@ -549,8 +533,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        820,
-        20
+        800,
+        -500
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -736,8 +720,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        820,
-        400
+        800,
+        -320
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -869,8 +853,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        820,
-        600
+        800,
+        -120
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -900,8 +884,70 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
+        800,
+        80
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1439035940",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1930318114,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos [AS7]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1930318114"
+        },
+        "options": {}
+      },
+      "id": "d6d76c2c-9e62-425c-bbfa-1799cc028937",
+      "name": "RS7",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
         820,
-        800
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1439035940",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 619382168,
+          "mode": "list",
+          "cachedResultName": "[AUTO] Inscritos [AS8]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=619382168"
+        },
+        "options": {}
+      },
+      "id": "996e559e-f980-465c-888a-fbb23a6410e0",
+      "name": "RS8",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        820,
+        600
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -918,6 +964,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-04-01T16:53:41.000Z",
-  "versionId": "6e8ddfb8-2119-4bd8-9493-b04ea3a2028d"
+  "updatedAt": "2024-04-03T02:01:39.000Z",
+  "versionId": "873dd3db-b233-47b0-abbb-51795c32dbe5"
 }
