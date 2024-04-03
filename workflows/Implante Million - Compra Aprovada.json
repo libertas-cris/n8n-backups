@@ -19,6 +19,11 @@
             "node": "Switch1",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -180,22 +185,22 @@
         ]
       ]
     },
-    "Switch1": {
+    "C1": {
       "main": [
         [
           {
-            "node": "C1",
+            "node": "C2",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "C1": {
+    "Switch1": {
       "main": [
         [
           {
-            "node": "C2",
+            "node": "C1",
             "type": "main",
             "index": 0
           }
@@ -1509,12 +1514,15 @@
           "mappingMode": "defineBelow",
           "value": {
             "Data": "={{ $('Date & Time1').item.json.formattedDate }}",
-            "Nome": "={{ ($('Formata Telefone').item.json['contact[first_name]'] + \" \" + $('Formata Telefone').item.json['contact[last_name]'])}} ",
+            "Nome": "={{ $('Formata Telefone').item.json['contact[first_name]'] + \" \" + $('Formata Telefone').item.json['contact[last_name]'] }} ",
             "Email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
             "Telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}",
-            "Categoria Ingresso": "VIP"
+            "Categoria Ingresso": "={{ $('Formata Telefone').item.json['contact[fields][comprouingresso]'] }}",
+            "Valor": "997"
           },
-          "matchingColumns": [],
+          "matchingColumns": [
+            "R$ 4.486,50"
+          ],
           "schema": [
             {
               "id": "Data",
@@ -1523,7 +1531,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Nome",
@@ -1532,7 +1541,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email",
@@ -1541,7 +1551,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Telefone",
@@ -1550,7 +1561,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Clínica",
@@ -1559,7 +1571,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Cidade",
@@ -1568,7 +1581,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Estado",
@@ -1577,7 +1591,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Valor",
@@ -1586,7 +1601,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Categoria Ingresso",
@@ -1595,7 +1611,8 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Mentorado?",
@@ -1604,11 +1621,24 @@
               "defaultMatch": false,
               "display": true,
               "type": "string",
-              "canBeUsedToMatch": true
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "R$ 4.486,50",
+              "displayName": "R$ 4.486,50",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ]
         },
-        "options": {}
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
       },
       "id": "b33d247c-af59-4250-9d89-20c4290cf141",
       "name": "Google Sheets1",
@@ -1762,6 +1792,62 @@
     },
     {
       "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $('Formata Telefone').item.json['contact[first_name]'].toLowerCase() }}, tudo bem? Primeiramente gostaria de te parabenizar pela compra do seu ingresso!\n\nE como você também comprou o *Essencial Convidado*, estou passando aqui para pedir que você envie os seguintes dados do seu convidado:"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "753b9ace-4a9a-4712-bfc9-a2142b7550e3",
+      "name": "C1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1520,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Nome:\nE-mail:\nTelefone:"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cd78af96-23e6-4c20-905e-7e8b433a9458",
+      "name": "C2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1720,
+        -200
+      ]
+    },
+    {
+      "parameters": {
         "rules": {
           "values": [
             {
@@ -1821,62 +1907,6 @@
         1280,
         -40
       ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
-            },
-            {
-              "name": "message",
-              "value": "=Olá, {{ $('Formata Telefone').item.json['contact[first_name]'].toLowerCase() }}, tudo bem? Primeiramente gostaria de te parabenizar pela compra do seu ingresso!\n\nE como você também comprou o *Essencial Convidado*, estou passando aqui para pedir que você envie os seguintes dados do seu convidado:"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "753b9ace-4a9a-4712-bfc9-a2142b7550e3",
-      "name": "C1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        1520,
-        -200
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
-            },
-            {
-              "name": "message",
-              "value": "=Nome:\nE-mail:\nTelefone:"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "cd78af96-23e6-4c20-905e-7e8b433a9458",
-      "name": "C2",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        1720,
-        -200
-      ]
     }
   ],
   "pinData": {
@@ -1886,44 +1916,44 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "GuzzleHttp/6.5.5 curl/8.3.0 PHP/8.1.23",
-            "content-length": "997",
+            "content-length": "941",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "23.22.14.42",
+            "cf-connecting-ip": "52.2.43.221",
             "cf-ipcountry": "US",
-            "cf-ray": "8686b626bca6398b-IAD",
+            "cf-ray": "86e45aa43bfd82a2-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/x-www-form-urlencoded",
-            "x-forwarded-for": "172.70.39.14",
+            "x-forwarded-for": "172.70.175.163",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.70.39.14"
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.70.175.163"
           },
           "params": {},
           "query": {},
           "body": {
-            "contact[id]": "2992",
-            "contact[email]": "matheuscristhyan.2@gmail.com",
-            "contact[first_name]": "MATHEUS",
-            "contact[last_name]": "CRISTHYAN SILVA RODRIGUES",
-            "contact[phone]": "(81) 99351-5055",
+            "contact[id]": "3685",
+            "contact[email]": "lorylouise@yahoo.com.br",
+            "contact[first_name]": "Lorena",
+            "contact[last_name]": "Valadao",
+            "contact[phone]": "215521969597700",
             "contact[orgname]": "",
             "contact[customer_acct_name]": "",
-            "contact[tags]": "IM - PréCheckout, Comprou Ingresso - Essencial, Essencial - Convidado",
-            "contact[ip4]": "190.89.246.53",
-            "contact[fields][pg_aplicao_etapas]": "Etapa 1",
-            "contact[fields][utmsourceim]": "direto",
+            "contact[tags]": "IM - PréCheckout, Comprou Ingresso - Vip",
+            "contact[ip4]": "127.0.0.1",
+            "contact[fields][utmsourceim]": "dentistapower.com.br",
             "contact[fields][utmcampaignim]": "",
             "contact[fields][utmmediumim]": "",
             "contact[fields][utmtermim]": "",
             "contact[fields][utmcontentim]": "",
             "contact[fields][paginaim]": "implante-million-b/",
             "contact[fields][ingresso]": "vip",
-            "contact[fields][url]": "pay.hotmart.com/Q91749526Y?off=bs3pkh78&name=MATHEUS CRISTHYAN SILVA RODRIGUES&email=matheuscristhyan.2@gmail.com&phonenumber=(81) 99351-5055",
-            "contact[fields][purchasedate]": "2024-03-22",
-            "contact[fields][comprouingresso]": "essencial",
+            "contact[fields][url]": "pay.hotmart.com/Q91749526Y?off=bs3pkh78&name=Lorena Valadao&email=lorylouise@yahoo.com.br&phonenumber=(21) 9695-97700",
+            "contact[fields][checkoutdate]": "2024-04-02",
+            "contact[fields][purchasedate]": "2024-04-02",
+            "contact[fields][comprouingresso]": "vip",
             "seriesid": "66"
           }
         }
@@ -1936,6 +1966,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-01T20:14:53.000Z",
-  "versionId": "d0aa7ef8-43b4-4cc3-9efe-11d745ba2a71"
+  "updatedAt": "2024-04-03T13:12:08.000Z",
+  "versionId": "f4c0ac71-8604-494e-92fb-4d41b1b32577"
 }
