@@ -276,7 +276,9 @@
   },
   "createdAt": "2024-01-08T00:20:48.131Z",
   "id": "BnyK2hZ5I2jtfMD0",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[REDESIGN] Trackeamento Geral",
   "nodes": [
     {
@@ -290,7 +292,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        560,
+        540,
         340
       ],
       "webhookId": "6ad1be67-e4aa-4e50-aaed-d00334087b97"
@@ -526,7 +528,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1740,
+        1760,
         340
       ]
     },
@@ -672,8 +674,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2000,
-        160
+        2020,
+        120
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -3567,6 +3569,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-02-29T15:33:22.000Z",
-  "versionId": "78160b5d-2924-48bd-92d1-7e933a6ca32d"
+  "updatedAt": "2024-04-03T11:58:19.000Z",
+  "versionId": "f1bc0183-1223-46d1-abf1-18f1eadd85e8"
 }
