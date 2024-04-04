@@ -250,7 +250,7 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        1580,
+        1360,
         380
       ]
     },
@@ -267,7 +267,7 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        1740,
+        1580,
         380
       ]
     },
@@ -312,7 +312,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
       "position": [
-        1900,
+        1780,
         380
       ]
     },
@@ -1966,6 +1966,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-03T13:12:08.000Z",
-  "versionId": "f4c0ac71-8604-494e-92fb-4d41b1b32577"
+  "updatedAt": "2024-04-04T14:46:46.000Z",
+  "versionId": "fea469e5-665b-4262-ad9d-9db91535e4d0"
 }
