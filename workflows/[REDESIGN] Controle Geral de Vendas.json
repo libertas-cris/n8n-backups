@@ -52,7 +52,7 @@
       "main": [
         [
           {
-            "node": "Produtos APROVADA",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -89,38 +89,6 @@
         [
           {
             "node": "BOT PIX BI",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Produtos APROVADA": {
-      "main": [
-        [
-          {
-            "node": "Adiciona BVL",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Adiciona BI",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Adiciona BC",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Order Bumps",
             "type": "main",
             "index": 0
           }
@@ -236,11 +204,63 @@
           }
         ]
       ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Adiciona BVL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Adiciona BI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Adiciona BC",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Adiciona BC1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Order Bumps",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona BC1": {
+      "main": [
+        [
+          {
+            "node": "Comprou bciv",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-01-17T19:25:21.664Z",
   "id": "TiJYgvwBSlGodsBe",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[REDESIGN] Controle Geral de Vendas",
   "nodes": [
     {
@@ -317,6 +337,13 @@
             {
               "value2": "Box Contábil 360",
               "output": 2
+            },
+            {
+              "value2": "Box Civil 360",
+              "output": 3
+            },
+            {
+              "output": 3
             }
           ]
         },
@@ -327,8 +354,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
       "position": [
-        -240,
-        620
+        -440,
+        80
       ]
     },
     {
@@ -2146,6 +2173,371 @@
         720,
         -120
       ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w",
+          "mode": "list",
+          "cachedResultName": "[Redesign.360] - Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2121283905,
+          "mode": "list",
+          "cachedResultName": "Automações - Vendas",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit#gid=2121283905"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data Produto Principal": "={{ $('Formata Data').item.json.formattedDate }}",
+            "ID coluna": "={{ $('Code').item.json.data.buyer.email + $('Code').item.json.data.product.name }}",
+            "Nome": "={{ $('Code').item.json.data.buyer.name }}",
+            "Email": "={{ $('Code').item.json.data.buyer.email }}",
+            "Telefone": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}",
+            "Produto": "={{ $('Code').item.json.data.product.name }}",
+            "Valor do produto": "={{ $('Code').item.json.data.purchase.original_offer_price.value }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data Produto Principal",
+              "displayName": "Data Produto Principal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID coluna",
+              "displayName": "ID coluna",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Produto",
+              "displayName": "Produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valor do produto",
+              "displayName": "Valor do produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Origem de compra",
+              "displayName": "Origem de compra",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "1º upsell",
+              "displayName": "1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Upsell oferecido?",
+              "displayName": "Upsell oferecido?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Comprou 1º upsell ?",
+              "displayName": "Comprou 1º upsell ?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Origem de compra 1º upsell",
+              "displayName": "Origem de compra 1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data 1º upsell",
+              "displayName": "Data 1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "2º upsell",
+              "displayName": "2º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "2º Upsell oferecido?",
+              "displayName": "2º Upsell oferecido?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Comprou 2º upsell?",
+              "displayName": "Comprou 2º upsell?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Origem de compra 2º upsell?",
+              "displayName": "Origem de compra 2º upsell?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data 2º upsell",
+              "displayName": "Data 2º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f253677b-ed22-4243-b956-4c3758d97e22",
+      "name": "Adiciona BC1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        460,
+        -480
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Visual Law 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BVL"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2a6aaac-e211-4940-b254-561cc55d9073",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Imobiliário 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BI"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9797cf0d-4703-49c3-bd65-baa0b5554fa0",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Contábil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCONT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5beeef4b-ea05-4ee3-9e22-2655b6931091",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Civil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCIV"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "e9f119d7-ce7b-4b02-a7fe-67eeb07c6538",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -180,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/GsZEDwcSKUY8/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "nome",
+              "value": "={{ $('Code').item.json.data.buyer.name.split(\" \")[0] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ 55 + $('Code').item.json.data.buyer.checkout_phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69c2ad09-6944-450c-a760-d55291aabddf",
+      "name": "Comprou bciv",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        -480
+      ]
     }
   ],
   "pinData": {
@@ -2155,21 +2547,21 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "Jodd HTTP",
-            "content-length": "1543",
+            "content-length": "1443",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "54.89.41.223",
+            "cf-connecting-ip": "3.89.60.133",
             "cf-ipcountry": "US",
-            "cf-ray": "86044c00aee93b59-IAD",
+            "cf-ray": "86ec6c083b0281a5-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "x-forwarded-for": "172.70.42.247",
+            "x-forwarded-for": "172.70.134.222",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "af9052d35998",
+            "x-forwarded-server": "bc917484dc53",
             "x-hotmart-hottok": "rX99Tq4apaLftnsX3uaaYN6W5dbWeF13096923",
-            "x-real-ip": "172.70.42.247"
+            "x-real-ip": "172.70.134.222"
           },
           "params": {},
           "query": {},
@@ -2177,28 +2569,36 @@
             "data": {
               "product": {
                 "has_co_production": true,
-                "name": "Box Contábil 360",
-                "id": 2386202,
-                "ucode": "7d017ac9-e09e-4c69-a9ad-8ed2fe4fe744"
+                "name": "Box Civil 360",
+                "id": 3942537,
+                "ucode": "4e01134a-9c14-4a65-90f6-8ddb8005226a"
               },
               "commissions": [
                 {
                   "currency_value": "BRL",
                   "source": "MARKETPLACE",
-                  "value": 13.34
+                  "value": 9.15
                 },
                 {
                   "currency_value": "BRL",
                   "source": "PRODUCER",
-                  "value": 121.89
+                  "value": 81.7
                 }
               ],
               "purchase": {
+                "offer": {
+                  "code": "p49pzlpz"
+                },
+                "order_date": 1712182561000,
                 "original_offer_price": {
                   "currency_value": "BRL",
-                  "value": 146.89
+                  "value": 97
                 },
                 "subscription_anticipation_purchase": false,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 97
+                },
                 "checkout_country": {
                   "iso": "BR",
                   "name": "Brasil"
@@ -2206,29 +2606,18 @@
                 "order_bump": {
                   "is_order_bump": false
                 },
-                "approved_date": 1709748562000,
-                "offer": {
-                  "code": "7qwoy9v2"
-                },
-                "order_date": 1709748493000,
-                "price": {
-                  "currency_value": "BRL",
-                  "value": 146.89
-                },
                 "payment": {
-                  "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=65e8b10d0f0282a9e9f9f114a9209231a94586aa019f6fd9",
-                  "pix_expiration_date": 1709921294000,
-                  "installments_number": 1,
-                  "type": "PIX",
-                  "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/14443F77A419C272CF53D1573D5DBD7D5204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***6304CF15"
+                  "refusal_reason": "Existe algum tipo de restrição no cartão. Tente realizar a compra novamente com outro cartão ou meio de pagamento.",
+                  "installments_number": 6,
+                  "type": "CREDIT_CARD"
                 },
                 "full_price": {
                   "currency_value": "BRL",
-                  "value": 146.89
+                  "value": 107.04
                 },
                 "invoice_by": "HOTMART",
-                "transaction": "HP1357341531",
-                "status": "APPROVED"
+                "transaction": "HP0627954127",
+                "status": "CANCELED"
               },
               "affiliates": [
                 {
@@ -2241,17 +2630,24 @@
               },
               "buyer": {
                 "address": {
+                  "zipcode": "76813336",
                   "country": "Brasil",
+                  "number": "8882",
+                  "address": "RUA ROSALINA GOMES",
+                  "city": "Porto Velho",
+                  "state": "RO",
+                  "neighborhood": "SAO FRANCISCO",
+                  "complement": "CASA",
                   "country_iso": "BR"
                 },
-                "document": "08676833000189",
-                "name": "Ativa Contabilidade LTDA",
-                "checkout_phone": "75988704252",
-                "email": "ativasajadm@hotmail.com"
+                "document": "72750111234",
+                "name": "RONI LIMA LACERDA",
+                "checkout_phone": "69992061994",
+                "email": "roni.lacerda.pvh@gmail.com"
               }
             },
-            "id": "728f5670-af7c-4342-967c-3885aba68da8",
-            "creation_date": 1709748565460,
+            "id": "e03c1bf0-0e4e-49fa-8a49-e1ef263c8a84",
+            "creation_date": 1712182574223,
             "event": "PURCHASE_APPROVED",
             "version": "2.0.0"
           }
@@ -2272,6 +2668,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-03-06T18:51:15.000Z",
-  "versionId": "786cd1be-a2c2-402c-8762-c363e65408b3"
+  "updatedAt": "2024-04-04T01:22:16.000Z",
+  "versionId": "70957a1b-ffb3-42c1-b076-f5833d9b01fb"
 }
