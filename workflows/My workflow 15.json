@@ -1,0 +1,39 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-04-04T14:35:31.197Z",
+  "id": "vqBjz8qfGFv6TzwH",
+  "meta": null,
+  "name": "My workflow 15",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "id": "96e35dc0-04f7-41c6-9880-7b16846d60a4",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-04T14:35:31.197Z",
+  "versionId": "7918b676-eb18-4ba6-a150-c06517bdd03b"
+}
