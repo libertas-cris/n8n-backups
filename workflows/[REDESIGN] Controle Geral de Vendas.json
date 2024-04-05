@@ -205,6 +205,17 @@
         ]
       ]
     },
+    "Adiciona BC1": {
+      "main": [
+        [
+          {
+            "node": "Comprou bciv",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Switch": {
       "main": [
         [
@@ -237,6 +248,13 @@
         ],
         [
           {
+            "node": "Adiciona BC2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "Order Bumps",
             "type": "main",
             "index": 0
@@ -244,11 +262,11 @@
         ]
       ]
     },
-    "Adiciona BC1": {
+    "Adiciona BC2": {
       "main": [
         [
           {
-            "node": "Comprou bciv",
+            "node": "Comprou bciv1",
             "type": "main",
             "index": 0
           }
@@ -317,7 +335,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
       "position": [
-        -460,
+        -440,
         860
       ]
     },
@@ -2396,6 +2414,38 @@
     },
     {
       "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/GsZEDwcSKUY8/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "nome",
+              "value": "={{ $('Code').item.json.data.buyer.name.split(\" \")[0] }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            },
+            {
+              "name": "telefone",
+              "value": "={{ 55 + $('Code').item.json.data.buyer.checkout_phone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69c2ad09-6944-450c-a760-d55291aabddf",
+      "name": "Comprou bciv",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        -480
+      ]
+    },
+    {
+      "parameters": {
         "rules": {
           "values": [
             {
@@ -2491,6 +2541,30 @@
               },
               "renameOutput": true,
               "outputKey": "BCIV"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "69e1b6d7-09f1-4712-9aee-18981d0ec6b2",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Civil Avançado - Civil + Essencial",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BC+ES"
             }
           ]
         },
@@ -2503,14 +2577,234 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3,
       "position": [
-        -180,
-        480
+        -200,
+        460
       ]
     },
     {
       "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w",
+          "mode": "list",
+          "cachedResultName": "[Redesign.360] - Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2121283905,
+          "mode": "list",
+          "cachedResultName": "Automações - Vendas",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1mxeRVlf466wdAalWcqW-LWctru6dCcPE6wfcdTiub0w/edit#gid=2121283905"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data Produto Principal": "={{ $('Formata Data').item.json.formattedDate }}",
+            "ID coluna": "={{ $('Code').item.json.data.buyer.email + $('Code').item.json.data.product.name }}",
+            "Nome": "={{ $('Code').item.json.data.buyer.name }}",
+            "Email": "={{ $('Code').item.json.data.buyer.email }}",
+            "Telefone": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}",
+            "Produto": "={{ $('Code').item.json.data.product.name }}",
+            "Valor do produto": "={{ $('Code').item.json.data.purchase.original_offer_price.value }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data Produto Principal",
+              "displayName": "Data Produto Principal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID coluna",
+              "displayName": "ID coluna",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Produto",
+              "displayName": "Produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valor do produto",
+              "displayName": "Valor do produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Origem de compra",
+              "displayName": "Origem de compra",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "1º upsell",
+              "displayName": "1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Upsell oferecido?",
+              "displayName": "Upsell oferecido?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Comprou 1º upsell ?",
+              "displayName": "Comprou 1º upsell ?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Origem de compra 1º upsell",
+              "displayName": "Origem de compra 1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data 1º upsell",
+              "displayName": "Data 1º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "2º upsell",
+              "displayName": "2º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "2º Upsell oferecido?",
+              "displayName": "2º Upsell oferecido?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Comprou 2º upsell?",
+              "displayName": "Comprou 2º upsell?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Origem de compra 2º upsell?",
+              "displayName": "Origem de compra 2º upsell?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Data 2º upsell",
+              "displayName": "Data 2º upsell",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0aeea761-668a-4a43-a055-a4324ec3beca",
+      "name": "Adiciona BC2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        460,
+        -640
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
         "method": "POST",
-        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/GsZEDwcSKUY8/",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/ly8MZlQdQOZF/",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -2530,13 +2824,13 @@
         },
         "options": {}
       },
-      "id": "69c2ad09-6944-450c-a760-d55291aabddf",
-      "name": "Comprou bciv",
+      "id": "d821aebd-e39d-47c9-a2a8-eb48a4928cd1",
+      "name": "Comprou bciv1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
         720,
-        -480
+        -640
       ]
     }
   ],
@@ -2668,6 +2962,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-04-04T01:22:16.000Z",
-  "versionId": "70957a1b-ffb3-42c1-b076-f5833d9b01fb"
+  "updatedAt": "2024-04-04T20:36:55.000Z",
+  "versionId": "fa50c128-77d0-4f64-80e4-d7e770fe4407"
 }
