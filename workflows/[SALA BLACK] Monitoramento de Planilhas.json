@@ -1816,9 +1816,9 @@
           },
           "conditions": [
             {
-              "id": "b6238ef1-1531-44b2-a057-a6bb76302747",
+              "id": "32b3d41d-824e-4c1c-aa53-c54aa473cdf3",
               "leftValue": "={{ $json.row_number }}",
-              "rightValue": 27,
+              "rightValue": "={{ 37 }}",
               "operator": {
                 "type": "number",
                 "operation": "gte"
@@ -1829,12 +1829,12 @@
         },
         "options": {}
       },
-      "id": "9a528c9c-8406-416b-b10b-af13cd0a7f75",
+      "id": "a73db7f2-bd09-4f6e-a4b3-8268ed5af96a",
       "name": "Filter2",
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        800,
+        760,
         380
       ]
     }
@@ -1850,6 +1850,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-27T19:17:26.000Z",
-  "versionId": "348b74b5-29f2-4914-872e-0ca59800c89f"
+  "updatedAt": "2024-04-08T14:49:24.000Z",
+  "versionId": "6a49326e-5fe8-4def-a65b-ef8c5d430cd5"
 }
