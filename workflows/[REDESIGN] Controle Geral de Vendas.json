@@ -23,56 +23,6 @@
         ]
       ]
     },
-    "Produtos AGUARDANDO": {
-      "main": [
-        [
-          {
-            "node": "PIX? BVL",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "PIX? BI",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "PIX? BC",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Evento": {
-      "main": [
-        [
-          {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Produtos AGUARDANDO",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Produtos ABANDONO",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "PIX? BVL": {
       "main": [
         [
@@ -110,7 +60,7 @@
       "main": [
         [
           {
-            "node": "Evento",
+            "node": "Evento1",
             "type": "main",
             "index": 0
           }
@@ -122,25 +72,6 @@
         [
           {
             "node": "BOT PIX BC",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Produtos ABANDONO": {
-      "main": [
-        [],
-        [
-          {
-            "node": "BOT ABANDONO BI",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "BOT ABANDONO BC",
             "type": "main",
             "index": 0
           }
@@ -216,7 +147,40 @@
         ]
       ]
     },
-    "Switch": {
+    "Adiciona BCIV + ES": {
+      "main": [
+        [
+          {
+            "node": "Comprou bciv1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PIX? BCIV": {
+      "main": [
+        [
+          {
+            "node": "BOT PIX BCIV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PIX? BES": {
+      "main": [
+        [
+          {
+            "node": "BOT PIX BES",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Aprovada": {
       "main": [
         [
           {
@@ -248,7 +212,7 @@
         ],
         [
           {
-            "node": "Adiciona BC2",
+            "node": "Adiciona BCIV + ES",
             "type": "main",
             "index": 0
           }
@@ -262,11 +226,171 @@
         ]
       ]
     },
-    "Adiciona BC2": {
+    "Aguardando Pagamento": {
       "main": [
         [
           {
-            "node": "Comprou bciv1",
+            "node": "PIX? BVL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PIX? BI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PIX? BC",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PIX? BCIV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "PIX? BES",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aguardando Pagamento1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "BOT ABANDONO BI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "BOT ABANDONO BC",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "BOT ABANDONO BCIV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "BOT ABANDONO BES",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Evento1": {
+      "main": [
+        [
+          {
+            "node": "Compra Aprovada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aguardando Pagamento",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Aguardando Pagamento1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Compra Reclamada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Compra Cancelada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Reclamada": {
+      "main": [
+        [
+          {
+            "node": "Reembolso BVL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reembolso BI",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reembolso BC",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reembolso BCIV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reembolso BES",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra Cancelada": {
+      "main": [
+        [],
+        [],
+        [],
+        [
+          {
+            "node": "Cancelada CIV",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cancelada BES",
             "type": "main",
             "index": 0
           }
@@ -326,6 +450,10 @@
             {
               "value2": "PURCHASE_OUT_OF_SHOPPING_CART",
               "output": 2
+            },
+            {
+              "value2": "PURCHASE_PROTEST",
+              "output": 3
             }
           ]
         }
@@ -335,74 +463,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
       "position": [
-        -440,
-        860
-      ]
-    },
-    {
-      "parameters": {
-        "dataType": "string",
-        "value1": "={{ $('Code').item.json.data.product.name }}",
-        "rules": {
-          "rules": [
-            {
-              "value2": "Box Visual Law 360"
-            },
-            {
-              "value2": "Box Imobiliário 360",
-              "output": 1
-            },
-            {
-              "value2": "Box Contábil 360",
-              "output": 2
-            },
-            {
-              "value2": "Box Civil 360",
-              "output": 3
-            },
-            {
-              "output": 3
-            }
-          ]
-        },
-        "fallbackOutput": 3
-      },
-      "id": "c7f7160f-3149-4ac9-97a0-81c9a25802c4",
-      "name": "Produtos APROVADA",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 1,
-      "position": [
-        -440,
-        80
-      ]
-    },
-    {
-      "parameters": {
-        "dataType": "string",
-        "value1": "={{ $('Code').item.json.data.product.name }}",
-        "rules": {
-          "rules": [
-            {
-              "value2": "Box Visual Law 360"
-            },
-            {
-              "value2": "Box Imobiliário 360",
-              "output": 1
-            },
-            {
-              "value2": "Box Contábil 360",
-              "output": 2
-            }
-          ]
-        }
-      },
-      "id": "d088b5d3-f968-46ce-b0da-52dddca31314",
-      "name": "Produtos AGUARDANDO",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 1,
-      "position": [
-        -200,
-        1060
+        -920,
+        380
       ]
     },
     {
@@ -421,8 +483,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        40,
-        800
+        600,
+        420
       ]
     },
     {
@@ -441,8 +503,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        40,
-        1000
+        600,
+        620
       ]
     },
     {
@@ -698,8 +760,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        460,
-        -300
+        1020,
+        -1020
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -924,8 +986,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        460,
-        -120
+        1020,
+        -840
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -1144,8 +1206,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        460,
-        80
+        1020,
+        -640
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -1170,37 +1232,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        40,
-        1240
-      ]
-    },
-    {
-      "parameters": {
-        "dataType": "string",
-        "value1": "={{ $('Code').item.json.data.product.name }}",
-        "rules": {
-          "rules": [
-            {
-              "value2": "Box Visual Law 360"
-            },
-            {
-              "value2": "Box Imobiliário 360",
-              "output": 1
-            },
-            {
-              "value2": "Box Contábil 360",
-              "output": 2
-            }
-          ]
-        }
-      },
-      "id": "5b1d3948-a48d-432d-b636-628e6c81997c",
-      "name": "Produtos ABANDONO",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 1,
-      "position": [
-        -220,
-        1660
+        600,
+        840
       ]
     },
     {
@@ -1235,8 +1268,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        400,
-        780
+        900,
+        400
       ]
     },
     {
@@ -1271,8 +1304,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        400,
-        980
+        900,
+        600
       ]
     },
     {
@@ -1307,8 +1340,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        400,
-        1220
+        900,
+        820
       ]
     },
     {
@@ -1339,8 +1372,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        320,
-        1440
+        940,
+        1640
       ]
     },
     {
@@ -1371,8 +1404,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        320,
-        1620
+        940,
+        1820
       ]
     },
     {
@@ -1403,8 +1436,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        320,
-        1820
+        940,
+        2020
       ]
     },
     {
@@ -1432,8 +1465,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 1,
       "position": [
-        320,
-        540
+        880,
+        -180
       ]
     },
     {
@@ -1646,8 +1679,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        700,
-        300
+        1260,
+        -420
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -1866,8 +1899,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        700,
-        480
+        1260,
+        -240
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -2086,8 +2119,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        700,
-        660
+        1260,
+        -60
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -2124,8 +2157,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        720,
-        -300
+        1280,
+        -1020
       ]
     },
     {
@@ -2156,8 +2189,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        720,
-        80
+        1280,
+        -640
       ]
     },
     {
@@ -2188,8 +2221,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        720,
-        -120
+        1280,
+        -840
       ]
     },
     {
@@ -2402,8 +2435,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        460,
-        -480
+        1020,
+        -1200
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -2440,145 +2473,40 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        720,
-        -480
+        1280,
+        -1200
       ]
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/ly8MZlQdQOZF/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
             {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
-                    "rightValue": "Box Visual Law 360",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "BVL"
+              "name": "nome",
+              "value": "={{ $('Code').item.json.data.buyer.name.split(\" \")[0] }}"
             },
             {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "id": "a2a6aaac-e211-4940-b254-561cc55d9073",
-                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
-                    "rightValue": "=Box Imobiliário 360",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "BI"
+              "name": "email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
             },
             {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "id": "9797cf0d-4703-49c3-bd65-baa0b5554fa0",
-                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
-                    "rightValue": "=Box Contábil 360",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "BCONT"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "id": "5beeef4b-ea05-4ee3-9e22-2655b6931091",
-                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
-                    "rightValue": "Box Civil 360",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "BCIV"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "id": "69e1b6d7-09f1-4712-9aee-18981d0ec6b2",
-                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
-                    "rightValue": "=Box Civil Avançado - Civil + Essencial",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "BC+ES"
+              "name": "telefone",
+              "value": "={{ 55 + $('Code').item.json.data.buyer.checkout_phone }}"
             }
           ]
         },
-        "options": {
-          "fallbackOutput": "extra"
-        }
+        "options": {}
       },
-      "id": "e9f119d7-ce7b-4b02-a7fe-67eeb07c6538",
-      "name": "Switch",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3,
+      "id": "d821aebd-e39d-47c9-a2a8-eb48a4928cd1",
+      "name": "Comprou bciv1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
       "position": [
-        -200,
-        460
+        1280,
+        -1360
       ]
     },
     {
@@ -2787,12 +2715,12 @@
         "options": {}
       },
       "id": "0aeea761-668a-4a43-a055-a4324ec3beca",
-      "name": "Adiciona BC2",
+      "name": "Adiciona BCIV + ES",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        460,
-        -640
+        1020,
+        -1360
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -2803,34 +2731,1224 @@
     },
     {
       "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('Code').item.json.data.purchase.payment.type }}",
+              "value2": "PIX"
+            }
+          ]
+        }
+      },
+      "id": "7eab1e9b-1185-4605-8edf-d2425df8a907",
+      "name": "PIX? BCIV",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        600,
+        1080
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $('Code').item.json.data.purchase.payment.type }}",
+              "value2": "PIX"
+            }
+          ]
+        }
+      },
+      "id": "9d32fe9d-12e4-4d1f-bd8e-301fa53730a4",
+      "name": "PIX? BES",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        600,
+        1300
+      ]
+    },
+    {
+      "parameters": {
         "method": "POST",
-        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/ly8MZlQdQOZF/",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/tbCUCcxuua2D/",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
             {
-              "name": "nome",
-              "value": "={{ $('Code').item.json.data.buyer.name.split(\" \")[0] }}"
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
             },
             {
-              "name": "email",
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Pagamento",
+              "value": "={{ $('Code').item.json.data.purchase.payment.pix_qrcode }}"
+            },
+            {
+              "name": "Email",
               "value": "={{ $('Code').item.json.data.buyer.email }}"
-            },
-            {
-              "name": "telefone",
-              "value": "={{ 55 + $('Code').item.json.data.buyer.checkout_phone }}"
             }
           ]
         },
         "options": {}
       },
-      "id": "d821aebd-e39d-47c9-a2a8-eb48a4928cd1",
-      "name": "Comprou bciv1",
+      "id": "195d5042-f98a-4ca4-8e46-a76e2d30d03d",
+      "name": "BOT PIX BCIV",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        720,
-        -640
+        900,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/YPDGOK4Btc8b/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Pagamento",
+              "value": "={{ $('Code').item.json.data.purchase.payment.pix_qrcode }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1f47a801-f327-43a2-8dd8-f8de74440951",
+      "name": "BOT PIX BES",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        900,
+        1280
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Visual Law 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BVL"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2a6aaac-e211-4940-b254-561cc55d9073",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Imobiliário 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BI"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9797cf0d-4703-49c3-bd65-baa0b5554fa0",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Contábil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCONT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5beeef4b-ea05-4ee3-9e22-2655b6931091",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Civil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCIV"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "69e1b6d7-09f1-4712-9aee-18981d0ec6b2",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Civil Avançado - Civil + Essencial",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BC+ES"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "e9f119d7-ce7b-4b02-a7fe-67eeb07c6538",
+      "name": "Compra Aprovada",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        360,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Visual Law 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BVL"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2a6aaac-e211-4940-b254-561cc55d9073",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Imobiliário 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BI"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9797cf0d-4703-49c3-bd65-baa0b5554fa0",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Contábil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCONT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5beeef4b-ea05-4ee3-9e22-2655b6931091",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Civil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCIV"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "69e1b6d7-09f1-4712-9aee-18981d0ec6b2",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Civil Avançado - Civil + Essencial",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BC+ES"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "7ed2b636-c123-4a86-806c-501bb200e717",
+      "name": "Aguardando Pagamento",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        280,
+        780
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/T5w2oCoSpJK9/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Code').item.json.data.buyer.phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fedc8702-704b-426f-be04-6b6878a53e80",
+      "name": "BOT ABANDONO BCIV",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        940,
+        2240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/ySxF0qE9IVqA/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Code').item.json.data.buyer.phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "81c31b1a-b809-4f4f-be5f-0c4a9a5f717f",
+      "name": "BOT ABANDONO BES",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        940,
+        2440
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Visual Law 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BVL"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2a6aaac-e211-4940-b254-561cc55d9073",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Imobiliário 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BI"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9797cf0d-4703-49c3-bd65-baa0b5554fa0",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Contábil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCONT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5beeef4b-ea05-4ee3-9e22-2655b6931091",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Civil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCIV"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "69e1b6d7-09f1-4712-9aee-18981d0ec6b2",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Civil Avançado - Civil + Essencial",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BC+ES"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "57068362-5e6a-4ae5-9e7b-5f422f106057",
+      "name": "Aguardando Pagamento1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        380,
+        1880
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/PfcS6KzGpYTH/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e1ee62ef-652c-4ebb-a47d-28597fda917f",
+      "name": "Reembolso BVL",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        2840
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/8AohM21zIrle/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eb85f1ff-a764-466f-aed0-65b375b03c5b",
+      "name": "Reembolso BCIV",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        3520
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/dyiA5eb3lVLx/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8c7ba751-b8e1-497e-8658-50b4988cf585",
+      "name": "Reembolso BES",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        3740
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/0GZ4QW2rTYGW/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c13a3225-e76f-48d9-b57b-2b4adf89b317",
+      "name": "Reembolso BC",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        3280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/4mKrboJzBaL0/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2b88e025-93c8-4327-9887-196a70176c09",
+      "name": "Reembolso BI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        920,
+        3060
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Code').item.json.event }}",
+                    "rightValue": "PURCHASE_APPROVED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "APROVADA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2a6aaac-e211-4940-b254-561cc55d9073",
+                    "leftValue": "={{ $('Code').item.json.event }}",
+                    "rightValue": "PURCHASE_BILLET_PRINTED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "PIX GERADO"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9797cf0d-4703-49c3-bd65-baa0b5554fa0",
+                    "leftValue": "={{ $('Code').item.json.event }}",
+                    "rightValue": "PURCHASE_OUT_OF_SHOPPING_CART",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ABANDONO DE CARRINHO"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5beeef4b-ea05-4ee3-9e22-2655b6931091",
+                    "leftValue": "={{ $('Code').item.json.event }}",
+                    "rightValue": "PURCHASE_PROTEST",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "RECLAMADA"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "708ca17d-ddc7-4ea7-9898-f267107a3cbe",
+                    "leftValue": "={{ $('Code').item.json.event }}",
+                    "rightValue": "=PURCHASE_CANCELED",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "CANCELADA"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "8cfd2a1e-bd56-49d5-8ba2-15175ef38f9e",
+      "name": "Evento1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -440,
+        860
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Visual Law 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BVL"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2a6aaac-e211-4940-b254-561cc55d9073",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Imobiliário 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BI"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9797cf0d-4703-49c3-bd65-baa0b5554fa0",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Contábil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCONT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5beeef4b-ea05-4ee3-9e22-2655b6931091",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Civil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCIV"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "69e1b6d7-09f1-4712-9aee-18981d0ec6b2",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Civil Avançado - Civil + Essencial",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BC+ES"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "96a767a0-baf0-4e02-b693-81ab91170b70",
+      "name": "Compra Reclamada",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        340,
+        3040
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Visual Law 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BVL"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "a2a6aaac-e211-4940-b254-561cc55d9073",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Imobiliário 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BI"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "9797cf0d-4703-49c3-bd65-baa0b5554fa0",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Contábil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCONT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "5beeef4b-ea05-4ee3-9e22-2655b6931091",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "Box Civil 360",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BCIV"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "69e1b6d7-09f1-4712-9aee-18981d0ec6b2",
+                    "leftValue": "={{ $('Code').item.json.data.product.name }}",
+                    "rightValue": "=Box Civil Avançado - Civil + Essencial",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "BC+ES"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "e79bced2-2ebd-4d89-b073-7729f2508a83",
+      "name": "Compra Cancelada",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        420,
+        4740
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/eYOd4I38cNuK/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "188174f3-c8f7-4607-b095-b702a5749611",
+      "name": "Cancelada BES",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        820,
+        5220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://backend.botconversa.com.br/api/v1/webhooks-automation/catch/84163/RdtdGAheoX5j/",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Nome",
+              "value": "={{ $('Code').item.json.data.buyer.name }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ 55+$('Code').item.json.data.buyer.checkout_phone }}"
+            },
+            {
+              "name": "Email",
+              "value": "={{ $('Code').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d85c5f73-1f56-4a0e-9569-fd7bc2749240",
+      "name": "Cancelada CIV",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        820,
+        5000
       ]
     }
   ],
@@ -2962,6 +4080,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-04-04T20:36:55.000Z",
-  "versionId": "fa50c128-77d0-4f64-80e4-d7e770fe4407"
+  "updatedAt": "2024-04-09T02:08:28.000Z",
+  "versionId": "12c2aa9b-0b74-4c93-a9c1-345e81358318"
 }
