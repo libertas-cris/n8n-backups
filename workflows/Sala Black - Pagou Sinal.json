@@ -1,0 +1,1155 @@
+{
+  "active": true,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Pega Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega Data": {
+      "main": [
+        [
+          {
+            "node": "Formata Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data": {
+      "main": [
+        [
+          {
+            "node": "Adiciona Sinal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adiciona Sinal": {
+      "main": [
+        [
+          {
+            "node": "Busca E-mail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca E-mail": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Sinal",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Busca Chave",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Chave": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Sinal1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Sinal": {
+      "main": [
+        [
+          {
+            "node": "Busca ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualiza Sinal1": {
+      "main": [
+        [
+          {
+            "node": "Busca ID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca ID": {
+      "main": [
+        [
+          {
+            "node": "ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca ID1": {
+      "main": [
+        [
+          {
+            "node": "ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-09T22:13:23.156Z",
+  "id": "rqOrpSvHQIYqNYy2",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Sala Black - Pagou Sinal",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "29d4c217-3b5a-434d-9abc-cd04537f5b36",
+        "options": {}
+      },
+      "id": "e2a4a361-b16c-4c55-816a-0b35d4f1849d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        380
+      ],
+      "webhookId": "29d4c217-3b5a-434d-9abc-cd04537f5b36"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "d04dfc01-3dcf-4d44-a54f-33d0929ef2f0",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['contact[phone]'] = formataTelefone($input.all()[0].json['contact[phone]'])\n\nreturn $input.all();"
+      },
+      "id": "8b39417d-0185-4862-bacc-934772ab2d2b",
+      "name": "Code3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1280,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "8ff41811-7571-4610-b277-b081d9a6785e",
+      "name": "Pega Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1500,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.currentDate }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {}
+      },
+      "id": "7a5f83a1-0af1-44f7-aefd-7b978e439ab3",
+      "name": "Formata Data",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1023353718,
+          "mode": "list",
+          "cachedResultName": "Sinal | RS9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1023353718"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data ": "={{ $json.formattedDate }}",
+            "Nome": "={{ $('Code3').item.json['contact[first_name]'] }}",
+            "E-mail": "={{ $('Code3').item.json['contact[email]'] }}",
+            "Telefone": "={{ $('Code3').item.json['contact[phone]'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data ",
+              "displayName": "Data ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E-mail",
+              "displayName": "E-mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0c285c13-b264-48a7-a61b-9e88028db3d2",
+      "name": "Adiciona Sinal",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1920,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 571212486,
+          "mode": "list",
+          "cachedResultName": "[LEADS]Aplicação Sala Black [AS9]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=571212486"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Endereço de e-mail",
+              "lookupValue": "={{ $('Code3').item.json['contact[email]'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ef4b66bc-48b0-4d2d-a8a4-229b5ff58481",
+      "name": "Busca E-mail",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        2140,
+        380
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "taskTag",
+        "taskId": "={{ $json['id clickup'] }}",
+        "tagName": "pagou sinal",
+        "additionalFields": {}
+      },
+      "id": "eae8f034-c48e-4410-af7e-2f93c7e5f6d9",
+      "name": "ClickUp",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        3660,
+        360
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f23cfb41-47f0-4108-a4e2-5daf3d9401fa",
+              "leftValue": "={{ $json.row_number }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3fa8c5a4-b18a-4dac-8806-dfd4df18e1aa",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2360,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 571212486,
+          "mode": "list",
+          "cachedResultName": "[LEADS]Aplicação Sala Black [AS9]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=571212486"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "chave",
+              "lookupValue": "={{ $('Code3').item.json['contact[phone]'].slice(-7) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "24aa6039-65b2-4e68-975f-26c18b443577",
+      "name": "Busca Chave",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        2580,
+        680
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f23cfb41-47f0-4108-a4e2-5daf3d9401fa",
+              "leftValue": "={{ $json.row_number }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d1cb88b5-ad7e-4799-9873-42eff63414eb",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2800,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 571212486,
+          "mode": "list",
+          "cachedResultName": "[LEADS]Aplicação Sala Black [AS9]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=571212486"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "Pagou sinal": "Sim"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Endereço de e-mail",
+              "displayName": "Endereço de e-mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual o seu nome?",
+              "displayName": "Qual o seu nome?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual seu whatsapp?",
+              "displayName": "Qual seu whatsapp?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Etapa_form",
+              "displayName": "Etapa_form",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual o nome da sua clínica?",
+              "displayName": "Qual o nome da sua clínica?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E em qual cidade e região ela fica localizada?",
+              "displayName": "E em qual cidade e região ela fica localizada?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual o faturamento mensal médio da sua clínica nos últimos meses?",
+              "displayName": "Qual o faturamento mensal médio da sua clínica nos últimos meses?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sua clínica investe em tráfego pago para aquisição de pacientes? Se sim, quanto?",
+              "displayName": "Sua clínica investe em tráfego pago para aquisição de pacientes? Se sim, quanto?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Quais procedimentos vocês mais realizam na sua clínica?",
+              "displayName": "Quais procedimentos vocês mais realizam na sua clínica?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E qual o ticket médio desses procedimentos?",
+              "displayName": "E qual o ticket médio desses procedimentos?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual a sua principal dificuldade hoje para aumentar o faturamento da sua clínica?",
+              "displayName": "Qual a sua principal dificuldade hoje para aumentar o faturamento da sua clínica?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "O modelo de mentoria que foi apresentado na aula faz sentido pra você?",
+              "displayName": "O modelo de mentoria que foi apresentado na aula faz sentido pra você?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Por que você acredita que participar da Sala Black é a oportunidade ideal para você e para o crescimento do seu negócio?",
+              "displayName": "Por que você acredita que participar da Sala Black é a oportunidade ideal para você e para o crescimento do seu negócio?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Por que devemos escolher você?",
+              "displayName": "Por que devemos escolher você?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Capacidade de investimento",
+              "displayName": "Capacidade de investimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Caso você seja aceito na Sala Black, o que precisa acontecer com você ou sua clínica, ao final dos 6 meses, para você dizer que valeu participar do programa e ser acompanhado pelas Dras. Ila e  Nicole?",
+              "displayName": "Caso você seja aceito na Sala Black, o que precisa acontecer com você ou sua clínica, ao final dos 6 meses, para você dizer que valeu participar do programa e ser acompanhado pelas Dras. Ila e  Nicole?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "chave",
+              "displayName": "chave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id clickup",
+              "displayName": "id clickup",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link crm",
+              "displayName": "link crm",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagou sinal",
+              "displayName": "Pagou sinal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3aea4b36-4954-4330-8fe6-b473efac16eb",
+      "name": "Atualiza Sinal",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        2800,
+        360
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 571212486,
+          "mode": "list",
+          "cachedResultName": "[LEADS]Aplicação Sala Black [AS9]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=571212486"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Endereço de e-mail",
+              "lookupValue": "={{ $('Code3').item.json['contact[email]'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "57385404-877c-45a0-8622-67f2afa11fc8",
+      "name": "Busca ID",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        3140,
+        360
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 571212486,
+          "mode": "list",
+          "cachedResultName": "[LEADS]Aplicação Sala Black [AS9]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=571212486"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "Pagou sinal": "Sim"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Endereço de e-mail",
+              "displayName": "Endereço de e-mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual o seu nome?",
+              "displayName": "Qual o seu nome?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual seu whatsapp?",
+              "displayName": "Qual seu whatsapp?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Etapa_form",
+              "displayName": "Etapa_form",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual o nome da sua clínica?",
+              "displayName": "Qual o nome da sua clínica?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E em qual cidade e região ela fica localizada?",
+              "displayName": "E em qual cidade e região ela fica localizada?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual o faturamento mensal médio da sua clínica nos últimos meses?",
+              "displayName": "Qual o faturamento mensal médio da sua clínica nos últimos meses?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Sua clínica investe em tráfego pago para aquisição de pacientes? Se sim, quanto?",
+              "displayName": "Sua clínica investe em tráfego pago para aquisição de pacientes? Se sim, quanto?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Quais procedimentos vocês mais realizam na sua clínica?",
+              "displayName": "Quais procedimentos vocês mais realizam na sua clínica?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "E qual o ticket médio desses procedimentos?",
+              "displayName": "E qual o ticket médio desses procedimentos?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Qual a sua principal dificuldade hoje para aumentar o faturamento da sua clínica?",
+              "displayName": "Qual a sua principal dificuldade hoje para aumentar o faturamento da sua clínica?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "O modelo de mentoria que foi apresentado na aula faz sentido pra você?",
+              "displayName": "O modelo de mentoria que foi apresentado na aula faz sentido pra você?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Por que você acredita que participar da Sala Black é a oportunidade ideal para você e para o crescimento do seu negócio?",
+              "displayName": "Por que você acredita que participar da Sala Black é a oportunidade ideal para você e para o crescimento do seu negócio?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Por que devemos escolher você?",
+              "displayName": "Por que devemos escolher você?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Capacidade de investimento",
+              "displayName": "Capacidade de investimento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Caso você seja aceito na Sala Black, o que precisa acontecer com você ou sua clínica, ao final dos 6 meses, para você dizer que valeu participar do programa e ser acompanhado pelas Dras. Ila e  Nicole?",
+              "displayName": "Caso você seja aceito na Sala Black, o que precisa acontecer com você ou sua clínica, ao final dos 6 meses, para você dizer que valeu participar do programa e ser acompanhado pelas Dras. Ila e  Nicole?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "chave",
+              "displayName": "chave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id clickup",
+              "displayName": "id clickup",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "link crm",
+              "displayName": "link crm",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagou sinal",
+              "displayName": "Pagou sinal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "00b77a83-dabf-491d-ab59-cb20eb9030d8",
+      "name": "Atualiza Sinal1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        3120,
+        660
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 571212486,
+          "mode": "list",
+          "cachedResultName": "[LEADS]Aplicação Sala Black [AS9]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=571212486"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "chave",
+              "lookupValue": "={{ $('Code3').item.json['contact[phone]'].slice(-7) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "121fdbe1-513b-4b11-a70c-f02683b395bf",
+      "name": "Busca ID1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        3380,
+        660
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "GuzzleHttp/6.5.5 curl/8.3.0 PHP/8.1.23",
+            "content-length": "1018",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "18.213.77.190",
+            "cf-ipcountry": "US",
+            "cf-ray": "8682056a68ba2413-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "172.71.222.252",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "172.71.222.252"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "contact[id]": "3550",
+            "contact[email]": "matheuscristhyan.2@gmail.com",
+            "contact[first_name]": "Carolina",
+            "contact[last_name]": "Bezerra",
+            "contact[phone]": "81993515055",
+            "contact[orgname]": "",
+            "contact[customer_acct_name]": "",
+            "contact[tags]": "[RS9] Comprou Ingresso, [RS9] Pix Emitido, [RS9] Pré-Checkout",
+            "contact[ip4]": "10.13.145.225",
+            "contact[fields][utmsourcers9]": "adsfb",
+            "contact[fields][utmcampaignrs9]": "as1",
+            "contact[fields][utmmediumrs9]": "[AS9] [INGRESSOS] [CONVERSÕES] [COMPRA] [ABO] [F] - Teste de criativos",
+            "contact[fields][utmcontentrs9]": "04 - Interesses Mix Odontologia geral | Z9_25_voce_tambem",
+            "contact[fields][utmtermrs9]": "Z9_25_voce_tambem",
+            "contact[fields][rs9_pgina_capt]": "caixa-rapido/",
+            "contact[fields][rs9_initiatecheckout_date]": "2024-03-21",
+            "contact[fields][rs9_temperatura]": "frio",
+            "contact[fields][rs9_pix_emitido_date]": "2024-03-21",
+            "contact[fields][rs9_subscribe_date]": "2024-03-21",
+            "seriesid": "33"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-04-09T23:35:22.000Z",
+  "versionId": "36e5c905-7ad2-4859-907c-4fef25b9afc8"
+}
