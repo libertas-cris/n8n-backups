@@ -1,0 +1,184 @@
+{
+  "active": false,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-11T19:33:07.138Z",
+  "id": "fRhuKU9ocprWd9ug",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 17",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "981bc467-1445-435d-b92b-cb572432d7b4",
+        "options": {}
+      },
+      "id": "bdf65fd1-f6d0-4766-9e85-b36d06a31c46",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        180,
+        220
+      ],
+      "webhookId": "981bc467-1445-435d-b92b-cb572432d7b4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://evolutionapi.autoflows.online/message/sendMedia/jeg",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "o10heiz42mgpiz03rko4o"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"number\": \"5581993515055\",\n    \"options\": {\n        \"delay\": 1200,\n        \"presence\": \"composing\"\n    },\n    \"mediaMessage\": {\n        \"mediatype\": \"document\",\n        \"fileName\": \"boleto.pdf\",\n        \"caption\": \"Olá, essa é a sua cobrança referente ao mês de abril\",\n        \"media\": \"{{ $('Trata Webhook').item.json[\"payment\"][\"bankSlipUrl\"] }}\"\n    }\n}",
+        "options": {}
+      },
+      "id": "ef7d43d4-76ee-4d87-8be6-5cf3f1cf56ed",
+      "name": "HTTP Request6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        680,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "773b9757-3c2f-4a7e-8f66-980edbef3199",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        440,
+        220
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "insomnia/2023.5.8",
+            "content-length": "2037",
+            "accept": "*/*",
+            "accept-encoding": "gzip",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "186.235.185.56",
+            "cf-ipcountry": "BR",
+            "cf-ray": "82e3467ebae16454-GIG",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "x-forwarded-for": "162.158.193.219",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "af9052d35998",
+            "x-real-ip": "162.158.193.219"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "event": "PAYMENT_OVERDUE",
+            "payment": {
+              "object": "payment",
+              "id": "pay_0360887042256112",
+              "dateCreated": "2023-11-27",
+              "customer": "cus_000073193645",
+              "installment": "a61e28f9-dc39-4eef-9e11-60cd5ed11c8a",
+              "paymentLink": "041647673037",
+              "value": 1990,
+              "netValue": 1989.01,
+              "originalValue": null,
+              "interestValue": null,
+              "description": "Parcela 1 de 6.",
+              "billingType": "BOLETO",
+              "canBePaidAfterDueDate": true,
+              "confirmedDate": "2023-11-28",
+              "pixTransaction": null,
+              "status": "RECEIVED",
+              "dueDate": "2023-11-29",
+              "originalDueDate": "2023-11-29",
+              "paymentDate": "2023-11-28",
+              "clientPaymentDate": "2023-11-27",
+              "installmentNumber": 1,
+              "invoiceUrl": "https://www.asaas.com/payment/invoice/0360887042256112",
+              "invoiceNumber": "329920680",
+              "externalReference": null,
+              "deleted": false,
+              "anticipated": false,
+              "anticipable": false,
+              "creditDate": "2023-11-28",
+              "estimatedCreditDate": "2023-11-28",
+              "transactionReceiptUrl": "https://www.asaas.com/comprovantes/5545041864197280",
+              "nossoNumero": "176548703",
+              "bankSlipUrl": "https://www.asaas.com/b/pdf/0360887042256112",
+              "lastInvoiceViewedDate": null,
+              "lastBankSlipViewedDate": null,
+              "discount": {
+                "value": 0,
+                "limitDate": null,
+                "dueDateLimitDays": 0,
+                "type": "FIXED"
+              },
+              "fine": {
+                "value": 0,
+                "type": "FIXED"
+              },
+              "interest": {
+                "value": 0,
+                "type": "PERCENTAGE"
+              },
+              "postalService": false,
+              "custody": null,
+              "refunds": null
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-11T20:08:34.000Z",
+  "versionId": "a99b7d31-d1f1-484c-8b63-6b342e4faca8"
+}
