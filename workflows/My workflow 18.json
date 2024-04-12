@@ -1,0 +1,445 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp": {
+      "main": [
+        []
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-12T12:57:36.725Z",
+  "id": "HZABMDm6q4lwpSzi",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 18",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "02f9da22-85bf-4140-95d3-707f6b25457c",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        700,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "list",
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901300794753"
+      },
+      "id": "4824f304-eabf-4cf0-b11f-2082b669f8cc",
+      "name": "ClickUp",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        520,
+        180
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "7361ea45-30fb-4eb0-8dac-046e7303deca",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "=Vendas",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2b3ca518-44f7-4859-818e-1df24e655ade",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc",
+          "mode": "list",
+          "cachedResultName": " [ILA] [CICLO 2] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 851754870,
+          "mode": "list",
+          "cachedResultName": "Não existe clickup",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit#gid=851754870"
+        },
+        "options": {}
+      },
+      "id": "9eddca7c-8af6-4fe5-8b7b-ad850216342b",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        960,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1ab4f7bd-8da4-4c47-ad90-19c0c66deaf9",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1160,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc",
+          "mode": "list",
+          "cachedResultName": " [ILA] [CICLO 2] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 851754870,
+          "mode": "list",
+          "cachedResultName": "Não existe clickup",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit#gid=851754870"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $('Loop Over Items').item.json.row_number }}",
+            "vendas_etapa_nome": "={{ $json.type_config.options[ $('Loop Over Items').item.json.vendas].name }} "
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "e-mail",
+              "displayName": "e-mail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "vendas",
+              "displayName": "vendas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "vendas_etapa_nome",
+              "displayName": "vendas_etapa_nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "link",
+              "displayName": "link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8e891b4a-6389-4ab3-b0b7-d944cd935c44",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1660,
+        280
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Filter": [
+      {
+        "json": {
+          "id": "e0752dc0-514e-4b1c-b942-e1386a5e6a5c",
+          "name": "Vendas",
+          "type": "drop_down",
+          "type_config": {
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "84694b23-c26f-47ff-921d-0993119b6235",
+                "name": "Isca",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "104dff2e-3d7f-4b6f-aca6-aee3bcd9a23c",
+                "name": "Recuperação",
+                "color": "#e50000",
+                "orderindex": 1
+              },
+              {
+                "id": "30effc4f-6693-4437-a727-bb7724d1ced8",
+                "name": "Respondeu recuperação",
+                "color": "#800000",
+                "orderindex": 2
+              },
+              {
+                "id": "74870851-2173-421b-a25e-699cb81a7fcd",
+                "name": "Lead",
+                "color": "#b5bcc2",
+                "orderindex": 3
+              },
+              {
+                "id": "39b257fc-8372-4ae7-a067-10765198f900",
+                "name": "Respondeu Pesquisa",
+                "color": "#FF7FAB",
+                "orderindex": 4
+              },
+              {
+                "id": "dda4da49-04d9-4cf7-bc83-dd13ddd68e72",
+                "name": "Pré-aplicação",
+                "color": "#EA80FC",
+                "orderindex": 5
+              },
+              {
+                "id": "0e96883e-1ca1-44d6-8b4e-696048b0ae52",
+                "name": "Preencheu Aplicação",
+                "color": "#bf55ec",
+                "orderindex": 6
+              },
+              {
+                "id": "bf562c70-d028-4918-8292-cd926daeb16c",
+                "name": "Aguardando Pagamento",
+                "color": "#f900ea",
+                "orderindex": 7
+              },
+              {
+                "id": "e9e5ba64-adf3-4ffb-8ae8-a65e8e5d5ed4",
+                "name": "Comprou a Sala Black",
+                "color": "#2ecd6f",
+                "orderindex": 8
+              },
+              {
+                "id": "2b24291c-b4f5-4f77-8bfd-ae536681f1ad",
+                "name": "Onboarding",
+                "color": "#e50000",
+                "orderindex": 9
+              },
+              {
+                "id": "100f6269-711a-4f7a-947d-19b9cbdf4f3a",
+                "name": "Aplicação Orgânico (SE)",
+                "color": "#81B1FF",
+                "orderindex": 10
+              },
+              {
+                "id": "ab1182bb-899e-4262-a613-b9cd74d323aa",
+                "name": "Lead (SE)",
+                "color": "#bcd5ff",
+                "orderindex": 11
+              },
+              {
+                "id": "8778802b-f09d-40f2-a13d-e53ea80cf31f",
+                "name": "Convite Reunião (SE)",
+                "color": "#81B1FF",
+                "orderindex": 12
+              },
+              {
+                "id": "3180cfcd-0835-4f45-8008-3d2609d66a30",
+                "name": "Reunião Agendada (SE)",
+                "color": "#04A9F4",
+                "orderindex": 13
+              },
+              {
+                "id": "7ab02491-6aa0-4607-af1b-b1a68b8a5151",
+                "name": "Reunião Realizada (SE)",
+                "color": "#02BCD4",
+                "orderindex": 14
+              },
+              {
+                "id": "0818d031-49c5-4480-abce-c5511f194adc",
+                "name": "Follow-up (SE)",
+                "color": "#f9d900",
+                "orderindex": 15
+              },
+              {
+                "id": "ec5008c0-2488-442f-9a0d-e0edca4fd6b5",
+                "name": "Evento Presencial",
+                "color": "#AF7E2E",
+                "orderindex": 16
+              }
+            ]
+          },
+          "date_created": "1695961005791",
+          "hide_from_guests": false,
+          "required": false
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-12T13:14:15.000Z",
+  "versionId": "c40f1bfc-89d3-4f53-8f8a-2f1f5db6d021"
+}
