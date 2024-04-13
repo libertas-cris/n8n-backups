@@ -49,8 +49,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "Data": {
@@ -108,11 +107,6 @@
         ]
       ]
     },
-    "Etapa 1": {
-      "main": [
-        []
-      ]
-    },
     "Atualiza Etapa 2": {
       "main": [
         [
@@ -122,11 +116,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Existe? Etapa 3": {
-      "main": [
-        []
       ]
     },
     "Desqualificado CRC/Até 10Mil/Não investe": {
@@ -318,7 +307,9 @@
   },
   "createdAt": "2024-02-16T09:21:40.196Z",
   "id": "1K0sCvGSCbtoBiVY",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[ILA & NICOLE] Análise Comercial",
   "nodes": [
     {
@@ -427,10 +418,10 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -3153,7 +3144,7 @@
             },
             {
               "name": "message",
-              "value": "={{ $node[\"Formata Telefone\"].json[\"nome\"].split(\" \")[0] }}, Marcos da equipe das Dras. ILA Flávia e Nicole aqui! \n\nAcabamos de receber seu formulário para sua reunião de análise. Vamos te ligar em breve para agendar o horário e entender mais sobre sua clínica (bate-papo de 5 minutos).\n\nRecomendo que fique de olho no seu celular (tire do modo silencioso). \n\nCaso esteja em atendimento, pode me falar o melhor horário para essa conversa rápida antes da reunião. Até já!"
+              "value": "={{ $node[\"Formata Telefone\"].json[\"nome\"].split(\" \")[0] }}, aqui é da equipe das Dras. ILA Flávia e Nicole aqui! \n\nAcabamos de receber seu formulário para sua reunião de análise. *Vamos te ligar em breve* para agendar o horário e entender mais sobre sua clínica (bate-papo de 5 minutos).\n\nRecomendo que fique de olho no seu celular (tire do modo silencioso). \n\nCaso esteja em atendimento, pode me falar o melhor horário para essa conversa rápida antes da reunião. Até já!"
             }
           ]
         },
@@ -3499,7 +3490,7 @@
             },
             {
               "name": "message",
-              "value": "={{ $node[\"Formata Telefone\"].json[\"nome\"].split(\" \")[0] }}, Marcos da equipe das Dras. ILA Flávia e Nicole aqui! \n\nAcabamos de receber seu formulário para sua reunião de análise. Vamos te ligar em breve para agendar o horário e entender mais sobre sua clínica (bate-papo de 5 minutos).\n\nRecomendo que fique de olho no seu celular (tire do modo silencioso). \n\nCaso esteja em atendimento, pode me falar o melhor horário para essa conversa rápida antes da reunião. Até já!"
+              "value": "={{ $node[\"Formata Telefone\"].json[\"nome\"].split(\" \")[0] }}, aqui é da equipe das Dras. ILA Flávia e Nicole aqui! \n\nAcabamos de receber seu formulário para sua reunião de análise. *Vamos te ligar em breve* para agendar o horário e entender mais sobre sua clínica (bate-papo de 5 minutos).\n\nRecomendo que fique de olho no seu celular (tire do modo silencioso). \n\nCaso esteja em atendimento, pode me falar o melhor horário para essa conversa rápida antes da reunião. Até já!"
             }
           ]
         },
@@ -3673,6 +3664,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-11T04:09:12.000Z",
-  "versionId": "e6527250-37e0-4918-9e3c-f28b0150918c"
+  "updatedAt": "2024-04-12T18:23:33.000Z",
+  "versionId": "0cea990c-e751-4544-a917-a67c085ca402"
 }
