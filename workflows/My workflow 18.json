@@ -12,11 +12,6 @@
         ]
       ]
     },
-    "ClickUp": {
-      "main": [
-        []
-      ]
-    },
     "Google Sheets": {
       "main": [
         [
@@ -149,17 +144,17 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc",
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
           "mode": "list",
-          "cachedResultName": " [ILA] [CICLO 2] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 851754870,
+          "value": 1550786379,
           "mode": "list",
-          "cachedResultName": "Não existe clickup",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit#gid=851754870"
+          "cachedResultName": "Página131",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1550786379"
         },
         "options": {}
       },
@@ -196,23 +191,23 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc",
+          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
           "mode": "list",
-          "cachedResultName": " [ILA] [CICLO 2] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 851754870,
+          "value": 1550786379,
           "mode": "list",
-          "cachedResultName": "Não existe clickup",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1aCecSlhAwfyA4HZfcLP8DyvzQkqiBiiLkHLWi8xG5Bc/edit#gid=851754870"
+          "cachedResultName": "Página131",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1550786379"
         },
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
             "row_number": "={{ $('Loop Over Items').item.json.row_number }}",
-            "vendas_etapa_nome": "={{ $json.type_config.options[ $('Loop Over Items').item.json.vendas].name }} "
+            "vendas_etapa_nome": "={{ $json.type_config.options[ $('Loop Over Items').item.json.vendas].name }}"
           },
           "matchingColumns": [
             "row_number"
@@ -221,24 +216,6 @@
             {
               "id": "nome",
               "displayName": "nome",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "e-mail",
-              "displayName": "e-mail",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "telefone",
-              "displayName": "telefone",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -440,6 +417,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-04-12T13:14:15.000Z",
-  "versionId": "c40f1bfc-89d3-4f53-8f8a-2f1f5db6d021"
+  "updatedAt": "2024-04-12T19:37:46.000Z",
+  "versionId": "719df11e-bdd1-45ac-ba4c-24a1bbc51803"
 }
