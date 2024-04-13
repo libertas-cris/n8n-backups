@@ -206,6 +206,39 @@
           }
         ]
       ]
+    },
+    "Att compra esc": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Att compra vip": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Att compra black": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-03-22T13:40:06.154Z",
@@ -1907,6 +1940,138 @@
         1280,
         -40
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/xis2sjp089bz64oulzcx681c4rmy9dpo",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Data",
+              "value": "={{ $('Date & Time1').item.json.formattedDate }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Formata Telefone').item.json['contact[first_name]'] }}"
+            },
+            {
+              "name": "E-mail",
+              "value": "={{ $('Formata Telefone').item.json['contact[email]'] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "Ingresso",
+              "value": "Essencial"
+            },
+            {
+              "name": "Evento",
+              "value": "Compra"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "278698b4-7d35-4eac-a90e-d2a1bf05acd4",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3000,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/xis2sjp089bz64oulzcx681c4rmy9dpo",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Data",
+              "value": "={{ $('Date & Time1').item.json.formattedDate }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Formata Telefone').item.json['contact[first_name]'] }}"
+            },
+            {
+              "name": "E-mail",
+              "value": "={{ $('Formata Telefone').item.json['contact[email]'] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "Ingresso",
+              "value": "Vip"
+            },
+            {
+              "name": "Evento",
+              "value": "Compra"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6c24cc54-e17b-416c-ab20-b934eb219eb3",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3000,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/xis2sjp089bz64oulzcx681c4rmy9dpo",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Data",
+              "value": "={{ $('Date & Time1').item.json.formattedDate }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Formata Telefone').item.json['contact[first_name]'] }}"
+            },
+            {
+              "name": "E-mail",
+              "value": "={{ $('Formata Telefone').item.json['contact[email]'] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "Ingresso",
+              "value": "Black"
+            },
+            {
+              "name": "Evento",
+              "value": "Compra"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "722e15de-d566-47ef-81a0-740f5ece9dbf",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3000,
+        560
+      ]
     }
   ],
   "pinData": {
@@ -1966,6 +2131,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-04T14:46:46.000Z",
-  "versionId": "fea469e5-665b-4262-ad9d-9db91535e4d0"
+  "updatedAt": "2024-04-12T18:08:45.000Z",
+  "versionId": "0da3640a-e442-410d-b817-f720668a6abe"
 }
