@@ -45,16 +45,6 @@
         ]
       ]
     },
-    "Execute Workflow Trigger": {
-      "main": [
-        []
-      ]
-    },
-    "Formata Telefone": {
-      "main": [
-        []
-      ]
-    },
     "Google Sheets": {
       "main": [
         [
@@ -109,6 +99,11 @@
             "node": "Importação de Aluno2",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Importação de Aluno4",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -149,7 +144,9 @@
   },
   "createdAt": "2023-11-25T15:38:46.871Z",
   "id": "wzS9yvoNIBUKAwed",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[SALA BLACK] Importação de aluno | Hotmart",
   "nodes": [
     {
@@ -373,10 +370,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
@@ -435,10 +432,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
@@ -541,6 +538,34 @@
         2940,
         540
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=558199244176"
+            },
+            {
+              "name": "message",
+              "value": "=Aluno não encontrado para importação!\n\nEmail informado: {{ $('Formata Telefone').item.json['E-mail'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0702a53-f833-4fe5-abdb-7c33157bfed4",
+      "name": "Importação de Aluno4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2960,
+        1060
+      ]
     }
   ],
   "pinData": {
@@ -594,6 +619,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-14T15:25:53.000Z",
-  "versionId": "8e34147e-38b7-4d38-a538-565046a7bdfd"
+  "updatedAt": "2024-04-15T14:10:49.000Z",
+  "versionId": "e094594e-4d34-4203-adcb-e36425f5504c"
 }
