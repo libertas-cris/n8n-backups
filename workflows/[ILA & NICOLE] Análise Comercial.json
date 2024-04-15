@@ -234,6 +234,11 @@
             "node": "MSG Q",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "CRM DQ2",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -254,6 +259,11 @@
         [
           {
             "node": "MSG MQ",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "CRM DQ3",
             "type": "main",
             "index": 0
           }
@@ -284,24 +294,7 @@
     },
     "MSG MQ": {
       "main": [
-        [
-          {
-            "node": "CRM DQ3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "MSG Q": {
-      "main": [
-        [
-          {
-            "node": "CRM DQ2",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
@@ -2870,8 +2863,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2500,
-        1460
+        2480,
+        1680
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -3121,8 +3114,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2740,
-        1460
+        2720,
+        1680
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -3155,8 +3148,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3120,
-        1460
+        3080,
+        1800
       ]
     },
     {
@@ -3184,8 +3177,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1,
       "position": [
-        2920,
-        1460
+        2900,
+        1680
       ],
       "webhookId": "2f644fec-808f-45d2-9ed2-2361a5dac233"
     },
@@ -3473,8 +3466,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3340,
-        1160
+        3080,
+        1040
       ]
     },
     {
@@ -3501,8 +3494,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3120,
-        1160
+        3080,
+        1280
       ]
     },
     {
@@ -3597,8 +3590,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3340,
-        1460
+        3080,
+        1540
       ]
     }
   ],
@@ -3664,6 +3657,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-12T18:23:33.000Z",
-  "versionId": "0cea990c-e751-4544-a917-a67c085ca402"
+  "updatedAt": "2024-04-15T14:32:14.000Z",
+  "versionId": "346515e4-835b-4efb-bf8e-062f6d587ae5"
 }
