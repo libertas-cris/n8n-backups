@@ -1,11 +1,6 @@
 {
   "active": false,
   "connections": {
-    "Trata Webhook": {
-      "main": [
-        []
-      ]
-    },
     "Webhook": {
       "main": [
         [
@@ -50,8 +45,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        580,
-        100
+        560,
+        80
       ]
     },
     {
@@ -63,12 +58,22 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        580,
+        560,
         260
       ]
     },
     {
       "parameters": {
+        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.payment.customer }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
         "options": {}
       },
       "id": "f906877b-6ded-43c5-bc15-e731dfec21c7",
@@ -76,7 +81,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1000,
+        1140,
         380
       ]
     }
@@ -149,6 +154,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-04-17T00:11:30.000Z",
-  "versionId": "8dea3994-e96c-4aeb-9ca6-9ece4922e480"
+  "updatedAt": "2024-04-17T04:09:54.000Z",
+  "versionId": "ab03a76f-be85-43a5-8a95-5d0c650ab094"
 }
