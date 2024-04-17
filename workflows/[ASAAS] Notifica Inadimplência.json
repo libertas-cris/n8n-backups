@@ -1,0 +1,154 @@
+{
+  "active": false,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        []
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-17T00:06:51.154Z",
+  "id": "9IJLUbBLkOgYme8h",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[ASAAS] Notifica Inadimplência",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b955d3e0-12ac-4c8f-a2b5-6fd29778bc81",
+        "options": {}
+      },
+      "id": "f4aab4a0-3b43-44a4-9799-469871bb28eb",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "b955d3e0-12ac-4c8f-a2b5-6fd29778bc81"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "5e5a46d0-d0f0-40b2-8e03-ae7e2b31c856",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        580,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['telefone'] = formataTelefone($node['Trata Webhook'].json['telefone'])\n\nreturn $input.all();"
+      },
+      "id": "1c31f2c4-ffbd-4cf8-b261-b817519a0cc6",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        580,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "f906877b-6ded-43c5-bc15-e731dfec21c7",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1000,
+        380
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "id": "evt_071da53af2a9613df04213d0157d6b88&632695022",
+          "event": "PAYMENT_OVERDUE",
+          "payment": {
+            "object": "payment",
+            "id": "pay_m245ti8kelupasvn",
+            "dateCreated": "2024-02-06",
+            "customer": "cus_000078036847",
+            "installment": "dc9a2119-139e-4566-b6b3-46c788b548aa",
+            "paymentLink": null,
+            "value": 1690,
+            "netValue": 1689.01,
+            "originalValue": null,
+            "interestValue": null,
+            "description": "Parcela 3 de 12. Sala Black | 12x de R$ 1.690,00",
+            "billingType": "BOLETO",
+            "canBePaidAfterDueDate": true,
+            "pixTransaction": null,
+            "status": "OVERDUE",
+            "dueDate": "2024-04-15",
+            "originalDueDate": "2024-04-07",
+            "paymentDate": null,
+            "clientPaymentDate": null,
+            "installmentNumber": 3,
+            "invoiceUrl": "https://www.asaas.com/i/m245ti8kelupasvn",
+            "invoiceNumber": "363181518",
+            "externalReference": null,
+            "deleted": false,
+            "anticipated": false,
+            "anticipable": false,
+            "creditDate": null,
+            "estimatedCreditDate": null,
+            "transactionReceiptUrl": null,
+            "nossoNumero": "193977320",
+            "bankSlipUrl": "https://www.asaas.com/b/pdf/m245ti8kelupasvn",
+            "lastInvoiceViewedDate": null,
+            "lastBankSlipViewedDate": null,
+            "discount": {
+              "value": 0,
+              "limitDate": null,
+              "dueDateLimitDays": 0,
+              "type": "PERCENTAGE"
+            },
+            "fine": {
+              "value": 2,
+              "type": "PERCENTAGE"
+            },
+            "interest": {
+              "value": 1,
+              "type": "PERCENTAGE"
+            },
+            "postalService": false,
+            "custody": null,
+            "refunds": null
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-04-17T00:11:30.000Z",
+  "versionId": "8dea3994-e96c-4aeb-9ca6-9ece4922e480"
+}
