@@ -58,20 +58,8 @@
     },
     "IF": {
       "main": [
-        [
-          {
-            "node": "Importação de Aluno",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Google Sheets1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        [],
+        []
       ]
     },
     "Google Sheets1": {
@@ -112,7 +100,7 @@
       "main": [
         [
           {
-            "node": "Google Sheets",
+            "node": "Importação de Aluno",
             "type": "main",
             "index": 0
           }
@@ -131,6 +119,17 @@
       ]
     },
     "Code1": {
+      "main": [
+        [
+          {
+            "node": "ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp": {
       "main": [
         [
           {
@@ -160,7 +159,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        720,
+        520,
         260
       ],
       "webhookId": "442f200e-3c3f-447f-9c8e-f51fa93ffc80"
@@ -174,7 +173,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        940,
+        760,
         260
       ]
     },
@@ -320,7 +319,7 @@
             },
             {
               "name": "message",
-              "value": "=Importação de aluno: \n\n{{ $json.Nome }};{{ $('Code1').item.json.email }}\n\nTurma 8\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234 "
+              "value": "=Importação de aluno: \n\n{{ $('ClickUp').item.json.name }};{{ $('Code1').item.json.email }}\n\nTurma 9\n\nMotivo: aluno comprou outro produto, mas deveria ser esse\n\nId do produto: ID 3486234 "
             }
           ]
         },
@@ -331,8 +330,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2540,
-        240
+        2100,
+        260
       ]
     },
     {
@@ -390,8 +389,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2040,
-        260
+        2100,
+        480
       ],
       "alwaysOutputData": true,
       "credentials": {
@@ -417,8 +416,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        2260,
-        260
+        2240,
+        500
       ]
     },
     {
@@ -566,6 +565,26 @@
         2960,
         1060
       ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "id": "={{ $json.id_clickup }}"
+      },
+      "id": "815fea2b-2422-47a7-9e60-434a7193d7cc",
+      "name": "ClickUp",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        940,
+        260
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
     }
   ],
   "pinData": {
@@ -586,28 +605,29 @@
         "json": {
           "headers": {
             "host": "n8n.marcosfoks.com.br",
-            "user-agent": "axios/0.21.4",
-            "content-length": "68",
+            "user-agent": "axios/1.6.7",
+            "content-length": "80",
             "accept": "application/json,text/html,application/xhtml+xml,application/xml,text/*;q=0.9, image/*;q=0.8, */*;q=0.7",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
             "cf-connecting-ip": "194.163.167.202",
             "cf-ipcountry": "DE",
-            "cf-ray": "864544dbfabe7a5a-DUS",
+            "cf-ray": "875ef26b1ca23730-FRA",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "x-forwarded-for": "198.41.242.227",
+            "x-forwarded-for": "162.158.111.15",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "198.41.242.227"
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "162.158.111.15"
           },
           "params": {},
           "query": {},
           "body": {
-            "email": "matheuscristhyan.2@gmail.com",
-            "telefone": "+5581993515055"
+            "email": "matheus@gmail.com",
+            "telefone": "5581993515055",
+            "id_clickup": "86a30ybj0"
           }
         }
       }
@@ -619,6 +639,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-15T14:10:49.000Z",
-  "versionId": "e094594e-4d34-4203-adcb-e36425f5504c"
+  "updatedAt": "2024-04-17T19:54:24.000Z",
+  "versionId": "e4b078cd-cfe8-4ade-bf44-2889e924a93b"
 }
