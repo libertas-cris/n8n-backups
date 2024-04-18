@@ -575,6 +575,17 @@
           }
         ]
       ]
+    },
+    "permissao acomp5": {
+      "main": [
+        [
+          {
+            "node": "add papo de dono3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-29T19:31:31.334Z",
@@ -1958,10 +1969,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
@@ -2000,10 +2011,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
@@ -2075,10 +2086,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
@@ -2150,10 +2161,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
@@ -2332,15 +2343,15 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
             {
-              "lookupColumn": "Chave",
+              "lookupColumn": "=Chave",
               "lookupValue": "={{ $('Formata Telefone').item.json.Telefone.slice(-7) }}"
             }
           ]
@@ -2531,10 +2542,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
@@ -2674,10 +2685,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1219484480,
+          "value": 1283062463,
           "mode": "list",
-          "cachedResultName": "Turma 8",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1219484480"
+          "cachedResultName": "Turma 9",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
         },
         "filtersUI": {
           "values": [
@@ -2800,6 +2811,10 @@
             {
               "name": "telefone",
               "value": "={{ $('Trata Webhook').item.json.Telefone }}"
+            },
+            {
+              "name": "id_clickup",
+              "value": "={{ $('busca infos mentorado').item.json['ID Clickup'] }}"
             }
           ]
         },
@@ -2828,6 +2843,10 @@
             {
               "name": "telefone",
               "value": "={{ $('Trata Webhook').item.json.Telefone }}"
+            },
+            {
+              "name": "id_clickup",
+              "value": "={{ $('Google Sheets1').item.json['ID Clickup'] }}"
             }
           ]
         },
@@ -2971,8 +2990,8 @@
           "query": {},
           "body": {
             "submittedAt": "2024-03-15T00:21:07.170Z",
-            "E-mail": "ronancostasilva@gmail.com",
-            "Telefone": "+5561999158060",
+            "E-mail": "daniela.ortodontista@gmail.com",
+            "Telefone": "5511982597079",
             "Email-Acesso": "clinicacoex@gmail.com",
             "Email-Extra": "ronancostasilva@gmail.com",
             "Loop E-mails": "Não",
@@ -2995,6 +3014,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-03-27T18:53:15.000Z",
-  "versionId": "e3ed69a8-b7ca-4e43-b409-cdd5222ae89b"
+  "updatedAt": "2024-04-17T22:44:27.000Z",
+  "versionId": "e1e40898-67b8-410b-a5da-85b94fc9782a"
 }
