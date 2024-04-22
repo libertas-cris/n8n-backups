@@ -1013,7 +1013,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "data": "={{ $('Date & Time1').item.json.formattedDate }}",
-            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'+ $('Formata Telefone').item.json['contact[last_name]']] }}",
+            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'] }}",
             "email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
             "telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}",
             "chave": "={{ $('Formata Telefone').item.json['contact[phone]'].slice(-7) }}",
@@ -1188,7 +1188,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "data": "={{ $('Date & Time1').item.json.formattedDate }}",
-            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'+ $('Formata Telefone').item.json['contact[last_name]']] }}",
+            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'] }}",
             "email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
             "telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}",
             "chave": "={{ $('Formata Telefone').item.json['contact[phone]'].slice(-7) }}",
@@ -1364,7 +1364,7 @@
           "mappingMode": "defineBelow",
           "value": {
             "data": "={{ $('Date & Time1').item.json.formattedDate }}",
-            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'+ $('Formata Telefone').item.json['contact[last_name]']] }}",
+            "nome": "={{ $('Formata Telefone').item.json['contact[first_name]'] }}",
             "email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
             "telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}",
             "chave": "={{ $('Formata Telefone').item.json['contact[phone]'].slice(-7) }}",
@@ -2359,6 +2359,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-12T17:59:49.000Z",
-  "versionId": "a2d1fae3-7594-408b-b8e3-aaf33c535542"
+  "updatedAt": "2024-04-21T23:15:31.000Z",
+  "versionId": "8f1f591d-9cf7-4abd-b0d4-111acc4101fb"
 }
