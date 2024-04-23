@@ -66,6 +66,28 @@
           }
         ]
       ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-04-17T18:37:52.018Z",
@@ -167,15 +189,9 @@
           "mappingMode": "defineBelow",
           "value": {
             "data": "={{ $json.formattedDate }}",
-            "nome": "={{ $('Formata Telefone').item.json.name }}",
+            "nome": "={{ $('Formata Telefone').item.json.data.buyer.name }}",
             "email": "={{ $('Formata Telefone').item.json.email }}",
-            "telefone": "={{ $('Formata Telefone').item.json.phone }}",
-            "utm_source": "={{ $('Formata Telefone').item.json.utm_source }}",
-            "utm_medium": "={{ $('Formata Telefone').item.json.utm_medium }}",
-            "utm_campaign": "={{ $('Formata Telefone').item.json.utm_campaign }}",
-            "utm_content": "={{ $('Formata Telefone').item.json.utm_content }}",
-            "utm_term": "={{ $('Formata Telefone').item.json.utm_term }}",
-            "página": "={{ $('Formata Telefone').item.json.path }}"
+            "telefone": "={{ $('Formata Telefone').item.json.data.buyer.checkout_phone }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -303,6 +319,201 @@
         260
       ],
       "webhookId": "c72ed100-0be6-4bff-aa4d-f80d14b5f7e6"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2125210274,
+          "mode": "list",
+          "cachedResultName": "Initiate Checkout - BrithStart",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=2125210274"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "email",
+              "lookupValue": "={{ $('Formata Telefone').item.json.data.buyer.email }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a39c53d8-0de8-429a-af6b-88f513f3b42a",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        2060,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
+          "mode": "list",
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 628790580,
+          "mode": "list",
+          "cachedResultName": "Compras - BrithStart",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=628790580"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "email": "={{ $json.email }}",
+            "utm_source": "={{ $json.utm_source }}",
+            "utm_medium": "={{ $json.utm_medium }}",
+            "utm_campaign": "={{ $json.utm_campaign }}",
+            "utm_content": "={{ $json.utm_content }}",
+            "utm_term": "={{ $json.utm_term }}",
+            "página": "={{ $json.página }}"
+          },
+          "matchingColumns": [
+            "email"
+          ],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_source",
+              "displayName": "utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "utm_campaign",
+              "displayName": "utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_medium",
+              "displayName": "utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_content",
+              "displayName": "utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "utm_term",
+              "displayName": "utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "página",
+              "displayName": "página",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3be1bf1c-58a5-4512-bed0-a69af8e4f5f2",
+      "name": "Google Sheets2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        2280,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
     }
   ],
   "pinData": {
@@ -312,109 +523,107 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "Jodd HTTP",
-            "content-length": "1316",
+            "content-length": "1355",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "18.212.8.124",
+            "cf-connecting-ip": "44.222.114.79",
             "cf-ipcountry": "US",
-            "cf-ray": "875e89081f17204b-IAD",
+            "cf-ray": "878adbb57ee18797-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "x-forwarded-for": "172.71.223.149",
+            "x-forwarded-for": "162.158.78.29",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
             "x-hotmart-hottok": "sK7oPf5asJ48ysoU0O0s0Gk7oRFQCT43202e8b-db0b-4375-a04d-ea4c14a17d5f",
-            "x-real-ip": "172.71.223.149"
+            "x-real-ip": "162.158.78.29"
           },
           "params": {},
           "query": {},
           "body": {
             "data": {
               "product": {
-                "has_co_production": false,
-                "name": "Produto test postback2",
-                "id": 0,
-                "ucode": "fb056612-bcc6-4217-9e6d-2a5d1110ac2f"
+                "has_co_production": true,
+                "name": "BritStart",
+                "id": 3973850,
+                "ucode": "f7963514-25e4-44f1-8312-ceeb18ae6a6e"
               },
               "commissions": [
                 {
                   "currency_value": "BRL",
                   "source": "MARKETPLACE",
-                  "value": 149.5
+                  "value": 50.2
                 },
                 {
                   "currency_value": "BRL",
                   "source": "PRODUCER",
-                  "value": 1350.5
+                  "value": 288.8
                 }
               ],
               "purchase": {
-                "offer": {
-                  "code": "test"
-                },
-                "order_date": 1511783344000,
                 "original_offer_price": {
                   "currency_value": "BRL",
-                  "value": 1500
+                  "value": 497
                 },
-                "price": {
-                  "currency_value": "BRL",
-                  "value": 1500
-                },
+                "subscription_anticipation_purchase": false,
                 "checkout_country": {
                   "iso": "BR",
                   "name": "Brasil"
                 },
-                "sckPaymentLink": "sckPaymentLinkTest",
                 "order_bump": {
-                  "parent_purchase_transaction": "HP02316330308193",
-                  "is_order_bump": true
+                  "is_order_bump": false
+                },
+                "approved_date": 1713843894000,
+                "offer": {
+                  "code": "vx3rbagb"
+                },
+                "order_date": 1713843891000,
+                "price": {
+                  "currency_value": "BRL",
+                  "value": 497
                 },
                 "payment": {
                   "installments_number": 12,
                   "type": "CREDIT_CARD"
                 },
-                "approved_date": 1511783346000,
                 "full_price": {
                   "currency_value": "BRL",
-                  "value": 1500
+                  "value": 595.2
                 },
-                "transaction": "HP16015479281022",
+                "invoice_by": "HOTMART",
+                "transaction": "HP2818655759",
                 "status": "APPROVED"
               },
               "affiliates": [
                 {
-                  "affiliate_code": "Q58388177J",
-                  "name": "Affiliate name"
+                  "affiliate_code": "",
+                  "name": ""
                 }
               ],
               "producer": {
-                "name": "Producer Test Name"
-              },
-              "subscription": {
-                "subscriber": {
-                  "code": "I9OT62C3"
-                },
-                "plan": {
-                  "name": "plano de teste",
-                  "id": 123
-                },
-                "status": "ACTIVE"
+                "name": "JESSICA RIBEIRO PARISH 38581727824"
               },
               "buyer": {
                 "address": {
+                  "zipcode": "04929210",
                   "country": "Brasil",
+                  "number": "161",
+                  "address": "Rua Luís Teixeira de Oliveira",
+                  "city": "São Paulo",
+                  "state": "SP",
+                  "neighborhood": "Alto da Riviera",
+                  "complement": "",
                   "country_iso": "BR"
                 },
-                "name": "Teste Comprador",
-                "checkout_phone": "99999999900",
-                "email": "testeComprador271101postman15@example.com"
+                "document": "47491969836",
+                "name": "Júlia Gabriela Santos Costa",
+                "checkout_phone": "11964641016",
+                "email": "juliagscosta.oficial@gmail.com"
               }
             },
-            "id": "ca705787-ec4e-4fbb-ae16-853195d8b555",
-            "creation_date": 1713379138590,
+            "id": "fb7d22ca-ddc0-4b6f-a58b-e74464794e5d",
+            "creation_date": 1713843898770,
             "event": "PURCHASE_APPROVED",
             "version": "2.0.0"
           }
@@ -428,6 +637,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-17T19:01:24.000Z",
-  "versionId": "f09d0f6e-b00d-4138-bd23-4151c16edb19"
+  "updatedAt": "2024-04-23T13:28:23.000Z",
+  "versionId": "f179a569-75b1-4c0f-8369-102c5f27181c"
 }
