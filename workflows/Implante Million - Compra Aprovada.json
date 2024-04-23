@@ -16,11 +16,6 @@
       "main": [
         [
           {
-            "node": "Switch1",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Date & Time",
             "type": "main",
             "index": 0
@@ -55,6 +50,11 @@
         [
           {
             "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch1",
             "type": "main",
             "index": 0
           }
@@ -234,6 +234,28 @@
         [
           {
             "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "C2": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets3",
             "type": "main",
             "index": 0
           }
@@ -2072,6 +2094,211 @@
         3000,
         560
       ]
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "id": "f8fc17f9-9529-4767-b2a1-34393761095a",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1940,
+        -200
+      ],
+      "webhookId": "e6d77069-5f97-4969-ae56-4ff459f76894"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ePPvH0r91WzHrLIzGMcG5nF9wyIs-RcwRgdQ2B_B3UM",
+          "mode": "list",
+          "cachedResultName": "[ILA/NICOLE] Imersão Implante Million",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ePPvH0r91WzHrLIzGMcG5nF9wyIs-RcwRgdQ2B_B3UM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1225075075,
+          "mode": "list",
+          "cachedResultName": "Alunos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ePPvH0r91WzHrLIzGMcG5nF9wyIs-RcwRgdQ2B_B3UM/edit#gid=1225075075"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $('Date & Time1').item.json.formattedDate }}",
+            "Nome": "={{ $('Formata Telefone').item.json['contact[first_name]'] + \"convidado\" }}",
+            "Email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
+            "Telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cidade",
+              "displayName": "Cidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valor",
+              "displayName": "Valor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Categoria Ingresso",
+              "displayName": "Categoria Ingresso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Mentorado?",
+              "displayName": "Mentorado?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "LOTE",
+              "displayName": "LOTE",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Comprou onde",
+              "displayName": "Comprou onde",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "R$ 19.493,00",
+              "displayName": "R$ 19.493,00",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Clínicas",
+              "displayName": "Clínicas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID_Clickup",
+              "displayName": "ID_Clickup",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Link_CRM",
+              "displayName": "Link_CRM",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e86070fa-8823-4643-a732-ff4539653696",
+      "name": "Google Sheets3",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        2160,
+        -200
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2131,6 +2358,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-12T18:08:45.000Z",
-  "versionId": "0da3640a-e442-410d-b817-f720668a6abe"
+  "updatedAt": "2024-04-22T18:13:40.000Z",
+  "versionId": "ff8b5bb8-8bd1-4832-9af4-1ef9cb111429"
 }
