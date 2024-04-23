@@ -12,20 +12,9 @@
         ]
       ]
     },
-    "Code": {
-      "main": [
-        []
-      ]
-    },
     "GitHub": {
       "main": [
-        [
-          {
-            "node": "Google Sheets",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     }
   },
@@ -68,10 +57,10 @@
         },
         "repository": {
           "__rl": true,
-          "value": "audios-rs9",
+          "value": "ingressos-modelo",
           "mode": "list",
-          "cachedResultName": "audios-rs9",
-          "cachedResultUrl": "https://github.com/libertas-cris/audios-rs9"
+          "cachedResultName": "ingressos-modelo",
+          "cachedResultUrl": "https://github.com/libertas-cris/ingressos-modelo"
         }
       },
       "id": "25dab383-b0e2-4417-a3e6-b58b7d9ada2b",
@@ -163,8 +152,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        1180,
-        300
+        1220,
+        360
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -217,8 +206,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        980,
-        400
+        1020,
+        540
       ]
     }
   ],
@@ -229,6 +218,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-04-09T15:06:33.000Z",
-  "versionId": "d8de9ed9-9782-4ff4-bbeb-e87569334005"
+  "updatedAt": "2024-04-23T04:20:33.000Z",
+  "versionId": "125f8875-2162-4b05-baa5-72727fc9057f"
 }
