@@ -49,6 +49,11 @@
       "main": [
         [
           {
+            "node": "Slack1",
+            "type": "main",
+            "index": 0
+          },
+          {
             "node": "Data Atual",
             "type": "main",
             "index": 0
@@ -514,6 +519,44 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "C0706LVBSNR",
+          "mode": "list",
+          "cachedResultName": "vendas-brithstart"
+        },
+        "text": "=*+1 Venda realizada*\n\nProduto: BrithStart",
+        "otherOptions": {
+          "includeLinkToWorkflow": false,
+          "botProfile": {
+            "imageValues": {
+              "profilePhotoType": "image",
+              "icon_url": "https://raw.githubusercontent.com/libertas-cris/arquivos-salablack/main/libada.jpeg"
+            }
+          },
+          "link_names": true,
+          "mrkdwn": true,
+          "sendAsUser": "Libbão vendedor de curso"
+        }
+      },
+      "id": "a093338e-7764-4b58-9a02-b41232029ab5",
+      "name": "Slack1",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.1,
+      "position": [
+        1220,
+        -60
+      ],
+      "credentials": {
+        "slackApi": {
+          "id": "JVA9Evb0KRlDhbHZ",
+          "name": "Slack account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -637,6 +680,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-23T13:28:23.000Z",
-  "versionId": "f179a569-75b1-4c0f-8369-102c5f27181c"
+  "updatedAt": "2024-04-24T00:17:47.000Z",
+  "versionId": "6258e2ac-3f5b-4f2a-bb48-85c0cd1f4b32"
 }
