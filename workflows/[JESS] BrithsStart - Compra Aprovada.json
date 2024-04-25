@@ -49,12 +49,12 @@
       "main": [
         [
           {
-            "node": "Slack1",
+            "node": "Data Atual",
             "type": "main",
             "index": 0
           },
           {
-            "node": "Data Atual",
+            "node": "Slack1",
             "type": "main",
             "index": 0
           }
@@ -195,7 +195,7 @@
           "value": {
             "data": "={{ $json.formattedDate }}",
             "nome": "={{ $('Formata Telefone').item.json.data.buyer.name }}",
-            "email": "={{ $('Formata Telefone').item.json.email }}",
+            "email": "={{ $('Formata Telefone').item.json.data.buyer.email }}",
             "telefone": "={{ $('Formata Telefone').item.json.data.buyer.checkout_phone }}"
           },
           "matchingColumns": [],
@@ -566,21 +566,21 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "Jodd HTTP",
-            "content-length": "1355",
+            "content-length": "1674",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "44.222.114.79",
+            "cf-connecting-ip": "44.204.141.166",
             "cf-ipcountry": "US",
-            "cf-ray": "878adbb57ee18797-IAD",
+            "cf-ray": "87964efb2b9e8263-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "x-forwarded-for": "162.158.78.29",
+            "x-forwarded-for": "172.70.175.97",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
             "x-hotmart-hottok": "sK7oPf5asJ48ysoU0O0s0Gk7oRFQCT43202e8b-db0b-4375-a04d-ea4c14a17d5f",
-            "x-real-ip": "162.158.78.29"
+            "x-real-ip": "172.70.175.97"
           },
           "params": {},
           "query": {},
@@ -617,25 +617,28 @@
                 "order_bump": {
                   "is_order_bump": false
                 },
-                "approved_date": 1713843894000,
+                "approved_date": 1713963960000,
                 "offer": {
                   "code": "vx3rbagb"
                 },
-                "order_date": 1713843891000,
+                "order_date": 1713963871000,
                 "price": {
                   "currency_value": "BRL",
                   "value": 497
                 },
                 "payment": {
-                  "installments_number": 12,
-                  "type": "CREDIT_CARD"
+                  "pix_qrcode": "https://customer-local-latam.ebanx.com/pix/checkout?hash=6629035e58e50061ac1785f2b250964f51188851988bd928",
+                  "pix_expiration_date": 1714136671000,
+                  "installments_number": 1,
+                  "type": "PIX",
+                  "pix_code": "00020101021226740014br.gov.bcb.pix2552pix.ebanx.com/qr/v2/88F0B030CA6A405796B5002182D88BF95204000053039865802BR5924Launch Pad Tecnologia Se6014BELO HORIZONTE62070503***630419C1"
                 },
                 "full_price": {
                   "currency_value": "BRL",
-                  "value": 595.2
+                  "value": 497
                 },
                 "invoice_by": "HOTMART",
-                "transaction": "HP2818655759",
+                "transaction": "HP2878290194",
                 "status": "APPROVED"
               },
               "affiliates": [
@@ -649,24 +652,23 @@
               },
               "buyer": {
                 "address": {
-                  "zipcode": "04929210",
+                  "zipcode": "31980260",
                   "country": "Brasil",
-                  "number": "161",
-                  "address": "Rua Luís Teixeira de Oliveira",
-                  "city": "São Paulo",
-                  "state": "SP",
-                  "neighborhood": "Alto da Riviera",
-                  "complement": "",
+                  "address": "Rua general astolfo ferreira mendes",
+                  "city": "Belo Horizonte",
+                  "state": "MG",
+                  "neighborhood": "São gabriel",
+                  "complement": "573",
                   "country_iso": "BR"
                 },
-                "document": "47491969836",
-                "name": "Júlia Gabriela Santos Costa",
-                "checkout_phone": "11964641016",
-                "email": "juliagscosta.oficial@gmail.com"
+                "document": "09330811620",
+                "name": "Ingrid Cristina Lanna ",
+                "checkout_phone": "31973095055",
+                "email": "ingridlanna.enf@gmail.com"
               }
             },
-            "id": "fb7d22ca-ddc0-4b6f-a58b-e74464794e5d",
-            "creation_date": 1713843898770,
+            "id": "ef692e02-a80d-4856-94e7-0110375a48bd",
+            "creation_date": 1713963963688,
             "event": "PURCHASE_APPROVED",
             "version": "2.0.0"
           }
@@ -680,6 +682,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-24T00:17:47.000Z",
-  "versionId": "6258e2ac-3f5b-4f2a-bb48-85c0cd1f4b32"
+  "updatedAt": "2024-04-24T18:40:17.000Z",
+  "versionId": "3597eb7a-c443-4d99-8f32-1c897e525f65"
 }
