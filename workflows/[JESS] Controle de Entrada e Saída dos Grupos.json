@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Webhook": {
       "main": [
@@ -291,8 +291,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "Entrar no grupo": {
@@ -356,7 +355,9 @@
   },
   "createdAt": "2024-01-07T16:36:01.176Z",
   "id": "ZuNJEuFwUrIgdohj",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[JESS] Controle de Entrada e Saída dos Grupos",
   "nodes": [
     {
@@ -1803,6 +1804,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-03-25T14:33:36.000Z",
-  "versionId": "2ec7bde8-95ad-4763-8c13-f4ca591844c8"
+  "updatedAt": "2024-04-24T18:43:58.000Z",
+  "versionId": "3199fb10-83c7-4724-8324-cccc7c3f4ec9"
 }
