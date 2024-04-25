@@ -56,12 +56,6 @@
         ]
       ]
     },
-    "IF": {
-      "main": [
-        [],
-        []
-      ]
-    },
     "Google Sheets1": {
       "main": [
         [
@@ -180,7 +174,16 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -223,7 +226,16 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -244,7 +256,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1540,
+        1560,
         260
       ]
     },
@@ -309,7 +321,16 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -612,22 +633,22 @@
             "cdn-loop": "cloudflare",
             "cf-connecting-ip": "194.163.167.202",
             "cf-ipcountry": "DE",
-            "cf-ray": "875ef26b1ca23730-FRA",
+            "cf-ray": "8787a2760e0e65d4-FRA",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "x-forwarded-for": "162.158.111.15",
+            "x-forwarded-for": "172.69.150.8",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
-            "x-real-ip": "162.158.111.15"
+            "x-real-ip": "172.69.150.8"
           },
           "params": {},
           "query": {},
           "body": {
-            "email": "matheus@gmail.com",
-            "telefone": "5581993515055",
-            "id_clickup": "86a30ybj0"
+            "email": "implantesearte@gmail.com",
+            "telefone": "+5582991463545",
+            "id_clickup": "86a3471x9"
           }
         }
       }
@@ -639,6 +660,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-17T19:54:24.000Z",
-  "versionId": "e4b078cd-cfe8-4ade-bf44-2889e924a93b"
+  "updatedAt": "2024-04-24T18:23:22.000Z",
+  "versionId": "ce2b4e7c-9ec5-4df3-9105-fe85c3702b12"
 }
