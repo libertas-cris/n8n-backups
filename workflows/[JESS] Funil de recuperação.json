@@ -1,0 +1,273 @@
+{
+  "active": true,
+  "connections": {
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-04-24T18:49:26.509Z",
+  "id": "0pNC4CLfIhKV1a1D",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[JESS] Funil de recuperação",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "314c998f-b757-4aa6-b41a-6e6787e21ad8",
+        "options": {}
+      },
+      "id": "6db08263-380f-486e-befe-4fe612d81bb7",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        420,
+        360
+      ],
+      "webhookId": "314c998f-b757-4aa6-b41a-6e6787e21ad8"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "78aa082e-768b-4cd3-826c-4b97732df42b",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        620,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json['Respondeu?'] }}",
+              "operation": "notEqual",
+              "value2": "sim"
+            },
+            {
+              "value1": "={{ $json.Email }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "c3c0c3fb-c622-4155-aa7c-21e26d5a5751",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "chave",
+              "value": "={{ $json.phone.slice(-7) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ed9a0f6c-95cb-4f2c-a9aa-197577604459",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 390670493,
+          "mode": "list",
+          "cachedResultName": "Recuperação - Ingressos [AS10]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit#gid=390670493"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Chave(busca)",
+              "lookupValue": "={{ $json.chave }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "65091954-2e6e-4c97-8cab-d17b15f32244",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1280,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "0067f4f0-31af-4afd-8993-f99173ae5489",
+              "leftValue": "={{ $json.isGroup }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b8711505-bacf-4da3-a784-bf78baa054b2",
+      "name": "Filter2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        820,
+        360
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15",
+            "content-length": "770",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "129.148.51.184",
+            "cf-ipcountry": "BR",
+            "cf-ray": "879846a6eb9a00ee-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "origin": "https://api.z-api.io",
+            "server": "Z-API",
+            "x-forwarded-for": "172.68.18.154",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.68.18.154",
+            "z-api-token": "DAEE58152CBC84AAAF621399"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "isStatusReply": false,
+            "chatLid": "252651501547525@lid",
+            "connectedPhone": "551151942789",
+            "waitingMessage": false,
+            "isEdit": false,
+            "isGroup": false,
+            "isNewsletter": false,
+            "instanceId": "3C92A5E4516CC0A421E9D604DAF2BCF1",
+            "messageId": "0F93CAFFA4A58910DC",
+            "phone": "558193515055",
+            "fromMe": false,
+            "momment": 1713984593866,
+            "status": "RECEIVED",
+            "chatName": "Matheus Cristhyan",
+            "senderPhoto": null,
+            "senderName": "Matheus Cristhyan",
+            "photo": "https://pps.whatsapp.net/v/t61.24694-24/352424593_1042680903807710_3049187873784823907_n.jpg?ccb=11-4&oh=01_Q5AaIC1r95ta7PgoGHzzYOBZmfBkBkUmxRVjZZE-siVT5EgS&oe=66366CC5&_nc_sid=e6ed6c&_nc_cat=102",
+            "broadcast": false,
+            "participantLid": null,
+            "messageExpirationSeconds": 0,
+            "forwarded": false,
+            "type": "ReceivedCallback",
+            "fromApi": false,
+            "text": {
+              "message": "teste"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-04-24T19:25:54.000Z",
+  "versionId": "763d1309-cb00-47ce-9af1-9e4871fc24ed"
+}
