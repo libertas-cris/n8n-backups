@@ -82,17 +82,6 @@
       "main": [
         [
           {
-            "node": "Google Sheets2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Sheets2": {
-      "main": [
-        [
-          {
             "node": "HTTP Request",
             "type": "main",
             "index": 0
@@ -104,18 +93,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request1": {
-      "main": [
-        [
-          {
-            "node": "Execute Workflow",
+            "node": "Google Sheets2",
             "type": "main",
             "index": 0
           }
@@ -145,6 +123,28 @@
         [
           {
             "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
             "type": "main",
             "index": 0
           }
@@ -220,8 +220,7 @@
     },
     {
       "parameters": {
-        "amount": 15,
-        "unit": "minutes"
+        "unit": "seconds"
       },
       "id": "0803f35e-3653-497d-817f-b65fff2773ad",
       "name": "Wait",
@@ -419,7 +418,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        1840,
+        1860,
         260
       ],
       "credentials": {
@@ -490,8 +489,8 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "row_number": "={{ $json.row_number }}",
-            "comprou?": "==SE(ÉNÚM(PROCV(C{{ $json.row_number }};'Compras - BrithStart'!C:D;2;0));\"Sim\";\"Não\")  ",
+            "row_number": "={{ $('Google Sheets1').item.json.row_number }}",
+            "comprou?": "==SE(ÉNÚM(PROCV(C{{ $('Google Sheets1').item.json.row_number }};'Compras - BrithStart'!C:D;2;0));\"Sim\";\"Não\")  ",
             "última recuperação enviada": "c1"
           },
           "matchingColumns": [
@@ -644,7 +643,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        2280,
+        2480,
         260
       ],
       "credentials": {
@@ -687,7 +686,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2500,
+        2280,
         260
       ]
     },
@@ -724,8 +723,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2700,
-        260
+        980,
+        640
       ]
     },
     {
@@ -738,7 +737,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        2900,
+        2920,
         260
       ]
     },
@@ -814,7 +813,7 @@
       "typeVersion": 2,
       "position": [
         1660,
-        240
+        260
       ]
     },
     {
@@ -992,7 +991,7 @@
       "typeVersion": 4.3,
       "position": [
         1840,
-        520
+        560
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -1000,6 +999,77 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a5fec784-944a-45a9-894e-c67c86d3588e",
+              "name": "row_number",
+              "value": "={{ $('Google Sheets1').item.json.row_number }}",
+              "type": "number"
+            },
+            {
+              "id": "e0443919-d150-4759-8717-b765e7282d96",
+              "name": "data",
+              "value": "={{ $('Google Sheets1').item.json.data }}",
+              "type": "string"
+            },
+            {
+              "id": "a8be4595-4798-4ac7-999b-0c63d84d40ac",
+              "name": "nome",
+              "value": "={{ $('Google Sheets1').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "b80ede31-b843-4be3-8548-6f585ea61028",
+              "name": "email",
+              "value": "={{ $('Google Sheets1').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "42260ae6-cc08-4f2b-8b4e-5f428d442451",
+              "name": "telefone",
+              "value": "={{ $('Google Sheets1').item.json.telefone }}",
+              "type": "number"
+            },
+            {
+              "id": "0d94f394-aac2-45ec-9564-1b31ca3dc635",
+              "name": "chave",
+              "value": "={{ $('Google Sheets1').item.json.chave }}",
+              "type": "number"
+            },
+            {
+              "id": "fcb5ed48-9f22-4693-9c69-81eea5b773b1",
+              "name": "página",
+              "value": "={{ $('Google Sheets1').item.json.página }}",
+              "type": "string"
+            },
+            {
+              "id": "8c2fa773-e60b-4fc5-9fb5-793ad2065b8c",
+              "name": "respondeu recuperação?",
+              "value": "={{ $('Google Sheets1').item.json['respondeu recuperação?'] }}",
+              "type": "string"
+            },
+            {
+              "id": "5259bbeb-2232-4291-ae89-d2d4a965c4ac",
+              "name": "última recuperação enviada",
+              "value": "={{ $('Google Sheets1').item.json['última recuperação enviada'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d4147a42-95a6-4cab-a6ec-598953cdc74e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2700,
+        260
+      ]
     }
   ],
   "pinData": {
@@ -1008,35 +1078,36 @@
         "json": {
           "headers": {
             "host": "n8n.marcosfoks.com.br",
-            "user-agent": "Mozilla/5.0 (Linux; Android 12; SAMSUNG SM-S908E) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/23.0 Chrome/115.0.0.0 Mobile Safari/537.36",
-            "content-length": "203",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+            "content-length": "336",
             "accept": "*/*",
-            "accept-encoding": "gzip",
+            "accept-encoding": "gzip, br",
             "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "2804:14c:65d7:8104:e304:aec8:451c:e10",
+            "cf-connecting-ip": "2804:389:a3e4:6a00:d91d:5a94:d02e:77e7",
             "cf-ipcountry": "BR",
-            "cf-ray": "84dd5ea6ae9153d1-GYN",
+            "cf-ray": "87a0220189e864fd-GIG",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "text/plain;charset=UTF-8",
-            "origin": "https://britenglish.com.br",
-            "referer": "https://britenglish.com.br/",
-            "sec-ch-ua": "\"Not/A)Brand\";v=\"99\", \"Samsung Internet\";v=\"23.0\", \"Chromium\";v=\"115\"",
-            "sec-ch-ua-mobile": "?1",
-            "sec-ch-ua-platform": "\"Android\"",
+            "origin": "https://www.jessicaparish.com.br",
+            "priority": "u=1, i",
+            "referer": "https://www.jessicaparish.com.br/",
+            "sec-ch-ua": "\"Chromium\";v=\"124\", \"Google Chrome\";v=\"124\", \"Not-A.Brand\";v=\"99\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "172.68.114.136",
+            "x-forwarded-for": "172.69.3.209",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.68.114.136"
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.69.3.209"
           },
           "params": {},
           "query": {},
-          "body": "{\"email\":\"cris@gmail.com\",\"name\":\"Matheus Cristhyan\",\"phone\":\"(81)993515055\",\"utm_source\":null,\"utm_medium\":null,\"utm_campaign\":null,\"utm_term\":null,\"utm_content\":null,\"path\":\"/pre-checkout/\"}"
+          "body": "{\"email\":\"fanie.ramos@gmail.com\",\"name\":\"Stephanie Ramos de Farias\",\"phone\":\"(61) 98177-7137\",\"utm_source\":\"adsfb\",\"utm_medium\":\"[BS] [VENDAS] [CONVERSÕES] [CBO] [Q] - Público Quente\",\"utm_campaign\":\"l1\",\"utm_term\":\"bs_pt_vd_01_tádificil\",\"utm_content\":\"01 - IG + FB | Todos | 7D + Save | 180D + Directs | 365D\",\"path\":\"/britstart/\"}"
         }
       }
     ]
@@ -1047,6 +1118,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-25T03:46:24.000Z",
-  "versionId": "fa3b18c4-56f7-413b-a5e1-ba458f97f6d1"
+  "updatedAt": "2024-04-25T21:52:55.000Z",
+  "versionId": "f7256835-4f45-4998-a2d1-3b447fae7d65"
 }
