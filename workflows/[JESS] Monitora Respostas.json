@@ -495,7 +495,7 @@
             },
             {
               "name": "message",
-              "value": "={{ $('Google Sheets1').item.json.nome.split(\" \")[0] }}, tudo bom? \n\nTe enviei uma mensagem porque vi que você está buscando sair do zero no inglês com o BritStart.\n\nDeixa eu te perguntar, qual é sua maior dificuldade no inglês?"
+              "value": "=Tô entrando em contato porque vi que você se interessou pelo BritStart, mas não finalizou sua inscrição.\n\nVocê ficou com alguma dúvida? Podemos te ajudar de alguma forma?"
             }
           ]
         },
@@ -591,6 +591,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-25T03:56:01.000Z",
-  "versionId": "07efe6bd-85da-4d59-9eed-2388c224dbab"
+  "updatedAt": "2024-04-25T21:44:30.000Z",
+  "versionId": "f5126c4a-d55d-4f53-9e93-e43bea3bf46c"
 }
