@@ -220,7 +220,8 @@
     },
     {
       "parameters": {
-        "unit": "seconds"
+        "amount": 15,
+        "unit": "minutes"
       },
       "id": "0803f35e-3653-497d-817f-b65fff2773ad",
       "name": "Wait",
@@ -1118,6 +1119,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-25T21:52:55.000Z",
-  "versionId": "f7256835-4f45-4998-a2d1-3b447fae7d65"
+  "updatedAt": "2024-04-26T15:06:00.000Z",
+  "versionId": "c0ac973a-83eb-452b-9efd-453c3bb3ddc9"
 }
