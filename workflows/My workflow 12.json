@@ -1,40 +1,29 @@
 {
   "active": false,
   "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Schedule Trigger": {
-      "main": [
-        [
-          {
-            "node": "GitHub",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "GitHub": {
-      "main": [
-        [
-          {
-            "node": "Split In Batches",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Split In Batches": {
-      "main": [
-        [
-          {
-            "node": "Code",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code": {
       "main": [
         [
           {
@@ -49,58 +38,18 @@
       "main": [
         [
           {
-            "node": "Filter1",
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Split In Batches1": {
+    "Filter": {
       "main": [
         [
           {
-            "node": "IF1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter1": {
-      "main": [
-        [
-          {
-            "node": "Split In Batches1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "IF1": {
-      "main": [
-        [
-          {
-            "node": "Google Sheets1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Split In Batches1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Sheets1": {
-      "main": [
-        [
-          {
-            "node": "Split In Batches",
+            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -108,44 +57,128 @@
       ]
     }
   },
-  "createdAt": "2024-03-09T15:02:43.887Z",
-  "id": "Wfcetdx37mAzf643",
-  "meta": null,
+  "createdAt": "2024-04-26T19:15:42.426Z",
+  "id": "xAchHvVVp7PNvOxn",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "My workflow 12",
   "nodes": [
     {
       "parameters": {
-        "resource": "file",
-        "operation": "list",
-        "owner": {
-          "__rl": true,
-          "value": "libertas-cris",
-          "mode": "list",
-          "cachedResultName": "libertas-cris",
-          "cachedResultUrl": "https://github.com/libertas-cris"
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
         },
-        "repository": {
-          "__rl": true,
-          "value": "ingressos-vip-09-03",
-          "mode": "list",
-          "cachedResultName": "ingressos-vip-09-03",
-          "cachedResultUrl": "https://github.com/libertas-cris/ingressos-vip-09-03"
-        }
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Google Sheets').item.json.telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $('Google Sheets').item.json.nome.split(\" \")[0] }}, tá aí?"
+            }
+          ]
+        },
+        "options": {}
       },
-      "id": "40f93d3f-1a16-44d9-becd-8f889fa97ae4",
-      "name": "GitHub",
-      "type": "n8n-nodes-base.github",
+      "id": "b85e3f0d-3fad-4a3a-9910-01864ebfd1bc",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1560,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": "H3Ypt5glgSK64jtH",
+        "options": {}
+      },
+      "id": "62181cf7-2d8d-463a-8a93-1d1646f3c285",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1,
       "position": [
-        1000,
-        380
-      ],
-      "credentials": {
-        "githubApi": {
-          "id": "bzG1MN0DjIGk3oU2",
-          "name": "Libertas"
-        }
-      }
+        1980,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a5fec784-944a-45a9-894e-c67c86d3588e",
+              "name": "row_number",
+              "value": "={{ $('Google Sheets').item.json.row_number }}",
+              "type": "number"
+            },
+            {
+              "id": "a8be4595-4798-4ac7-999b-0c63d84d40ac",
+              "name": "nome",
+              "value": "={{ $('Google Sheets').item.json.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "b80ede31-b843-4be3-8548-6f585ea61028",
+              "name": "email",
+              "value": "={{ $('Google Sheets').item.json.email }}",
+              "type": "string"
+            },
+            {
+              "id": "42260ae6-cc08-4f2b-8b4e-5f428d442451",
+              "name": "telefone",
+              "value": "={{ $('Google Sheets').item.json.telefone }}",
+              "type": "number"
+            },
+            {
+              "id": "0d94f394-aac2-45ec-9564-1b31ca3dc635",
+              "name": "chave",
+              "value": "={{ $('Google Sheets').item.json.chave }}",
+              "type": "number"
+            },
+            {
+              "id": "fcb5ed48-9f22-4693-9c69-81eea5b773b1",
+              "name": "página",
+              "value": "={{ $('Google Sheets').item.json.página }}",
+              "type": "string"
+            },
+            {
+              "id": "8c2fa773-e60b-4fc5-9fb5-793ad2065b8c",
+              "name": "respondeu recuperação?",
+              "value": "={{ $('Google Sheets').item.json['respondeu recuperação?'] }}",
+              "type": "string"
+            },
+            {
+              "id": "5259bbeb-2232-4291-ae89-d2d4a965c4ac",
+              "name": "última recuperação enviada",
+              "value": "={{ $('Google Sheets').item.json['última recuperação enviada'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a3a77f4e-7739-470f-b487-59e8b7cf7b2b",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1780,
+        300
+      ]
     },
     {
       "parameters": {
@@ -157,461 +190,55 @@
           ]
         }
       },
-      "id": "9809d803-9bae-47fb-8601-b2f140a2a773",
+      "id": "712141d1-8970-41b9-8bfb-fd64fb294e93",
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.1,
       "position": [
-        820,
-        380
-      ]
-    },
-    {
-      "parameters": {
-        "batchSize": 1,
-        "options": {}
-      },
-      "id": "72f20ba1-f7b5-481e-a215-c46a558c3a71",
-      "name": "Split In Batches",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 2,
-      "position": [
-        1220,
-        380
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "function extrairNomeDoArquivo(nomeArquivo) {\n    // Extrair o nome entre \"Ingresso - \" e \".pdf\"\n    var nomeExtraido = nomeArquivo.match(/Ingresso - (.+?)\\.pdf/);\n\n    // Verificar se foi encontrado um nome\n    if (nomeExtraido && nomeExtraido.length > 1) {\n        // Converter para minúsculas e substituir _ por espaço\n        var nomeFormatado = nomeExtraido[1].toLowerCase().replace(/_/g, ' ');\n        // Capitalizar o nome\n        nomeFormatado = nomeFormatado.replace(/\\b\\w/g, function(char) {\n            return char.toUpperCase();\n        });\n        // Substituir espaços por underline\n        nomeFormatado = nomeFormatado.replace(/\\s/g, '_');\n        return nomeFormatado;\n    } else {\n        return \"Nome não encontrado\";\n    }\n}\n\n// Exemplo de uso:\nvar nomeArquivo = $input.all()[0].json['name'];\n$input.all()[0].json['name'] = extrairNomeDoArquivo(nomeArquivo);\n\nreturn $input.all();"
-      },
-      "id": "ecde39b4-2bb7-49c5-9182-220ecba95abe",
-      "name": "Code",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        1440,
-        360
+        940,
+        300
       ]
     },
     {
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[JESS] [L1] - Planilha Central",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 619382168,
+          "value": 2125210274,
           "mode": "list",
-          "cachedResultName": "[AUTO] Inscritos [AS8]",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=619382168"
+          "cachedResultName": "Initiate Checkout - BrithStart",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hfR7OwDhXExnEOeX3atjWvtRWbvZOmwyfc5o8T_goD4/edit#gid=2125210274"
         },
-        "options": {}
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "comprou?",
+              "lookupValue": "Não"
+            },
+            {
+              "lookupColumn": "última recuperação enviada",
+              "lookupValue": "="
+            }
+          ]
+        },
+        "options": {
+          "returnAllMatches": "returnAllMatches"
+        }
       },
-      "id": "a3e92860-626d-4178-80f2-34392434b70e",
+      "id": "1fe96d5c-9660-477c-921d-d8fa0381a40e",
       "name": "Google Sheets",
       "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4,
+      "typeVersion": 4.3,
       "position": [
-        1600,
-        360
+        1180,
+        300
       ],
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "aqyCUOYp9QE28Sw2",
-          "name": "Cris - Libertas"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "documentId": {
-          "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
-          "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 619382168,
-          "mode": "list",
-          "cachedResultName": "[AUTO] Inscritos [AS8]",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=619382168"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "Nome Ingresso": "={{ $('Code').item.json.name }}",
-            "url": "={{ $('Code').item.json.download_url }}",
-            "Nome_Ingresso": "={{ $json.Nome_Ingresso }}"
-          },
-          "matchingColumns": [
-            "Nome_Ingresso"
-          ],
-          "schema": [
-            {
-              "id": "Data",
-              "displayName": "Data",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Chave (busca)",
-              "displayName": "Chave (busca)",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Nome",
-              "displayName": "Nome",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Email",
-              "displayName": "Email",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Telefone",
-              "displayName": "Telefone",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "utm_source",
-              "displayName": "utm_source",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "utm_campaign",
-              "displayName": "utm_campaign",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "utm_medium",
-              "displayName": "utm_medium",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "utm_term",
-              "displayName": "utm_term",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "utm_content",
-              "displayName": "utm_content",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "temperatura",
-              "displayName": "temperatura",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Página",
-              "displayName": "Página",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Checkout direto",
-              "displayName": "Checkout direto",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Idade",
-              "displayName": "Idade",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "O que espera da reunião",
-              "displayName": "O que espera da reunião",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Investe em anúncios",
-              "displayName": "Investe em anúncios",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Tempo de atuação",
-              "displayName": "Tempo de atuação",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Procedimento que mais vende na clínica",
-              "displayName": "Procedimento que mais vende na clínica",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Vendas por mês",
-              "displayName": "Vendas por mês",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Costuma bater as metas do mês",
-              "displayName": "Costuma bater as metas do mês",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Maior dificuldade para captar clientes",
-              "displayName": "Maior dificuldade para captar clientes",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Faturamento ",
-              "displayName": "Faturamento ",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Satisfeito com o faturamento atual",
-              "displayName": "Satisfeito com o faturamento atual",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Quanto tempo conhece Ila & Nicole",
-              "displayName": "Quanto tempo conhece Ila & Nicole",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Por onde conheceu Ila & Nicole",
-              "displayName": "Por onde conheceu Ila & Nicole",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Nome_Ingresso",
-              "displayName": "Nome_Ingresso",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "Ingresso",
-              "displayName": "Ingresso",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Ingresso Vip",
-              "displayName": "Ingresso Vip",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Ticket",
-              "displayName": "Ticket",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Chave(audio)",
-              "displayName": "Chave(audio)",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Link audio",
-              "displayName": "Link audio",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "ID Clickup",
-              "displayName": "ID Clickup",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Link Clickup",
-              "displayName": "Link Clickup",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Respondeu Aplicação",
-              "displayName": "Respondeu Aplicação",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Recuperação de Pesquisa",
-              "displayName": "Recuperação de Pesquisa",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "Respondeu Pesquisa",
-              "displayName": "Respondeu Pesquisa",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "chave (ingresso)",
-              "displayName": "chave (ingresso)",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "url",
-              "displayName": "url",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "11e14e93-08af-4143-891c-5d976a71c67a",
-      "name": "Google Sheets1",
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4,
-      "position": [
-        2260,
-        180
-      ],
-      "alwaysOutputData": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -622,76 +249,33 @@
     {
       "parameters": {
         "conditions": {
-          "string": [
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
             {
-              "value1": "={{ $json.Nome_Ingresso }}",
-              "value2": "={{ $('Code').item.json.name }}"
+              "id": "4a880a54-5f44-49e8-862a-f7df0e12e451",
+              "leftValue": "={{ $json.email }}",
+              "rightValue": "=abacaxi84@outlook.com",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
             }
-          ]
-        }
-      },
-      "id": "9fa8bae5-331d-4364-a93c-e023baf35405",
-      "name": "IF",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 1,
-      "position": [
-        1880,
-        620
-      ]
-    },
-    {
-      "parameters": {
-        "batchSize": 1,
+          ],
+          "combinator": "and"
+        },
         "options": {}
       },
-      "id": "4ccaae15-fddd-405f-bf7f-57054282131b",
-      "name": "Split In Batches1",
-      "type": "n8n-nodes-base.splitInBatches",
+      "id": "a629e2d4-7eac-46f6-b5ed-4faf52e84b0f",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        1840,
-        220
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "number": [
-            {
-              "value1": "={{ $json.row_number }}",
-              "operation": "largerEqual",
-              "value2": 93
-            }
-          ]
-        }
-      },
-      "id": "405df257-187a-4ae9-8d3d-f2b8cef366cf",
-      "name": "Filter1",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 1,
-      "position": [
-        1620,
-        220
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "string": [
-            {
-              "value1": "={{ $json.Nome_Ingresso }}",
-              "value2": "={{ $('Code').item.json.name }}"
-            }
-          ]
-        }
-      },
-      "id": "5a084ea8-a127-460c-be27-5d5a6acbc243",
-      "name": "IF1",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 1,
-      "position": [
-        2020,
-        200
+        1360,
+        300
       ]
     }
   ],
@@ -702,6 +286,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-03-11T14:00:42.000Z",
-  "versionId": "94e50c68-1b50-49a2-be75-2bc67863a34f"
+  "updatedAt": "2024-04-26T20:00:45.000Z",
+  "versionId": "8a72d621-754b-4128-9df9-3448df3bd9e7"
 }
