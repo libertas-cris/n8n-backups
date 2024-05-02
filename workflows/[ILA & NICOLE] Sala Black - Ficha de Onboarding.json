@@ -1969,10 +1969,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1283062463,
+          "value": 215923926,
           "mode": "list",
-          "cachedResultName": "Turma 9",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
+          "cachedResultName": "Turma 10",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=215923926"
         },
         "filtersUI": {
           "values": [
@@ -2011,10 +2011,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1283062463,
+          "value": 215923926,
           "mode": "list",
-          "cachedResultName": "Turma 9",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
+          "cachedResultName": "Turma 10",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=215923926"
         },
         "filtersUI": {
           "values": [
@@ -2343,15 +2343,15 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1283062463,
+          "value": 215923926,
           "mode": "list",
-          "cachedResultName": "Turma 9",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
+          "cachedResultName": "Turma 10",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=215923926"
         },
         "filtersUI": {
           "values": [
             {
-              "lookupColumn": "=Chave",
+              "lookupColumn": "Chave",
               "lookupValue": "={{ $('Formata Telefone').item.json.Telefone.slice(-7) }}"
             }
           ]
@@ -2542,10 +2542,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1283062463,
+          "value": 215923926,
           "mode": "list",
-          "cachedResultName": "Turma 9",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
+          "cachedResultName": "Turma 10",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=215923926"
         },
         "filtersUI": {
           "values": [
@@ -3018,6 +3018,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-22T13:48:52.000Z",
-  "versionId": "73fc356a-ace9-4b92-af2a-6a6c8a59b6d8"
+  "updatedAt": "2024-05-02T14:32:07.000Z",
+  "versionId": "fcb9d678-e595-40c6-8bcf-0748fd5dbc89"
 }
