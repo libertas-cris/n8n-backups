@@ -2086,10 +2086,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1283062463,
+          "value": 215923926,
           "mode": "list",
-          "cachedResultName": "Turma 9",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
+          "cachedResultName": "Turma 10",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=215923926"
         },
         "filtersUI": {
           "values": [
@@ -2161,10 +2161,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1283062463,
+          "value": 215923926,
           "mode": "list",
-          "cachedResultName": "Turma 9",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
+          "cachedResultName": "Turma 10",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=215923926"
         },
         "filtersUI": {
           "values": [
@@ -2228,6 +2228,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Formata Telefone Responsavel').item.json['Número-Responsável'] }}\"]\n  }  ",
@@ -2246,6 +2255,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Formata Telefone mentoria').item.json['numero-mentoria'] }}\"]\n  }  ",
@@ -2264,6 +2282,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
@@ -2282,6 +2309,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
@@ -2300,6 +2336,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Formata Telefone Responsavel').item.json['Número-Responsável'] }}\"]\n  } ",
@@ -2318,6 +2363,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/add-participant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Formata Telefone mentoria').item.json['numero-mentoria'] }}\"]\n  } ",
@@ -2431,6 +2485,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363191248187347-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
@@ -2449,6 +2512,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/add-participant",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"autoInvite\": true,\n  \"groupId\": \"120363198216362637-group\",\n  \"phones\": [\"{{ $('Trata Webhook').item.json.Telefone }}\"]\n  } ",
@@ -2507,6 +2579,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -2630,6 +2711,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -2685,10 +2775,10 @@
         },
         "sheetName": {
           "__rl": true,
-          "value": 1283062463,
+          "value": 215923926,
           "mode": "list",
-          "cachedResultName": "Turma 9",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=1283062463"
+          "cachedResultName": "Turma 10",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19xLUFSsIYzlJrGXYNawcle09byaK0Xy7Q29xPO-kFVI/edit#gid=215923926"
         },
         "filtersUI": {
           "values": [
@@ -2773,6 +2863,15 @@
       "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -3018,6 +3117,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-02T14:32:07.000Z",
-  "versionId": "fcb9d678-e595-40c6-8bcf-0748fd5dbc89"
+  "updatedAt": "2024-05-02T16:56:35.000Z",
+  "versionId": "baf3c7f8-3161-46c5-ad53-d97b3e2b8c4b"
 }
