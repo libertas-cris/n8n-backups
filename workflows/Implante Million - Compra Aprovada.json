@@ -49,11 +49,6 @@
       "main": [
         [
           {
-            "node": "Switch",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Switch1",
             "type": "main",
             "index": 0
@@ -196,17 +191,6 @@
         ]
       ]
     },
-    "Switch1": {
-      "main": [
-        [
-          {
-            "node": "C1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Att compra esc": {
       "main": [
         [
@@ -256,6 +240,17 @@
         [
           {
             "node": "Google Sheets3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "C1",
             "type": "main",
             "index": 0
           }
@@ -1903,68 +1898,6 @@
     },
     {
       "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $json['contact[tags]'] }}",
-                    "rightValue": "Essencial - Convidado",
-                    "operator": {
-                      "type": "string",
-                      "operation": "contains"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "Essencial"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict"
-                },
-                "conditions": [
-                  {
-                    "id": "8e1148c1-193d-4ed0-893a-595fa1d18f0a",
-                    "leftValue": "={{ $json['contact[tags]'] }}",
-                    "rightValue": "=\t\nVip - Convidado",
-                    "operator": {
-                      "type": "string",
-                      "operation": "contains"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "Vip"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "8677e467-ae84-40de-ac4d-0663bff5d19c",
-      "name": "Switch1",
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3,
-      "position": [
-        1280,
-        -40
-      ]
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "https://hook.us1.make.com/xis2sjp089bz64oulzcx681c4rmy9dpo",
         "sendBody": true,
@@ -2299,6 +2232,68 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Formata Telefone').item.json['contact[tags]'] }}",
+                    "rightValue": "Essencial - Convidado",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Essencial"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "8e1148c1-193d-4ed0-893a-595fa1d18f0a",
+                    "leftValue": "={{ $('Formata Telefone').item.json['contact[tags]'] }}",
+                    "rightValue": "=\t\nVip - Convidado",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Vip"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8677e467-ae84-40de-ac4d-0663bff5d19c",
+      "name": "Switch1",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1280,
+        -40
+      ]
     }
   ],
   "pinData": {
@@ -2358,6 +2353,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-04-22T18:13:40.000Z",
-  "versionId": "ff8b5bb8-8bd1-4832-9af4-1ef9cb111429"
+  "updatedAt": "2024-05-02T20:50:37.000Z",
+  "versionId": "2f798a4d-f88a-4e51-a5ca-8d86e8130e3c"
 }
