@@ -231,11 +231,6 @@
       "main": [
         [
           {
-            "node": "MSG Q",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "CRM DQ2",
             "type": "main",
             "index": 0
@@ -257,11 +252,6 @@
     "5 Minutos MQ": {
       "main": [
         [
-          {
-            "node": "MSG MQ",
-            "type": "main",
-            "index": 0
-          },
           {
             "node": "CRM DQ3",
             "type": "main",
@@ -675,10 +665,10 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -917,17 +907,17 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": 1069928038,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit#gid=1069928038"
         },
         "filtersUI": {
           "values": [
@@ -985,7 +975,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        1280,
+        1240,
         600
       ],
       "credentials": {
@@ -1031,7 +1021,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1500,
+        1420,
         600
       ]
     },
@@ -1069,10 +1059,10 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -1318,17 +1308,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": 102238581,
           "mode": "list",
           "cachedResultName": "[LEADS] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=102238581"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit#gid=102238581"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1594,17 +1584,17 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
           "value": 1069928038,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit#gid=1069928038"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1843,10 +1833,10 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -2124,10 +2114,10 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -2373,10 +2363,10 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -2624,10 +2614,10 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -2873,10 +2863,10 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0",
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 3] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit?usp=drivesdk"
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
@@ -3596,48 +3586,44 @@
         "json": {
           "headers": {
             "host": "n8n.marcosfoks.com.br",
-            "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Mobile Safari/537.36 Edg/122.0.0.0",
-            "content-length": "1668",
+            "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/21E236 Instagram 329.0.6.27.88 (iPhone15,3; iOS 17_4_1; pt_BR; pt; scale=3.00; 1290x2796; 593314425)",
+            "content-length": "1654",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
-            "accept-language": "pt-BR,pt;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+            "accept-language": "pt-BR,pt;q=0.9",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "186.235.185.56",
+            "cf-connecting-ip": "2804:1b3:9000:6b24:a043:6d78:65e5:7c4c",
             "cf-ipcountry": "BR",
-            "cf-ray": "8628a8c718501174-GIG",
+            "cf-ray": "87e2aa5f8fc525b4-GIG",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary8dUrzl8QAvEcgqJ0",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryd7AdjeRhv98eBBMt",
             "origin": "https://dentistapower.com.br",
-            "priority": "u=1, i",
             "referer": "https://dentistapower.com.br/",
-            "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Microsoft Edge\";v=\"122\"",
-            "sec-ch-ua-mobile": "?1",
-            "sec-ch-ua-platform": "\"Android\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "172.69.91.86",
+            "x-forwarded-for": "172.70.105.214",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.69.91.86"
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.70.105.214"
           },
           "params": {},
           "query": {},
           "body": {
-            "nome": "Matheus",
-            "email": "matheus.cristhyan.libertas@gmail.com",
-            "telefone": "5581993515055",
-            "clinica": "Matheus Cristhyan",
+            "nome": "Analia ",
+            "email": "analia.zizzi@gmail.com",
+            "telefone": "(27) 99920-8253",
+            "clinica": "OPI Odontologia ",
             "função": "Dono/Sócio",
-            "dificuldade": "Captar pacientes",
-            "especialidade": "implante",
-            "investe": "Sim, entre R$ 5.000 e R$ 10.000",
-            "faturamento": "Entre R$ 100 mil e R$ 250 mil",
+            "dificuldade": "Trazer novos pacientes ",
+            "especialidade": "ortodontia ",
+            "investe": "Sim, até R$ 2.000",
+            "faturamento": "Entre R$ 20 mil e R$ 50 mil",
             "etapa": "2",
             "utm_campaign": "null",
-            "utm_source": "null",
+            "utm_source": "linktree",
             "utm_medium": "null",
             "utm_term": "null",
             "utm_content": "null"
@@ -3652,6 +3638,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-04T01:15:06.000Z",
-  "versionId": "2b14016b-366f-40ae-8dfb-5172bc603fc8"
+  "updatedAt": "2024-05-04T15:27:44.000Z",
+  "versionId": "c322b0d2-68e9-45e8-9d54-a1f23fa6ebab"
 }
