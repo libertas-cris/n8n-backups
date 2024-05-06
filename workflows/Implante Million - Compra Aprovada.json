@@ -49,7 +49,12 @@
       "main": [
         [
           {
-            "node": "Switch1",
+            "node": "Onboarding",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -240,17 +245,6 @@
         [
           {
             "node": "Google Sheets3",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch1": {
-      "main": [
-        [
-          {
-            "node": "C1",
             "type": "main",
             "index": 0
           }
@@ -2294,6 +2288,43 @@
         1280,
         -40
       ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $('Formata Telefone').item.json['contact[first_name]'].toLowerCase() }}, tudo bem? Estou passando aqui para te parabenizar pela compra do seu ingresso! Em breve um de nossos consultores vai entrar em contato contigo.\n\nCaso você tenha alguma dúvida, já pode me enviar por aqui mesmo."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "db240e68-f6aa-4a70-9d20-efcc73641380",
+      "name": "Onboarding",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1800,
+        1000
+      ]
     }
   ],
   "pinData": {
@@ -2325,7 +2356,7 @@
             "contact[email]": "lorylouise@yahoo.com.br",
             "contact[first_name]": "Lorena",
             "contact[last_name]": "Valadao",
-            "contact[phone]": "215521969597700",
+            "contact[phone]": "5581993515055",
             "contact[orgname]": "",
             "contact[customer_acct_name]": "",
             "contact[tags]": "IM - PréCheckout, Comprou Ingresso - Vip",
@@ -2353,6 +2384,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-02T20:50:37.000Z",
-  "versionId": "2f798a4d-f88a-4e51-a5ca-8d86e8130e3c"
+  "updatedAt": "2024-05-06T02:41:08.000Z",
+  "versionId": "2230b03d-5293-4b67-8f15-95d255830b1c"
 }
