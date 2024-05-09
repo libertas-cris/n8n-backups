@@ -1,0 +1,46 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-05-06T18:31:35.448Z",
+  "id": "lbY10pZqf3a1xVWP",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Funil de agendamento Calendly",
+  "nodes": [
+    {
+      "parameters": {
+        "events": [
+          "invitee.created"
+        ]
+      },
+      "id": "94efc2c0-3c3b-40ba-82db-b6a4e74a4a4d",
+      "name": "Calendly Trigger",
+      "type": "n8n-nodes-base.calendlyTrigger",
+      "typeVersion": 1,
+      "position": [
+        400,
+        300
+      ],
+      "webhookId": "53ee9ca4-e407-45b6-9214-2229dd0226e6",
+      "credentials": {
+        "calendlyApi": {
+          "id": "wqWBMv9UOe6pr9ef",
+          "name": "Sala Black"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Fortaleza",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-08T01:16:31.000Z",
+  "versionId": "b75aa834-7daf-45ae-a541-6edf5fdfaebc"
+}
