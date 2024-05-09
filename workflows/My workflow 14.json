@@ -25,17 +25,6 @@
     },
     "Split Out1": {
       "main": [
-        [
-          {
-            "node": "Google Sheets",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request2": {
-      "main": [
         []
       ]
     }
@@ -140,7 +129,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        1460,
+        1540,
         380
       ],
       "credentials": {
@@ -231,6 +220,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-05-06T14:06:39.000Z",
-  "versionId": "1694a103-3877-4a83-97ac-e4e0362ca37d"
+  "updatedAt": "2024-05-09T09:40:00.000Z",
+  "versionId": "ada6efab-71f1-463a-9bd2-d297ee557ed7"
 }
