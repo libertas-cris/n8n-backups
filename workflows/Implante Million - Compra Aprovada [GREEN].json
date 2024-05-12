@@ -1,0 +1,378 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Onboarding",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-12T02:04:31.907Z",
+  "id": "BoQXAxCarqqYo6kz",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Implante Million - Compra Aprovada [GREEN]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "6ec9574a-1de8-410a-bfad-6a2905975e4b",
+        "options": {}
+      },
+      "id": "b8db5edd-8efb-407c-a61d-12bf6fa18018",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        620,
+        260
+      ],
+      "webhookId": "6ec9574a-1de8-410a-bfad-6a2905975e4b"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "5eacea76-d623-4272-a5f7-13cda6a5a110",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        840,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['contact[phone]'] = formataTelefone($node['Trata Webhook'].json['contact[phone]'])\n\nreturn $input.all();"
+      },
+      "id": "5d79afe6-97ed-4a7b-8c53-5c3d5c4c21c0",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://hook.us1.make.com/xis2sjp089bz64oulzcx681c4rmy9dpo",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "Data",
+              "value": "={{ $('Date & Time1').item.json.formattedDate }}"
+            },
+            {
+              "name": "Nome",
+              "value": "={{ $('Formata Telefone').item.json['contact[first_name]'] }}"
+            },
+            {
+              "name": "E-mail",
+              "value": "={{ $('Formata Telefone').item.json['contact[email]'] }}"
+            },
+            {
+              "name": "Telefone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "Ingresso",
+              "value": "Essencial"
+            },
+            {
+              "name": "Evento",
+              "value": "Compra"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6de8c12d-06d3-4798-bd61-801f01edcc89",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1480,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1ePPvH0r91WzHrLIzGMcG5nF9wyIs-RcwRgdQ2B_B3UM/edit#gid=1225075075",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1225075075,
+          "mode": "list",
+          "cachedResultName": "Alunos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ePPvH0r91WzHrLIzGMcG5nF9wyIs-RcwRgdQ2B_B3UM/edit#gid=1225075075"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{new DateTime($now).toFormat('dd/MM/yyyy HH:mm')}}",
+            "Nome": "={{ ($('Formata Telefone').item.json['contact[first_name]'] + \" \" + $('Formata Telefone').item.json['contact[last_name]'])}} ",
+            "Email": "={{ $('Formata Telefone').item.json['contact[email]'] }}",
+            "Telefone": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Clínica",
+              "displayName": "Clínica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cidade",
+              "displayName": "Cidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valor",
+              "displayName": "Valor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Categoria Ingresso",
+              "displayName": "Categoria Ingresso",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Mentorado?",
+              "displayName": "Mentorado?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5a009d6e-1480-4c85-9628-fe963177d28a",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1240,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $('Formata Telefone').item.json['contact[first_name]'].toLowerCase() }}, tudo bem?\n\nSua compra foi confirmada e seu ingresso para a Imersão Implante Million está reservado🔥\n\n🔴 Para confirmar sua presença, precisamos que você faça o quanto antes o seu check-in do evento. São perguntas simples, mas de extrema importância!\n\nClique no link abaixo para preencher ⬇\n\n🔗 https://bit.ly/IM-checkin\n\n(leva menos de 5 minutos)\n\nQuando fizer, me avisa aqui ✋"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3cf3d776-1d6d-47da-b440-e25910b1c5c8",
+      "name": "Onboarding",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1480,
+        360
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "GuzzleHttp/6.5.5 curl/8.3.0 PHP/8.1.23",
+            "content-length": "941",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "52.2.43.221",
+            "cf-ipcountry": "US",
+            "cf-ray": "86e45aa43bfd82a2-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "172.70.175.163",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.70.175.163"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "contact[id]": "3685",
+            "contact[email]": "lorylouise@yahoo.com.br",
+            "contact[first_name]": "Lorena",
+            "contact[last_name]": "Valadao",
+            "contact[phone]": "5581993515055",
+            "contact[orgname]": "",
+            "contact[customer_acct_name]": "",
+            "contact[tags]": "IM - PréCheckout, Comprou Ingresso - Vip",
+            "contact[ip4]": "127.0.0.1",
+            "contact[fields][utmsourceim]": "dentistapower.com.br",
+            "contact[fields][utmcampaignim]": "",
+            "contact[fields][utmmediumim]": "",
+            "contact[fields][utmtermim]": "",
+            "contact[fields][utmcontentim]": "",
+            "contact[fields][paginaim]": "implante-million-b/",
+            "contact[fields][ingresso]": "vip",
+            "contact[fields][url]": "pay.hotmart.com/Q91749526Y?off=bs3pkh78&name=Lorena Valadao&email=lorylouise@yahoo.com.br&phonenumber=(21) 9695-97700",
+            "contact[fields][checkoutdate]": "2024-04-02",
+            "contact[fields][purchasedate]": "2024-04-02",
+            "contact[fields][comprouingresso]": "vip",
+            "seriesid": "66"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-12T02:38:10.000Z",
+  "versionId": "b502a127-cf20-40bd-8229-9a5a9350f844"
+}
