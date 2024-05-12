@@ -57,6 +57,11 @@
             "node": "Switch",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -189,7 +194,7 @@
       "main": [
         [
           {
-            "node": "C2",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -229,22 +234,29 @@
         ]
       ]
     },
-    "C2": {
+    "Wait": {
       "main": [
         [
           {
-            "node": "Wait",
+            "node": "Google Sheets3",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Wait": {
+    "Switch1": {
       "main": [
         [
           {
-            "node": "Google Sheets3",
+            "node": "C1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "C1",
             "type": "main",
             "index": 0
           }
@@ -1847,7 +1859,7 @@
             },
             {
               "name": "message",
-              "value": "=Olá, {{ $('Formata Telefone').item.json['contact[first_name]'].toLowerCase() }}, tudo bem? Primeiramente gostaria de te parabenizar pela compra do seu ingresso!\n\nE como você também comprou o *Essencial Convidado*, estou passando aqui para pedir que você envie os seguintes dados do seu convidado:"
+              "value": "=Ah, para não esquecer! Como você garantiu mais de 1 ingresso, preciso que você envie os seguintes dados de quem irá com você:\n\n➡ Nome Completo\n➡ E-mail\n➡ Whatsapp\n\nFico no aguardo dos dados, ok?"
             }
           ]
         },
@@ -1859,34 +1871,6 @@
       "typeVersion": 4.1,
       "position": [
         1520,
-        -200
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
-            },
-            {
-              "name": "message",
-              "value": "=Nome:\nE-mail:\nTelefone:"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "cd78af96-23e6-4c20-905e-7e8b433a9458",
-      "name": "C2",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        1720,
         -200
       ]
     },
@@ -2032,7 +2016,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        1940,
+        1740,
         -200
       ],
       "webhookId": "e6d77069-5f97-4969-ae56-4ff459f76894"
@@ -2217,7 +2201,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        2160,
+        1960,
         -200
       ],
       "credentials": {
@@ -2226,6 +2210,43 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $('Formata Telefone').item.json['contact[first_name]'].toLowerCase() }}, tudo bem?\n\nSua compra foi confirmada e seu ingresso para a Imersão Implante Million está reservado🔥\n\n🔴 Para confirmar sua presença, precisamos que você faça o quanto antes o seu check-in do evento. São perguntas simples, mas de extrema importância!\n\nClique no link abaixo para preencher ⬇\n\n🔗 https://bit.ly/IM-checkin\n\n(leva menos de 5 minutos)\n\nQuando fizer, me avisa aqui ✋"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "db240e68-f6aa-4a70-9d20-efcc73641380",
+      "name": "Onboarding",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1800,
+        1000
+      ]
     },
     {
       "parameters": {
@@ -2288,43 +2309,6 @@
         1280,
         -40
       ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Formata Telefone').item.json['contact[phone]'] }}"
-            },
-            {
-              "name": "message",
-              "value": "=Olá, {{ $('Formata Telefone').item.json['contact[first_name]'].toLowerCase() }}, tudo bem? Estou passando aqui para te parabenizar pela compra do seu ingresso! Em breve um de nossos consultores vai entrar em contato contigo.\n\nCaso você tenha alguma dúvida, já pode me enviar por aqui mesmo."
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "db240e68-f6aa-4a70-9d20-efcc73641380",
-      "name": "Onboarding",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        1800,
-        1000
-      ]
     }
   ],
   "pinData": {
@@ -2384,6 +2368,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-06T02:41:08.000Z",
-  "versionId": "2230b03d-5293-4b67-8f15-95d255830b1c"
+  "updatedAt": "2024-05-12T01:52:41.000Z",
+  "versionId": "6c621d8d-0cf9-4bec-af1c-8691580c9bad"
 }
