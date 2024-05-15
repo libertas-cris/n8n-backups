@@ -1,6 +1,95 @@
 {
   "active": false,
-  "connections": {},
+  "connections": {
+    "Data Inicio": {
+      "main": [
+        [
+          {
+            "node": "Hora Inicio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hora Inicio": {
+      "main": [
+        [
+          {
+            "node": "Lembrete 24h",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete 24h": {
+      "main": [
+        [
+          {
+            "node": "Formatar24hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calendly Trigger": {
+      "main": [
+        [
+          {
+            "node": "Data Inicio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatar24hr": {
+      "main": [
+        [
+          {
+            "node": "Lembrete 1hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete 1hr": {
+      "main": [
+        [
+          {
+            "node": "Formatar1hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formatar1hr": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2024-05-06T18:31:35.448Z",
   "id": "lbY10pZqf3a1xVWP",
   "meta": {
@@ -29,9 +118,375 @@
           "name": "Sala Black"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.payload.scheduled_event.start_time }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "0b46ba2d-0692-4e14-9909-651a27ce965c",
+      "name": "Data Inicio",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        620,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
+        "format": "custom",
+        "customFormat": "HH:mm",
+        "outputFieldName": "formattedHour",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "41b38756-85ac-4866-9c21-ecf0f0755535",
+      "name": "Hora Inicio",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        820,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
+        "timeUnit": "hours",
+        "duration": 24,
+        "outputFieldName": "lembrete24hr",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "27b6834d-167d-4b70-a38f-408a23ed7785",
+      "name": "Lembrete 24h",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.lembrete24hr }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy HH:mm",
+        "outputFieldName": "formatado24hr",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "a8100ae7-bf93-4965-a6fd-8ca83ac6efc1",
+      "name": "Formatar24hr",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1180,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
+        "timeUnit": "hours",
+        "duration": 1,
+        "outputFieldName": "lembrete1hr",
+        "options": {
+          "includeInputFields": false
+        }
+      },
+      "id": "eabd1642-cb0e-4dab-bc31-efd4768c4843",
+      "name": "Lembrete 1hr",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.lembrete1hr }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy HH:mm",
+        "outputFieldName": "formatado1hr",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "f685b185-5b94-4121-8ad8-846b6b828902",
+      "name": "Formatar1hr",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M",
+          "mode": "list",
+          "cachedResultName": "[ILA] Funil de agendamento no Calendly",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Agendamentos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $('Data Inicio').item.json.formattedDate }}",
+            "Hora inicio": "={{ $('Hora Inicio').item.json.formattedHour }}",
+            "Nome": "={{ $('Calendly Trigger').item.json.payload.name }}",
+            "Email": "={{ $('Calendly Trigger').item.json.payload.email }}",
+            "Whatsapp": "={{ $json.whatsapp }}",
+            "Link": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.location.join_url }}",
+            "Criado em": "={{ $('Calendly Trigger').item.json.created_at }}",
+            "Lembrete 24h": "={{ $('Formatar24hr').item.json.formatado24hr }}",
+            "Lembrete 1h": "={{ $json.formatado1hr }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hora inicio",
+              "displayName": "Hora inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Whatsapp",
+              "displayName": "Whatsapp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Criado em",
+              "displayName": "Criado em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lembrete 24h",
+              "displayName": "Lembrete 24h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Check 24hr",
+              "displayName": "Check 24hr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lembrete 1h",
+              "displayName": "Lembrete 1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Check 1hr",
+              "displayName": "Check 1hr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8a7556d5-3fbc-40fc-9c1d-433c5bdbe3d1",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        2020,
+        300
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['whatsapp'] = formataTelefone($node[\"Calendly Trigger\"].json[\"payload\"][\"questions_and_answers\"][\"0\"][\"answer\"])\n\nreturn $input.all();"
+      },
+      "id": "2f9d70ea-376e-450f-9b6d-5e33dc8ea828",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        300
+      ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Calendly Trigger": [
+      {
+        "json": {
+          "created_at": "2024-05-08T03:55:24.000000Z",
+          "created_by": "https://api.calendly.com/users/6f4d88e9-a72b-404c-bc4f-19704ab0d01a",
+          "event": "invitee.created",
+          "payload": {
+            "cancel_url": "https://calendly.com/cancellations/2ab4bcd9-5f9f-43c7-acd8-8e6f80bfee42",
+            "created_at": "2024-05-08T03:55:23.430801Z",
+            "email": "matheuscrsithyan.2@gmail.com",
+            "event": "https://api.calendly.com/scheduled_events/98217439-322a-40ae-bfc1-3131ff2600ec",
+            "first_name": null,
+            "invitee_scheduled_by": "https://api.calendly.com/users/6f4d88e9-a72b-404c-bc4f-19704ab0d01a",
+            "last_name": null,
+            "name": "Matheus Cristhyan",
+            "new_invitee": null,
+            "no_show": null,
+            "old_invitee": null,
+            "payment": null,
+            "questions_and_answers": [
+              {
+                "answer": "+55 81 99351-5055",
+                "position": 0,
+                "question": "Número Whatsapp"
+              },
+              {
+                "answer": "TESTE",
+                "position": 1,
+                "question": "Quais tópicos/dúvidas você gostaria que fossem tratados na reunião?"
+              }
+            ],
+            "reconfirmation": null,
+            "reschedule_url": "https://calendly.com/reschedulings/2ab4bcd9-5f9f-43c7-acd8-8e6f80bfee42",
+            "rescheduled": false,
+            "routing_form_submission": null,
+            "scheduled_event": {
+              "created_at": "2024-05-08T03:55:23.407188Z",
+              "end_time": "2024-05-10T12:00:00.000000Z",
+              "event_guests": [],
+              "event_memberships": [
+                {
+                  "user": "https://api.calendly.com/users/6f4d88e9-a72b-404c-bc4f-19704ab0d01a",
+                  "user_email": "suporte.salablack@gmail.com",
+                  "user_name": "Sala Black"
+                }
+              ],
+              "event_type": "https://api.calendly.com/event_types/b016b63d-9ed3-41e7-b43d-bd2fea0e600b",
+              "invitees_counter": {
+                "total": 1,
+                "active": 1,
+                "limit": 1
+              },
+              "location": {
+                "join_url": "https://calendly.com/events/98217439-322a-40ae-bfc1-3131ff2600ec/google_meet",
+                "status": "processing",
+                "type": "google_conference"
+              },
+              "meeting_notes_html": null,
+              "meeting_notes_plain": null,
+              "name": "Reunião Individual | Sala Black",
+              "start_time": "2024-05-10T11:00:00.000000Z",
+              "status": "active",
+              "updated_at": "2024-05-08T03:55:23.407188Z",
+              "uri": "https://api.calendly.com/scheduled_events/98217439-322a-40ae-bfc1-3131ff2600ec"
+            },
+            "scheduling_method": null,
+            "status": "active",
+            "text_reminder_number": null,
+            "timezone": "America/Sao_Paulo",
+            "tracking": {
+              "utm_campaign": null,
+              "utm_source": null,
+              "utm_medium": null,
+              "utm_content": null,
+              "utm_term": null,
+              "salesforce_uuid": null
+            },
+            "updated_at": "2024-05-08T03:55:23.430801Z",
+            "uri": "https://api.calendly.com/scheduled_events/98217439-322a-40ae-bfc1-3131ff2600ec/invitees/2ab4bcd9-5f9f-43c7-acd8-8e6f80bfee42"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1",
     "timezone": "America/Fortaleza",
@@ -41,6 +496,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-05-08T01:16:31.000Z",
-  "versionId": "b75aa834-7daf-45ae-a541-6edf5fdfaebc"
+  "updatedAt": "2024-05-15T14:58:33.000Z",
+  "versionId": "1e772b3f-73bc-4324-aa5a-98a41f5f5757"
 }
