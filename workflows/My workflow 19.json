@@ -1,33 +1,66 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Schedule Trigger": {
       "main": [
         [
           {
-            "node": "Date & Time",
+            "node": "Webhook",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Date & Time": {
+    "Code9": {
       "main": [
         [
           {
-            "node": "Date & Time1",
+            "node": "If",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Date & Time1": {
+    "Webhook": {
       "main": [
         [
           {
-            "node": "Wait",
+            "node": "Code9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Separa Numero",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Separa Numero": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Onboarding",
             "type": "main",
             "index": 0
           }
@@ -35,8 +68,8 @@
       ]
     }
   },
-  "createdAt": "2024-04-25T02:38:22.488Z",
-  "id": "C7hukqFafnNrRpBL",
+  "createdAt": "2024-05-15T13:56:27.709Z",
+  "id": "2NwpUBWOwK1U02r2",
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -52,57 +85,137 @@
           ]
         }
       },
-      "id": "4b73830b-0b13-4692-9cdd-40c07b4b6a86",
+      "id": "7ec67b68-0c0a-4061-b89a-f0735273fefa",
       "name": "Schedule Trigger",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.1,
       "position": [
-        500,
-        400
+        820,
+        380
       ]
     },
     {
       "parameters": {
-        "resume": "specificTime",
-        "dateTime": "={{ $json.newDate }}"
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
       },
-      "id": "48b65b14-c82d-41e8-834f-ef9450821fe6",
-      "name": "Wait",
-      "type": "n8n-nodes-base.wait",
-      "typeVersion": 1.1,
-      "position": [
-        1180,
-        400
-      ],
-      "webhookId": "c54ed6b7-eb09-409a-9197-32f46ae2120c"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "id": "d3b8452d-f24d-4292-864f-3270413d1bc1",
-      "name": "Date & Time",
-      "type": "n8n-nodes-base.dateTime",
+      "id": "172d0883-48f3-46a0-943c-66b94c33fd64",
+      "name": "Code9",
+      "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        720,
-        400
+        1240,
+        380
       ]
     },
     {
       "parameters": {
-        "operation": "addToDate",
-        "magnitude": "={{ $json.currentDate }}",
-        "duration": 2,
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "3cf759ee-128c-4892-bbbe-ad2b1b04997f",
+              "leftValue": "={{ $json.text.message }}",
+              "rightValue": "=#onboarding implante million",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
         "options": {}
       },
-      "id": "838fac56-6dfe-475f-b9f8-5610a8fa772c",
-      "name": "Date & Time1",
-      "type": "n8n-nodes-base.dateTime",
+      "id": "1e2548f2-c847-48bc-ac2a-efdd2f2b2159",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        940,
-        400
+        1460,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "\n  {\n    \"headers\": {\n      \"host\": \"n8n.marcosfoks.com.br\",\n      \"user-agent\": \"Mozilla/5.0 (iPad; CPU OS 16_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Mobile/15E148 Safari/604.1\",\n      \"content-length\": \"740\",\n      \"accept-encoding\": \"gzip, br\",\n      \"cdn-loop\": \"cloudflare\",\n      \"cf-connecting-ip\": \"129.159.52.119\",\n      \"cf-ipcountry\": \"BR\",\n      \"cf-ray\": \"86da97008b711aef-GRU\",\n      \"cf-visitor\": \"{\\\"scheme\\\":\\\"https\\\"}\",\n      \"content-type\": \"application/json\",\n      \"origin\": \"https://api.z-api.io\",\n      \"server\": \"Z-API\",\n      \"x-forwarded-for\": \"172.71.234.86\",\n      \"x-forwarded-host\": \"n8n.marcosfoks.com.br\",\n      \"x-forwarded-port\": \"443\",\n      \"x-forwarded-proto\": \"https\",\n      \"x-forwarded-server\": \"bc917484dc53\",\n      \"x-real-ip\": \"172.71.234.86\",\n      \"z-api-token\": \"92B58C5DAD3489D5AD780116\"\n    },\n    \"params\": {},\n    \"query\": {},\n    \"body\": {\n      \"isStatusReply\": false,\n      \"chatLid\": \"254549860294741@lid\",\n      \"connectedPhone\": \"556294723102\",\n      \"waitingMessage\": false,\n      \"isEdit\": false,\n      \"isGroup\": false,\n      \"isNewsletter\": false,\n      \"instanceId\": \"3C1825917D649026AAA446A65441921E\",\n      \"messageId\": \"3AEBD8C4E6E0A27AF1C0\",\n      \"phone\": \"5581993515055\",\n      \"fromMe\": false,\n      \"momment\": 1711995591525,\n      \"status\": \"RECEIVED\",\n      \"chatName\": \"Filipe Batista\",\n      \"senderPhoto\": null,\n      \"senderName\": \"Filipe Batista\",\n      \"photo\": \"https://pps.whatsapp.net/v/t61.24694-24/415283183_336840912484217_7251747342185974786_n.jpg?ccb=11-4&oh=01_ASAxtXY77dld-pg1cRPjcdxtJycIrzVptqGHtOTyfWUl2w&oe=661824B8&_nc_sid=e6ed6c&_nc_cat=110\",\n      \"broadcast\": false,\n      \"participantLid\": null,\n      \"forwarded\": false,\n      \"type\": \"ReceivedCallback\",\n      \"fromApi\": false,\n      \"text\": {\n        \"message\": \"#onboarding implante million;81993515055\"\n      }\n    }\n  }\n",
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "48a1a12b-e01f-4ea8-9dde-def7d9f18231",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1040,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['numeroExtraido'] = formataTelefone($input.all()[0].json['numeroExtraido'])\n\nreturn $input.all(); "
+      },
+      "id": "f2c37e6f-592b-43b9-b5ee-bdb89a13fc19",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1900,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "var entrada = $input.all()[0].json[\"text\"][\"message\"]\n\n// Função para extrair o número após o ponto e vírgula\nfunction extrairNumero(entrada) {\n    var partes = entrada.split(';');\n    if (partes.length > 1) {\n        var numero = partes[1].trim();\n        return numero;\n    } else {\n        return null;\n    }\n}\n\n// Chamada da função e impressão do resultado\nvar numeroExtraido = extrairNumero(entrada);\n\nreturn {numeroExtraido}\n"
+      },
+      "id": "2e0e2560-6b35-416a-af5d-a6c17b77017a",
+      "name": "Separa Numero",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.numeroExtraido }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, tudo bem?\n\nSua compra foi confirmada e seu ingresso para a Imersão Implante Million está reservado🔥\n\n🔴 Para confirmar sua presença, precisamos que você faça o quanto antes o seu check-in do evento. São perguntas simples, mas de extrema importância!\n\nClique no link abaixo para preencher ⬇\n\n🔗 https://bit.ly/IM-checkin\n\n(leva menos de 5 minutos)\n\nQuando fizer, me avisa aqui ✋"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8aa7e516-4fbf-48e2-817b-4deaaf34302c",
+      "name": "Onboarding",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2100,
+        360
       ]
     }
   ],
@@ -110,13 +223,9 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": {
-    "node:Schedule Trigger": {
-      "recurrencyRules": []
-    }
-  },
+  "staticData": null,
   "tags": [],
-  "triggerCount": 1,
-  "updatedAt": "2024-04-25T02:39:00.000Z",
-  "versionId": "013c000f-3ac6-4d76-9210-c34043637f80"
+  "triggerCount": 0,
+  "updatedAt": "2024-05-15T14:05:48.000Z",
+  "versionId": "33ece262-8658-4d79-bcb5-91c4ae5d1ca6"
 }
