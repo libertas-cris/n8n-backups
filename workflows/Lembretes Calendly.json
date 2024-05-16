@@ -1,0 +1,637 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Agora",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agora": {
+      "main": [
+        [
+          {
+            "node": "lembrete 24hr",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Lembrete 1hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "lembrete 24hr": {
+      "main": [
+        [
+          {
+            "node": "Mensagem 24hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem 24hr": {
+      "main": [
+        [
+          {
+            "node": "Check 24hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete 1hr": {
+      "main": [
+        [
+          {
+            "node": "Mensagem 1hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem 1hr": {
+      "main": [
+        [
+          {
+            "node": "Check 1hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-15T15:05:31.533Z",
+  "id": "G0ON26HHtgRHUmmc",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Lembretes Calendly",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "7df569ca-321e-4f3b-95b9-18249a7ca4a2",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ Date() }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy HH:mm",
+        "outputFieldName": "agora",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "e6e28316-91dc-4c7f-9a9d-8d483717a2f0",
+      "name": "Agora",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M",
+          "mode": "list",
+          "cachedResultName": "[ILA] Funil de agendamento no Calendly",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Agendamentos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Lembrete 24h",
+              "lookupValue": "={{ $json.agora }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "362e2e73-7dd1-4b49-91a5-b6cc8e712ae7",
+      "name": "lembrete 24hr",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1320,
+        140
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M",
+          "mode": "list",
+          "cachedResultName": "[ILA] Funil de agendamento no Calendly",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Agendamentos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Lembrete 1h",
+              "lookupValue": "={{ $json.agora }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f7947112-d7e6-44a1-9403-971484e95f1f",
+      "name": "Lembrete 1hr",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1320,
+        540
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M",
+          "mode": "list",
+          "cachedResultName": "[ILA] Funil de agendamento no Calendly",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Agendamentos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $('lembrete 24hr').item.json.row_number }}",
+            "Check 24hr": "enviado"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hora inicio",
+              "displayName": "Hora inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Whatsapp",
+              "displayName": "Whatsapp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Criado em",
+              "displayName": "Criado em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lembrete 24h",
+              "displayName": "Lembrete 24h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Check 24hr",
+              "displayName": "Check 24hr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lembrete 1h",
+              "displayName": "Lembrete 1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Check 1hr",
+              "displayName": "Check 1hr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e5dd77be-46cc-454d-b408-2151d9c3dddb",
+      "name": "Check 24hr",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1760,
+        140
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $json[\"Nome\"] }}!\n\nPassando só pra lembrar da nossa reunião amanhã, dia {{ $json[\"Data\"] }} às {{ $json[\"Hora inicio\"] }}.\n\nLink da nossa reunião: {{ $json[\"Link\"] }}\n\n⚠️ Se algum imprevisto acontecer você poderá remarcar a sua mentoria individual com no mínimo 12 horas de antecedência. Caso não seja realizado com esse prazo a mentoria será considerada como realizada. \n\nTodas as mentorias tem uma duração de 1 hora, se houver algum tipo de atraso, será contabilizado no tempo da mentoria."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eb83248b-bcdf-4b06-bfd2-b0c3f1f36baa",
+      "name": "Mensagem 24hr",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1540,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "=Oii {{ $json[\"Nome\"] }}!\n\nDaqui a pouco nos vemos na nossa reunião, às {{ $json[\"Hora inicio\"] }}!\n\nLink da nossa reunião: {{ $json[\"Link\"] }}\n\nTe vejo em breve."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fb686d0b-e707-4cf0-ad4f-fb289f19cf80",
+      "name": "Mensagem 1hr",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1540,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M",
+          "mode": "list",
+          "cachedResultName": "[ILA] Funil de agendamento no Calendly",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Agendamentos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $('Lembrete 1hr').item.json.row_number }}",
+            "Check 1hr": "enviado"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hora inicio",
+              "displayName": "Hora inicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Whatsapp",
+              "displayName": "Whatsapp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Criado em",
+              "displayName": "Criado em",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lembrete 24h",
+              "displayName": "Lembrete 24h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Check 24hr",
+              "displayName": "Check 24hr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Lembrete 1h",
+              "displayName": "Lembrete 1h",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Check 1hr",
+              "displayName": "Check 1hr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0c5c6e49-9c03-4840-a657-b911380f6526",
+      "name": "Check 1hr",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1760,
+        540
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Lembrete 1hr": [
+      {
+        "json": {
+          "row_number": 2,
+          "Data": "10/05/2024",
+          "Hora inicio": "08:00",
+          "Nome": "Matheus Cristhyan",
+          "Email": "matheuscrsithyan.2@gmail.com",
+          "Whatsapp": 558193515055,
+          "Link": "https://calendly.com/events/98217439-322a-40ae-bfc1-3131ff2600ec/google_meet",
+          "Criado em": "2024-05-08T03:55:24.000000Z",
+          "Lembrete 24h": "15/05/2024 12:09",
+          "Check 24hr": "",
+          "Lembrete 1h": "15/05/2024 12:10",
+          "Check 1hr": ""
+        }
+      }
+    ],
+    "lembrete 24hr": [
+      {
+        "json": {
+          "row_number": 2,
+          "Data": "10/05/2024",
+          "Hora inicio": "08:00",
+          "Nome": "Matheus Cristhyan",
+          "Email": "matheuscrsithyan.2@gmail.com",
+          "Whatsapp": 558193515055,
+          "Link": "https://calendly.com/events/98217439-322a-40ae-bfc1-3131ff2600ec/google_meet",
+          "Criado em": "2024-05-08T03:55:24.000000Z",
+          "Lembrete 24h": "15/05/2024 12:11",
+          "Check 24hr": "",
+          "Lembrete 1h": "15/05/2024 12:10",
+          "Check 1hr": ""
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-15T15:27:13.000Z",
+  "versionId": "932d39b0-6bb6-4a6a-9861-79d8d0accd4d"
+}
