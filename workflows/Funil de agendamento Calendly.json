@@ -88,6 +88,17 @@
           }
         ]
       ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Onboarding",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-05-06T18:31:35.448Z",
@@ -214,7 +225,7 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        1380,
+        1360,
         300
       ]
     },
@@ -234,7 +245,7 @@
       "type": "n8n-nodes-base.dateTime",
       "typeVersion": 2,
       "position": [
-        1560,
+        1540,
         300
       ]
     },
@@ -378,7 +389,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        2020,
+        1920,
         300
       ],
       "credentials": {
@@ -397,7 +408,44 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        1780,
+        1720,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.Whatsapp }}"
+            },
+            {
+              "name": "message",
+              "value": "={{ $json[\"Nome\"] }}, \n\nSua Mentoria Individual está agendada para dia {{ $json[\"Data\"] }} às {{ $json[\"Hora inicio\"] }}. \n\nSe algum imprevisto acontecer você poderá remarcar a sua mentoria individual com no mínimo 12 horas de antecedência. \n\nCaso não seja realizado com esse prazo a mentoria será considerada como realizada. \n\nTodas as mentorias tem uma duração de 1 hora, se houver algum tipo de atraso, será contabilizado no tempo da mentoria. \n\nContamos com a sua colaboração  pois temo uma demanda grande e nosso foco é sempre te atender com a qualidade que você merece."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "160a2a63-8c45-4476-a564-0cbdfa303c0b",
+      "name": "Onboarding",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2120,
         300
       ]
     }
@@ -493,9 +541,11 @@
     "saveManualExecutions": true,
     "callerPolicy": "workflowsFromSameOwner"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Calendly Trigger": {}
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2024-05-15T14:58:33.000Z",
-  "versionId": "1e772b3f-73bc-4324-aa5a-98a41f5f5757"
+  "triggerCount": 1,
+  "updatedAt": "2024-05-15T15:36:25.000Z",
+  "versionId": "3969481f-0cb3-4e83-8057-843fe14277c0"
 }
