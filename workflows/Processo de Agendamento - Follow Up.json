@@ -1,0 +1,461 @@
+{
+  "active": true,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Follow Atual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-16T04:18:01.399Z",
+  "id": "QlECOwu2yRF9JYWZ",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Processo de Agendamento - Follow Up",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "65d3abbb-f932-466a-960c-9a290fde671d",
+        "options": {}
+      },
+      "id": "9f035bad-64c5-4a48-b0a9-ef193c4ab3d0",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        880,
+        380
+      ],
+      "webhookId": "65d3abbb-f932-466a-960c-9a290fde671d"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "791827da-47ce-4378-8ce1-4e5db1337e8b",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['contact[phone]'] = formataTelefone($node['Trata Webhook'].json['contact[phone]'])\n\nreturn $input.all();"
+      },
+      "id": "b934e8a6-bc96-4034-bb0e-2f416138add0",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1220,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['contact[fields][evento]'] }}",
+                    "rightValue": "=1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1º FOLLOW"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "43316722-fb4d-4898-8475-6f2159336e25",
+                    "leftValue": "={{ $json['contact[fields][evento]'] }}",
+                    "rightValue": "=2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2º FOLLOW"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "c3254e6e-4b01-4382-96f5-e496fc01710d",
+                    "leftValue": "={{ $json['contact[fields][evento]'] }}",
+                    "rightValue": "=3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "3º FOLLOW"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "052bfa90-1cc1-40ad-8669-a0d281c19e80",
+      "name": "Follow Atual",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        1400,
+        380
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "GuzzleHttp/6.5.5 curl/8.3.0 PHP/8.1.23",
+            "content-length": "10848",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "3.220.243.205",
+            "cf-ipcountry": "US",
+            "cf-ray": "88489363ca2e1fe5-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/x-www-form-urlencoded",
+            "x-forwarded-for": "172.71.222.52",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.71.222.52"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "contact[id]": "4274",
+            "contact[email]": "agendamento@gmail.com",
+            "contact[first_name]": "Matheus",
+            "contact[last_name]": "",
+            "contact[phone]": "(81) 9 9351-5055",
+            "contact[orgname]": "",
+            "contact[customer_acct_name]": "",
+            "contact[tags]": "",
+            "contact[ip4]": "0.0.0.0",
+            "contact[fields][status_de_recuperao]": "",
+            "contact[fields][kap_abandono_de_carrinho_date]": "",
+            "contact[fields][kap_refund_date]": "",
+            "contact[fields][kap_purchase_date]": "",
+            "contact[fields][ap_s1_subscribe_date]": "",
+            "contact[fields][utmsources1ap]": "",
+            "contact[fields][utmcampaigns1ap]": "",
+            "contact[fields][utmmediums1ap]": "",
+            "contact[fields][utmcontents1ap]": "",
+            "contact[fields][utmterms1ap]": "",
+            "contact[fields][aps1_refund_date]": "",
+            "contact[fields][aps1_purchase_date]": "",
+            "contact[fields][tf_20_aguardando_pagamento_date]": "",
+            "contact[fields][tf_20_compra_cancelada_date]": "",
+            "contact[fields][tf20_initiate_checkout_date]": "",
+            "contact[fields][tf20_compra_cancelada_date]": "",
+            "contact[fields][tf20_initiate_checkout_date_1]": "",
+            "contact[fields][tf20_pix_date]": "",
+            "contact[fields][tf20_compra_reembolsada_date]": "",
+            "contact[fields][utmsourcetf20]": "",
+            "contact[fields][utmcampaigntf20]": "",
+            "contact[fields][utmmediumtf20]": "",
+            "contact[fields][utmtermtf20]": "",
+            "contact[fields][utmcontenttf20]": "",
+            "contact[fields][utm_source]": "",
+            "contact[fields][utm_campaign]": "",
+            "contact[fields][utm_medium]": "",
+            "contact[fields][utm_content]": "",
+            "contact[fields][utm_term]": "",
+            "contact[fields][treinamento_initiate_checkout]": "",
+            "contact[fields][utmsourcers1]": "",
+            "contact[fields][utmcampaignrs1]": "",
+            "contact[fields][utmmediumrs1]": "",
+            "contact[fields][utmcontentrs1]": "",
+            "contact[fields][utmtermrs1]": "",
+            "contact[fields][rs1_subscribe_date]": "",
+            "contact[fields][rs1_temperatura]": "",
+            "contact[fields][rs1_pgina_capt]": "",
+            "contact[fields][rs1_initiatecheckout_date]": "",
+            "contact[fields][rs1_abandonou_carrinho_date]": "",
+            "contact[fields][rs1_checkout_direto]": "",
+            "contact[fields][name]": "",
+            "contact[fields][nmero]": "",
+            "contact[fields][rs1_ingresso_contato_realizado]": "",
+            "contact[fields][rs1_pix_emitido_date]": "",
+            "contact[fields][rs1_compra_cancelada_date]": "",
+            "contact[fields][qrcode]": "",
+            "contact[fields][imgqrcode]": "",
+            "contact[fields][utmsourcers2]": "",
+            "contact[fields][utmcampaignrs2]": "",
+            "contact[fields][utmmediumrs2]": "",
+            "contact[fields][utmcontentrs2]": "",
+            "contact[fields][utmtermrs2]": "",
+            "contact[fields][rs2_temperatura]": "",
+            "contact[fields][rs2_pgina_capt]": "",
+            "contact[fields][rs2_subscribe_date]": "",
+            "contact[fields][rs2_initiatecheckout_date]": "",
+            "contact[fields][rs2_pix_emitido_date]": "",
+            "contact[fields][rs2_compra_cancelada_date]": "",
+            "contact[fields][rs2_checkout_direto]": "",
+            "contact[fields][rs2_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs2_recebeu_recuperao]": "",
+            "contact[fields][rs2_compra_reclamada_date]": "",
+            "contact[fields][utmsourcers3]": "",
+            "contact[fields][utmcampaignrs3]": "",
+            "contact[fields][utmmediumrs3]": "",
+            "contact[fields][utmcontentrs3]": "",
+            "contact[fields][utmtermrs3]": "",
+            "contact[fields][rs3_temperatura]": "",
+            "contact[fields][rs3_pgina_capt]": "",
+            "contact[fields][rs3_subscribe_date]": "",
+            "contact[fields][rs3_initiatecheckout_date]": "",
+            "contact[fields][rs3_pix_emitido_date]": "",
+            "contact[fields][rs3_compra_cancelada_date]": "",
+            "contact[fields][rs3_checkout_direto]": "",
+            "contact[fields][rs3_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs3_compra_reclamada_date]": "",
+            "contact[fields][rs3_recebeu_recuperao]": "",
+            "contact[fields][utmsourcers4]": "",
+            "contact[fields][utmcampaignrs4]": "",
+            "contact[fields][utmmediumrs4]": "",
+            "contact[fields][utmcontentrs4]": "",
+            "contact[fields][utmtermrs4]": "",
+            "contact[fields][rs4_temperatura]": "",
+            "contact[fields][rs4_pgina_capt]": "",
+            "contact[fields][rs4_subscribe_date]": "",
+            "contact[fields][rs4_initiatecheckout_date]": "",
+            "contact[fields][rs4_pix_emitido_date]": "",
+            "contact[fields][rs4_compra_cancelada_date]": "",
+            "contact[fields][rs4_checkout_direto]": "",
+            "contact[fields][rs4_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs4_compra_reclamada_date]": "",
+            "contact[fields][rs4_recebeu_recuperao]": "",
+            "contact[fields][utmsourcers5]": "",
+            "contact[fields][utmcampaignrs5]": "",
+            "contact[fields][utmmediumrs5]": "",
+            "contact[fields][utmcontentrs5]": "",
+            "contact[fields][utmtermrs5]": "",
+            "contact[fields][rs5_temperatura]": "",
+            "contact[fields][rs5_pgina_capt]": "",
+            "contact[fields][rs5_subscribe_date]": "",
+            "contact[fields][rs5_initiatecheckout_date]": "",
+            "contact[fields][rs5_pix_emitido_date]": "",
+            "contact[fields][rs5_compra_cancelada_date]": "",
+            "contact[fields][rs5_checkout_direto]": "",
+            "contact[fields][rs5_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs5_compra_reclamada_date]": "",
+            "contact[fields][rs5_recebeu_recuperao]": "",
+            "contact[fields][boletourl]": "",
+            "contact[fields][boletobarcode]": "",
+            "contact[fields][subscribe_date]": "",
+            "contact[fields][planilha]": "",
+            "contact[fields][turma]": "",
+            "contact[fields][utmsourcers6]": "",
+            "contact[fields][utmcampaignrs6]": "",
+            "contact[fields][utmmediumrs6]": "",
+            "contact[fields][utmcontentrs6]": "",
+            "contact[fields][utmtermrs6]": "",
+            "contact[fields][rs6_temperatura]": "",
+            "contact[fields][rs6_pgina_capt]": "",
+            "contact[fields][rs6_subscribe_date]": "",
+            "contact[fields][rs6_initiatecheckout_date]": "",
+            "contact[fields][rs6_pix_emitido_date]": "",
+            "contact[fields][rs6_compra_cancelada_date]": "",
+            "contact[fields][rs6_checkout_direto]": "",
+            "contact[fields][rs6_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs6_compra_reclamada_date]": "",
+            "contact[fields][rs6_recebeu_recuperao]": "",
+            "contact[fields][planilhapronta]": "",
+            "contact[fields][kap_isca_subscribe_date]": "",
+            "contact[fields][utmsourcedned]": "",
+            "contact[fields][utmcampaigndned]": "",
+            "contact[fields][utmmediumdned]": "",
+            "contact[fields][utmcontentdned]": "",
+            "contact[fields][utmtermdned]": "",
+            "contact[fields][dned_temperatura]": "",
+            "contact[fields][dned_pgina_capt]": "",
+            "contact[fields][dned_subscribe_date]": "",
+            "contact[fields][dned_initiatecheckout_date]": "",
+            "contact[fields][dned_pix_emitido_date]": "",
+            "contact[fields][dned_compra_cancelada_date]": "",
+            "contact[fields][dned_compra_reclamada_date]": "",
+            "contact[fields][dned_recebeu_recuperao]": "",
+            "contact[fields][dned_respondeu_recuperao]": "",
+            "contact[fields][funo]": "",
+            "contact[fields][clnica]": "",
+            "contact[fields][especialidade]": "",
+            "contact[fields][investimento_em_anncios]": "",
+            "contact[fields][faturamento_mdio]": "",
+            "contact[fields][cadastro_isca_objeo_preo]": "",
+            "contact[fields][data_de_cadastro_isca_objeo_preo]": "",
+            "contact[fields][pg_aplicao_etapas]": "",
+            "contact[fields][pg_aplicao_virou_lead]": "",
+            "contact[fields][ltimainterao]": "",
+            "contact[fields][planilhaprecificacao]": "",
+            "contact[fields][utmsourcers7]": "",
+            "contact[fields][utmcampaignrs7]": "",
+            "contact[fields][utmmediumrs7]": "",
+            "contact[fields][utmcontentrs7]": "",
+            "contact[fields][utmtermrs7]": "",
+            "contact[fields][rs7_temperatura]": "",
+            "contact[fields][rs7_pgina_capt]": "",
+            "contact[fields][rs7_subscribe_date]": "",
+            "contact[fields][rs7_initiatecheckout_date]": "",
+            "contact[fields][rs7_pix_emitido_date]": "",
+            "contact[fields][rs7_compra_cancelada_date]": "",
+            "contact[fields][rs7_compra_reclamada_date]": "",
+            "contact[fields][rs7_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs7_recebeu_recuperao]": "",
+            "contact[fields][utmsourcers8]": "",
+            "contact[fields][utmcampaignrs8]": "",
+            "contact[fields][utmmediumrs8]": "",
+            "contact[fields][utmcontentrs8]": "",
+            "contact[fields][utmtermrs8]": "",
+            "contact[fields][rs8_temperatura]": "",
+            "contact[fields][rs8_pgina_capt]": "",
+            "contact[fields][rs8_subscribe_date]": "",
+            "contact[fields][rs8_initiatecheckout_date]": "",
+            "contact[fields][rs8_pix_emitido_date]": "",
+            "contact[fields][rs8_compra_cancelada_date]": "",
+            "contact[fields][rs8_compra_reclamada_date]": "",
+            "contact[fields][rs8_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs8_recebeu_recuperao]": "",
+            "contact[fields][utmsourceim]": "",
+            "contact[fields][utmcampaignim]": "",
+            "contact[fields][utmmediumim]": "",
+            "contact[fields][utmtermim]": "",
+            "contact[fields][utmcontentim]": "",
+            "contact[fields][checkoutdate]": "",
+            "contact[fields][purchasedate]": "",
+            "contact[fields][paginaim]": "",
+            "contact[fields][ingresso]": "",
+            "contact[fields][url]": "",
+            "contact[fields][utmsourcers9]": "",
+            "contact[fields][utmcampaignrs9]": "",
+            "contact[fields][utmmediumrs9]": "",
+            "contact[fields][utmcontentrs9]": "",
+            "contact[fields][utmtermrs9]": "",
+            "contact[fields][rs9_temperatura]": "",
+            "contact[fields][rs9_pgina_capt]": "",
+            "contact[fields][rs9_subscribe_date]": "",
+            "contact[fields][rs9_initiatecheckout_date]": "",
+            "contact[fields][rs9_pix_emitido_date]": "",
+            "contact[fields][rs9_compra_cancelada_date]": "",
+            "contact[fields][rs9_compra_reclamada_date]": "",
+            "contact[fields][rs9_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs9_recebeu_recuperao]": "",
+            "contact[fields][comprouingresso]": "",
+            "contact[fields][utmsourcers10]": "",
+            "contact[fields][utmmediumrs10]": "",
+            "contact[fields][utmcampaignrs10]": "",
+            "contact[fields][utmcontentrs10]": "",
+            "contact[fields][utmtermrs10]": "",
+            "contact[fields][rs10_temperatura]": "",
+            "contact[fields][rs10_pgina_capt]": "",
+            "contact[fields][rs10_subscribe_date]": "",
+            "contact[fields][rs10_initiatecheckout_date]": "",
+            "contact[fields][rs10_pix_emitido_date]": "",
+            "contact[fields][rs10_compra_cancelada_date]": "",
+            "contact[fields][rs10_compra_reclamada_date]": "",
+            "contact[fields][rs10_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs10_recebeu_recuperao]": "",
+            "contact[fields][utmsourcers11]": "",
+            "contact[fields][utmcampaignrs11]": "",
+            "contact[fields][utmmediumrs11]": "",
+            "contact[fields][utmcontentrs11]": "",
+            "contact[fields][utmtermrs11]": "",
+            "contact[fields][rs11_temperatura]": "",
+            "contact[fields][rs11_pgina_capt]": "",
+            "contact[fields][rs11_subscribe_date]": "",
+            "contact[fields][rs11_initiatecheckout_date]": "",
+            "contact[fields][rs11_pix_emitido_date]": "",
+            "contact[fields][rs11_compra_cancelada_date]": "",
+            "contact[fields][rs11_compra_reclamada_date]": "",
+            "contact[fields][rs11_ingresso_respondeu_recuperao]": "",
+            "contact[fields][rs11_recebeu_recuperao]": "",
+            "contact[fields][metafaturamento]": "",
+            "contact[fields][evento]": "1",
+            "seriesid": "71"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-16T04:23:55.000Z",
+  "versionId": "0efcc45f-accd-43da-8f09-6fefb8e9d1b7"
+}
