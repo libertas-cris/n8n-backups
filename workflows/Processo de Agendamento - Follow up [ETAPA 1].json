@@ -1,0 +1,1495 @@
+{
+  "active": true,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Whatsapp",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Vip?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Whatsapp": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "whatsapp formatado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vip?": {
+      "main": [
+        [
+          {
+            "node": "tipo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "whatsapp formatado": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tipo": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-16T15:30:47.903Z",
+  "id": "87hY0QUMMvGTABWA",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Processo de Agendamento - Follow up [ETAPA 1]",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "7d93e3cf-050c-411a-af20-ea40861db603",
+        "options": {}
+      },
+      "id": "fc92cf02-2a9f-4440-858f-de617ede16fe",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        320,
+        380
+      ],
+      "webhookId": "7d93e3cf-050c-411a-af20-ea40861db603"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "3dcbafca-0979-406c-9760-01b00b0876f2",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        540,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['value'] = formataTelefone($input.all()[0].json['value'])\n\nreturn $input.all();"
+      },
+      "id": "633985c3-c8e6-40b9-b69c-b995cc913b07",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "payload.custom_fields",
+        "options": {}
+      },
+      "id": "ecade51b-9413-468a-b145-16037b40891e",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        740,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "707d6f62-1273-430b-99f6-3a35bbb6bef9",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "=Telefone (Whatsapp)",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "7b4f963d-c094-43df-91bd-c1bbdcb4a30e",
+      "name": "Whatsapp",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        940,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "707d6f62-1273-430b-99f6-3a35bbb6bef9",
+              "leftValue": "={{ $('Split Out').item.json.name }}",
+              "rightValue": "=Ingresso Vip",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "12a9cd8a-f370-4eca-9a82-cfabf1daffcb",
+      "name": "Vip?",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        940,
+        520
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "9fe19021-b697-49e5-ac5d-d1d0e408ec5e",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1640,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0d95f2d9-c9d0-406b-8fd7-1683003b03fa",
+              "name": "whatsapp",
+              "value": "={{ $json.value }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6607b5ce-81c1-4caf-a875-4391b66cada5",
+      "name": "whatsapp formatado",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1360,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "977e70e0-658d-402e-93f2-8c8f98a1590c",
+              "name": "whatsapp",
+              "value": "={{ $json.value }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e9b078ee-1091-47e5-8abb-ddffae382c74",
+      "name": "tipo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1140,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1tXKFYiu2sisLoWIl91eTJfR1AQaNl2BTraZOUC37uF4",
+          "mode": "list",
+          "cachedResultName": "Processo de Agendamento - Follow Up's",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tXKFYiu2sisLoWIl91eTJfR1AQaNl2BTraZOUC37uF4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tXKFYiu2sisLoWIl91eTJfR1AQaNl2BTraZOUC37uF4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{new DateTime($now).toFormat('dd/MM/yyyy HH:mm')}}",
+            "tipo": "={{ $json.whatsapp ? \"vip\" : \"pesquisa\" }} ",
+            "telefone": "={{ $json.whatsapp }}",
+            "nome": "={{ $('Trata Webhook').item.json.payload.name }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo",
+              "displayName": "tipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "be78d7a9-8945-4ba5-9e1e-6374ef7dbf1d",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        2300,
+        400
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2e33534a-2862-46f3-922f-0c3f44ae6c7b",
+              "name": "whatsapp",
+              "value": "={{ $json.whatsapp }}",
+              "type": "string"
+            },
+            {
+              "id": "3eebcd48-4162-440a-886a-e3c035f27518",
+              "name": "tipo",
+              "value": "={{ $json.whatsapp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2073f688-643c-4f5d-84fd-5f18d273f017",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2080,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "84d40c09-694c-4ef8-a5f4-f61741a8d0a3",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1820,
+        380
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "axios/0.24.0",
+            "content-length": "18732",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, br",
+            "b3": "66466da0000000000a7903bed9352740-3af2ffd2a6d2e93c-0-09ed986904ebdbb0",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "3.138.39.166",
+            "cf-ipcountry": "US",
+            "cf-ray": "884e24cbad942d6a-ORD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "traceparent": "00-66466da0000000000a7903bed9352740-3af2ffd2a6d2e93c-00",
+            "tracestate": "dd=t.tid:66466da000000000;t.dm:3;s:-1",
+            "x-b3-parentspanid": "09ed986904ebdbb0",
+            "x-b3-sampled": "0",
+            "x-b3-spanid": "3af2ffd2a6d2e93c",
+            "x-b3-traceid": "66466da0000000000a7903bed9352740",
+            "x-datadog-parent-id": "4247738678770854204",
+            "x-datadog-sampling-priority": "-1",
+            "x-datadog-tags": "_dd.p.tid=66466da000000000",
+            "x-datadog-trace-id": "754638530784077632",
+            "x-forwarded-for": "172.70.130.249",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.70.130.249"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": "35b03cfc-9170-446f-8dca-412d8e9233b9:main",
+            "trigger_id": "a6122f2f-8407-41d5-9820-25594033d63d",
+            "date": "2024-05-16T20:33:36.419Z",
+            "payload": {
+              "id": "86a1erh9p",
+              "custom_id": null,
+              "custom_item_id": 0,
+              "name": "Mauricio",
+              "text_content": "",
+              "description": "",
+              "status": {
+                "id": "subcat901300794753_sc901300759936_h4HQG5Vl",
+                "status": "contato finalizado",
+                "color": "#008844",
+                "orderindex": 5,
+                "type": "closed"
+              },
+              "orderindex": "39677195.00000000000000000000000000000000",
+              "date_created": "1700235184226",
+              "date_updated": "1715891614048",
+              "date_closed": "1701451191134",
+              "date_done": "1701451191134",
+              "archived": false,
+              "creator": {
+                "id": 43040068,
+                "username": "Tran",
+                "color": "#ff5722",
+                "email": "victor@grupolibertas.com.br",
+                "profilePicture": "https://attachments.clickup.com/profilePictures/43040068_t8t.jpg"
+              },
+              "assignees": [
+                {
+                  "id": 43035907,
+                  "username": "Marcos Foks",
+                  "color": "#536cfe",
+                  "initials": "MF",
+                  "email": "marcos@grupolibertas.com.br",
+                  "profilePicture": "https://attachments.clickup.com/profilePictures/43035907_n0u.jpg"
+                }
+              ],
+              "group_assignees": [],
+              "watchers": [
+                {
+                  "id": 43035907,
+                  "username": "Marcos Foks",
+                  "color": "#536cfe",
+                  "initials": "MF",
+                  "email": "marcos@grupolibertas.com.br",
+                  "profilePicture": "https://attachments.clickup.com/profilePictures/43035907_n0u.jpg"
+                },
+                {
+                  "id": 43040068,
+                  "username": "Tran",
+                  "color": "#ff5722",
+                  "initials": "T",
+                  "email": "victor@grupolibertas.com.br",
+                  "profilePicture": "https://attachments.clickup.com/profilePictures/43040068_t8t.jpg"
+                }
+              ],
+              "checklists": [],
+              "tags": [
+                {
+                  "name": "sessão estratégica",
+                  "tag_fg": "#DC646A",
+                  "tag_bg": "#DC646A",
+                  "creator": 43035907
+                }
+              ],
+              "parent": null,
+              "priority": null,
+              "due_date": "1701154800000",
+              "start_date": null,
+              "points": null,
+              "time_estimate": null,
+              "time_spent": 0,
+              "custom_fields": [
+                {
+                  "id": "405b99b5-b2ef-48cc-86b5-ff9ade8162e2",
+                  "name": "Projeto",
+                  "type": "drop_down",
+                  "type_config": {
+                    "new_drop_down": true,
+                    "options": [
+                      {
+                        "id": "dd12e1b6-b1b1-44ca-8155-5dfd947fc420",
+                        "name": "LIBERTAS",
+                        "color": "#0231E8",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "1680b939-2f18-461e-938c-323fa2ea0978",
+                        "name": "ILA/NICOLE",
+                        "color": "#EA80FC",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "bec805a5-3d9f-4861-8f91-a452f0a3bd14",
+                        "name": "FOKS",
+                        "color": "#04A9F4",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "c6ae36a2-5e5b-4aa9-9af5-cfb86d10767c",
+                        "name": "KAPANY",
+                        "color": "#b5bcc2",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "17dc3b04-799f-4bed-a36a-55d83b7fe088",
+                        "name": "SERVIÇOS",
+                        "color": "#FF4081",
+                        "orderindex": 4
+                      },
+                      {
+                        "id": "9693540b-72b4-4124-8d4b-b456802b41bf",
+                        "name": "JESS",
+                        "color": "#e50000",
+                        "orderindex": 5
+                      }
+                    ]
+                  },
+                  "date_created": "1643371108857",
+                  "hide_from_guests": false,
+                  "value": 1,
+                  "required": false
+                },
+                {
+                  "id": "aac36645-04a7-4fbe-b2c7-15f62e5bcc49",
+                  "name": "Telefone",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867402474",
+                  "hide_from_guests": false,
+                  "value": "559884009639",
+                  "required": false
+                },
+                {
+                  "id": "8f222c00-84bd-458c-b52a-7e58a1c5b7b5",
+                  "name": "Idade",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867416475",
+                  "hide_from_guests": false,
+                  "value": "25-34",
+                  "required": false
+                },
+                {
+                  "id": "67591179-a3ed-41af-af20-11bb646337bd",
+                  "name": "Tempo de atuação",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867451405",
+                  "hide_from_guests": false,
+                  "value": "Entre 5 e 10 anos",
+                  "required": false
+                },
+                {
+                  "id": "a611ed68-cd18-427b-a26e-d3af1948413c",
+                  "name": "Quantidade de vendas por mês",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867497625",
+                  "hide_from_guests": false,
+                  "value": "20",
+                  "required": false
+                },
+                {
+                  "id": "980617e1-949b-47b2-9d7b-a34a9aaf4569",
+                  "name": "Bate metas",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867519649",
+                  "hide_from_guests": false,
+                  "value": "Sim",
+                  "required": false
+                },
+                {
+                  "id": "72b55348-c908-48df-bfe4-9c593d322e07",
+                  "name": "Tempo que conhece Ila & Nicole",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867591102",
+                  "hide_from_guests": false,
+                  "value": "1 mês ou menos",
+                  "required": false
+                },
+                {
+                  "id": "7fdff21f-ee2a-4e0f-aae3-15925c60cb47",
+                  "name": "Onde conheceu Ila & Nicole",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867605132",
+                  "hide_from_guests": true,
+                  "value": "Instagram",
+                  "required": false
+                },
+                {
+                  "id": "b3f5d5d5-f1d3-4eee-aa3e-04c262f70724",
+                  "name": "Reunião Secreta",
+                  "type": "number",
+                  "type_config": {},
+                  "date_created": "1695867734969",
+                  "hide_from_guests": false,
+                  "value": "5",
+                  "required": false
+                },
+                {
+                  "id": "b34a2a8e-bd74-41f8-9203-91e97c16ca9e",
+                  "name": "Data compra",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1695870886350",
+                  "hide_from_guests": false,
+                  "value": "1700190000000",
+                  "required": false
+                },
+                {
+                  "id": "4ad91e62-76fc-49ee-9057-668bcaf87185",
+                  "name": "utm_source",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695870897185",
+                  "hide_from_guests": false,
+                  "value": "l.instagram.com",
+                  "required": false
+                },
+                {
+                  "id": "f1733835-07a8-4dbf-a274-8d94e9616e1b",
+                  "name": "utm_campaign",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695870906563",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "ce49ae3e-50e3-4243-ac4a-8d88392be9c0",
+                  "name": "utm_medium",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695870918009",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "337c028c-d492-44cd-8888-c0566b807def",
+                  "name": "utm_content",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695870929222",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "f60b21be-a6cb-49a6-b1ec-5c747df5fec3",
+                  "name": "utm_term",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695870939084",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "ab006b24-25bd-4127-b773-3d2e0a13e79f",
+                  "name": "[AP] Localização da clínica",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977739792",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "27ddd108-8ae8-4353-99bc-49e1a800b676",
+                  "name": "[AP] Clínica",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977767083",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "a7047b11-fa75-4a60-ac3c-eb901a9f8321",
+                  "name": "[AP] Valor médio",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977790998",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "a380a181-dab8-4b82-8d7a-9eca5787ae26",
+                  "name": "[AP] Aquisição",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977804409",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "84426d1c-dbd2-4231-a426-fc9a6b846b17",
+                  "name": "[AP] Faturamento",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977819458",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "0f44d9e6-7be7-484c-89c0-01dec2988b9b",
+                  "name": "[AP] Especialidade",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977833721",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "4434c721-bf3e-41a6-ab11-2570eb7ce1a0",
+                  "name": "[AP] Dificuldade",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977853474",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "c0937dbd-9d07-40e4-b21d-e5ac75aedb62",
+                  "name": "[AP] Motivação",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977891059",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "0fd28f0a-ea38-43ce-8909-a84dc23102b2",
+                  "name": "[AP] Motivo",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977910466",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "63a1e0dd-13c0-4115-8cf9-80b634e5fe24",
+                  "name": "[AP] Pagamento",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977926885",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "43bab630-154f-4373-93e0-bc3d49da7652",
+                  "name": "[AP] Transformação",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977946878",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "f3d5a3c7-7770-47fc-8509-18163d3d02a1",
+                  "name": "Ingresso Vip",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1697484870441",
+                  "hide_from_guests": false,
+                  "value": "true",
+                  "required": false
+                },
+                {
+                  "id": "57c29c0b-e310-42b4-99e0-c6a5d7839e11",
+                  "name": "Site",
+                  "type": "url",
+                  "type_config": {},
+                  "date_created": "1697551978351",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "fff7c9ca-1a7f-4783-b4b2-edf2de27da13",
+                  "name": "Recuperação",
+                  "type": "drop_down",
+                  "type_config": {
+                    "new_drop_down": true,
+                    "options": [
+                      {
+                        "id": "89b2311a-1d0d-4c4b-b684-e40612aa8cb2",
+                        "name": "Initiate Checkout",
+                        "color": "#E65100",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "6610c847-461f-46b8-b9b7-32bcc3eddea5",
+                        "name": "Pix Emitido",
+                        "color": "#2ecd6f",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "66ee8196-de7f-43c6-87fd-16413e2262bf",
+                        "name": "Compra Cancelada",
+                        "color": "#800000",
+                        "orderindex": 2
+                      }
+                    ]
+                  },
+                  "date_created": "1698189839866",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "13f4e607-7a31-428d-9775-fab416cb95d9",
+                  "name": "Origem",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1704300723971",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "f8d8e702-9e3c-4605-a15f-501f81a3b0e2",
+                  "name": "Função",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1704488199180",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "96d06de6-5a82-4ec2-8701-f9860bd60c61",
+                  "name": "Status primeira fase",
+                  "type": "drop_down",
+                  "type_config": {
+                    "default": 0,
+                    "placeholder": null,
+                    "options": [
+                      {
+                        "id": "7f2c0271-b5f7-403f-be0e-ad9ffc98445f",
+                        "name": "Sem contato",
+                        "color": null,
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "da8b490a-46ae-4f1c-ae08-aa80560b5e7f",
+                        "name": "Tentando contato ligação",
+                        "color": "#04A9F4",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "22c7737b-9da2-49a8-af44-f9d5c2b2f740",
+                        "name": "Tentando contato mensagem",
+                        "color": "#bf55ec",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "beccf21c-6710-41a5-9ccb-ef7bff18f46f",
+                        "name": "Pediu para contatar depois",
+                        "color": "#f9d900",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "6b0536a1-adb8-4313-bfd6-45e53246fd95",
+                        "name": "Contato realizado",
+                        "color": "#7C4DFF",
+                        "orderindex": 4
+                      }
+                    ]
+                  },
+                  "date_created": "1705098134923",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "ec9a610c-eb1b-49cc-aa2c-adf11a6bacc1",
+                  "name": "Responsável primeira etapa",
+                  "type": "users",
+                  "type_config": {
+                    "single_user": true,
+                    "include_groups": null,
+                    "include_guests": true,
+                    "include_team_members": true
+                  },
+                  "date_created": "1705098311586",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "a3f49eda-ec95-4118-875f-58a532a93873",
+                  "name": "Evento/Patrocinador/Agência",
+                  "type": "drop_down",
+                  "type_config": {
+                    "default": 0,
+                    "placeholder": null,
+                    "options": [
+                      {
+                        "id": "6ef7b26a-e8fd-4426-9282-c85bff6a8ca0",
+                        "name": "Entrada de lead",
+                        "color": null,
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "b0254a66-e7d7-41dc-96f6-62fad7270f47",
+                        "name": "Contato iniciado",
+                        "color": "#81B1FF",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "9548bf50-c217-4366-910f-908567054734",
+                        "name": "Contato realizado",
+                        "color": "#FF4081",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "980286aa-c3a2-4935-bf36-c8c241e502b9",
+                        "name": "Follow-up",
+                        "color": "#ff7800",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "65d14638-4b1c-4ba4-9820-2fced0ccb636",
+                        "name": "Aguardando pagamento",
+                        "color": "#02BCD4",
+                        "orderindex": 4
+                      },
+                      {
+                        "id": "2244fa96-fb89-47f9-b4b1-4b80639947ab",
+                        "name": "Comprou",
+                        "color": "#2ecd6f",
+                        "orderindex": 5
+                      }
+                    ]
+                  },
+                  "date_created": "1711416091284",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "a8440829-2de3-4025-b83f-bd235d8a0608",
+                  "name": "Data da reunião",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1708269902319",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "bd130af6-0457-466c-a502-76ce6c6c911c",
+                  "name": "Mentor 2",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1699899852364",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "0dec2e2c-d0cc-47fe-b2e2-98ee3de42e25",
+                  "name": "Turma",
+                  "type": "drop_down",
+                  "type_config": {
+                    "new_drop_down": true,
+                    "options": [
+                      {
+                        "id": "c49692b2-ce7a-4a75-a59d-9b90f2e631f5",
+                        "name": "T1 - Vermelha - 17/08",
+                        "color": "#e50000",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "f6c450f1-bdf6-4d09-a5ce-85fb77f9b667",
+                        "name": "T2 - Cinza - 19/09",
+                        "color": "#b5bcc2",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "d1e5a453-6434-435b-8930-059b1909b087",
+                        "name": "T3 - Branca - 10/10",
+                        "color": "#b5bcc2",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "70d0ad85-faa9-4bde-93ef-eb3a0af905fd",
+                        "name": "T4 - Azul - 31/10",
+                        "color": "#0231E8",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "60dc4125-9cad-4d50-a8d4-a15fb906e0fb",
+                        "name": "T5 - Dourada - 21/11",
+                        "color": "#f9d900",
+                        "orderindex": 4
+                      },
+                      {
+                        "id": "c8e7a499-1335-4f54-9bf3-993e5be72d18",
+                        "name": "T6 - Verde - 10/01",
+                        "color": "#2ecd6f",
+                        "orderindex": 5
+                      },
+                      {
+                        "id": "20828e75-1d5f-414f-9944-495a1270a6e4",
+                        "name": "T7 - Laranja - 20/02",
+                        "color": "#E65100",
+                        "orderindex": 6
+                      },
+                      {
+                        "id": "08d19e9a-7e13-4fee-ba04-1b6cb1ca834b",
+                        "name": "T8 - Roxa - 12/03",
+                        "color": "#9b59b6",
+                        "orderindex": 7
+                      },
+                      {
+                        "id": "b6c2e6f2-f857-43ed-afa0-8dc4b550dcf6",
+                        "name": "T9 - Azul bebê - 09/04",
+                        "color": "#1bbc9c",
+                        "orderindex": 8
+                      },
+                      {
+                        "id": "0879c9d9-5c73-4224-ba8e-06b8064381bc",
+                        "name": "T10 - Rosa - 30/04",
+                        "color": "#f900ea",
+                        "orderindex": 9
+                      }
+                    ]
+                  },
+                  "date_created": "1699900134450",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "0866204c-99a9-44e9-b34e-ad229e1de8fe",
+                  "name": "Telefone",
+                  "type": "phone",
+                  "type_config": {},
+                  "date_created": "1699900147890",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "a6428db5-6add-432f-a777-82a8c98c7a79",
+                  "name": "Consultor",
+                  "type": "users",
+                  "type_config": {
+                    "single_user": false,
+                    "include_groups": null,
+                    "include_guests": false,
+                    "include_team_members": false
+                  },
+                  "date_created": "1699904103911",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "d49d6c6d-8fe5-4820-ae25-3981d75d57b4",
+                  "name": "Motivo do loss",
+                  "type": "drop_down",
+                  "type_config": {
+                    "new_drop_down": true,
+                    "options": [
+                      {
+                        "id": "3a6bf161-a95c-4f19-8647-95e9f7439af4",
+                        "name": "Informações de contato inválidas",
+                        "color": "#932644",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "fccb1de8-090f-4481-9dcc-223c77e1d5a7",
+                        "name": "Aplicou por engano",
+                        "color": "#B4FDBA",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "783190b0-0b7a-4e1f-a954-2b1a8a27e0b8",
+                        "name": "Lead desqualificado ou Fora do ICP",
+                        "color": "#f9d900",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "d1a99f94-6fd2-4794-990a-db9e78751064",
+                        "name": "Lead comprou da concorrência",
+                        "color": "#e50000",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "92928566-af72-4710-881d-1e40dfa532d6",
+                        "name": "Tentativas de contato esgotadas",
+                        "color": "#02BCD4",
+                        "orderindex": 4
+                      },
+                      {
+                        "id": "25147fb2-8504-44f0-a60d-3d576e8fb145",
+                        "name": "Não tem orçamento no momento",
+                        "color": "#EA80FC",
+                        "orderindex": 5
+                      },
+                      {
+                        "id": "093639b6-d026-49aa-bef2-887859816417",
+                        "name": "A compra não é prioridade",
+                        "color": "#7C4DFF",
+                        "orderindex": 6
+                      },
+                      {
+                        "id": "df603306-2d00-43d0-ab5e-21bab03babfb",
+                        "name": "No-show",
+                        "color": "#AAC607",
+                        "orderindex": 7
+                      },
+                      {
+                        "id": "23e495d4-4044-4905-be7f-aaace9a12257",
+                        "name": "Falta de interesse na abordagem",
+                        "color": "#5FC5F4",
+                        "orderindex": 8
+                      },
+                      {
+                        "id": "b9e183c4-025c-41f8-bd77-29bc5fbc667f",
+                        "name": "Lead duplicado",
+                        "color": "#8B568F",
+                        "orderindex": 9
+                      },
+                      {
+                        "id": "51d9c39e-5aa8-40f7-aa54-b97f93a81b01",
+                        "name": "Comprou outro produto nosso",
+                        "color": "#BBC818",
+                        "orderindex": 10
+                      },
+                      {
+                        "id": "0662eb66-86cf-44be-839e-80cadbc0e563",
+                        "name": "Blacklist",
+                        "color": "#000000",
+                        "orderindex": 11
+                      }
+                    ]
+                  },
+                  "date_created": "1704230713082",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "f7944972-177f-40fb-8356-c1fe4fff6509",
+                  "name": "Respondeu aplicação",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1695867000615",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "bbb986f1-824e-4b75-b264-5333666c7bc2",
+                  "name": "Qualificado",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1695867102522",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "093f3e86-8443-4d75-9710-f27cf69558df",
+                  "name": "E-mail",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867383436",
+                  "hide_from_guests": true,
+                  "value": "mauriciothacilio@gmail.com",
+                  "required": false
+                },
+                {
+                  "id": "48979394-c189-425a-a8ab-aad64178242b",
+                  "name": "Investimento em anúncios",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867438787",
+                  "hide_from_guests": false,
+                  "value": "Sim, de 3 até 10 mil reais",
+                  "required": false
+                },
+                {
+                  "id": "0d187506-4774-4d90-8d57-c6c9a5d80c3f",
+                  "name": "Procedimento mais vendido",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867477062",
+                  "hide_from_guests": false,
+                  "value": "Facetas",
+                  "required": false
+                },
+                {
+                  "id": "85e5466a-afb4-4e65-bd1f-58af78c9479d",
+                  "name": "Dificuldade",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867534125",
+                  "hide_from_guests": false,
+                  "value": "Para outros procedimentos ",
+                  "required": false
+                },
+                {
+                  "id": "294225af-d8dc-44e4-8ae1-028e4965dfae",
+                  "name": "Faturamento ",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1695867542524",
+                  "hide_from_guests": false,
+                  "value": "Entre R$ 40.000 a 100.000",
+                  "required": false
+                },
+                {
+                  "id": "e0752dc0-514e-4b1c-b942-e1386a5e6a5c",
+                  "name": "Vendas",
+                  "type": "drop_down",
+                  "type_config": {
+                    "new_drop_down": true,
+                    "options": [
+                      {
+                        "id": "84694b23-c26f-47ff-921d-0993119b6235",
+                        "name": "Isca",
+                        "color": null,
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "104dff2e-3d7f-4b6f-aca6-aee3bcd9a23c",
+                        "name": "Recuperação",
+                        "color": "#e50000",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "30effc4f-6693-4437-a727-bb7724d1ced8",
+                        "name": "Respondeu recuperação",
+                        "color": "#800000",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "74870851-2173-421b-a25e-699cb81a7fcd",
+                        "name": "Lead",
+                        "color": "#b5bcc2",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "39b257fc-8372-4ae7-a067-10765198f900",
+                        "name": "Respondeu Pesquisa",
+                        "color": "#FF7FAB",
+                        "orderindex": 4
+                      },
+                      {
+                        "id": "dda4da49-04d9-4cf7-bc83-dd13ddd68e72",
+                        "name": "Pré-aplicação",
+                        "color": "#EA80FC",
+                        "orderindex": 5
+                      },
+                      {
+                        "id": "0e96883e-1ca1-44d6-8b4e-696048b0ae52",
+                        "name": "Preencheu Aplicação",
+                        "color": "#bf55ec",
+                        "orderindex": 6
+                      },
+                      {
+                        "id": "bf562c70-d028-4918-8292-cd926daeb16c",
+                        "name": "Aguardando Pagamento",
+                        "color": "#f900ea",
+                        "orderindex": 7
+                      },
+                      {
+                        "id": "e9e5ba64-adf3-4ffb-8ae8-a65e8e5d5ed4",
+                        "name": "Comprou a Sala Black",
+                        "color": "#2ecd6f",
+                        "orderindex": 8
+                      },
+                      {
+                        "id": "2b24291c-b4f5-4f77-8bfd-ae536681f1ad",
+                        "name": "Onboarding",
+                        "color": "#e50000",
+                        "orderindex": 9
+                      },
+                      {
+                        "id": "100f6269-711a-4f7a-947d-19b9cbdf4f3a",
+                        "name": "Aplicação Orgânico (SE)",
+                        "color": "#81B1FF",
+                        "orderindex": 10
+                      },
+                      {
+                        "id": "ab1182bb-899e-4262-a613-b9cd74d323aa",
+                        "name": "Lead (SE)",
+                        "color": "#bcd5ff",
+                        "orderindex": 11
+                      },
+                      {
+                        "id": "8778802b-f09d-40f2-a13d-e53ea80cf31f",
+                        "name": "Convite Reunião (SE)",
+                        "color": "#81B1FF",
+                        "orderindex": 12
+                      },
+                      {
+                        "id": "6deaca49-d0ce-42d6-bb38-4506af4efe3d",
+                        "name": "Convite Reunião (SE) - FOLLOW",
+                        "color": "#0231E8",
+                        "orderindex": 13
+                      },
+                      {
+                        "id": "3180cfcd-0835-4f45-8008-3d2609d66a30",
+                        "name": "Reunião Agendada (SE)",
+                        "color": "#04A9F4",
+                        "orderindex": 14
+                      },
+                      {
+                        "id": "7ab02491-6aa0-4607-af1b-b1a68b8a5151",
+                        "name": "Reunião Realizada (SE)",
+                        "color": "#02BCD4",
+                        "orderindex": 15
+                      },
+                      {
+                        "id": "0818d031-49c5-4480-abce-c5511f194adc",
+                        "name": "Follow-up (SE)",
+                        "color": "#f9d900",
+                        "orderindex": 16
+                      },
+                      {
+                        "id": "6175c3f1-441d-4ca4-82d2-fcdb767ae319",
+                        "name": "Agência",
+                        "color": "#F99618",
+                        "orderindex": 17
+                      },
+                      {
+                        "id": "ec5008c0-2488-442f-9a0d-e0edca4fd6b5",
+                        "name": "Evento Presencial",
+                        "color": "#AF7E2E",
+                        "orderindex": 18
+                      },
+                      {
+                        "id": "a2d7ef42-d8a2-42fd-8ded-3636a6bca787",
+                        "name": "Sponsor",
+                        "color": "#1664E6",
+                        "orderindex": 19
+                      }
+                    ]
+                  },
+                  "date_created": "1695961005791",
+                  "hide_from_guests": false,
+                  "value": 13,
+                  "required": false
+                },
+                {
+                  "id": "fa417e26-5f41-4afe-ab4b-628351b9cec1",
+                  "name": "Respondeu Pesquisa",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1695962286317",
+                  "hide_from_guests": true,
+                  "value": "true",
+                  "required": false
+                },
+                {
+                  "id": "419bf586-a5b5-434a-a009-22bbc70abe54",
+                  "name": "Telefone (Whatsapp)",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1697663405507",
+                  "hide_from_guests": false,
+                  "value": "559884009639",
+                  "required": false
+                }
+              ],
+              "dependencies": [],
+              "linked_tasks": [],
+              "locations": [],
+              "team_id": "30971486",
+              "url": "https://app.clickup.com/t/86a1erh9p",
+              "sharing": {
+                "public": false,
+                "public_share_expires_on": null,
+                "public_fields": [
+                  "assignees",
+                  "priority",
+                  "due_date",
+                  "content",
+                  "comments",
+                  "attachments",
+                  "customFields",
+                  "subtasks",
+                  "tags",
+                  "checklists",
+                  "coverimage"
+                ],
+                "token": null,
+                "seo_optimized": false
+              },
+              "list": {
+                "id": "901300794753",
+                "name": "CRM",
+                "access": true
+              },
+              "project": {
+                "id": "90130377914",
+                "name": "[ILA] [AS] CRM Reunião Secreta",
+                "hidden": false,
+                "access": true
+              },
+              "folder": {
+                "id": "90130377914",
+                "name": "[ILA] [AS] CRM Reunião Secreta",
+                "hidden": false,
+                "access": true
+              },
+              "space": {
+                "id": "90070031834"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-05-16T20:57:15.000Z",
+  "versionId": "582d71ee-0f58-463b-a5cd-67ca546432b0"
+}
