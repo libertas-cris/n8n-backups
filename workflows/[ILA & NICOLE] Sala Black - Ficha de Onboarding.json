@@ -481,7 +481,7 @@
       "main": [
         [
           {
-            "node": "add papo de dono",
+            "node": "Aviso add papo de dono",
             "type": "main",
             "index": 0
           }
@@ -492,7 +492,7 @@
       "main": [
         [
           {
-            "node": "add papo de dono1",
+            "node": "Aviso add papo de dono1",
             "type": "main",
             "index": 0
           }
@@ -503,7 +503,7 @@
       "main": [
         [
           {
-            "node": "add mentoria",
+            "node": "Aviso add grupo mentoria",
             "type": "main",
             "index": 0
           }
@@ -514,7 +514,7 @@
       "main": [
         [
           {
-            "node": "add mentoria1",
+            "node": "Aviso add grupo mentoria1",
             "type": "main",
             "index": 0
           }
@@ -581,6 +581,50 @@
         [
           {
             "node": "add papo de dono3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aviso add grupo mentoria": {
+      "main": [
+        [
+          {
+            "node": "add mentoria",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aviso add grupo mentoria1": {
+      "main": [
+        [
+          {
+            "node": "add mentoria1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aviso add papo de dono": {
+      "main": [
+        [
+          {
+            "node": "add papo de dono",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aviso add papo de dono1": {
+      "main": [
+        [
+          {
+            "node": "add papo de dono1",
             "type": "main",
             "index": 0
           }
@@ -1182,7 +1226,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2260,
+        2240,
         1220
       ],
       "alwaysOutputData": true,
@@ -1305,7 +1349,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        2260,
+        2240,
         1420
       ],
       "alwaysOutputData": true,
@@ -2247,7 +2291,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2500,
+        2740,
         1220
       ]
     },
@@ -2274,7 +2318,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2500,
+        2740,
         1620
       ]
     },
@@ -2355,7 +2399,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2500,
+        2740,
         1420
       ]
     },
@@ -2382,7 +2426,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2500,
+        2740,
         1860
       ]
     },
@@ -3058,6 +3102,154 @@
           "name": "Sala Black"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Formata Telefone Responsavel\"].json[\"Número-Responsável\"] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $node[\"Formata Telefone Responsavel\"].json[\"Nome-Responsável\"] }}! Tudo bem? \nMuito prazer, sou o Victor, consultor da Sala Black. \n\nEstou te enviando o link para participar dos grupos da Mentoria!\nTe vejo lá dentro!\n\nAté mais!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bf8dcd04-0267-4419-9853-bea31f0a15e2",
+      "name": "Aviso add papo de dono",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2480,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Formata Telefone mentoria\"].json[\"numero-mentoria\"] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $node[\"Formata Telefone mentoria\"].json[\"nome-mentoria\"] }}! Tudo bem? \nMuito prazer, sou o Victor, consultor da Sala Black. \n\nEstou te enviando o link para participar dos grupos da Mentoria!\nTe vejo lá dentro!\n\nAté mais!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f1cdbeff-4f94-487b-a91a-a8297d6eb0ca",
+      "name": "Aviso add grupo mentoria",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2480,
+        1620
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Formata Telefone mentoria\"].json[\"numero-mentoria\"] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $node[\"Formata Telefone mentoria\"].json[\"nome-mentoria\"] }}! Tudo bem? \nMuito prazer, sou o Victor, consultor da Sala Black. \n\nEstou te enviando o link para participar dos grupos da Mentoria!\nTe vejo lá dentro!\n\nAté mais!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5b68790e-c285-4ad5-a9a1-4752b4eb8343",
+      "name": "Aviso add grupo mentoria1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2480,
+        1860
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $node[\"Formata Telefone Responsavel\"].json[\"Número-Responsável\"] }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá, {{ $node[\"Formata Telefone Responsavel\"].json[\"Nome-Responsável\"] }}! Tudo bem? \nMuito prazer, sou o Victor, consultor da Sala Black. \n\nEstou te enviando o link para participar dos grupos da Mentoria!\nTe vejo lá dentro!\n\nAté mais!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0a7d5c30-834f-48c8-950b-f551d0f902f0",
+      "name": "Aviso add papo de dono1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2480,
+        1420
+      ]
     }
   ],
   "pinData": {
@@ -3117,6 +3309,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-02T16:56:35.000Z",
-  "versionId": "baf3c7f8-3161-46c5-ad53-d97b3e2b8c4b"
+  "updatedAt": "2024-05-20T14:35:30.000Z",
+  "versionId": "c66f9fa3-f0d9-410c-b9a9-4c1df2f07251"
 }
