@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Data Inicio": {
       "main": [
@@ -542,12 +542,10 @@
     "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": {
-    "node:Calendly Trigger": {
-      "webhookURI": "https://api.calendly.com/webhook_subscriptions/9bb28051-f9d6-4bb1-bfd5-92c67f657c5b"
-    }
+    "node:Calendly Trigger": {}
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-21T02:17:00.000Z",
+  "updatedAt": "2024-05-21T03:27:53.000Z",
   "versionId": "3969481f-0cb3-4e83-8057-843fe14277c0"
 }
