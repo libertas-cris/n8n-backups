@@ -38,18 +38,10 @@
     },
     {
       "parameters": {
-        "url": " https://secure.d4sign.com.br/api/v1/documents",
+        "url": "=https://secure.d4sign.com.br/api/v1/documents/{{ $json.body.uuid }}?tokenAPI=live_572a5e3cae0817e08595766f2b4ed24c3a8fbc8b56f241ace52c64f7bec81c9f&cryptKey=live_crypt_nOkdsKT0fYjsRLPschNcLtqdP9Gp8UDI",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
-            {
-              "name": "tokenAPI",
-              "value": "live_572a5e3cae0817e08595766f2b4ed24c3a8fbc8b56f241ace52c64f7bec81c9f"
-            },
-            {
-              "name": "cryptKey",
-              "value": "live_crypt_nOkdsKT0fYjsRLPschNcLtqdP9Gp8UDI"
-            },
             {
               "name": "Content-Type",
               "value": "application/json"
@@ -68,13 +60,47 @@
       ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "content-length": "498",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "18.228.91.93",
+            "cf-ipcountry": "BR",
+            "cf-ray": "885cf57af92700fb-GRU",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "multipart/form-data; boundary=------------------------f8d1d699f5bf2506",
+            "x-d4sign": "true",
+            "x-forwarded-for": "172.68.19.132",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.68.19.132"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "uuid": "7a4ac14d-4349-4406-8364-87978a93ac48",
+            "type_post": "4",
+            "message": "Signed",
+            "email": "oralfacefinanceiro@gmail.com"
+          }
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-21T02:26:40.000Z",
-  "versionId": "ea078aa9-659f-4e37-9a4a-b128a90646fd"
+  "updatedAt": "2024-05-21T03:26:29.000Z",
+  "versionId": "156076b3-5a5f-46d8-9b5a-a123c66b9a51"
 }
