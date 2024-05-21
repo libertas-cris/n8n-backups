@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Schedule Trigger": {
       "main": [
@@ -85,7 +85,8 @@
         "rule": {
           "interval": [
             {
-              "field": "cronExpression"
+              "field": "minutes",
+              "minutesInterval": 30
             }
           ]
         }
@@ -588,50 +589,17 @@
       }
     }
   ],
-  "pinData": {
-    "Lembrete 1hr": [
-      {
-        "json": {
-          "row_number": 2,
-          "Data": "10/05/2024",
-          "Hora inicio": "08:00",
-          "Nome": "Matheus Cristhyan",
-          "Email": "matheuscrsithyan.2@gmail.com",
-          "Whatsapp": 558193515055,
-          "Link": "https://calendly.com/events/98217439-322a-40ae-bfc1-3131ff2600ec/google_meet",
-          "Criado em": "2024-05-08T03:55:24.000000Z",
-          "Lembrete 24h": "15/05/2024 12:09",
-          "Check 24hr": "",
-          "Lembrete 1h": "15/05/2024 12:10",
-          "Check 1hr": ""
-        }
-      }
-    ],
-    "lembrete 24hr": [
-      {
-        "json": {
-          "row_number": 2,
-          "Data": "10/05/2024",
-          "Hora inicio": "08:00",
-          "Nome": "Matheus Cristhyan",
-          "Email": "matheuscrsithyan.2@gmail.com",
-          "Whatsapp": 558193515055,
-          "Link": "https://calendly.com/events/98217439-322a-40ae-bfc1-3131ff2600ec/google_meet",
-          "Criado em": "2024-05-08T03:55:24.000000Z",
-          "Lembrete 24h": "15/05/2024 12:11",
-          "Check 24hr": "",
-          "Lembrete 1h": "15/05/2024 12:10",
-          "Check 1hr": ""
-        }
-      }
-    ]
-  },
+  "pinData": {},
   "settings": {
     "executionOrder": "v1"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2024-05-15T15:27:13.000Z",
-  "versionId": "932d39b0-6bb6-4a6a-9861-79d8d0accd4d"
+  "triggerCount": 1,
+  "updatedAt": "2024-05-21T03:27:38.000Z",
+  "versionId": "ffe58da8-e633-4901-ac16-db23382cb8b4"
 }
