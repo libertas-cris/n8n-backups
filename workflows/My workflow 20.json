@@ -1,0 +1,82 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-23T12:54:37.833Z",
+  "id": "0k5pzuZtvcpTYyRv",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 20",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "ef093da6-bc49-42af-92c1-126afadf09e9",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "familyName": "teste",
+        "givenName": "mariposa",
+        "additionalFields": {
+          "phoneUi": {
+            "phoneValues": [
+              {
+                "type": "main",
+                "value": "81993515055"
+              }
+            ]
+          }
+        }
+      },
+      "id": "24c64f8d-0a88-47cd-a8aa-77cb05e9551d",
+      "name": "Google Contacts",
+      "type": "n8n-nodes-base.googleContacts",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        380
+      ],
+      "credentials": {
+        "googleContactsOAuth2Api": {
+          "id": "K2UnKc7XcOmofDPZ",
+          "name": "Conta Sala Black"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-05-23T13:20:01.000Z",
+  "versionId": "30c8e4dc-871b-4ee3-9672-4852246eafe8"
+}
