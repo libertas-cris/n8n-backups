@@ -630,6 +630,50 @@
           }
         ]
       ]
+    },
+    "add mentoria1": {
+      "main": [
+        [
+          {
+            "node": "Google Contacts4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "add mentoria": {
+      "main": [
+        [
+          {
+            "node": "Google Contacts3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "add papo de dono1": {
+      "main": [
+        [
+          {
+            "node": "Google Contacts2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "add papo de dono": {
+      "main": [
+        [
+          {
+            "node": "Google Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-29T19:31:31.334Z",
@@ -2443,7 +2487,8 @@
       "position": [
         2740,
         1220
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -2470,7 +2515,8 @@
       "position": [
         2740,
         1620
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -2551,7 +2597,8 @@
       "position": [
         2740,
         1420
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -2578,7 +2625,8 @@
       "position": [
         2740,
         1860
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -3404,6 +3452,122 @@
         1420
       ],
       "disabled": true
+    },
+    {
+      "parameters": {
+        "givenName": "={{ $('Trata Webhook').item.json['Nome-Responsável'] + \"| Turma 11\"}} ",
+        "additionalFields": {
+          "phoneUi": {
+            "phoneValues": [
+              {
+                "type": "main",
+                "value": "={{ $('Trata Webhook').item.json['Número-Responsável']}}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "fd298e95-b60f-40a4-9772-9065193fc642",
+      "name": "Google Contacts",
+      "type": "n8n-nodes-base.googleContacts",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        1220
+      ],
+      "credentials": {
+        "googleContactsOAuth2Api": {
+          "id": "K2UnKc7XcOmofDPZ",
+          "name": "Conta Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "givenName": "={{ $('Trata Webhook').item.json['nome-mentoria'] }}",
+        "additionalFields": {
+          "phoneUi": {
+            "phoneValues": [
+              {
+                "type": "main",
+                "value": "={{ $('Trata Webhook').item.json['numero-mentoria']}}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "f72a24ae-a9d4-482a-98db-ed109df243fa",
+      "name": "Google Contacts3",
+      "type": "n8n-nodes-base.googleContacts",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        1620
+      ],
+      "credentials": {
+        "googleContactsOAuth2Api": {
+          "id": "K2UnKc7XcOmofDPZ",
+          "name": "Conta Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "givenName": "={{ $('Trata Webhook').item.json['Nome-Responsável'] + \"| Turma 11\"}} ",
+        "additionalFields": {
+          "phoneUi": {
+            "phoneValues": [
+              {
+                "type": "main",
+                "value": "={{ $('Trata Webhook').item.json['Número-Responsável']}}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "1bcdb213-d139-4711-906c-25950eaf0107",
+      "name": "Google Contacts2",
+      "type": "n8n-nodes-base.googleContacts",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        1420
+      ],
+      "credentials": {
+        "googleContactsOAuth2Api": {
+          "id": "K2UnKc7XcOmofDPZ",
+          "name": "Conta Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "givenName": "={{ $('Trata Webhook').item.json['nome-mentoria'] }}",
+        "additionalFields": {
+          "phoneUi": {
+            "phoneValues": [
+              {
+                "type": "main",
+                "value": "={{ $('Trata Webhook').item.json['numero-mentoria']}}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "788bd524-8aa8-4837-8164-0b09089dec83",
+      "name": "Google Contacts4",
+      "type": "n8n-nodes-base.googleContacts",
+      "typeVersion": 1,
+      "position": [
+        2980,
+        1860
+      ],
+      "credentials": {
+        "googleContactsOAuth2Api": {
+          "id": "K2UnKc7XcOmofDPZ",
+          "name": "Conta Sala Black"
+        }
+      }
     }
   ],
   "pinData": {
@@ -3459,6 +3623,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-23T02:29:11.000Z",
-  "versionId": "ba1fdfa8-acd7-463d-bd2e-ecadf5fa9bd7"
+  "updatedAt": "2024-05-23T14:48:09.000Z",
+  "versionId": "d81f0b70-79a6-4d81-9a78-6e1929da4416"
 }
