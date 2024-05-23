@@ -800,8 +800,8 @@
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
             "Telefone": "={{ $('Trata Webhook').item.json.Telefone }}",
             "Email da plataforma": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}",
-            "Emails de acesso": "={{ $('Trata Webhook').item.json['Email-Acesso'] }}",
-            "Emails de acesso acompanhamento": "={{ $('Trata Webhook').item.json['Email-Extra'] }}"
+            "Emails de acesso acompanhamento": "={{ $('Trata Webhook').item.json['Email-Extra'] }}",
+            "clinica": "={{ $('Trata Webhook').item.json.Clinica }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -831,6 +831,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica",
+              "displayName": "clinica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email da plataforma",
@@ -950,7 +960,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
-            "Emails de acesso": "={{ $('Existe').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
             "Emails de acesso acompanhamento": "={{ $('Existe').item.json['Emails de acesso acompanhamento'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}"
           },
           "matchingColumns": [
@@ -984,6 +993,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica",
+              "displayName": "clinica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email da plataforma",
@@ -1031,6 +1050,17 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
             }
           ]
         },
@@ -1135,7 +1165,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
-            "Emails de acesso": "=",
             "Grupo papo de dono": "={{ $('Trata Webhook').item.json['Nome-Responsável'] + \" - \" +  $('Trata Webhook').item.json['Número-Responsável']}} "
           },
           "matchingColumns": [
@@ -1169,6 +1198,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica",
+              "displayName": "clinica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email da plataforma",
@@ -1216,6 +1255,17 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
             }
           ]
         },
@@ -1258,7 +1308,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
-            "Emails de acesso": "=",
             "Grupo papo de dono": "={{ $json['Grupo papo de dono'] + \" | \" + $('Trata Webhook').item.json['Nome-Responsável'] + \" - \" +  $('Trata Webhook').item.json['Número-Responsável']}}"
           },
           "matchingColumns": [
@@ -1292,6 +1341,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica",
+              "displayName": "clinica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email da plataforma",
@@ -1339,6 +1398,17 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
             }
           ]
         },
@@ -1469,7 +1539,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
-            "Emails de acesso": "=",
             "Grupo Mentoria": "={{ $('Trata Webhook').item.json['nome-mentoria'] + \" - \" +  $('Trata Webhook').item.json['numero-mentoria']}} "
           },
           "matchingColumns": [
@@ -1503,6 +1572,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica",
+              "displayName": "clinica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email da plataforma",
@@ -1550,6 +1629,17 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
             }
           ]
         },
@@ -1592,7 +1682,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
-            "Emails de acesso": "=",
             "Grupo Mentoria": "={{ $json['Grupo Mentoria'] + \" | \" + $('Trata Webhook').item.json['nome-mentoria'] + \" - \" +  $('Trata Webhook').item.json['numero-mentoria']}}"
           },
           "matchingColumns": [
@@ -1626,6 +1715,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica",
+              "displayName": "clinica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email da plataforma",
@@ -1673,6 +1772,17 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
             }
           ]
         },
@@ -1777,7 +1887,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
-            "Emails de acesso": "={{ $('Existe precif').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
             "Emails de acesso precificação": "={{ $('Trata Webhook').item.json['Email-Precificação'] }}"
           },
           "matchingColumns": [
@@ -1811,6 +1920,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica",
+              "displayName": "clinica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email da plataforma",
@@ -1858,6 +1977,17 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
             }
           ]
         },
@@ -1900,7 +2030,6 @@
           "mappingMode": "defineBelow",
           "value": {
             "E-mail": "={{ $('Trata Webhook').item.json['E-mail'] }}",
-            "Emails de acesso": "={{ $('Existe precif').item.json['Emails de acesso'] + \", \" + $('Trata Webhook').item.json['Email-Extra'] }}",
             "Emails de acesso precificação": "={{ $('Existe precif').item.json['Emails de acesso precificação'] + \", \" + $('Trata Webhook').item.json['Email-Precificação']}} "
           },
           "matchingColumns": [
@@ -1934,6 +2063,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica",
+              "displayName": "clinica",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             },
             {
               "id": "Email da plataforma",
@@ -1981,6 +2120,17 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
             }
           ]
         },
@@ -3262,42 +3412,38 @@
         "json": {
           "headers": {
             "host": "n8n.marcosfoks.com.br",
-            "user-agent": "got (https://github.com/sindresorhus/got)",
-            "content-length": "486",
+            "user-agent": "node",
+            "content-length": "207",
+            "accept": "*/*",
             "accept-encoding": "gzip, br",
-            "baggage": "sentry-environment=vercel-production,sentry-release=ecec7023b9b73f96674c88bf53352764c376892c-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=52c2254060ee4a16a0d3bc3460e4a3bd",
+            "accept-language": "*",
+            "baggage": "sentry-environment=vercel-production,sentry-release=79ad1f63de9ca8d2ebad18cf9811ec27d85eeb86-viewer,sentry-public_key=94aaae78880c4b659d57b76b5aa2e3f5,sentry-trace_id=f633b947a6b74380bec6373d8556e3f7,sentry-transaction=trpc%2FcontinueChat,sentry-sampled=false",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "35.176.55.217",
+            "cf-connecting-ip": "3.8.96.60",
             "cf-ipcountry": "GB",
-            "cf-ray": "8648576fed703865-LHR",
+            "cf-ray": "88819786aeba947e-LHR",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "sentry-trace": "52c2254060ee4a16a0d3bc3460e4a3bd-947333457cd58b77-0",
-            "x-forwarded-for": "172.70.90.42",
+            "sec-fetch-mode": "cors",
+            "sentry-trace": "f633b947a6b74380bec6373d8556e3f7-a1e7ea1c71441f68-0",
+            "x-forwarded-for": "172.70.162.126",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "af9052d35998",
-            "x-real-ip": "172.70.90.42",
-            "x-vercel-id": "iad1::fb5cn-1710462067084-35b732036fbb"
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.70.162.126",
+            "x-vercel-id": "gru1::nlkb2-1716431089532-300f832512b7"
           },
           "params": {},
           "query": {},
           "body": {
-            "submittedAt": "2024-03-15T00:21:07.170Z",
-            "E-mail": "daniela.ortodontista@gmail.com",
-            "Telefone": "5511982597079",
-            "Email-Acesso": "clinicacoex@gmail.com",
-            "Email-Extra": "ronancostasilva@gmail.com",
-            "Loop E-mails": "Não",
-            "Email-Precificação": "ronancostasilva@gmail.com",
-            "Loop E-mails  precificação": "Não",
-            "Nome-Responsável": "Ronan da Costa e Silva ",
-            "Número-Responsável": "+5561999158060",
-            "Loop papo de dono": "Não",
-            "nome-mentoria": "Viviane ",
-            "numero-mentoria": "+5561998128725",
-            "etapa": "4"
+            "submittedAt": "2024-05-23T02:24:49.662Z",
+            "E-mail": "matheus@gmail.com",
+            "Telefone": "+5581993515055",
+            "Clinica": "caruaru odonto",
+            "Email-Acesso": "matheus@gmail.com",
+            "Email-Extra": "matheus@gmail.com",
+            "etapa": "1"
           }
         }
       }
@@ -3313,6 +3459,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-22T13:22:25.000Z",
-  "versionId": "3ff9ea87-b935-49e0-92f2-8a1522444523"
+  "updatedAt": "2024-05-23T02:29:11.000Z",
+  "versionId": "ba1fdfa8-acd7-463d-bd2e-ecadf5fa9bd7"
 }
