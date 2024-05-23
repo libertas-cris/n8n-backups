@@ -5,7 +5,51 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "isAdmin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "isAdmin": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Busca Aplicação",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Busca Aplicação": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
             "type": "main",
             "index": 0
           }
@@ -31,33 +75,256 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        840,
+        540,
         440
       ],
       "webhookId": "6d37b72d-b5a7-4b56-b20b-fe242a828c6b"
     },
     {
       "parameters": {
-        "url": "=https://secure.d4sign.com.br/api/v1/documents/{{ $json.body.uuid }}?tokenAPI=live_572a5e3cae0817e08595766f2b4ed24c3a8fbc8b56f241ace52c64f7bec81c9f&cryptKey=live_crypt_nOkdsKT0fYjsRLPschNcLtqdP9Gp8UDI",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "b3c470b9-1a46-4dca-8c5a-e1d01037879b",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        740,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let emails = [\"marcos@grupolibertas.com.br\", \"victor@grupolibertas.com.br\"]\n\nlet isAdmin = emails.includes($input.all()[0].json['email']);\n\nlet result\n\nif(isAdmin) {\n  result = 'admin'\n} else {\n  result = 'user'\n}\n\nreturn {result}"
+      },
+      "id": "b81ee5c3-062b-4f5d-8fe4-086e334c1a2c",
+      "name": "isAdmin",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        940,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
             {
-              "name": "Content-Type",
-              "value": "application/json"
+              "id": "0fb9693f-125c-4344-8800-83365d1ae0e7",
+              "leftValue": "={{ $json.result }}",
+              "rightValue": "=user",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "cc0f8acd-a7af-40e9-9fb2-7ffb6df7bfd1",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1160,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "mode": "list",
+          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 494608289,
+          "mode": "list",
+          "cachedResultName": "[LEADS]Aplicação Sala Black [AS11]",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit#gid=494608289"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Endereço de e-mail",
+              "lookupValue": "={{ $('Trata Webhook').item.json.email }}"
             }
           ]
         },
         "options": {}
       },
-      "id": "715dd51e-e059-423f-b31e-0116d23fd017",
-      "name": "HTTP Request",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
+      "id": "c9753b45-002b-49ff-98e7-ea73bb36b56f",
+      "name": "Busca Aplicação",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
       "position": [
-        1020,
-        440
-      ]
+        1400,
+        420
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1W7KLMl7LvMRS7w2qeTSv7IEjYiy69ca3b2HFQOiPwDo",
+          "mode": "list",
+          "cachedResultName": "Controle de Cobranças - Sala Black",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1W7KLMl7LvMRS7w2qeTSv7IEjYiy69ca3b2HFQOiPwDo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1428281767,
+          "mode": "list",
+          "cachedResultName": "Acompanhamento Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1W7KLMl7LvMRS7w2qeTSv7IEjYiy69ca3b2HFQOiPwDo/edit#gid=1428281767"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Turma": "=Turma 11\nMarrom \n(21/05)",
+            "Compra": "22/05/2024",
+            "Nome da Clínica ": "={{ $json['Qual o nome da sua clínica?'] }}",
+            "Responsável": "={{ $json['Qual o seu nome?'] }}",
+            "Pagamento": "Em andamento",
+            "Email da compra": "={{ $json['Endereço de e-mail'] }}",
+            "Telefone": "={{ $json['Qual seu whatsapp?'] }}",
+            "Cidade": "={{ $json['E em qual cidade e região ela fica localizada?'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Turma",
+              "displayName": "Turma",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Compra",
+              "displayName": "Compra",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome da Clínica ",
+              "displayName": "Nome da Clínica ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Responsável",
+              "displayName": "Responsável",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Pagamento",
+              "displayName": "Pagamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Origem",
+              "displayName": "Origem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "CPF/CNPJ",
+              "displayName": "CPF/CNPJ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email da compra",
+              "displayName": "Email da compra",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Telefone",
+              "displayName": "Telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Cidade",
+              "displayName": "Cidade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b1e95102-aabe-4827-8dd8-c6979e26c51c",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1620,
+        420
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
     }
   ],
   "pinData": {
@@ -66,30 +333,30 @@
         "json": {
           "headers": {
             "host": "n8n.marcosfoks.com.br",
-            "content-length": "498",
+            "content-length": "489",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
             "cf-connecting-ip": "18.228.91.93",
             "cf-ipcountry": "BR",
-            "cf-ray": "885cf57af92700fb-GRU",
+            "cf-ray": "887f4741ae91a40b-GRU",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "content-type": "multipart/form-data; boundary=------------------------f8d1d699f5bf2506",
+            "content-type": "multipart/form-data; boundary=------------------------b1104123f50264b2",
             "x-d4sign": "true",
-            "x-forwarded-for": "172.68.19.132",
+            "x-forwarded-for": "172.69.11.96",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
-            "x-real-ip": "172.68.19.132"
+            "x-real-ip": "172.69.11.96"
           },
           "params": {},
           "query": {},
           "body": {
-            "uuid": "7a4ac14d-4349-4406-8364-87978a93ac48",
+            "uuid": "01a65b7d-8deb-47fa-8764-ca208a504de8",
             "type_post": "4",
             "message": "Signed",
-            "email": "oralfacefinanceiro@gmail.com"
+            "email": "gomide100@gmail.com"
           }
         }
       }
@@ -101,6 +368,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-21T03:26:29.000Z",
-  "versionId": "156076b3-5a5f-46d8-9b5a-a123c66b9a51"
+  "updatedAt": "2024-05-23T02:50:26.000Z",
+  "versionId": "0ef847a5-8e63-44a4-9461-4ed8570910c0"
 }
