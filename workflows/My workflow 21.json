@@ -1,0 +1,683 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-05-29T19:27:23.679Z",
+  "id": "ZKkqUul5vtMSlxRm",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 21",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f56e4b05-4910-4aab-94f8-ca7d1f0a771e",
+        "options": {}
+      },
+      "id": "f247c1d2-61f4-4f6f-bf6b-b40a1aa6b561",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        740,
+        360
+      ],
+      "webhookId": "f56e4b05-4910-4aab-94f8-ca7d1f0a771e"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.body.payload.custom_fields[19].value }}",
+        "options": {}
+      },
+      "id": "f151525b-d49c-4567-8317-a2dd1c65cd95",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        960,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "94987b07-c7d5-428c-a76d-07a4c1bdaa49",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        520
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "axios/0.24.0",
+            "content-length": "10221",
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, br",
+            "b3": "6657827c000000005c3bb82f39f22899-1feff03d81c05a4e-0-5e0f4f021a78f085",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "3.138.39.166",
+            "cf-ipcountry": "US",
+            "cf-ray": "88b8e7314f651167-ORD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "traceparent": "00-6657827c000000005c3bb82f39f22899-1feff03d81c05a4e-00",
+            "tracestate": "dd=t.tid:6657827c00000000;t.dm:3;s:-1",
+            "x-b3-parentspanid": "5e0f4f021a78f085",
+            "x-b3-sampled": "0",
+            "x-b3-spanid": "1feff03d81c05a4e",
+            "x-b3-traceid": "6657827c000000005c3bb82f39f22899",
+            "x-datadog-parent-id": "2301322081570150990",
+            "x-datadog-sampling-priority": "-1",
+            "x-datadog-tags": "_dd.p.tid=6657827c00000000",
+            "x-datadog-trace-id": "6646108188090443929",
+            "x-forwarded-for": "172.69.58.77",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.69.58.77"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "id": "434573a8-3427-4f18-aa64-fe8ce5633e18:main",
+            "trigger_id": "2af59421-819a-4bf5-ac6f-2b2df9ee6701",
+            "date": "2024-05-29T19:31:09.517Z",
+            "payload": {
+              "id": "86a2z18dk",
+              "custom_id": null,
+              "custom_item_id": 0,
+              "name": "Iná/Pedro",
+              "text_content": "",
+              "description": "",
+              "status": {
+                "id": "sc901301121637_5ycjbI96",
+                "status": "ativo",
+                "color": "#1090e0",
+                "orderindex": 3,
+                "type": "custom"
+              },
+              "orderindex": "39692314.00000000000000000000000000000000",
+              "date_created": "1712617795072",
+              "date_updated": "1717011042571",
+              "date_closed": null,
+              "date_done": null,
+              "archived": false,
+              "creator": {
+                "id": 43040068,
+                "username": "Tran",
+                "color": "#ff5722",
+                "email": "victor@grupolibertas.com.br",
+                "profilePicture": "https://attachments.clickup.com/profilePictures/43040068_t8t.jpg"
+              },
+              "assignees": [],
+              "group_assignees": [],
+              "watchers": [
+                {
+                  "id": 43040068,
+                  "username": "Tran",
+                  "color": "#ff5722",
+                  "initials": "T",
+                  "email": "victor@grupolibertas.com.br",
+                  "profilePicture": "https://attachments.clickup.com/profilePictures/43040068_t8t.jpg"
+                }
+              ],
+              "checklists": [],
+              "tags": [],
+              "parent": null,
+              "priority": null,
+              "due_date": null,
+              "start_date": null,
+              "points": null,
+              "time_estimate": null,
+              "time_spent": 0,
+              "custom_fields": [
+                {
+                  "id": "405b99b5-b2ef-48cc-86b5-ff9ade8162e2",
+                  "name": "Projeto",
+                  "type": "drop_down",
+                  "type_config": {
+                    "new_drop_down": true,
+                    "options": [
+                      {
+                        "id": "dd12e1b6-b1b1-44ca-8155-5dfd947fc420",
+                        "name": "LIBERTAS",
+                        "color": "#0231E8",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "1680b939-2f18-461e-938c-323fa2ea0978",
+                        "name": "ILA/NICOLE",
+                        "color": "#EA80FC",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "bec805a5-3d9f-4861-8f91-a452f0a3bd14",
+                        "name": "FOKS",
+                        "color": "#04A9F4",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "c6ae36a2-5e5b-4aa9-9af5-cfb86d10767c",
+                        "name": "KAPANY",
+                        "color": "#b5bcc2",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "17dc3b04-799f-4bed-a36a-55d83b7fe088",
+                        "name": "SERVIÇOS",
+                        "color": "#FF4081",
+                        "orderindex": 4
+                      },
+                      {
+                        "id": "9693540b-72b4-4124-8d4b-b456802b41bf",
+                        "name": "JESS",
+                        "color": "#e50000",
+                        "orderindex": 5
+                      }
+                    ]
+                  },
+                  "date_created": "1643371108857",
+                  "hide_from_guests": false,
+                  "value": 1,
+                  "required": false
+                },
+                {
+                  "id": "a5e75c79-8c58-4ae4-8a86-50dc2ac57249",
+                  "name": "Link",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1700574311013",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "bc45dde0-72f5-4524-a39f-f5495b7c190f",
+                  "name": "Responsável",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1699899796158",
+                  "hide_from_guests": false,
+                  "value": "Iná/Pedro",
+                  "required": false
+                },
+                {
+                  "id": "bd130af6-0457-466c-a502-76ce6c6c911c",
+                  "name": "Mentor",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1699899852364",
+                  "hide_from_guests": false,
+                  "value": "Ila",
+                  "required": false
+                },
+                {
+                  "id": "6c39aec2-e1a7-4fc8-8070-686eb1620a01",
+                  "name": "RI 1",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1699899877397",
+                  "hide_from_guests": true,
+                  "required": false
+                },
+                {
+                  "id": "f4e36aed-0a4a-4f0d-b7f6-96efc50f9ed9",
+                  "name": "Email",
+                  "type": "email",
+                  "type_config": {},
+                  "date_created": "1695908026207",
+                  "hide_from_guests": true,
+                  "value": "inajalauterdd@gmail.com",
+                  "required": false
+                },
+                {
+                  "id": "0dec2e2c-d0cc-47fe-b2e2-98ee3de42e25",
+                  "name": "Turma",
+                  "type": "drop_down",
+                  "type_config": {
+                    "new_drop_down": true,
+                    "options": [
+                      {
+                        "id": "c49692b2-ce7a-4a75-a59d-9b90f2e631f5",
+                        "name": "T1 - Vermelha - 17/08",
+                        "color": "#e50000",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "f6c450f1-bdf6-4d09-a5ce-85fb77f9b667",
+                        "name": "T2 - Cinza - 19/09",
+                        "color": "#b5bcc2",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "d1e5a453-6434-435b-8930-059b1909b087",
+                        "name": "T3 - Branca - 10/10",
+                        "color": "#b5bcc2",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "70d0ad85-faa9-4bde-93ef-eb3a0af905fd",
+                        "name": "T4 - Azul - 31/10",
+                        "color": "#0231E8",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "60dc4125-9cad-4d50-a8d4-a15fb906e0fb",
+                        "name": "T5 - Dourada - 21/11",
+                        "color": "#f9d900",
+                        "orderindex": 4
+                      },
+                      {
+                        "id": "c8e7a499-1335-4f54-9bf3-993e5be72d18",
+                        "name": "T6 - Verde - 10/01",
+                        "color": "#2ecd6f",
+                        "orderindex": 5
+                      },
+                      {
+                        "id": "20828e75-1d5f-414f-9944-495a1270a6e4",
+                        "name": "T7 - Laranja - 20/02",
+                        "color": "#E65100",
+                        "orderindex": 6
+                      },
+                      {
+                        "id": "08d19e9a-7e13-4fee-ba04-1b6cb1ca834b",
+                        "name": "T8 - Roxa - 12/03",
+                        "color": "#9b59b6",
+                        "orderindex": 7
+                      },
+                      {
+                        "id": "b6c2e6f2-f857-43ed-afa0-8dc4b550dcf6",
+                        "name": "T9 - Azul bebê - 09/04",
+                        "color": "#1bbc9c",
+                        "orderindex": 8
+                      },
+                      {
+                        "id": "0879c9d9-5c73-4224-ba8e-06b8064381bc",
+                        "name": "T10 - Rosa - 30/04",
+                        "color": "#f900ea",
+                        "orderindex": 9
+                      },
+                      {
+                        "id": "7b4db95f-7111-4f03-90f6-b5799d7af37a",
+                        "name": "T11 - Marrom - 21/05",
+                        "color": "#AF7E2E",
+                        "orderindex": 10
+                      }
+                    ]
+                  },
+                  "date_created": "1699900134450",
+                  "hide_from_guests": false,
+                  "value": 8,
+                  "required": false
+                },
+                {
+                  "id": "0866204c-99a9-44e9-b34e-ad229e1de8fe",
+                  "name": "Telefone",
+                  "type": "phone",
+                  "type_config": {},
+                  "date_created": "1699900147890",
+                  "hide_from_guests": false,
+                  "value": "+5555999553922",
+                  "required": false
+                },
+                {
+                  "id": "68334c5e-90d5-4b60-b41b-5bd31e74b6dd",
+                  "name": "Data da Compra",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1699902355812",
+                  "hide_from_guests": false,
+                  "value": "1712559600000",
+                  "required": false
+                },
+                {
+                  "id": "a6428db5-6add-432f-a777-82a8c98c7a79",
+                  "name": "Consultor",
+                  "type": "users",
+                  "type_config": {
+                    "single_user": false,
+                    "include_groups": null,
+                    "include_guests": false,
+                    "include_team_members": false
+                  },
+                  "date_created": "1699904103911",
+                  "hide_from_guests": false,
+                  "value": [
+                    {
+                      "id": 43040068,
+                      "username": "Tran",
+                      "email": "victor@grupolibertas.com.br",
+                      "color": "#ff5722",
+                      "initials": "T",
+                      "profilePicture": "https://attachments.clickup.com/profilePictures/43040068_t8t.jpg"
+                    }
+                  ],
+                  "required": false
+                },
+                {
+                  "id": "bd0db8f6-a260-442f-a69b-997bd900c1d8",
+                  "name": "Engajamento",
+                  "type": "drop_down",
+                  "type_config": {
+                    "default": 0,
+                    "placeholder": null,
+                    "options": [
+                      {
+                        "id": "a403670d-2aae-455f-a566-50022a52b786",
+                        "name": "1. Muito Baixo",
+                        "color": "#e50000",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "e1bda749-543b-4cdf-9452-33ea9db16160",
+                        "name": "2. Baixo",
+                        "color": "#ff7800",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "138f1cae-5215-4eb9-82be-c2f502b35a6a",
+                        "name": "3. Ok",
+                        "color": "#f9d900",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "62bedef4-ba86-4629-8914-3d5b07c5c1f7",
+                        "name": "4. Alto",
+                        "color": "#a3cd2e",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "810b1c73-9270-4351-bc03-c9cb05d4cf94",
+                        "name": "5. Excelente",
+                        "color": "#00de5b",
+                        "orderindex": 4
+                      }
+                    ]
+                  },
+                  "date_created": "1700049846650",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "43a26a7b-c6a9-47d7-8b44-cad7a627ee83",
+                  "name": "Data do Último Contato",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1700050006933",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "66dc6e42-0808-4a8b-bb8b-e0f04517a434",
+                  "name": "Resultado",
+                  "type": "drop_down",
+                  "type_config": {
+                    "default": 0,
+                    "placeholder": null,
+                    "options": [
+                      {
+                        "id": "0707ea84-468b-4305-a7e6-48d851e5824f",
+                        "name": "1. Pior do que entrou",
+                        "color": "#800000",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "dbe8c958-85bc-4f64-8f8a-d741575e457e",
+                        "name": "2. Mesmo resultado",
+                        "color": "#e50000",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "fe62db42-d40d-49e0-8d74-90d9068b2278",
+                        "name": "3. Pouco melhor",
+                        "color": "#f9d900",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "d49c78b2-1dd6-4f53-972e-1f97fa3a76a8",
+                        "name": "4. Melhorou muito",
+                        "color": "#1bbc9c",
+                        "orderindex": 3
+                      },
+                      {
+                        "id": "a862df35-b228-4374-88e9-531d627a2202",
+                        "name": "5. Dobrou o resultado ",
+                        "color": "#2ecd6f",
+                        "orderindex": 4
+                      }
+                    ]
+                  },
+                  "date_created": "1700050940247",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "797d3e07-3a19-45f2-88f1-b04c44a10e3a",
+                  "name": "Data de renovação",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1701008075607",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "6dddb0fb-dffa-46ff-85c8-1313f7b315ec",
+                  "name": "Onboarding",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1701207797131",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "b75abc6f-114c-4b1a-88f8-d00bc657505b",
+                  "name": "Grupo de Whatsapp",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1701207808942",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "017dde3f-180d-4840-a345-562375f6ef30",
+                  "name": "Grupo Papo de Dono",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1701207829161",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "62ca1fe7-4bd7-4095-b69c-e666c609f60d",
+                  "name": "Contrato",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1702568439437",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "b67c9270-2b72-41d7-be48-062d559f6da5",
+                  "name": "Planilhas",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1705350268645",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "eff011ce-026b-4fca-9d84-d51b50ef55fb",
+                  "name": "RIA 1",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1706173374541",
+                  "hide_from_guests": false,
+                  "value": "1712818800000",
+                  "required": false
+                },
+                {
+                  "id": "c2145eee-3419-448b-aab4-270b163b7010",
+                  "name": "RIA 2",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1706173470278",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "7769a533-d062-4531-b9f6-553f43ace717",
+                  "name": "RIA 3",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1706173475523",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "4b6c8597-c223-4211-a430-294cf954f393",
+                  "name": "RIA 4",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1706173483042",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "2ad38cdd-81c6-4a6f-9b95-6d0d6883d85a",
+                  "name": "RIA 5",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1706173488342",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "56c654f4-cf80-4a8b-ba2c-e1e6e8f4c997",
+                  "name": "RIA 6",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1706173494603",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "f632c64b-bc3f-49b5-9cd3-af0db5dfb18d",
+                  "name": "Acompanhamento",
+                  "type": "url",
+                  "type_config": {},
+                  "date_created": "1700049865060",
+                  "hide_from_guests": false,
+                  "value": "https://docs.google.com/spreadsheets/d/1rSfCUuC0QwrxSj3T0cfjLRSl9MlAX1VZ-YVT26wkXo4/edit?usp=drivesdk",
+                  "required": false
+                },
+                {
+                  "id": "c768ee60-24b8-4072-9ca3-f4cd53fd3509",
+                  "name": "Precificação Hora Clínica",
+                  "type": "url",
+                  "type_config": {},
+                  "date_created": "1700049905661",
+                  "hide_from_guests": false,
+                  "value": "https://docs.google.com/spreadsheets/d/1KGJzDuHIAZsKPOAo-qsdG4IvVyPole8T9IhRYdw7P4o/edit?usp=drivesdk",
+                  "required": false
+                },
+                {
+                  "id": "8c6ae508-6edf-41e3-882e-84d5b10491ac",
+                  "name": "Automação Onboarding",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1700526553772",
+                  "hide_from_guests": true,
+                  "required": false
+                }
+              ],
+              "dependencies": [],
+              "linked_tasks": [],
+              "locations": [],
+              "team_id": "30971486",
+              "url": "https://app.clickup.com/t/86a2z18dk",
+              "sharing": {
+                "public": false,
+                "public_share_expires_on": null,
+                "public_fields": [
+                  "assignees",
+                  "priority",
+                  "due_date",
+                  "content",
+                  "comments",
+                  "attachments",
+                  "customFields",
+                  "subtasks",
+                  "tags",
+                  "checklists",
+                  "coverimage"
+                ],
+                "token": null,
+                "seo_optimized": false
+              },
+              "list": {
+                "id": "901301121637",
+                "name": "Controle de Turmas",
+                "access": true
+              },
+              "project": {
+                "id": "90130359074",
+                "name": "[ILA] [CS] Entrega Sala Black",
+                "hidden": false,
+                "access": true
+              },
+              "folder": {
+                "id": "90130359074",
+                "name": "[ILA] [CS] Entrega Sala Black",
+                "hidden": false,
+                "access": true
+              },
+              "space": {
+                "id": "90070031834"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-05-29T21:45:04.000Z",
+  "versionId": "44cad1cf-e6a4-4902-8d71-6b25a5e70162"
+}
