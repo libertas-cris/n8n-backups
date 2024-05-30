@@ -1,6 +1,28 @@
 {
   "active": false,
   "connections": {
+    "Calendly Trigger": {
+      "main": [
+        [
+          {
+            "node": "Data Inicio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Onboarding",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Data Inicio": {
       "main": [
         [
@@ -16,58 +38,25 @@
       "main": [
         [
           {
-            "node": "Lembrete 24h",
+            "node": "Lembrete 24hr",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Lembrete 24h": {
+    "Lembrete 24hr": {
       "main": [
         [
           {
-            "node": "Formatar24hr",
+            "node": "Lembrete 1h",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Calendly Trigger": {
-      "main": [
-        [
-          {
-            "node": "Data Inicio",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Formatar24hr": {
-      "main": [
-        [
-          {
-            "node": "Lembrete 1hr",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Lembrete 1hr": {
-      "main": [
-        [
-          {
-            "node": "Formatar1hr",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Formatar1hr": {
+    "Lembrete 1h": {
       "main": [
         [
           {
@@ -86,14 +75,21 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "Formata Telefone1",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     },
-    "Google Sheets": {
+    "Formata Telefone1": {
       "main": [
         [
           {
-            "node": "Onboarding",
+            "node": "Google Sheets",
             "type": "main",
             "index": 0
           }
@@ -119,7 +115,7 @@
       "type": "n8n-nodes-base.calendlyTrigger",
       "typeVersion": 1,
       "position": [
-        420,
+        280,
         300
       ],
       "webhookId": "53ee9ca4-e407-45b6-9214-2229dd0226e6",
@@ -129,125 +125,6 @@
           "name": "Sala Black"
         }
       }
-    },
-    {
-      "parameters": {
-        "operation": "formatDate",
-        "date": "={{ $json.payload.scheduled_event.start_time }}",
-        "format": "custom",
-        "customFormat": "dd/MM/yyyy",
-        "options": {
-          "timezone": true
-        }
-      },
-      "id": "0b46ba2d-0692-4e14-9909-651a27ce965c",
-      "name": "Data Inicio",
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        620,
-        300
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "formatDate",
-        "date": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
-        "format": "custom",
-        "customFormat": "HH:mm",
-        "outputFieldName": "formattedHour",
-        "options": {
-          "timezone": true
-        }
-      },
-      "id": "41b38756-85ac-4866-9c21-ecf0f0755535",
-      "name": "Hora Inicio",
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        820,
-        300
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "subtractFromDate",
-        "magnitude": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
-        "timeUnit": "hours",
-        "duration": 24,
-        "outputFieldName": "lembrete24hr",
-        "options": {
-          "includeInputFields": false
-        }
-      },
-      "id": "27b6834d-167d-4b70-a38f-408a23ed7785",
-      "name": "Lembrete 24h",
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        1000,
-        300
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "formatDate",
-        "date": "={{ $json.lembrete24hr }}",
-        "format": "custom",
-        "customFormat": "dd/MM/yyyy HH:mm",
-        "outputFieldName": "formatado24hr",
-        "options": {
-          "timezone": true
-        }
-      },
-      "id": "a8100ae7-bf93-4965-a6fd-8ca83ac6efc1",
-      "name": "Formatar24hr",
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        1180,
-        300
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "subtractFromDate",
-        "magnitude": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
-        "timeUnit": "hours",
-        "duration": 1,
-        "outputFieldName": "lembrete1hr",
-        "options": {
-          "includeInputFields": false
-        }
-      },
-      "id": "eabd1642-cb0e-4dab-bc31-efd4768c4843",
-      "name": "Lembrete 1hr",
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        1360,
-        300
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "formatDate",
-        "date": "={{ $json.lembrete1hr }}",
-        "format": "custom",
-        "customFormat": "dd/MM/yyyy HH:mm",
-        "outputFieldName": "formatado1hr",
-        "options": {
-          "timezone": true
-        }
-      },
-      "id": "f685b185-5b94-4121-8ad8-846b6b828902",
-      "name": "Formatar1hr",
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        1540,
-        300
-      ]
     },
     {
       "parameters": {
@@ -276,8 +153,8 @@
             "Whatsapp": "={{ $json.whatsapp }}",
             "Link": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.location.join_url }}",
             "Criado em": "={{ $('Calendly Trigger').item.json.created_at }}",
-            "Lembrete 24h": "={{ $('Formatar24hr').item.json.formatado24hr }}",
-            "Lembrete 1h": "={{ $json.formatado1hr }}"
+            "Lembrete 24h": "={{ $node[\"Lembrete 24hr\"].json[\"24depois\"] }}",
+            "Lembrete 1h": "={{ $node[\"Lembrete 1h\"].json[\"1antes\"] }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -389,8 +266,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        1920,
-        300
+        1680,
+        280
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -398,19 +275,6 @@
           "name": "Cris - Libertas"
         }
       }
-    },
-    {
-      "parameters": {
-        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['whatsapp'] = formataTelefone($node[\"Calendly Trigger\"].json[\"payload\"][\"questions_and_answers\"][\"0\"][\"answer\"])\n\nreturn $input.all();"
-      },
-      "id": "2f9d70ea-376e-450f-9b6d-5e33dc8ea828",
-      "name": "Formata Telefone",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 1,
-      "position": [
-        1720,
-        300
-      ]
     },
     {
       "parameters": {
@@ -445,9 +309,111 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2120,
+        1900,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "07dc2ee9-f103-4d6a-98b4-fec309ada374",
+      "name": "Data Inicio",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        480,
         300
       ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
+        "format": "custom",
+        "customFormat": "HH:mm",
+        "outputFieldName": "formattedHour",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "459b0a4e-de8e-42d3-a053-fdb2efda07a9",
+      "name": "Hora Inicio",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        700,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
+        "duration": 1,
+        "outputFieldName": "24depois",
+        "options": {}
+      },
+      "id": "cfa322d7-a1c2-4d2c-ab23-b8f01fa2b42c",
+      "name": "Lembrete 24hr",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $('Calendly Trigger').item.json.payload.scheduled_event.start_time }}",
+        "timeUnit": "hours",
+        "duration": 1,
+        "outputFieldName": "1antes",
+        "options": {}
+      },
+      "id": "b2f07746-3192-4778-aca1-c57dc507fd45",
+      "name": "Lembrete 1h",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['whatsapp'] = formataTelefone($node[\"Calendly Trigger\"].json[\"payload\"][\"questions_and_answers\"][\"0\"][\"answer\"])\n\nreturn $input.all();"
+      },
+      "id": "82ebc17c-2fc4-4d9c-9a3d-2ab86b1cc1c3",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1340,
+        300
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['whatsapp'] = formataTelefone($node[\"Calendly Trigger\"].json[\"payload\"][\"questions_and_answers\"][\"0\"][\"answer\"])\n\nreturn $input.all();"
+      },
+      "id": "b14bd799-f510-4412-8bc9-2a45f27f0509",
+      "name": "Formata Telefone1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1460,
+        540
+      ],
+      "onError": "continueErrorOutput"
     }
   ],
   "pinData": {
@@ -546,6 +512,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-23T18:20:53.000Z",
-  "versionId": "893386bb-a4c1-4f63-b664-34d84fe060a6"
+  "updatedAt": "2024-05-29T18:35:12.000Z",
+  "versionId": "e328646c-63d1-4b3c-9b38-e9f9c37acb00"
 }
