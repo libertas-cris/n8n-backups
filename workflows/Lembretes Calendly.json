@@ -5,23 +5,7 @@
       "main": [
         [
           {
-            "node": "Agora",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Agora": {
-      "main": [
-        [
-          {
-            "node": "lembrete 24hr",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Lembrete 1hr",
+            "node": "Data Atual",
             "type": "main",
             "index": 0
           }
@@ -30,13 +14,7 @@
     },
     "lembrete 24hr": {
       "main": [
-        [
-          {
-            "node": "Mensagem 24hr",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Mensagem 24hr": {
@@ -52,13 +30,7 @@
     },
     "Lembrete 1hr": {
       "main": [
-        [
-          {
-            "node": "Mensagem 1hr",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Mensagem 1hr": {
@@ -66,6 +38,46 @@
         [
           {
             "node": "Check 1hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Atual": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "lembrete 24hr",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Lembrete 1hr",
             "type": "main",
             "index": 0
           }
@@ -96,27 +108,7 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.1,
       "position": [
-        880,
-        340
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "formatDate",
-        "date": "={{ Date() }}",
-        "format": "custom",
-        "customFormat": "dd/MM/yyyy HH:mm",
-        "outputFieldName": "agora",
-        "options": {
-          "timezone": true
-        }
-      },
-      "id": "e6e28316-91dc-4c7f-9a9d-8d483717a2f0",
-      "name": "Agora",
-      "type": "n8n-nodes-base.dateTime",
-      "typeVersion": 2,
-      "position": [
-        1140,
+        500,
         340
       ]
     },
@@ -348,7 +340,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        1760,
+        2000,
         140
       ],
       "credentials": {
@@ -391,7 +383,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1540,
+        1760,
         140
       ]
     },
@@ -428,7 +420,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1540,
+        1760,
         540
       ]
     },
@@ -578,7 +570,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        1760,
+        2000,
         540
       ],
       "credentials": {
@@ -587,6 +579,67 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "function verificarHoraUtil(dataString) {\n    // Converte a string de data para um objeto Date\n    var data = new Date(dataString);\n    \n    // Obtém o dia da semana (0 = Domingo, 1 = Segunda, ..., 6 = Sábado)\n    var diaSemana = data.getDay();\n    \n    // Obtém a hora atual\n    var horaAtual = data.getHours();\n    \n    // Verifica se não é sábado ou domingo e se a hora está entre 7 da manhã e 8 da noite\n    if (diaSemana !== 0 && diaSemana !== 6 && horaAtual >= 7 && horaAtual < 20) {\n        return true;\n    } else {\n        return false;\n    }\n}\n\nvar dataAtual = $input.all()[0].json['currentDate']\n\nvar isValid = (verificarHoraUtil(dataAtual));\n\nreturn {isValid}\n"
+      },
+      "id": "5be9f754-a9d9-4672-9ad9-0f26c2807d20",
+      "name": "Code",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "timezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "4919c19f-117f-4708-bb44-0afc706b66e8",
+      "name": "Data Atual",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        680,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f8bae6e8-334c-4468-ad34-603a29cc3763",
+              "leftValue": "={{ $json.isValid }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "53fa4ab9-8b7b-4b75-9951-8574a113427a",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1080,
+        340
+      ]
     }
   ],
   "pinData": {},
@@ -600,6 +653,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-23T04:21:36.000Z",
-  "versionId": "8cc34aad-6823-4c9f-8720-635b597c4ddd"
+  "updatedAt": "2024-05-29T18:28:19.000Z",
+  "versionId": "9c0e9a69-9105-4b54-bb69-0afe3eea89e4"
 }
