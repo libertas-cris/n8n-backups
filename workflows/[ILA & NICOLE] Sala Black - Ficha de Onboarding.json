@@ -558,7 +558,7 @@
       "main": [
         [
           {
-            "node": "add papo de dono2",
+            "node": "permissao leads",
             "type": "main",
             "index": 0
           }
@@ -580,7 +580,7 @@
       "main": [
         [
           {
-            "node": "add papo de dono3",
+            "node": "permissao leads1",
             "type": "main",
             "index": 0
           }
@@ -669,6 +669,50 @@
         [
           {
             "node": "Google Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "permissao leads": {
+      "main": [
+        [
+          {
+            "node": "permissao follow up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "permissao follow up": {
+      "main": [
+        [
+          {
+            "node": "add papo de dono2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "permissao leads1": {
+      "main": [
+        [
+          {
+            "node": "permissao follow up1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "permissao follow up1": {
+      "main": [
+        [
+          {
+            "node": "add papo de dono3",
             "type": "main",
             "index": 0
           }
@@ -2541,7 +2585,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3260,
+        3660,
         -540
       ]
     },
@@ -2568,7 +2612,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3440,
+        3840,
         -540
       ]
     },
@@ -2746,7 +2790,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3660,
+        4060,
         -340
       ]
     },
@@ -2773,7 +2817,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3840,
+        4280,
         -340
       ]
     },
@@ -2850,7 +2894,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3340,
+        3300,
         -140
       ]
     },
@@ -3166,7 +3210,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3640,
+        4060,
         -540
       ]
     },
@@ -3198,7 +3242,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        4060,
+        4500,
         -340
       ]
     },
@@ -3568,6 +3612,138 @@
           "name": "Conta Sala Black"
         }
       }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "share",
+        "folderNoRootId": {
+          "__rl": true,
+          "value": "={{ $('busca infos mentorado').item.json['ID Pasta Leads'] }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "4488031f-ebb9-4533-a8bd-9138a1c4bf47",
+      "name": "permissao leads",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3300,
+        -540
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ip47vcSKsulzZM52",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "share",
+        "folderNoRootId": {
+          "__rl": true,
+          "value": "={{ $('busca infos mentorado').item.json['ID Pasta Follow Up'] }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "c216616a-50c7-4772-8fae-26ab19432a75",
+      "name": "permissao follow up",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3480,
+        -540
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ip47vcSKsulzZM52",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "share",
+        "folderNoRootId": {
+          "__rl": true,
+          "value": "={{ $('Google Sheets1').item.json['ID Pasta Leads'] }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "403e85b7-f9ca-470a-ab05-ea76e973b4cf",
+      "name": "permissao leads1",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3660,
+        -340
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ip47vcSKsulzZM52",
+          "name": "Sala Black"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "operation": "share",
+        "folderNoRootId": {
+          "__rl": true,
+          "value": "={{ $('Google Sheets1').item.json['ID Pasta Follow Up'] }}",
+          "mode": "id"
+        },
+        "permissionsUi": {
+          "permissionsValues": {
+            "role": "writer",
+            "type": "user",
+            "emailAddress": "={{ $('Trata Webhook').item.json['E-mail'] }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "02b434d9-584c-4e4c-8e77-2f9bb392b42b",
+      "name": "permissao follow up1",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3840,
+        -340
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ip47vcSKsulzZM52",
+          "name": "Sala Black"
+        }
+      }
     }
   ],
   "pinData": {
@@ -3623,6 +3799,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-23T14:48:09.000Z",
-  "versionId": "d81f0b70-79a6-4d81-9a78-6e1929da4416"
+  "updatedAt": "2024-05-30T18:20:16.000Z",
+  "versionId": "24cd67fe-3d5f-4e0f-ac02-ce0095b0cd4d"
 }
