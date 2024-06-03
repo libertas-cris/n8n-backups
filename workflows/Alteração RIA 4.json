@@ -1,0 +1,37 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-06-03T02:19:54.603Z",
+  "id": "ANfs0qcgCzjZ2igg",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Alteração RIA 4",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "2224c583-5ae0-4fa1-a4c9-53247c259542",
+        "options": {}
+      },
+      "id": "c58183cc-36c7-4835-b726-24df9ff2a877",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "2224c583-5ae0-4fa1-a4c9-53247c259542"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-03T02:20:20.000Z",
+  "versionId": "26da97e2-d6a8-4ebe-86f9-ab47775ec74c"
+}
