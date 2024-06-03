@@ -1,0 +1,37 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-06-03T02:20:58.399Z",
+  "id": "YR1BpsRIBVoicSkn",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Alteração RIA 6",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "d8b4eed0-8209-4e08-b1db-970e06a5dfec",
+        "options": {}
+      },
+      "id": "b9d61920-1ac7-4d66-a0e9-45ad216aa79a",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "d8b4eed0-8209-4e08-b1db-970e06a5dfec"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-03T02:21:59.000Z",
+  "versionId": "654bba5d-320d-4489-b739-787b8b26fcb1"
+}
