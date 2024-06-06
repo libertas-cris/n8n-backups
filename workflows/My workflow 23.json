@@ -1,0 +1,442 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Região": {
+      "main": [
+        []
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-05T16:12:18.941Z",
+  "id": "gUbGm9ZPuf9HcKDK",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 23",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "b3472426-c882-4bd5-a995-9b16c0dffcff",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        760,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1ePPvH0r91WzHrLIzGMcG5nF9wyIs-RcwRgdQ2B_B3UM",
+          "mode": "list",
+          "cachedResultName": "[ILA/NICOLE] Imersão Implante Million",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ePPvH0r91WzHrLIzGMcG5nF9wyIs-RcwRgdQ2B_B3UM/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1225075075,
+          "mode": "list",
+          "cachedResultName": "Alunos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ePPvH0r91WzHrLIzGMcG5nF9wyIs-RcwRgdQ2B_B3UM/edit#gid=1225075075"
+        },
+        "options": {}
+      },
+      "id": "98e15ca7-e9ba-4688-8baa-da3a6126d1d7",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        940,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.item.json['Telefone'] = formataTelefone($input.item.json['Telefone'] )\n\nreturn $input.item;"
+      },
+      "id": "7ac7980b-a114-4486-823f-0d1399bac65a",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU",
+          "mode": "list",
+          "cachedResultName": "Leads envio mensagem",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "row_number": "={{ $json.row_number }}",
+            "numero formatado": "={{ $json[\"Número de telefone\"] }}"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Nome completo",
+              "displayName": "Nome completo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Número de telefone",
+              "displayName": "Número de telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "numero formatado",
+              "displayName": "numero formatado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9e5a094b-5ca4-432b-b4e0-74dcd704e61c",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1380,
+        720
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function identificarRegiao(numero) {\n    // Converte o número para string\n    const numeroStr = numero.toString();\n\n    \n\n    // Extrai o DDD do número (3º e 4º caracteres)\n    const ddd = numeroStr.slice(2, 4);\n\n    // Lista de DDDs de São Paulo e região\n    const dddsSP = ['11', '12', '13', '14', '15', '16', '17', '18', '19'];\n\n    // Verifica se o DDD está na lista de São Paulo e região\n    if (dddsSP.includes(ddd)) {\n        return 'sp';\n    } else {\n        return 'geral';\n    }\n}\n\nvar numero = identificarRegiao($input.item.json['Telefone'])\n$input.item.json['regiao'] = numero\n\nreturn $input.item\n"
+      },
+      "id": "eca796bd-4e97-434b-b173-7764a16ef653",
+      "name": "Região",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "95f55872-663a-454b-ba3f-cf61f3cc5be1",
+              "leftValue": "={{ $json.regiao }}",
+              "rightValue": "=geral",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "73020f47-d2a0-4ad0-b7cf-c92cb755b1b4",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU",
+          "mode": "list",
+          "cachedResultName": "Leads envio mensagem",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 502397890,
+          "mode": "list",
+          "cachedResultName": "geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU/edit#gid=502397890"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nome": "={{ $json[\"Nome completo\"] }}",
+            "email": "={{ $json.Email }}",
+            "telefone": "={{ $json.Telefone }}",
+            "regiao": "={{ $json.regiao }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "regiao",
+              "displayName": "regiao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2d4e026f-fb7d-4cd7-b18a-a706b1f720ba",
+      "name": "Google Sheets2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1680,
+        240
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU",
+          "mode": "list",
+          "cachedResultName": "Leads envio mensagem",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 270721369,
+          "mode": "list",
+          "cachedResultName": "alunos IM",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1QjJZkd98CnmYKFWGxikEuyS-0tRRRz_TE4QXufMyrDU/edit#gid=270721369"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nome": "={{ $json.Nome }}",
+            "email": "={{ $json.Email }}",
+            "telefone": "={{ $json.Telefone }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "regiao",
+              "displayName": "regiao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "712551d1-d892-4250-8e8a-0df64e25fa9e",
+      "name": "Google Sheets3",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1380,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-05T23:08:26.000Z",
+  "versionId": "d55246e8-d016-4ae3-b018-b9a3cfcc6011"
+}
