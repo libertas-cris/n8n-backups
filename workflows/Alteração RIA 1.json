@@ -108,8 +108,8 @@
       "type": "n8n-nodes-base.googleCalendar",
       "typeVersion": 1.1,
       "position": [
-        1180,
-        660
+        1320,
+        580
       ],
       "credentials": {
         "googleCalendarOAuth2Api": {
@@ -808,6 +808,6 @@
   },
   "tags": [],
   "triggerCount": 2,
-  "updatedAt": "2024-06-03T02:42:54.000Z",
-  "versionId": "e10553e6-8d85-4880-98a7-38b5cc40bc02"
+  "updatedAt": "2024-06-05T15:02:09.000Z",
+  "versionId": "00210b41-28ce-4d57-b3cc-0f74fc2d471d"
 }
