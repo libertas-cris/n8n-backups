@@ -12,11 +12,6 @@
         ]
       ]
     },
-    "lembrete 24hr": {
-      "main": [
-        []
-      ]
-    },
     "Mensagem 24hr": {
       "main": [
         [
@@ -26,11 +21,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "Lembrete 1hr": {
-      "main": [
-        []
       ]
     },
     "Mensagem 1hr": {
@@ -83,6 +73,28 @@
           }
         ]
       ]
+    },
+    "lembrete 24hr": {
+      "main": [
+        [
+          {
+            "node": "Mensagem 24hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lembrete 1hr": {
+      "main": [
+        [
+          {
+            "node": "Mensagem 1hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-05-15T15:05:31.533Z",
@@ -108,7 +120,7 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.1,
       "position": [
-        500,
+        460,
         340
       ]
     },
@@ -143,7 +155,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        1320,
+        1380,
         140
       ],
       "credentials": {
@@ -184,7 +196,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        1320,
+        1380,
         540
       ],
       "credentials": {
@@ -383,7 +395,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1760,
+        1720,
         140
       ]
     },
@@ -420,7 +432,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1760,
+        1720,
         540
       ]
     },
@@ -653,6 +665,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-29T18:28:19.000Z",
-  "versionId": "9c0e9a69-9105-4b54-bb69-0afe3eea89e4"
+  "updatedAt": "2024-06-05T15:10:39.000Z",
+  "versionId": "48062863-056d-4b10-9677-d947bbef7994"
 }
