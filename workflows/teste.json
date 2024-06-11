@@ -1,0 +1,452 @@
+{
+  "active": true,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Mapear Campos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mapear Campos": {
+      "main": [
+        [
+          {
+            "node": "Pega Planilha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pega Planilha": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        []
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Imagem + texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Imagem + texto": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-11T03:09:04.711Z",
+  "id": "fMIqz0NE8BilnAJk",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "teste",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "headerAuth",
+        "httpMethod": "POST",
+        "path": "disparador",
+        "options": {}
+      },
+      "id": "517631c1-5bc6-4ecb-bc15-2b6c88cbd27e",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "700aa03e-718f-4f49-8ab5-1e9b00ddca8c",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "jFXaDllMTxe5RUZw",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "6af77613-bfd7-45cb-8b8d-3a9e3250e3d8",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.item.json['telefone'] = formataTelefone($input.item.json['telefone'])\n\nreturn $input.item;"
+      },
+      "id": "2931d5f7-e2c8-414c-ba16-7f80fb087f9d",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6323634a-9958-4635-81d1-0cb765859ed1",
+              "name": "Mensagem",
+              "value": "={{ $json.items[0].Mensagem }}",
+              "type": "string"
+            },
+            {
+              "id": "9f39326d-9e68-4c0f-b7cd-1cd80c107a69",
+              "name": "Imagem",
+              "value": "={{ $json.items[0].Imagem[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "f781babc-0bdd-418f-ba52-c83e0206dc16",
+              "name": "Lista",
+              "value": "={{ $json.items[0]['Importar Contatos'][0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "d183f2f3-33b5-4f09-b859-2bd5cc3a83fa",
+              "name": "Contato",
+              "value": "={{ $json.items[0]['Contato que vai enviar mensagens'].value }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "81d7345b-c94e-4c07-8793-77e0d4811a26",
+      "name": "Mapear Campos",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1220,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.Lista }}",
+        "options": {}
+      },
+      "id": "29c03b51-ce18-4de5-89e6-c67ae9c0adf4",
+      "name": "Pega Planilha",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1420,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "xls",
+        "options": {}
+      },
+      "id": "a24469f3-dbfd-42c6-b32d-a36cbd1b6ec2",
+      "name": "Extract from File",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1640,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Mapear Campos').item.json.Imagem }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IMAGEM"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "35f04b49-21f6-4af4-ab42-e6718e973047",
+                    "leftValue": "={{ $('Mapear Campos').item.json.Imagem }}",
+                    "rightValue": "=",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXTO"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "eaf1cd2d-3d37-410b-ab9c-0232e409c92d",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        2060,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b64d64c1-3e50-4379-b52b-9afe3f7dfa6d",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2340,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/math",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "yzp26007herd04zgn2yvaw"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.telefone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "image"
+            },
+            {
+              "name": "mediaMessage.caption",
+              "value": "={{ $('Mapear Campos').item.json.Mensagem }}"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "={{ $('Mapear Campos').item.json.Imagem }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc85d11b-5a14-4298-abc3-13e3ec032841",
+      "name": "Imagem + texto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2580,
+        120
+      ],
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "python-requests/2.31.0",
+            "content-length": "2036",
+            "accept": "*/*",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "45.10.163.177",
+            "cf-ipcountry": "DE",
+            "cf-ray": "891e73bbfc6f6921-FRA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "senderkey": "n8nteste",
+            "x-baserow-delivery": "9d794e7b-0829-40ee-8c86-abc7ad324770",
+            "x-baserow-event": "rows.created",
+            "x-forwarded-for": "162.158.86.103",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "162.158.86.103"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "table_id": 58,
+            "database_id": 7,
+            "workspace_id": 5,
+            "event_id": "9d794e7b-0829-40ee-8c86-abc7ad324770",
+            "event_type": "rows.created",
+            "items": [
+              {
+                "id": 3,
+                "order": "3.00000000000000000000",
+                "Mensagem": "teste de mensagem",
+                "Imagem": [
+                  {
+                    "url": "https://baserow.dentistapower.com.br/media/user_files/zuYrjKCVjUIy5wwnrueVGHBPuHRDRVJC_d3e3b598f60c60e72f9c7e09e9bd83ca77982b50386d3bfc7825d1e0d5c8f08c.jpeg",
+                    "thumbnails": {
+                      "tiny": {
+                        "url": "https://baserow.dentistapower.com.br/media/thumbnails/tiny/zuYrjKCVjUIy5wwnrueVGHBPuHRDRVJC_d3e3b598f60c60e72f9c7e09e9bd83ca77982b50386d3bfc7825d1e0d5c8f08c.jpeg",
+                        "width": null,
+                        "height": 21
+                      },
+                      "small": {
+                        "url": "https://baserow.dentistapower.com.br/media/thumbnails/small/zuYrjKCVjUIy5wwnrueVGHBPuHRDRVJC_d3e3b598f60c60e72f9c7e09e9bd83ca77982b50386d3bfc7825d1e0d5c8f08c.jpeg",
+                        "width": 48,
+                        "height": 48
+                      },
+                      "card_cover": {
+                        "url": "https://baserow.dentistapower.com.br/media/thumbnails/card_cover/zuYrjKCVjUIy5wwnrueVGHBPuHRDRVJC_d3e3b598f60c60e72f9c7e09e9bd83ca77982b50386d3bfc7825d1e0d5c8f08c.jpeg",
+                        "width": 300,
+                        "height": 160
+                      }
+                    },
+                    "visible_name": "cachorro-novo.jpeg",
+                    "name": "zuYrjKCVjUIy5wwnrueVGHBPuHRDRVJC_d3e3b598f60c60e72f9c7e09e9bd83ca77982b50386d3bfc7825d1e0d5c8f08c.jpeg",
+                    "size": 352770,
+                    "mime_type": "image/jpeg",
+                    "is_image": true,
+                    "image_width": 1131,
+                    "image_height": 1600,
+                    "uploaded_at": "2024-06-11T03:17:55.459382+00:00"
+                  }
+                ],
+                "Importar Contatos": [
+                  {
+                    "url": "https://baserow.dentistapower.com.br/media/user_files/gR2XQf4rqLTZyTQJD9vu9Rn6v5bIfwAZ_1f958abd16c49a8f620c6636f15eddf3c1b2e79c73d885e75ca036073517b18b.xlsx",
+                    "thumbnails": null,
+                    "visible_name": "disparo.xlsx",
+                    "name": "gR2XQf4rqLTZyTQJD9vu9Rn6v5bIfwAZ_1f958abd16c49a8f620c6636f15eddf3c1b2e79c73d885e75ca036073517b18b.xlsx",
+                    "size": 4735,
+                    "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "is_image": false,
+                    "image_width": null,
+                    "image_height": null,
+                    "uploaded_at": "2024-06-11T03:18:00.259670+00:00"
+                  }
+                ],
+                "Contato que vai enviar mensagens": {
+                  "id": 1192,
+                  "value": "vendedor 1",
+                  "color": "light-red"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-06-11T03:53:01.000Z",
+  "versionId": "3df2f04b-8306-48e1-8557-e97eb75a5954"
+}
