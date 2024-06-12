@@ -67,17 +67,12 @@
         ]
       ]
     },
-    "Switch": {
-      "main": [
-        []
-      ]
-    },
     "Loop Over Items": {
       "main": [
         [],
         [
           {
-            "node": "Imagem + texto",
+            "node": "Wait",
             "type": "main",
             "index": 0
           }
@@ -89,6 +84,35 @@
         [
           {
             "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Imagem + texto",
             "type": "main",
             "index": 0
           }
@@ -224,6 +248,65 @@
     },
     {
       "parameters": {
+        "options": {}
+      },
+      "id": "b64d64c1-3e50-4379-b52b-9afe3f7dfa6d",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2340,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/math",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "yzp26007herd04zgn2yvaw"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.telefone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "image"
+            },
+            {
+              "name": "mediaMessage.caption",
+              "value": "={{ $('Mapear Campos').item.json.Mensagem }}"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "={{ $('Mapear Campos').item.json.Imagem }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc85d11b-5a14-4298-abc3-13e3ec032841",
+      "name": "Imagem + texto",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2760,
+        120
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
         "rules": {
           "values": [
             {
@@ -288,16 +371,17 @@
     },
     {
       "parameters": {
-        "options": {}
+        "amount": 2
       },
-      "id": "b64d64c1-3e50-4379-b52b-9afe3f7dfa6d",
-      "name": "Loop Over Items",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
+      "id": "66330486-7c0c-40b8-b99a-acec8f6d5c9c",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
       "position": [
-        2340,
-        100
-      ]
+        2580,
+        120
+      ],
+      "webhookId": "cee3baee-8eae-4090-820e-a5bdc84d8b64"
     },
     {
       "parameters": {
@@ -335,13 +419,13 @@
         },
         "options": {}
       },
-      "id": "cc85d11b-5a14-4298-abc3-13e3ec032841",
-      "name": "Imagem + texto",
+      "id": "c8ffcb47-1223-48f5-ae09-cfebb01e72c7",
+      "name": "Imagem + texto1",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        2580,
-        120
+        2740,
+        -260
       ],
       "onError": "continueErrorOutput"
     }
@@ -447,6 +531,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-11T03:53:01.000Z",
-  "versionId": "3df2f04b-8306-48e1-8557-e97eb75a5954"
+  "updatedAt": "2024-06-12T12:42:52.000Z",
+  "versionId": "ffed7754-fdf5-400a-a9c0-ddce49bbd3b5"
 }
