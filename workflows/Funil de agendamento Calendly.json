@@ -279,13 +279,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
             }
           ]
         },
@@ -298,7 +298,7 @@
             },
             {
               "name": "message",
-              "value": "={{ $json[\"Nome\"] }}, \n\nSua Mentoria Individual está agendada para dia {{ $json[\"Data\"] }} às {{ $json[\"Hora inicio\"] }}. \n\nSe algum imprevisto acontecer você poderá remarcar a sua mentoria individual com no mínimo 12 horas de antecedência. \n\nCaso não seja realizado com esse prazo a mentoria será considerada como realizada. \n\nTodas as mentorias tem uma duração de 1 hora, se houver algum tipo de atraso, será contabilizado no tempo da mentoria. \n\nContamos com a sua colaboração  pois temos uma demanda grande e nosso foco é sempre te atender com a qualidade que você merece."
+              "value": "={{ $json[\"Nome\"].split(\" \")[0] }}, \n\nSua Mentoria Individual está agendada para dia {{ $json[\"Data\"] }} às {{ $json[\"Hora inicio\"] }}. \n\nSe algum imprevisto acontecer você poderá remarcar a sua mentoria individual com no mínimo 12 horas de antecedência. \n\nCaso não seja realizado com esse prazo a mentoria será considerada como realizada. \n\nTodas as mentorias tem uma duração de 1 hora, se houver algum tipo de atraso, será contabilizado no tempo da mentoria. \n\nContamos com a sua colaboração  pois temos uma demanda grande e nosso foco é sempre te atender com a qualidade que você merece."
             }
           ]
         },
@@ -509,11 +509,11 @@
   },
   "staticData": {
     "node:Calendly Trigger": {
-      "webhookURI": "https://api.calendly.com/webhook_subscriptions/66b3ce73-ef1d-4694-9d77-2744ee5dde52"
+      "webhookURI": "https://api.calendly.com/webhook_subscriptions/5762585f-8949-41b1-91dd-f77a61a2d605"
     }
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-05T15:05:43.000Z",
-  "versionId": "84e52cb2-c0a3-4dae-885f-aeb706366dc7"
+  "updatedAt": "2024-06-12T12:49:47.000Z",
+  "versionId": "a3174d38-46a3-4ad2-8714-2e8268c305cb"
 }
