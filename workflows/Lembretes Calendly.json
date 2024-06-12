@@ -63,18 +63,39 @@
             "node": "lembrete 24hr",
             "type": "main",
             "index": 0
-          }
-        ],
-        [
+          },
           {
             "node": "Lembrete 1hr",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "lembrete 24hr": {
+      "main": [
+        [
+          {
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "lembrete 24hr": {
+    "Lembrete 1hr": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
       "main": [
         [
           {
@@ -85,7 +106,7 @@
         ]
       ]
     },
-    "Lembrete 1hr": {
+    "Filter1": {
       "main": [
         [
           {
@@ -140,14 +161,6 @@
           "cachedResultName": "Agendamentos",
           "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit#gid=0"
         },
-        "filtersUI": {
-          "values": [
-            {
-              "lookupColumn": "Lembrete 24h",
-              "lookupValue": "={{ $json.agora }}"
-            }
-          ]
-        },
         "options": {}
       },
       "id": "362e2e73-7dd1-4b49-91a5-b6cc8e712ae7",
@@ -180,14 +193,6 @@
           "mode": "list",
           "cachedResultName": "Agendamentos",
           "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19Ly9sNr406H-P1agA2q-74UWHeut1Migf66hGXnrH2M/edit#gid=0"
-        },
-        "filtersUI": {
-          "values": [
-            {
-              "lookupColumn": "Lembrete 1h",
-              "lookupValue": "={{ $json.agora }}"
-            }
-          ]
         },
         "options": {}
       },
@@ -226,7 +231,7 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "row_number": "={{ $('lembrete 24hr').item.json.row_number }}",
+            "row_number": "={{ $('Filter').item.json.row_number }}",
             "Check 24hr": "enviado"
           },
           "matchingColumns": [
@@ -352,7 +357,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        2000,
+        2260,
         140
       ],
       "credentials": {
@@ -365,13 +370,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
             }
           ]
         },
@@ -384,7 +389,7 @@
             },
             {
               "name": "message",
-              "value": "=Olá, {{ $json[\"Nome\"] }}!\n\nPassando só pra lembrar da nossa reunião amanhã, dia {{ $json[\"Data\"] }} às {{ $json[\"Hora inicio\"] }}.\n\nLink da nossa reunião: {{ $json[\"Link\"] }}\n\n⚠️ Se algum imprevisto acontecer você poderá remarcar a sua mentoria individual com no mínimo 12 horas de antecedência. Caso não seja realizado com esse prazo a mentoria será considerada como realizada. \n\nTodas as mentorias tem uma duração de 1 hora, se houver algum tipo de atraso, será contabilizado no tempo da mentoria."
+              "value": "=Olá, {{ $json[\"Nome\"].split(\" \")[0] }}!\n\nPassando só pra lembrar da nossa reunião amanhã, dia {{ $json[\"Data\"] }} às {{ $json[\"Hora inicio\"] }}.\n\nLink da nossa reunião: {{ $json[\"Link\"] }}\n\n⚠️ Se algum imprevisto acontecer você poderá remarcar a sua mentoria individual com no mínimo 12 horas de antecedência. Caso não seja realizado com esse prazo a mentoria será considerada como realizada. \n\nTodas as mentorias tem uma duração de 1 hora, se houver algum tipo de atraso, será contabilizado no tempo da mentoria."
             }
           ]
         },
@@ -395,20 +400,20 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1720,
+        1940,
         140
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
             }
           ]
         },
@@ -421,7 +426,7 @@
             },
             {
               "name": "message",
-              "value": "=Oii {{ $json[\"Nome\"] }}!\n\nDaqui a pouco nos vemos na nossa reunião, às {{ $json[\"Hora inicio\"] }}!\n\nLink da nossa reunião: {{ $json[\"Link\"] }}\n\nTe vejo em breve."
+              "value": "=Oii {{ $json[\"Nome\"].split(\" \")[0] }}!\n\nDaqui a pouco nos vemos na nossa reunião, às {{ $json[\"Hora inicio\"] }}!\n\nLink da nossa reunião: {{ $json[\"Link\"] }}\n\nTe vejo em breve."
             }
           ]
         },
@@ -432,7 +437,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        1720,
+        1940,
         540
       ]
     },
@@ -456,7 +461,7 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "row_number": "={{ $('Lembrete 1hr').item.json.row_number }}",
+            "row_number": "={{ $('Filter1').item.json.row_number }}",
             "Check 1hr": "enviado"
           },
           "matchingColumns": [
@@ -582,7 +587,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        2000,
+        2280,
         540
       ],
       "credentials": {
@@ -652,6 +657,120 @@
         1080,
         340
       ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9ef72366-7644-4017-8069-50cd6ebf27f3",
+              "leftValue": "={{ $json['Check 24hr'] }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "bae6fb72-d02e-4309-bd89-bdcadf8717bb",
+              "leftValue": "={{ $json['Lembrete 24h'] }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "921fbfef-a14f-4ec0-8515-43192f8a7094",
+              "leftValue": "={{ $json['Lembrete 24h'] }}",
+              "rightValue": "={{ $('Data Atual').item.json.currentDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              }
+            },
+            {
+              "id": "4c275060-9777-46b3-88ba-fe3a7de2c901",
+              "leftValue": "={{ $json['Check 1hr'] }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "96d62f8f-823e-4a07-b949-0e803ef00d59",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "9ef72366-7644-4017-8069-50cd6ebf27f3",
+              "leftValue": "={{ $json['Check 1hr'] }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "bae6fb72-d02e-4309-bd89-bdcadf8717bb",
+              "leftValue": "={{ $json['Lembrete 1h'] }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "921fbfef-a14f-4ec0-8515-43192f8a7094",
+              "leftValue": "={{ $json['Lembrete 1h'] }}",
+              "rightValue": "={{ $('Data Atual').item.json.currentDate }}",
+              "operator": {
+                "type": "dateTime",
+                "operation": "before"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f23575da-6a7a-465f-8c58-3614aad686e4",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1680,
+        540
+      ]
     }
   ],
   "pinData": {},
@@ -665,6 +784,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-05T15:10:39.000Z",
-  "versionId": "48062863-056d-4b10-9677-d947bbef7994"
+  "updatedAt": "2024-06-12T13:02:04.000Z",
+  "versionId": "af91a384-6ef2-499c-9f39-d38e51675701"
 }
