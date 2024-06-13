@@ -34,17 +34,6 @@
         ]
       ]
     },
-    "Code": {
-      "main": [
-        [
-          {
-            "node": "If",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Data Atual": {
       "main": [
         [
@@ -69,8 +58,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     },
     "lembrete 24hr": {
@@ -111,6 +99,17 @@
         [
           {
             "node": "Mensagem 1hr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -370,13 +369,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "url": "https://api.z-api.io/instances/3CC464C467F3C09DF85996AA42CF65C4/token/2C661F295A0505B121FC569F/send-text",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Client-Token",
-              "value": "F206336aa6c154c618083085a4b1f5de3S"
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
             }
           ]
         },
@@ -407,13 +406,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "url": "https://api.z-api.io/instances/3CC464C467F3C09DF85996AA42CF65C4/token/2C661F295A0505B121FC569F/send-text",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Client-Token",
-              "value": "F206336aa6c154c618083085a4b1f5de3S"
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
             }
           ]
         },
@@ -599,7 +598,7 @@
     },
     {
       "parameters": {
-        "jsCode": "function verificarHoraUtil(dataString) {\n    // Converte a string de data para um objeto Date\n    var data = new Date(dataString);\n    \n    // Obtém o dia da semana (0 = Domingo, 1 = Segunda, ..., 6 = Sábado)\n    var diaSemana = data.getDay();\n    \n    // Obtém a hora atual\n    var horaAtual = data.getHours();\n    \n    // Verifica se não é sábado ou domingo e se a hora está entre 7 da manhã e 8 da noite\n    if (diaSemana !== 0 && diaSemana !== 6 && horaAtual >= 7 && horaAtual < 20) {\n        return true;\n    } else {\n        return false;\n    }\n}\n\nvar dataAtual = $input.all()[0].json['currentDate']\n\nvar isValid = (verificarHoraUtil(dataAtual));\n\nreturn {isValid}\n"
+        "jsCode": "function verificarHoraUtil(dataString) {\n    // Converte a string de data para um objeto Date\n    var data = new Date(dataString);\n    \n    // Usa Intl.DateTimeFormat para obter a hora local correta considerando o fuso horário\n    var options = { hour: 'numeric', hour12: false, timeZone: 'America/Sao_Paulo' };\n    var horaLocal = new Intl.DateTimeFormat('pt-BR', options).format(data);\n    \n    // Converte a hora local para um número inteiro\n    var horaAtual = parseInt(horaLocal, 10);\n    \n    // Obtém o dia da semana (0 = Domingo, 1 = Segunda, ..., 6 = Sábado)\n    var diaSemana = data.getDay();\n    \n    // Adiciona logs para depuração\n    console.log(\"Data original:\", dataString);\n    console.log(\"Data convertida:\", data);\n    console.log(\"Dia da semana:\", diaSemana);\n    console.log(\"Hora local:\", horaAtual);\n    \n    // Verifica se não é sábado ou domingo e se a hora está entre 7 da manhã e 8 da noite\n    if (diaSemana !== 0 && diaSemana !== 6 && horaAtual >= 7 && horaAtual < 20) {\n        return true;\n    } else {\n        return false;\n    }\n}\n\nvar dataAtual = $input.all()[0].json['currentDate'];\n\nvar isValid = verificarHoraUtil(dataAtual);\n\nreturn {isValid};\n"
       },
       "id": "5be9f754-a9d9-4672-9ad9-0f26c2807d20",
       "name": "Code",
@@ -613,7 +612,7 @@
     {
       "parameters": {
         "options": {
-          "timezone": "America/Sao_Paulo"
+          "timezone": "=America/Sao_Paulo"
         }
       },
       "id": "4919c19f-117f-4708-bb44-0afc706b66e8",
@@ -654,7 +653,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        1080,
+        1100,
         340
       ]
     },
@@ -775,7 +774,9 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
   },
   "staticData": {
     "node:Schedule Trigger": {
@@ -784,6 +785,6 @@
   },
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-06-12T13:02:04.000Z",
-  "versionId": "af91a384-6ef2-499c-9f39-d38e51675701"
+  "updatedAt": "2024-06-12T20:43:20.000Z",
+  "versionId": "6a9b192a-5087-465b-a0b5-260c8e6129d5"
 }
