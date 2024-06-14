@@ -287,24 +287,6 @@
         ]
       ]
     },
-    "Dados Cliente | 1 Dia": {
-      "main": [
-        [
-          {
-            "node": "Formata Telefone | 1 Dia",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Loop | 1 Dia",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Envia Folder | 1 Dia": {
       "main": [
         [
@@ -488,6 +470,24 @@
         [
           {
             "node": "Loop | Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados Cliente | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia",
             "type": "main",
             "index": 0
           }
@@ -1168,58 +1168,6 @@
     },
     {
       "parameters": {
-        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.customer }}",
-        "sendQuery": true,
-        "queryParameters": {
-          "parameters": [
-            {
-              "name": "limit",
-              "value": "1000"
-            },
-            {
-              "name": "status",
-              "value": "PENDING"
-            },
-            {
-              "name": "billingType",
-              "value": "BOLETO"
-            },
-            {
-              "name": "dueDate[ge]",
-              "value": "={{ $json.formattedDate }}"
-            },
-            {
-              "name": "dueDate[le]",
-              "value": "={{ $json.formattedDate }}"
-            }
-          ]
-        },
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "access_token",
-              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "4c53bc28-34ee-43d2-8722-3d450020f712",
-      "name": "Dados Cliente | 1 Dia",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        2700,
-        420
-      ],
-      "retryOnFail": true,
-      "maxTries": 5,
-      "waitBetweenTries": 5000,
-      "onError": "continueErrorOutput"
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-image",
         "sendHeaders": true,
@@ -1543,6 +1491,58 @@
         780
       ],
       "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.customer }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4c53bc28-34ee-43d2-8722-3d450020f712",
+      "name": "Dados Cliente | 1 Dia",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2700,
+        420
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
     }
   ],
   "pinData": {},
@@ -1552,6 +1552,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-06-14T01:25:58.000Z",
-  "versionId": "d99da094-3498-48b1-a03d-eec402eed1e2"
+  "updatedAt": "2024-06-14T04:17:39.000Z",
+  "versionId": "9855ecc1-ad9d-4400-a994-02eb137e6a09"
 }
