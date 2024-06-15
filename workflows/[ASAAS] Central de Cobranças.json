@@ -211,17 +211,6 @@
         ]
       ]
     },
-    "Split | 1 Dia": {
-      "main": [
-        [
-          {
-            "node": "Loop | 1 Dia",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Split | 5 Dias": {
       "main": [
         [
@@ -281,42 +270,6 @@
         [
           {
             "node": "Loop | 5 dias",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Envia Folder | 1 Dia": {
-      "main": [
-        [
-          {
-            "node": "Envia Boleto | 1 Dia",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Loop | 1 Dia",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Envia Boleto | 1 Dia": {
-      "main": [
-        [
-          {
-            "node": "Delay | 1 Dia",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Loop | 1 Dia",
             "type": "main",
             "index": 0
           }
@@ -444,7 +397,7 @@
       "main": [
         [
           {
-            "node": "Envia Folder | 1 Dia",
+            "node": "Envia Folder | 1 Dia evo",
             "type": "main",
             "index": 0
           }
@@ -492,6 +445,69 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Data Atual | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Folder | 1 Dia evo": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto | 1 Dia evo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Boleto | 1 Dia evo": {
+      "main": [
+        [
+          {
+            "node": "Delay | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Loop | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        []
       ]
     }
   },
@@ -1010,7 +1026,7 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        2200,
+        2180,
         400
       ]
     },
@@ -1160,96 +1176,6 @@
       "position": [
         3380,
         -40
-      ],
-      "retryOnFail": true,
-      "maxTries": 5,
-      "waitBetweenTries": 5000,
-      "onError": "continueErrorOutput"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-image",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $json.mobilePhone }}"
-            },
-            {
-              "name": "image",
-              "value": "https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/[SALA BLACK] Aviso vencimento - amanhã.png"
-            },
-            {
-              "name": "caption",
-              "value": "={{ $json.name.split(\" \")[0] }}, segue o link da sua próxima fatura da *Sala Black:*\n{{ $('Loop | 1 Dia').item.json.bankSlipUrl }}\n\nPara  facilitar, vou deixar abaixo a sua fatura em PDF 👇"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "e613e706-8d5d-49e1-8b84-7935c86f1859",
-      "name": "Envia Folder | 1 Dia",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        3180,
-        380
-      ],
-      "retryOnFail": true,
-      "maxTries": 5,
-      "waitBetweenTries": 5000,
-      "onError": "continueErrorOutput"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-document/pdf",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Formata Telefone | 1 Dia').item.json.mobilePhone }}"
-            },
-            {
-              "name": "document",
-              "value": "={{ $('Loop | 1 Dia').item.json.bankSlipUrl }}"
-            },
-            {
-              "name": "fileName",
-              "value": "=Fatura - {{ $('Dados Cliente | 1 Dia').item.json.name }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "ac970c30-3e35-42ec-83d4-44040f6a8712",
-      "name": "Envia Boleto | 1 Dia",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        3380,
-        360
       ],
       "retryOnFail": true,
       "maxTries": 5,
@@ -1543,6 +1469,130 @@
       "maxTries": 5,
       "waitBetweenTries": 5000,
       "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "image"
+            },
+            {
+              "name": "mediaMessage.caption",
+              "value": "={{ $json.name.split(\" \")[0] }}, segue o link da sua próxima fatura da *Sala Black:* \n{{ $('Loop | 1 Dia').item.json.bankSlipUrl }}  \n\nPara  facilitar, vou deixar abaixo a sua fatura em PDF 👇"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "=https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/lembrete%20-%20amanha%20sb.png"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "76dcfbba-ff79-43ec-a497-1d778d6e4d06",
+      "name": "Envia Folder | 1 Dia evo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3160,
+        380
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Formata Telefone | 1 Dia').item.json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "document"
+            },
+            {
+              "name": "mediaMessage.fileName",
+              "value": "=Fatura - {{ $('Dados Cliente | 1 Dia').item.json.name }}.pdf"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "={{ $('Loop | 1 Dia').item.json.bankSlipUrl }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "aecee646-c6a4-4cff-b711-120127ef4cc2",
+      "name": "Envia Boleto | 1 Dia evo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3400,
+        360
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "f3e8914d-920e-4092-b094-2e75b4797589",
+              "leftValue": "={{ $json.customer }}",
+              "rightValue": "=cus_000076572167",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8d355da4-e74c-4af9-984f-4ce92a94e295",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        3840,
+        1080
+      ]
     }
   ],
   "pinData": {},
@@ -1552,6 +1602,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-06-14T04:17:39.000Z",
-  "versionId": "9855ecc1-ad9d-4400-a994-02eb137e6a09"
+  "updatedAt": "2024-06-14T19:32:41.000Z",
+  "versionId": "9d7cc25c-26eb-4857-811b-2ca05fb78a27"
 }
