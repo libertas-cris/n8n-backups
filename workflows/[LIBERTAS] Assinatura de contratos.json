@@ -55,6 +55,11 @@
           }
         ]
       ]
+    },
+    "Google Sheets": {
+      "main": [
+        []
+      ]
     }
   },
   "createdAt": "2024-01-26T13:18:27.142Z",
@@ -325,6 +330,33 @@
           "name": "Cris - Libertas"
         }
       }
+    },
+    {
+      "parameters": {
+        "url": "=https://sandbox.d4sign.com.br/api/v1/documents/{{ $('Trata Webhook').item.json.uuid }}/download ",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "tokenAPI",
+              "value": "live_572a5e3cae0817e08595766f2b4ed24c3a8fbc8b56f241ace52c64f7bec81c9f"
+            },
+            {
+              "name": "cryptKey",
+              "value": "live_crypt_nOkdsKT0fYjsRLPschNcLtqdP9Gp8UDI"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c03aa044-d7cc-4a8c-be0b-5d1d852173a5",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1120,
+        740
+      ]
     }
   ],
   "pinData": {
@@ -368,6 +400,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-23T02:50:26.000Z",
-  "versionId": "0ef847a5-8e63-44a4-9461-4ed8570910c0"
+  "updatedAt": "2024-06-18T00:52:33.000Z",
+  "versionId": "073940ea-957b-40ad-b2fe-649065e9464a"
 }
