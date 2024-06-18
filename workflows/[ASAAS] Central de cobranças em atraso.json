@@ -1,0 +1,2073 @@
+{
+  "active": false,
+  "connections": {
+    "Data Atual | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Menos 5 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Listar Cobranças | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Listar Cobranças | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Dados | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Atual | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Menos 1 dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Listar Cobranças | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Listar Cobranças | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Dados | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Sem dados | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop | 5 dias": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Dados Cliente | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados Cliente | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 5 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Folder | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 5 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Boleto | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Delay | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 5 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop | 1 Dia": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Dados Cliente | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Loop | 5 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Loop | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone | 5 Dias": {
+      "main": [
+        [
+          {
+            "node": "Envia Folder | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 5 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Envia Folder | 1 Dia evo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados Cliente | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Folder | 1 Dia evo": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto | 1 Dia evo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Boleto | 1 Dia evo": {
+      "main": [
+        [
+          {
+            "node": "Delay | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Menos 5 dias": {
+      "main": [
+        [
+          {
+            "node": "Formata Data | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Menos 1 dia": {
+      "main": [
+        [
+          {
+            "node": "Formata Data | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        []
+      ]
+    },
+    "Loop | 1 Dia1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Dados Cliente | 1 Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay | 1 Dia1": {
+      "main": [
+        [
+          {
+            "node": "Loop | 1 Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone | 1 Dia1": {
+      "main": [
+        [
+          {
+            "node": "Envia Folder | 1 Dia evo1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados Cliente | 1 Dia1": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone | 1 Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Folder | 1 Dia evo1": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto | 1 Dia evo1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Boleto | 1 Dia evo1": {
+      "main": [
+        [
+          {
+            "node": "Delay | 1 Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Atual | 3 Dias": {
+      "main": [
+        [
+          {
+            "node": "Menos 3 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Menos 3 dias": {
+      "main": [
+        [
+          {
+            "node": "Formata Data | 3 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data | 3 Dias": {
+      "main": [
+        [
+          {
+            "node": "Listar Cobranças | 3 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Listar Cobranças | 3 Dias": {
+      "main": [
+        [
+          {
+            "node": "Dados | 3 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados | 3 Dias": {
+      "main": [
+        [
+          {
+            "node": "Sem dados | 3 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split | 3 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados | 1 Dia": {
+      "main": [
+        [
+          {
+            "node": "Sem dados | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split | 1 Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop | 1 Dia2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Dados Cliente | 1 Dia2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay | 1 Dia2": {
+      "main": [
+        [
+          {
+            "node": "Loop | 1 Dia2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone | 1 Dia2": {
+      "main": [
+        [
+          {
+            "node": "Envia Folder | 1 Dia evo2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados Cliente | 1 Dia2": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone | 1 Dia2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Folder | 1 Dia evo2": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto | 1 Dia evo2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Boleto | 1 Dia evo2": {
+      "main": [
+        [
+          {
+            "node": "Delay | 1 Dia2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 1 Dia2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Atual | 10 Dias": {
+      "main": [
+        [
+          {
+            "node": "Menos 10 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Menos 10 dias": {
+      "main": [
+        [
+          {
+            "node": "Formata Data | 10 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Data | 10 Dias": {
+      "main": [
+        [
+          {
+            "node": "Listar Cobranças | 10 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Listar Cobranças | 10 Dias": {
+      "main": [
+        [
+          {
+            "node": "Dados | 10 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados | 10 Dias": {
+      "main": [
+        [
+          {
+            "node": "Sem dados | 10 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split | 10 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-18T04:29:42.372Z",
+  "id": "erA9bzjeK0f0GGzA",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[ASAAS] Central de cobranças em atraso",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "5829382c-4add-4325-894f-b3ed3832e938",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        740,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "timezone": "America/Sao_Paulo"
+        }
+      },
+      "id": "d48f9015-b12b-49a8-b279-9346ff17e8df",
+      "name": "Data Atual | 5 Dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "8272c212-5756-4062-8555-0c717a0834a9",
+      "name": "Formata Data | 5 Dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58afdaa9-eb46-4e4c-87ba-82858461a10b",
+      "name": "Listar Cobranças | 5 Dias",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1800,
+        560
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "2415461a-f981-464f-80a4-c97d846f1829",
+      "name": "Data Atual | 1 Dia",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "b2367661-3e3e-46b8-930e-b21751e32d5c",
+      "name": "Formata Data | 1 Dia",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "dd1455a0-77ca-49a7-b5d7-02ef733c5b29",
+      "name": "Listar Cobranças | 1 Dia",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1800,
+        -500
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5eb60077-15ae-46d1-89e4-eb32cd66d752",
+              "leftValue": "={{ $json.totalCount }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "1d699c40-d647-4006-a80f-b3d4bef1d25e",
+              "leftValue": "={{ $json.totalCount }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5d4accad-d4aa-411c-8047-1c45de623294",
+      "name": "Dados | 5 Dias",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        560
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "90e210af-5b1e-48dc-a70c-7789b756a795",
+      "name": "Sem dados | 5 Dias",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        380
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "dd7db8e8-d1a3-44f8-b891-78be3cf7fec7",
+      "name": "Sem dados | 1 Dia",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -680
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b18b54cf-20a5-49e4-9ae6-003144f23d10",
+      "name": "Loop | 5 dias",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2500,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "3d58f3df-14d3-4a81-b828-15a3d13c6f43",
+      "name": "Split | 1 Dia",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2260,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "1532751d-ec3e-4e2f-b2a6-08965bcf5ec8",
+      "name": "Split | 5 Dias",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.customer }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f12af8cc-913f-4f88-b7c3-e3164109696a",
+      "name": "Dados Cliente | 5 Dias",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2780,
+        600
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-image",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.mobilePhone }}"
+            },
+            {
+              "name": "image",
+              "value": "https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/%5BSALA%20BLACK%5D%20Aviso%20vencimento%20-%205%20dias%20(1).png"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc0a69e2-5cd5-4e1b-bc76-909f8a607a06",
+      "name": "Envia Folder | 5 Dias",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3240,
+        560
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-document/pdf",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone | 5 Dias').item.json.mobilePhone }}"
+            },
+            {
+              "name": "document",
+              "value": "={{ $('Loop | 5 dias').item.json.bankSlipUrl }}"
+            },
+            {
+              "name": "fileName",
+              "value": "=Fatura - {{ $('Dados Cliente | 5 Dias').item.json.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9b5c9d4b-5d87-4e59-899f-d7c80fa5d9e3",
+      "name": "Envia Boleto | 5 Dias",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3460,
+        540
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "c862fed2-ed41-4de8-b6d9-59a6bb9d7d0f",
+      "name": "Loop | 1 Dia",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2500,
+        -480
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "id": "97d9c78b-d232-40c3-913d-3f3416e233c4",
+      "name": "Delay | 5 Dias",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3680,
+        520
+      ],
+      "webhookId": "2588284e-f995-467c-a1c9-7b21f66415bc"
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "id": "74016e68-6f0f-417e-9461-6499aa953054",
+      "name": "Delay | 1 Dia",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3680,
+        -540
+      ],
+      "webhookId": "03012293-d58f-4ca0-b824-7a8c972388b3"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['mobilePhone'] = formataTelefone($input.all()[0].json['mobilePhone'] )\n\nreturn $input.all();"
+      },
+      "id": "9531c1c3-7cfe-4c07-9811-065461480f87",
+      "name": "Formata Telefone | 5 Dias",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3020,
+        580
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['mobilePhone'] = formataTelefone($input.all()[0].json['mobilePhone'] )\n\nreturn $input.all();"
+      },
+      "id": "81a0222f-03af-4f66-bbc3-bfd08871ec8c",
+      "name": "Formata Telefone | 1 Dia",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3020,
+        -480
+      ],
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.customer }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "72d7dc01-ab37-45a3-8fc3-464d3ad1d840",
+      "name": "Dados Cliente | 1 Dia",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2780,
+        -460
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "image"
+            },
+            {
+              "name": "mediaMessage.caption",
+              "value": "={{ $json.name.split(\" \")[0] }}, segue o link da sua próxima fatura da *Sala Black:* \n{{ $('Loop | 1 Dia').item.json.bankSlipUrl }}  \n\nPara  facilitar, vou deixar abaixo a sua fatura em PDF 👇"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "=https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/lembrete%20-%20amanha%20sb.png"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f71f25c1-3df2-4d97-ba6d-1140b4f45eee",
+      "name": "Envia Folder | 1 Dia evo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3240,
+        -500
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Formata Telefone | 1 Dia').item.json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "document"
+            },
+            {
+              "name": "mediaMessage.fileName",
+              "value": "=Fatura - {{ $('Dados Cliente | 1 Dia').item.json.name }}.pdf"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "={{ $('Loop | 1 Dia').item.json.bankSlipUrl }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "98ee5dba-a488-46bc-a5fc-476cf20e6f93",
+      "name": "Envia Boleto | 1 Dia evo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3480,
+        -520
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 5,
+        "options": {}
+      },
+      "id": "35549d48-a6c4-4e0b-aa3b-bdd7e84e942d",
+      "name": "Menos 5 dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 1,
+        "options": {}
+      },
+      "id": "57146932-5599-45f2-95af-fe33f377497c",
+      "name": "Menos 1 dia",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ab07a612-66dd-4407-a6a4-19efd35b679c",
+      "name": "Loop | 1 Dia1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2500,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "id": "cbd977bc-a4b7-4c16-b119-36a5440771f3",
+      "name": "Delay | 1 Dia1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3680,
+        -40
+      ],
+      "webhookId": "03012293-d58f-4ca0-b824-7a8c972388b3"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['mobilePhone'] = formataTelefone($input.all()[0].json['mobilePhone'] )\n\nreturn $input.all();"
+      },
+      "id": "87d6d739-d265-45ca-97ae-9163dd423154",
+      "name": "Formata Telefone | 1 Dia1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3020,
+        20
+      ],
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.customer }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e6572bf1-b164-4c7e-8f27-afbb4e4f4a53",
+      "name": "Dados Cliente | 1 Dia1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2780,
+        40
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "image"
+            },
+            {
+              "name": "mediaMessage.caption",
+              "value": "={{ $json.name.split(\" \")[0] }}, segue o link da sua próxima fatura da *Sala Black:* \n{{ $('Loop | 1 Dia1').item.json.bankSlipUrl }}  \n\nPara  facilitar, vou deixar abaixo a sua fatura em PDF 👇"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "=https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/lembrete%20-%20amanha%20sb.png"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "214fafcb-7ba9-4908-a01f-049fee26f9f4",
+      "name": "Envia Folder | 1 Dia evo1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3240,
+        0
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Formata Telefone | 1 Dia1').item.json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "document"
+            },
+            {
+              "name": "mediaMessage.fileName",
+              "value": "=Fatura - {{ $('Dados Cliente | 1 Dia1').item.json.name }}.pdf"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "={{ $('Loop | 1 Dia1').item.json.bankSlipUrl }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "58362cc7-f4c0-4cef-be74-2a3824d10ef9",
+      "name": "Envia Boleto | 1 Dia evo1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3480,
+        -20
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b6e9dca0-4cdc-4dcd-baa0-a79346b386b0",
+      "name": "Data Atual | 3 Dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 3,
+        "options": {}
+      },
+      "id": "8960edce-0a92-403d-890e-9991fea1e842",
+      "name": "Menos 3 dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "3d851165-3ba2-48a1-89e4-b0be6829b285",
+      "name": "Formata Data | 3 Dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3755f4d7-cdca-486f-9494-e9d6bed2e395",
+      "name": "Listar Cobranças | 3 Dias",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1800,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5eb60077-15ae-46d1-89e4-eb32cd66d752",
+              "leftValue": "={{ $json.totalCount }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "1d699c40-d647-4006-a80f-b3d4bef1d25e",
+              "leftValue": "={{ $json.totalCount }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e6f9a77d-579f-4ca4-bad9-61b46a3d6bc3",
+      "name": "Dados | 3 Dias",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5eb60077-15ae-46d1-89e4-eb32cd66d752",
+              "leftValue": "={{ $json.totalCount }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "1d699c40-d647-4006-a80f-b3d4bef1d25e",
+              "leftValue": "={{ $json.totalCount }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "2dacf150-5859-4a99-be1e-b8802cc7b54a",
+      "name": "Dados | 1 Dia",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "3689a4a7-08ec-482e-bb29-26a28c52ef95",
+      "name": "Split | 3 Dias",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2260,
+        20
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "b03642ec-10aa-4769-a7cb-4feac834d048",
+      "name": "Sem dados | 3 Dias",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "b3f9166e-2501-4005-a697-e93aee912304",
+      "name": "Loop | 1 Dia2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2500,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 20
+      },
+      "id": "56217edd-d1fd-4836-8899-bfcfb0258d48",
+      "name": "Delay | 1 Dia2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3680,
+        1080
+      ],
+      "webhookId": "03012293-d58f-4ca0-b824-7a8c972388b3"
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['mobilePhone'] = formataTelefone($input.all()[0].json['mobilePhone'] )\n\nreturn $input.all();"
+      },
+      "id": "7b55cf05-b1b3-41d3-99a4-b88b34b4463d",
+      "name": "Formata Telefone | 1 Dia2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3020,
+        1140
+      ],
+      "retryOnFail": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/customers/{{ $json.customer }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c3e87150-097d-402e-992e-4e33331ccfdd",
+      "name": "Dados Cliente | 1 Dia2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2780,
+        1160
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "image"
+            },
+            {
+              "name": "mediaMessage.caption",
+              "value": "={{ $json.name.split(\" \")[0] }}, segue o link da sua próxima fatura da *Sala Black:* \n{{ $('Loop | 1 Dia2').item.json.bankSlipUrl }}  \n\nPara  facilitar, vou deixar abaixo a sua fatura em PDF 👇"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "=https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/lembrete%20-%20amanha%20sb.png"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c38e0fc8-7ec6-40ff-a5e5-020b53685ed2",
+      "name": "Envia Folder | 1 Dia evo2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3240,
+        1120
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Formata Telefone | 1 Dia2').item.json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "document"
+            },
+            {
+              "name": "mediaMessage.fileName",
+              "value": "=Fatura - {{ $('Dados Cliente | 1 Dia2').item.json.name }}.pdf"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "={{ $('Loop | 1 Dia2').item.json.bankSlipUrl }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c9d791e7-5b86-4ef1-9e42-db83843d6345",
+      "name": "Envia Boleto | 1 Dia evo2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3480,
+        1100
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "21b63a2f-1bde-4365-9b11-111c57514bf4",
+      "name": "Data Atual | 10 Dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.currentDate }}",
+        "duration": 10,
+        "options": {}
+      },
+      "id": "96347e36-2cae-4d28-8849-27286e4e08d6",
+      "name": "Menos 10 dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.newDate }}",
+        "format": "yyyy-MM-dd",
+        "options": {
+          "timezone": true
+        }
+      },
+      "id": "78d611e3-6f2d-4d91-af56-ff601a82326e",
+      "name": "Formata Data | 10 Dias",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.asaas.com/api/v3/payments/",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "1000"
+            },
+            {
+              "name": "status",
+              "value": "PENDING"
+            },
+            {
+              "name": "billingType",
+              "value": "BOLETO"
+            },
+            {
+              "name": "dueDate[ge]",
+              "value": "={{ $json.formattedDate }}"
+            },
+            {
+              "name": "dueDate[le]",
+              "value": "={{ $json.formattedDate }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "=$aact_YTU5YTE0M2M2N2I4MTliNzk0YTI5N2U5MzdjNWZmNDQ6OjAwMDAwMDAwMDAwMDAzNjY1OTE6OiRhYWNoX2MwYmE1YmU1LTkyOGYtNGNiMS1hMGE0LTI5YmJlNDJlNDc0Mg=="
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e537006a-dc6e-4513-a783-1958d95e90ca",
+      "name": "Listar Cobranças | 10 Dias",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1800,
+        1120
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "5eb60077-15ae-46d1-89e4-eb32cd66d752",
+              "leftValue": "={{ $json.totalCount }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "number",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "1d699c40-d647-4006-a80f-b3d4bef1d25e",
+              "leftValue": "={{ $json.totalCount }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f532d4e1-d702-469b-83da-98f31effddeb",
+      "name": "Dados | 10 Dias",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2020,
+        1120
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6056e6a0-5582-45bd-8191-f2f5b795b14d",
+      "name": "Sem dados | 10 Dias",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "data",
+        "options": {}
+      },
+      "id": "24a9a19e-f595-43c5-876f-33478ef50866",
+      "name": "Split | 10 Dias",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2260,
+        1140
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-18T04:42:33.000Z",
+  "versionId": "65e71534-85c2-4f51-beb6-a2dae7292ff3"
+}
