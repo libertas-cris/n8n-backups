@@ -152,7 +152,7 @@
             },
             {
               "name": "message",
-              "value": "={{ $json.Nome.split(\" \")[0] }}, are you okay?\n\n*Vimos o quanto seu inglês evoluiu* depois que entrou no *BritiShize*...\n\nPor esse motivo, o seu nome foi selecionado para participar do *concurso de depoimentos.*\n\n_E como vai funcionar o concurso?_\n\nBasta gravar um vídeo respondendo algumas perguntinhas contando sua experiência com o *BritiShize.* \n\nOs 10 melhores depoimentos vão ganhar um *AUDIOBOOK* exclusivo!\n\nDetalhe, esse presente é vendido uma vez ao ano, custa *R$ 197* e *você pode levar de graça.*\n\nTopa participar do concurso? Basta é só me responder com *SHIZE* que te passo mais informações."
+              "value": "={{ $json.Nome.split(\" \")[0] }}, passando aqui pra te avisar que o concurso de depoimentos acaba amanhã.\n\nCaso ainda não tenha enviado seu vídeo, pode mandar pra gente até amanhã a noite tudo bem? ❤️\n\nAguardo seu vídeo, see you later."
             }
           ]
         },
@@ -189,6 +189,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-06-18T19:16:50.000Z",
-  "versionId": "39f8a386-eaf2-4830-b072-d5f9e263b3ab"
+  "updatedAt": "2024-06-20T20:22:16.000Z",
+  "versionId": "7f5242f6-0b64-4a67-ba97-c6ce06edc875"
 }
