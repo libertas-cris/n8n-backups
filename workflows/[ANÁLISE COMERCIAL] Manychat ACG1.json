@@ -1,0 +1,266 @@
+{
+  "active": true,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-20T18:34:41.481Z",
+  "id": "9IEffdEih2erEgds",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[ANÁLISE COMERCIAL] Manychat ACG1",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c621b47c-c956-449d-a0d1-4a0e0bdef0dc",
+        "options": {}
+      },
+      "id": "c637d607-fdc3-4869-914d-810f78136be1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "c621b47c-c956-449d-a0d1-4a0e0bdef0dc"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "54b2b7d7-49ad-4e3b-a5cb-a533c6603fe9",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['whatsapp'] = formataTelefone($input.all()[0].json['whatsapp'])\n\nreturn $input.all();"
+      },
+      "id": "ee4471e8-4849-4c05-a414-6700d4661a67",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
+          "mode": "list",
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "ACG1 MANYCHAT",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{new DateTime($now).toFormat('dd/MM/yyyy HH:mm')}}",
+            "nome": "={{ $json.nome }}",
+            "email": "={{ $json.email }}",
+            "telefone": "={{ $json.whatsapp }}",
+            "funcao": "={{ $json.funcao }}",
+            "faturamento": "={{ $json.faturamento }}",
+            "dificuldade": "={{ $json.dificuldade }}",
+            "investimento em tráfego": "={{ $json.investimentoTrafego }}",
+            "clinica e região": "={{ $json.clinicaRegiao }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "funcao",
+              "displayName": "funcao",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "clinica e região",
+              "displayName": "clinica e região",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "faturamento",
+              "displayName": "faturamento",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "investimento em tráfego",
+              "displayName": "investimento em tráfego",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "dificuldade",
+              "displayName": "dificuldade",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0a367bdd-ce77-42a6-ae02-14531527569c",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1480,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "ManyChat",
+            "content-length": "254",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "18.184.230.211",
+            "cf-ipcountry": "DE",
+            "cf-ray": "896dea6fc8bb3a44-FRA",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json; charset=utf-8",
+            "x-forwarded-for": "162.158.94.4",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "162.158.94.4"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "nome": "Matheus",
+            "email": "{{email}}",
+            "whatsapp": "81993515055",
+            "clinicaRegiao": "clínica teste em caruaru",
+            "funcao": "Dono/Sócio",
+            "faturamento": "R$101mil ~ R$250mil",
+            "dificuldade": "teste dificuldade",
+            "investimentoTrafego": "Sim, até 5 mil"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-06-20T18:54:12.000Z",
+  "versionId": "7ad9a8b4-3035-403e-8090-5720c94001a0"
+}
