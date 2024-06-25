@@ -1102,7 +1102,7 @@
             },
             {
               "name": "image",
-              "value": "https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/%5BSALA%20BLACK%5D%20Aviso%20vencimento%20-%205%20dias%20(1).png"
+              "value": "https://raw.githubusercontent.com/libertas-cris/folders-cobancas/main/lembrete-5d.png"
             }
           ]
         },
@@ -1398,7 +1398,7 @@
             },
             {
               "name": "mediaMessage.media",
-              "value": "=https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/lembrete%20-%20amanha%20sb.png"
+              "value": "=https://raw.githubusercontent.com/libertas-cris/folders-cobancas/main/lembrete%20-%20amanha%20sb.png"
             }
           ]
         },
@@ -1522,7 +1522,7 @@
             },
             {
               "name": "mediaMessage.media",
-              "value": "=https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/Lembrete%20-%20Boletos%20(Story)%20hoje.png"
+              "value": "=https://raw.githubusercontent.com/libertas-cris/folders-cobancas/main/lembrete-hoje.png"
             }
           ]
         },
@@ -1592,6 +1592,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-06-18T04:29:55.000Z",
-  "versionId": "284b4cc4-0e92-4263-bc6c-f1baf09fcea4"
+  "updatedAt": "2024-06-24T18:54:21.000Z",
+  "versionId": "3a59cdf6-1344-46ae-aad0-b0c980e7f48e"
 }
