@@ -427,35 +427,17 @@
     },
     "Split | 5 Dias": {
       "main": [
-        [
-          {
-            "node": "Loop | 5 dias",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Split | 1 Dia": {
       "main": [
-        [
-          {
-            "node": "Loop | 1 Dia",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Split | Dia": {
       "main": [
-        [
-          {
-            "node": "Loop | Dia",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Envia Folder | Dia evo": {
@@ -488,6 +470,27 @@
         [
           {
             "node": "Loop | Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Data Atual | 5 Dias",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Data Atual | 1 Dia",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Data Atual | Dia",
             "type": "main",
             "index": 0
           }
@@ -1592,6 +1595,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-06-24T18:54:21.000Z",
-  "versionId": "3a59cdf6-1344-46ae-aad0-b0c980e7f48e"
+  "updatedAt": "2024-06-26T04:44:02.000Z",
+  "versionId": "20ea1fe2-8b4b-41d1-9ae5-870a918318e2"
 }
