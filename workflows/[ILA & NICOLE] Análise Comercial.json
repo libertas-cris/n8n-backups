@@ -406,17 +406,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1069928038,
+          "value": 162548593,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=162548593"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -427,8 +427,6 @@
             "Telefone": "={{ $('Formata Telefone').item.json.telefone }}",
             "Chave(busca)": "={{ $('Formata Telefone').item.json.telefone.slice(-7) }}",
             "Etapa_form": "1",
-            "Staus": "incompleto",
-            "Qualificado": "sem dados",
             "Clínica": "={{ $('Formata Telefone').item.json.clinica }}",
             "utm_source": "={{ $('Formata Telefone').item.json.utm_source == 'null' ? \"\" : $('Formata Telefone').item.json.utm_source }}",
             "utm_campaign": "={{ $('Formata Telefone').item.json.utm_campaign == 'null' ? \"\" : $('Formata Telefone').item.json.utm_campaign }}",
@@ -675,17 +673,17 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1069928038,
+          "value": 162548593,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=162548593"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -917,17 +915,17 @@
       "parameters": {
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1069928038,
+          "value": 162548593,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=162548593"
         },
         "filtersUI": {
           "values": [
@@ -1069,17 +1067,17 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1069928038,
+          "value": 162548593,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=162548593"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1318,17 +1316,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 102238581,
+          "value": 136709084,
           "mode": "list",
           "cachedResultName": "[LEADS] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit#gid=102238581"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=136709084"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1594,17 +1592,17 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1069928038,
+          "value": 162548593,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=162548593"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -1843,17 +1841,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 102238581,
+          "value": 136709084,
           "mode": "list",
           "cachedResultName": "[LEADS] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=102238581"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=136709084"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -2124,17 +2122,17 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1069928038,
+          "value": 162548593,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=162548593"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -2373,17 +2371,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 102238581,
+          "value": 136709084,
           "mode": "list",
           "cachedResultName": "[LEADS] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=102238581"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=136709084"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -2624,17 +2622,17 @@
         "operation": "update",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 1069928038,
+          "value": 162548593,
           "mode": "list",
           "cachedResultName": "[AUTO] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=1069928038"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=162548593"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -2873,17 +2871,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc",
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
           "mode": "list",
-          "cachedResultName": "[ILA] [CICLO 4] Planilha Geral",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1INPXHLk2_yG-TSmi2mxGrTyqQjSGyf9jyWlVZN8XTHc/edit?usp=drivesdk"
+          "cachedResultName": "[ILA & NICOLE] Funis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
         },
         "sheetName": {
           "__rl": true,
-          "value": 102238581,
+          "value": 136709084,
           "mode": "list",
           "cachedResultName": "[LEADS] Análise Comercial",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/130dJLqIJVkcFvqzEpK2M_bMpaGvhZMOLhDsWGuSJxy0/edit#gid=102238581"
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=136709084"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -3648,6 +3646,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-14T03:15:35.000Z",
-  "versionId": "5fafa625-a5a1-4660-8573-2f6992c0b494"
+  "updatedAt": "2024-06-28T02:41:27.000Z",
+  "versionId": "21d64f04-6cdf-4497-b265-4449b1a717bf"
 }
