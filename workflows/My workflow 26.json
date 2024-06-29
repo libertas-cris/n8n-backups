@@ -1,0 +1,240 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        []
+      ]
+    },
+    "Wait": {
+      "main": [
+        []
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "Filter": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-06-28T20:40:37.611Z",
+  "id": "D60AMJGx0JE09zno",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 26",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "eeacce8c-abaf-428b-b73f-dd60bc3c3d89",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        620,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1PsRhz29j61GfjN5kLbonUbpCDWXM-XmYOfq7U1ofABU",
+          "mode": "list",
+          "cachedResultName": "[LIBERTAS] PROGRAMA DÍGITO",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PsRhz29j61GfjN5kLbonUbpCDWXM-XmYOfq7U1ofABU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1020147468,
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PsRhz29j61GfjN5kLbonUbpCDWXM-XmYOfq7U1ofABU/edit#gid=1020147468"
+        },
+        "options": {}
+      },
+      "id": "234c09d0-93a2-4793-b4e0-c7f83cd67c77",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        700,
+        500
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8e9ba596-bbed-4409-ae30-fa13918b67a1",
+              "leftValue": "={{ $json.Nome }}",
+              "rightValue": "Gabriel Ferraz",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b94ef741-7127-4c94-8e1e-6460af444e31",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        900,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.orcamentoslucrativos.com/message/sendWhatsAppAudio/libby",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "7njxl983dsikaazyfa0r1g"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\t\"number\": \"5511949719835\",\n\t\"options\": {\n\t\t\"delay\": 1200,\n\t\t\"presence\": \"recording\",\n        \"encoding\": true\n\t},\n\t\"audioMessage\": {\n\t\t\"audio\": \"https://raw.githubusercontent.com/libertas-cris/arquivos-pra-envio/main/0628.MP3\"\n\t}\n}",
+        "options": {}
+      },
+      "id": "b827381c-7f92-49b1-9a1e-533e3d44f99d",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1280,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8e9ba596-bbed-4409-ae30-fa13918b67a1",
+              "leftValue": "={{ $json.row_number }}",
+              "rightValue": 10,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "23b11616-f63e-40a6-a8c5-20210cda2b20",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1340,
+        740
+      ]
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (30 - 15 + 1)) + 15 }}"
+      },
+      "id": "f5c2acc7-b934-4f04-b113-3838e24b3649",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1720,
+        280
+      ],
+      "webhookId": "94b22001-7fa3-43a0-99d7-9f4d33fe34b1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "5e1fafea-4603-46df-b1f6-6285a728579b",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1040,
+        540
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-28T23:03:52.000Z",
+  "versionId": "06a036d4-a020-4f62-9668-b1bb8d7200a9"
+}
