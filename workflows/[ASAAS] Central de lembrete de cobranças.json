@@ -218,42 +218,6 @@
         ]
       ]
     },
-    "Envia Folder | 5 Dias": {
-      "main": [
-        [
-          {
-            "node": "Envia Boleto | 5 Dias",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Loop | 5 dias",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Envia Boleto | 5 Dias": {
-      "main": [
-        [
-          {
-            "node": "Delay | 5 Dias",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Loop | 5 dias",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop | 1 Dia": {
       "main": [
         [],
@@ -321,7 +285,7 @@
       "main": [
         [
           {
-            "node": "Envia Folder | 5 Dias",
+            "node": "Envia Folder | 5 Dias evo",
             "type": "main",
             "index": 0
           }
@@ -425,21 +389,6 @@
         ]
       ]
     },
-    "Split | 5 Dias": {
-      "main": [
-        []
-      ]
-    },
-    "Split | 1 Dia": {
-      "main": [
-        []
-      ]
-    },
-    "Split | Dia": {
-      "main": [
-        []
-      ]
-    },
     "Envia Folder | Dia evo": {
       "main": [
         [
@@ -491,6 +440,42 @@
           },
           {
             "node": "Data Atual | Dia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Folder | 5 Dias evo": {
+      "main": [
+        [
+          {
+            "node": "Envia Boleto | 5 Dias evo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 5 dias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Envia Boleto | 5 Dias evo": {
+      "main": [
+        [
+          {
+            "node": "Delay | 5 Dias",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop | 5 dias",
             "type": "main",
             "index": 0
           }
@@ -1085,92 +1070,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-image",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $json.mobilePhone }}"
-            },
-            {
-              "name": "image",
-              "value": "https://raw.githubusercontent.com/libertas-cris/folders-cobancas/main/lembrete-5d.png"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "9f216574-ba9e-4434-ab3d-cd518b4040f0",
-      "name": "Envia Folder | 5 Dias",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        3160,
-        -20
-      ],
-      "retryOnFail": true,
-      "maxTries": 5,
-      "waitBetweenTries": 5000,
-      "onError": "continueErrorOutput"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-document/pdf",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "={{ $('Formata Telefone | 5 Dias').item.json.mobilePhone }}"
-            },
-            {
-              "name": "document",
-              "value": "={{ $('Loop | 5 dias').item.json.bankSlipUrl }}"
-            },
-            {
-              "name": "fileName",
-              "value": "=Fatura - {{ $('Dados Cliente | 5 Dias').item.json.name }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "530bfc7e-1330-48ae-a5dd-a7e6a1e0ca64",
-      "name": "Envia Boleto | 5 Dias",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        3380,
-        -40
-      ],
-      "retryOnFail": true,
-      "maxTries": 5,
-      "waitBetweenTries": 5000,
-      "onError": "continueErrorOutput"
-    },
-    {
-      "parameters": {
         "options": {}
       },
       "id": "76bc9b2e-0594-44ef-8b82-612a8b4a1b9f",
@@ -1586,6 +1485,98 @@
         740
       ],
       "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "image"
+            },
+            {
+              "name": "mediaMessage.caption",
+              "value": "={{ $json.name.split(\" \")[0] }}, segue o link da sua próxima fatura da *Sala Black:* \n{{ $('Loop | 5 dias').item.json.bankSlipUrl }}  \n\nPara  facilitar, vou deixar abaixo a sua fatura em PDF 👇"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "=https://raw.githubusercontent.com/libertas-cris/folders-cobancas/main/lembrete%20-%20amanha%20sb.png"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5539dbe4-1054-4006-87d7-243a1ba5b1e3",
+      "name": "Envia Folder | 5 Dias evo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3160,
+        -20
+      ],
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.dentistapower.com.br/message/sendMedia/cobrancas",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "3m067mgvkfgrdn7ka1nffn"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "number",
+              "value": "={{ $('Formata Telefone | 5 Dias').item.json.mobilePhone }}"
+            },
+            {
+              "name": "mediaMessage.mediatype",
+              "value": "document"
+            },
+            {
+              "name": "mediaMessage.fileName",
+              "value": "=Fatura - {{ $('Dados Cliente | 5 Dias').item.json.name }}.pdf"
+            },
+            {
+              "name": "mediaMessage.media",
+              "value": "={{ $('Loop | 5 dias').item.json.bankSlipUrl }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b5a8b5c0-7789-44a0-b8e0-7121200a2413",
+      "name": "Envia Boleto | 5 Dias evo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3380,
+        -40
+      ],
+      "onError": "continueErrorOutput"
     }
   ],
   "pinData": {},
@@ -1595,6 +1586,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-06-26T04:44:02.000Z",
-  "versionId": "20ea1fe2-8b4b-41d1-9ae5-870a918318e2"
+  "updatedAt": "2024-06-29T17:04:44.000Z",
+  "versionId": "b75313af-7313-478e-a049-236d8d400f0d"
 }
