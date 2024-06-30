@@ -22,32 +22,6 @@
           }
         ]
       ]
-    },
-    "Filter1": {
-      "main": [
-        []
-      ]
-    },
-    "Wait": {
-      "main": [
-        []
-      ]
-    },
-    "Loop Over Items": {
-      "main": [
-        [],
-        []
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        []
-      ]
-    },
-    "Filter": {
-      "main": [
-        []
-      ]
     }
   },
   "createdAt": "2024-06-28T20:40:37.611Z",
@@ -137,8 +111,8 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        900,
-        440
+        880,
+        480
       ]
     },
     {
@@ -235,6 +209,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-06-28T23:03:52.000Z",
-  "versionId": "06a036d4-a020-4f62-9668-b1bb8d7200a9"
+  "updatedAt": "2024-06-29T16:59:42.000Z",
+  "versionId": "0f4d9c97-d783-4ca9-9055-a97ed297bd28"
 }
