@@ -1,0 +1,801 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Aguarda 1 dia",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem 1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem 1": {
+      "main": [
+        [
+          {
+            "node": "Delay M1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay M1": {
+      "main": [
+        [
+          {
+            "node": "Mensagem 1.1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay M1.1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp1": {
+      "main": [
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aguarda 1 dia": {
+      "main": [
+        [
+          {
+            "node": "ClickUp1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "ClickUp2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Mensagem 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay M2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp2": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Filter2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items2": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Mensagem 3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem 1.1": {
+      "main": [
+        [
+          {
+            "node": "Delay M1.1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem 2": {
+      "main": [
+        [
+          {
+            "node": "Delay M2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mensagem 3": {
+      "main": [
+        [
+          {
+            "node": "Delay M3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay M3": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-29T17:07:19.598Z",
+  "id": "aBYLTKaI2U8TzTJs",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "KPI's Mensal - Mensagens e follow up",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "3a1c04dc-f0b8-4b3f-8f6d-d1100cee6f88",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        820,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130359074",
+        "list": "901301121637",
+        "filters": {
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": "d0e4fbfc-0f01-45e1-b9a7-2f89d4f44d72",
+                "operator": "IS NULL"
+              }
+            ]
+          },
+          "statuses": [
+            "ativo"
+          ]
+        }
+      },
+      "id": "785efeb1-f73b-443f-a354-a101970b3727",
+      "name": "ClickUp",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        380
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8e751e88-3928-4259-9249-a645c4bc4948",
+              "leftValue": "={{ $json.custom_fields.name }}",
+              "rightValue": "=Telefone",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b1e2c8c6-e883-47e0-9517-573381be6d10",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "custom_fields",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "id, name",
+        "options": {}
+      },
+      "id": "567ab324-4129-4ab1-8f03-14f12ed6ae3f",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "7ae62e14-cc87-44f9-9a30-e92eb3a126a7",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1700,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.custom_fields.value }}"
+            },
+            {
+              "name": "message",
+              "value": "=Olá Tudo bem? Como foi o mês de Junho aí na sua clínica?  \n\nPreciso que me envie algumas métricas referentes ao mês de Junho/2024, por favor:"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "95a2e095-52c0-444b-815d-dd931499e4b5",
+      "name": "Mensagem 1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1960,
+        400
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "62feaa33-5214-4bf8-b2cb-562b4c7288ca",
+      "name": "Delay M1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2180,
+        400
+      ],
+      "webhookId": "3477d4b2-f189-4799-8a56-067038df0e16"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "days"
+      },
+      "id": "896690bf-ca95-4947-882d-5ffb13b2b5f7",
+      "name": "Aguarda 1 dia",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1960,
+        140
+      ],
+      "webhookId": "73097d4d-4d62-4b97-a497-aa00ce12e16a"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (30 - 15 + 1)) + 15 }}"
+      },
+      "id": "2bc24143-c5f4-4967-a393-75b67d79cbad",
+      "name": "Delay M1.1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2640,
+        400
+      ],
+      "webhookId": "3477d4b2-f189-4799-8a56-067038df0e16"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130359074",
+        "list": "901301121637",
+        "filters": {
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": "d0e4fbfc-0f01-45e1-b9a7-2f89d4f44d72",
+                "operator": "IS NULL"
+              }
+            ]
+          },
+          "statuses": [
+            "ativo"
+          ]
+        }
+      },
+      "id": "d9fa40bc-1ffc-48b2-8c3e-a0a6cc13ec4a",
+      "name": "ClickUp1",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        2180,
+        140
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8e751e88-3928-4259-9249-a645c4bc4948",
+              "leftValue": "={{ $json.custom_fields.name }}",
+              "rightValue": "=Telefone",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "5ad69736-14c7-4c6d-8fad-bb929e1510af",
+      "name": "Filter1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "custom_fields",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "id, name",
+        "options": {}
+      },
+      "id": "eef2b660-bef3-4b75-a31a-fd9a82ccf75c",
+      "name": "Split Out1",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e5642f97-f8bd-4352-8a65-86f2c734996a",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        2880,
+        140
+      ]
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (30 - 15 + 1)) + 15 }}"
+      },
+      "id": "a5129f5d-566a-4352-8c9d-2693ea596d5e",
+      "name": "Delay M2",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        3340,
+        160
+      ],
+      "webhookId": "a21a2fa0-a8a0-4e2e-b334-83d196eaaa61"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130359074",
+        "list": "901301121637",
+        "filters": {
+          "customFieldsUi": {
+            "customFieldsValues": [
+              {
+                "fieldId": "d0e4fbfc-0f01-45e1-b9a7-2f89d4f44d72",
+                "operator": "IS NULL"
+              }
+            ]
+          },
+          "statuses": [
+            "ativo"
+          ]
+        }
+      },
+      "id": "02b8c4b1-c72a-49c0-b5e0-1744e02aeea8",
+      "name": "ClickUp2",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        3140,
+        -60
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "8e751e88-3928-4259-9249-a645c4bc4948",
+              "leftValue": "={{ $json.custom_fields.name }}",
+              "rightValue": "=Telefone",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "43ebcdb8-73ef-4ce8-92db-b3588ecc6e70",
+      "name": "Filter2",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        3540,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "custom_fields",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "id, name",
+        "options": {}
+      },
+      "id": "1a017067-82b2-4647-8957-202ed5bef2cf",
+      "name": "Split Out2",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        3340,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "9d0c25cc-d70c-42bf-b75e-62f7e320689b",
+      "name": "Loop Over Items2",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        3780,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Loop Over Items').item.json.custom_fields.value }}"
+            },
+            {
+              "name": "message",
+              "value": "=VENDAS\n\n1) Meta de Faturamento: R$\n2) Realizado Faturamento: R$\n3) Oportunidade de vendas: R$\n4) Entrada Faturamento: R$\n5) Ticket Médio: R$\n6) Nº de fechamentos\n\nFLUXO DE CAIXA\n\n1) Recebíveis: R$ \n2) Despesa: R$\n3) Porcentagem de Inadimplência: \n4) Lucratividade: R$\n\nAGENDAMENTO E COMPARECIMENTO GERAL\n\n1) Agendamentos: \n2) Comparecimentos: \n\nPERFORMANCE TRÁFEGO PAGO\n\n1) Investimento em Tráfego Pago:\n2) Total nº de leads no mês\n3) Total nº de leads agendados no mês\n4) Total nº de leads comparecidos no mês\n5) Total de orçamentos realizados (em numeral)\n6) Valor total de orçamentos fechados pelo comparecimento de leads (em reais)\n\nPERFORMANCE INDICAÇÕES\n\n1) Nº de agendadamentos\n2) Nº de comparecimentos\n3) Nº de fechamentos\n4) Faturamento através de indicações"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1be89dc1-1c0e-4e81-a14c-c894db9cf14d",
+      "name": "Mensagem 1.1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2420,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.custom_fields.value }}"
+            },
+            {
+              "name": "message",
+              "value": "=Oláa! Você consegue me enviar as métricas que solicitei ainda hoje? Elas são de extrema importância para acompanharmos a sua evolução e ajustar o seu plano conforme necessário."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e8c58227-c8de-4351-b4e6-242a6a64e867",
+      "name": "Mensagem 2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3140,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.custom_fields.value }}"
+            },
+            {
+              "name": "message",
+              "value": "=Tudo bem?, Vi que você ainda não me enviou as métricas. Você ficou com alguma dúvida sobre alguma delas? Posso te ajudar com isso."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e75df014-441b-490b-9978-4d0f27ee870e",
+      "name": "Mensagem 3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        4040,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (30 - 15 + 1)) + 15 }}"
+      },
+      "id": "a2684812-6b02-4840-a441-247715ed4137",
+      "name": "Delay M3",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        4240,
+        -40
+      ],
+      "webhookId": "a21a2fa0-a8a0-4e2e-b334-83d196eaaa61"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-06-29T17:46:37.000Z",
+  "versionId": "9552c098-a61a-4836-bae9-6f14236b7dfe"
+}
