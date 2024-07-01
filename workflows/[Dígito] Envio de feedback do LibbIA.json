@@ -1,0 +1,235 @@
+{
+  "active": true,
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-06-26T00:33:32.111Z",
+  "id": "02XosALXRcxT5Hre",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[Dígito] Envio de feedback do LibbIA",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "dd5f0ffa-470b-4bc6-a34f-0f3b7584775e",
+        "options": {}
+      },
+      "id": "81374b63-d9a5-40e6-8853-aac98d4eb408",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        380
+      ],
+      "webhookId": "dd5f0ffa-470b-4bc6-a34f-0f3b7584775e"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "0a0ea8d4-bf2e-4354-bc65-46cc4690a4ec",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowise.autoflows.online/api/v1/prediction/692a3afd-6089-4910-8bc0-9e4b422a3801",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $json.prompt }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "948e3427-b1fe-4132-9bba-7fb9e3290b6f",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1240,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1PsRhz29j61GfjN5kLbonUbpCDWXM-XmYOfq7U1ofABU",
+          "mode": "list",
+          "cachedResultName": "[LIBERTAS] PROGRAMA DÍGITO",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PsRhz29j61GfjN5kLbonUbpCDWXM-XmYOfq7U1ofABU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1020147468,
+          "mode": "list",
+          "cachedResultName": "n8n",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1PsRhz29j61GfjN5kLbonUbpCDWXM-XmYOfq7U1ofABU/edit#gid=1020147468"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Nome",
+              "lookupValue": "={{ $('Trata Webhook').item.json.para }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "821cd908-99e8-4893-9591-67359d69290c",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1460,
+        380
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.Telefone }}"
+            },
+            {
+              "name": "message",
+              "value": "=*Comentário do Libby sobre o dígito:*\n\n{{ $('HTTP Request').item.json.text }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3154c64c-02d0-4fea-ab81-703c9c09422e",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1700,
+        380
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.marcosfoks.com.br",
+            "user-agent": "Make/production",
+            "content-length": "148",
+            "accept-encoding": "gzip, br",
+            "cdn-loop": "cloudflare",
+            "cf-connecting-ip": "54.209.79.175",
+            "cf-ipcountry": "US",
+            "cf-ray": "8999333e19c0571c-IAD",
+            "cf-visitor": "{\"scheme\":\"https\"}",
+            "content-type": "application/json",
+            "traceparent": "00-667b65b2000000005c9ece3826c09223-5c9ece3826c09223-00",
+            "tracestate": "dd=t.tid:667b65b200000000;t.dm:1;s:0",
+            "x-datadog-parent-id": "6673998438373298723",
+            "x-datadog-sampling-priority": "0",
+            "x-datadog-tags": "_dd.p.tid=667b65b200000000",
+            "x-datadog-trace-id": "6673998438373298723",
+            "x-forwarded-for": "172.70.134.128",
+            "x-forwarded-host": "n8n.marcosfoks.com.br",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "bc917484dc53",
+            "x-real-ip": "172.70.134.128"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "prompt": "de: Victor Tran paraMatheus Cristhyan motivo: porque é muito bom nas automações",
+            "de": "Victor Tran",
+            "para": "Matheus Cristhyan"
+          }
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-07-01T12:21:06.000Z",
+  "versionId": "d857a3b8-91f6-4aeb-8a6a-94f219da71b7"
+}
