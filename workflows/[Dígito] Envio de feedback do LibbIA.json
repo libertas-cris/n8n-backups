@@ -169,7 +169,7 @@
             },
             {
               "name": "textMessage.text",
-              "value": "=*Comentário do libby sobre o dígito:*\n\n{{ $('HTTP Request').item.json.text }}"
+              "value": "={{ $('HTTP Request').item.json.text }}"
             }
           ]
         },
@@ -192,33 +192,33 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "Make/production",
-            "content-length": "125",
+            "content-length": "273",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
             "cf-connecting-ip": "54.80.47.193",
             "cf-ipcountry": "US",
-            "cf-ray": "89c74f9148b73af3-IAD",
+            "cf-ray": "89ce5cb6c97407ef-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "traceparent": "00-6682c664000000001b7c4b17ffdc8205-1b7c4b17ffdc8205-00",
-            "tracestate": "dd=t.tid:6682c66400000000;t.dm:1;s:0",
-            "x-datadog-parent-id": "1980540502585147909",
+            "traceparent": "00-6683e71700000000166294005fb7bd03-6d24ba18c439ccdd-00",
+            "tracestate": "dd=t.tid:6683e71700000000;t.dm:1;s:0",
+            "x-datadog-parent-id": "7864615464829832413",
             "x-datadog-sampling-priority": "0",
-            "x-datadog-tags": "_dd.p.tid=6682c66400000000",
-            "x-datadog-trace-id": "1980540502585147909",
-            "x-forwarded-for": "172.70.43.62",
+            "x-datadog-tags": "_dd.p.tid=6683e71700000000",
+            "x-datadog-trace-id": "1613014345878846723",
+            "x-forwarded-for": "172.70.39.165",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
-            "x-real-ip": "172.70.43.62"
+            "x-real-ip": "172.70.39.165"
           },
           "params": {},
           "query": {},
           "body": {
-            "prompt": "de: Victor Tran para Matheus Cristhyan motivo: digito teste",
-            "de": "Victor Tran",
-            "para": "Matheus Cristhyan"
+            "prompt": "de: Matheus Barros para Marcos Foks motivo: Pela ideia de fazer um meteórico pra vender ingresso na semana que vem. Pode até dar errado, mas tu se preocupa tanto com o resultado que de algum jeito parece bom.",
+            "de": "Matheus Barros",
+            "para": "Marcos Foks"
           }
         }
       }
@@ -230,6 +230,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-02T00:21:21.000Z",
-  "versionId": "c43dd77f-1de2-498a-afef-285c28866de2"
+  "updatedAt": "2024-07-02T12:16:31.000Z",
+  "versionId": "d0128f8a-36ff-4d16-93a4-b96114c3df91"
 }
