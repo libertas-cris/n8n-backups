@@ -150,13 +150,13 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "url": "https://api.dentistapower.com.br/message/sendText/libby",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
-              "name": "Client-Token",
-              "value": "F206336aa6c154c618083085a4b1f5de3S"
+              "name": "apikey",
+              "value": "=5yd083w0zymg45h6nmd7xr "
             }
           ]
         },
@@ -164,12 +164,12 @@
         "bodyParameters": {
           "parameters": [
             {
-              "name": "phone",
+              "name": "number",
               "value": "={{ $json.Telefone }}"
             },
             {
-              "name": "message",
-              "value": "=*Comentário do Libby sobre o dígito:*\n\n{{ $('HTTP Request').item.json.text }}"
+              "name": "textMessage.text",
+              "value": "=*Comentário do libby sobre o dígito:*\n\n{{ $('HTTP Request').item.json.text }}"
             }
           ]
         },
@@ -192,31 +192,31 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "Make/production",
-            "content-length": "148",
+            "content-length": "125",
             "accept-encoding": "gzip, br",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "54.209.79.175",
+            "cf-connecting-ip": "54.80.47.193",
             "cf-ipcountry": "US",
-            "cf-ray": "8999333e19c0571c-IAD",
+            "cf-ray": "89c74f9148b73af3-IAD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "traceparent": "00-667b65b2000000005c9ece3826c09223-5c9ece3826c09223-00",
-            "tracestate": "dd=t.tid:667b65b200000000;t.dm:1;s:0",
-            "x-datadog-parent-id": "6673998438373298723",
+            "traceparent": "00-6682c664000000001b7c4b17ffdc8205-1b7c4b17ffdc8205-00",
+            "tracestate": "dd=t.tid:6682c66400000000;t.dm:1;s:0",
+            "x-datadog-parent-id": "1980540502585147909",
             "x-datadog-sampling-priority": "0",
-            "x-datadog-tags": "_dd.p.tid=667b65b200000000",
-            "x-datadog-trace-id": "6673998438373298723",
-            "x-forwarded-for": "172.70.134.128",
+            "x-datadog-tags": "_dd.p.tid=6682c66400000000",
+            "x-datadog-trace-id": "1980540502585147909",
+            "x-forwarded-for": "172.70.43.62",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
-            "x-real-ip": "172.70.134.128"
+            "x-real-ip": "172.70.43.62"
           },
           "params": {},
           "query": {},
           "body": {
-            "prompt": "de: Victor Tran paraMatheus Cristhyan motivo: porque é muito bom nas automações",
+            "prompt": "de: Victor Tran para Matheus Cristhyan motivo: digito teste",
             "de": "Victor Tran",
             "para": "Matheus Cristhyan"
           }
@@ -230,6 +230,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-01T12:21:06.000Z",
-  "versionId": "d857a3b8-91f6-4aeb-8a6a-94f219da71b7"
+  "updatedAt": "2024-07-02T00:21:21.000Z",
+  "versionId": "c43dd77f-1de2-498a-afef-285c28866de2"
 }
