@@ -1,0 +1,6234 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-02T20:10:52.183Z",
+  "id": "BbH3xskiggMpXI8U",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[DISPARO KPIS]",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "51affad7-b915-4b6f-8abd-ee55f8a63fc2",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/groups/120363311947998859-group/send-message",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "message ",
+              "value": "teste"
+            },
+            {
+              "name": "phone",
+              "value": "120363311947998859-group"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6b566c4d-c1e0-40ee-9cc6-7a621f1acef7",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        480,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"phone\": \"{{ $json.ID }}\",\n  \"message\": \"Boa noite, pessoal! Tudo bem? Como foi o mês de Junho aí na clínica?\\n\\nPreciso que me enviem algumas métricas referentes ao mês de Junho/2024, por favor:\"\n} ",
+        "options": {}
+      },
+      "id": "085b7d0a-4426-4d08-8b55-25d1e764591c",
+      "name": "HTTP Request2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1020,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/chats?page=1&pageSize=400",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "id": "e52f4cae-3d3b-4cdd-a0a2-54251d5aa58a",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        740,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4a839b7b-5d08-42fb-b339-4abeacc27ba2",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "=Sala Black",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "edd18a56-f797-4b6e-9eeb-10586cebccc8",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        980,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1g5II4zI2nq4DLZsRRDXbGEec_pTk59I_0rJBuaeGbJc/edit?gid=1131834504#gid=1131834504",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1131834504,
+          "mode": "list",
+          "cachedResultName": "automação",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1g5II4zI2nq4DLZsRRDXbGEec_pTk59I_0rJBuaeGbJc/edit#gid=1131834504"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nome grupo": "={{ $json.name }}",
+            "ID": "={{ $json.phone }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nome grupo",
+              "displayName": "Nome grupo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "10670921-4d55-4b5c-bb50-b9e54eae3ccd",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1240,
+        660
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"phone\": \"{{ $node[\"Loop Over Items\"].json[\"ID\"] }}\",\n  \"message\": \"VENDAS\\n\\n1) Meta de Faturamento: R$\\n2) Realizado Faturamento: R$\\n3) Oportunidade de vendas: R$\\n4) Entrada Faturamento: R$\\n5) Ticket Médio: R$\\n6) Nº de fechamentos\\n\\nFLUXO DE CAIXA\\n\\n1) Recebíveis: R$\\n2) Despesa: R$\\n3) Porcentagem de Inadimplência:\\n4) Lucratividade: R$\\n\\nAGENDAMENTO E COMPARECIMENTO GERAL\\n\\n1) Agendamentos:\\n2) Comparecimentos:\\n\\nPERFORMANCE TRÁFEGO PAGO\\n\\n1) Investimento em Tráfego Pago:\\n2) Total nº de leads no mês\\n3) Total nº de leads agendados no mês\\n4) Total nº de leads comparecidos no mês\\n5) Total de orçamentos realizados (em numeral)\\n6) Valor total de orçamentos fechados pelo comparecimento de leads (em reais)\\n\\nPERFORMANCE INDICAÇÕES\\n\\n1) Nº de agendamentos\\n2) Nº de comparecimentos\\n3) Nº de fechamentos\\n4) Faturamento através de indicações\"\n}",
+        "options": {}
+      },
+      "id": "3afbab8e-e721-4496-9c01-c8c914fd9737",
+      "name": "HTTP Request3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1380,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1g5II4zI2nq4DLZsRRDXbGEec_pTk59I_0rJBuaeGbJc/edit?gid=1131834504#gid=1131834504",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1131834504,
+          "mode": "list",
+          "cachedResultName": "automação",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1g5II4zI2nq4DLZsRRDXbGEec_pTk59I_0rJBuaeGbJc/edit#gid=1131834504"
+        },
+        "options": {}
+      },
+      "id": "c0314d0b-67eb-4611-a5e0-ae6d5ef0e86d",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        520,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "397f207e-63f4-454e-8401-8f62a3e9e9fe",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        740,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (14 - 6 + 1)) + 6 }}\n"
+      },
+      "id": "1d54385d-033f-49c9-9cde-75499368dd8c",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1660,
+        280
+      ],
+      "webhookId": "ec743b0d-32c7-41ad-a5d1-517e4619e456"
+    },
+    {
+      "parameters": {
+        "amount": 3
+      },
+      "id": "7a6bcaf8-ad33-4d20-90b6-f0cd0bd387be",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        200
+      ],
+      "webhookId": "ec743b0d-32c7-41ad-a5d1-517e4619e456"
+    }
+  ],
+  "pinData": {
+    "HTTP Request1": [
+      {
+        "json": {
+          "pinned": "true",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717617842000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363281907114639-group",
+          "name": "Sala Black - Financeiro",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719952044000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363191248187347-group",
+          "name": "Papo de dono - Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719952034000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314165684861-group",
+          "name": "Oral Platinum & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719952008000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363296123222368-group",
+          "name": "Dr João Miranda & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951920000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363294751126124-group",
+          "name": "Oral Brasil Clínica Odontológica & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951901000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363297460965813-group",
+          "name": "GC Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951898000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363310976623467-group",
+          "name": "Trinno & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951897000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363315786875156-group",
+          "name": "Unno Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951618000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363291394567147-group",
+          "name": "Doctors Odontologia Especializada & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951532000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363313922202721-group",
+          "name": "Dentisaude & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951503000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363316719231830-group",
+          "name": "Odontoclínica P Norte & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951437000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363289722342929-group",
+          "name": "Eventos | Julho/2024",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951296000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363316105956481-group",
+          "name": "Clinica Espaco Dente & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951274000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363315677180288-group",
+          "name": "Clínica Efyzz & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951118000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363186587336368-group",
+          "name": "Diretoria Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719951101000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363296742169256-group",
+          "name": "PH Prime & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719950692000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558193515055",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719950673000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363298064418898-group",
+          "name": "Clínica Odontosul Sp & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719950638000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363290765401342-group",
+          "name": "DRA IARA GOMES SILVEIRA DENTISTA LTDA & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719950508000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363312635957510-group",
+          "name": "Dra Brenda Santos & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719950444000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363297473565402-group",
+          "name": "Tedesco odontologia  & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719950398000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314231178280-group",
+          "name": "Dom Sorriso - Victhoria & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719950297000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557196669418",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719949873000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511941844290",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719949440000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363268660977096-group",
+          "name": "Eduardo Chianca & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719949109000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "551151940478",
+          "name": "Marcela Consultora | Sala Black",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719949006000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363316042917311-group",
+          "name": "Zelus & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948875000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363297239409858-group",
+          "name": "Bdente & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948809000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363315481292104-group",
+          "name": "Odontocompany Porto Nacional & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948723000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314566560372-group",
+          "name": "CEIOP & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948555000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556184423241",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948451000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363297112687943-group",
+          "name": "Polezi implante & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948442000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363297026472670-group",
+          "name": "Ateliê Orofacial & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948324000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363295505633524-group",
+          "name": "Coex & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948264000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554884226227",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948246000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314019194255-group",
+          "name": "Oral sin Telemaco Borba & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948235000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314041169872-group",
+          "name": "Go Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948220000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363285519816022-group",
+          "name": "Vasconcelos Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948194000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5511981114011",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "true"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948151000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363313053359693-group",
+          "name": "Sorriso Saudável & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948065000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363307957214932-group",
+          "name": "CLINICA ODONTOLOGICA SORRIA PENHA & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719948018000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554699401100",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719947827000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363313624886045-group",
+          "name": "OdontoCenter & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719947798000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363312711307484-group",
+          "name": "Gratus Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719947744000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363296166777607-group",
+          "name": "Colzani Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719947710000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363312237291204-group",
+          "name": "Studio Orofacial & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719947611000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363298625796537-group",
+          "name": "NASO & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719947267000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511979879202",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719947092000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363315121643489-group",
+          "name": "DentLine Clínica Odontológica & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719946812000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363313941607443-group",
+          "name": "Dentistas do trabalhador  & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719946464000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553195148851",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719946438000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5513991239895",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719946028000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "553588980035",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719945971000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363245059675927-group",
+          "name": "Salomão Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719945820000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363254301616183-group",
+          "name": "Flavia e Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719945387000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314660284469-group",
+          "name": "Beraldo Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719945309000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555196208457",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719945250000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314389373212-group",
+          "name": "Clinica Dra. Saskia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719945067000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555397079997",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719944937000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511981444311",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719944869000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363048082917569-group",
+          "name": "Libertas & ILA & Nicole",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719944747000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363295730857332-group",
+          "name": "Sayuri odonto & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719944007000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363296792010267-group",
+          "name": "Odontologia Fernando Freitas & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719943641000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363315359534301-group",
+          "name": "Amiga & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719943455000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521995033016",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719942930000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5515998511235",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719942777000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363311006873516-group",
+          "name": "Sonrie & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719942150000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5511970399696",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719941880000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363307369191089-group",
+          "name": "Saud Implantes Dentarios LTDA & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719941499000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363307242074833-group",
+          "name": "Clinica de las sonrisas & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719940954000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363289804040978-group",
+          "name": "Volte a Sorrir (Catanduva SP) & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719937811000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363288373352228-group",
+          "name": "Modesti Odontologia Especializada & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719936051000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363310773886544-group",
+          "name": "Odonto Center & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719933158000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553499443459",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "true"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719929405000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363302924056716-group",
+          "name": "Giordanna & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719928747000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363198216362637-group",
+          "name": "Mentoria Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719928734000",
+          "isGroupAnnouncement": true,
+          "archived": "false",
+          "phone": "120363208103723654-group",
+          "name": "🛑 Avisos | Sala Black",
+          "isGroup": true,
+          "communityId": "120363207444146580",
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719925693000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363289526998193-group",
+          "name": "Ideal White Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719924000000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363312853594232-group",
+          "name": "Danielle Karwel & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719923366000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363306664745066-group",
+          "name": "LUMINATO ODONTO & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719922853000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363295556244915-group",
+          "name": "Equipe Odontus & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719920902000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363291155946521-group",
+          "name": "Entrega Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719877729000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363290267447836-group",
+          "name": "Unitite Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870244000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363297064109030-group",
+          "name": "Dom Sorriso - Renan & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870234000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363316129832324-group",
+          "name": "Clínica Vassoler & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870204000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363315117622603-group",
+          "name": "Ortho+ Clínica Odontológica  & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870147000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314922363816-group",
+          "name": "Hub Odonto & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870143000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363295653828228-group",
+          "name": "Barcy & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870138000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363295471835028-group",
+          "name": "Denthiis & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870133000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363295730393032-group",
+          "name": "Odontogama & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870125000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363295760259288-group",
+          "name": "OZ3 odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870118000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314303162657-group",
+          "name": "HG Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870074000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363311849628359-group",
+          "name": "Oral Care & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870070000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363294940130302-group",
+          "name": "Dente Clean & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870060000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363315666846585-group",
+          "name": "Balvedi & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719870044000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314403393483-group",
+          "name": "Volte A Sorrir & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719869354000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363299407986281-group",
+          "name": "Teste caruaru & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719869138000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363289726750554-group",
+          "name": "OdontoCompany Brás & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719869050000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314349882687-group",
+          "name": "Teste caruaru & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719868010000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556992585068",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719867495000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363292276188860-group",
+          "name": "Nova Sorriso & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719866911000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556281357757",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719865313000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363290760376456-group",
+          "name": "Odontocompany Vila Guilherme & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719865149000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363290935868374-group",
+          "name": "Ondontocompany Guararema & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719864786000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363307062140248-group",
+          "name": "Consultório Dra Gabriela Reis & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719864552000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363306935040934-group",
+          "name": "Clinica Zanholo Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719864127000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511959604022",
+          "name": "Samantha Santos",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719864031000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5519971162203",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719863181000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363308059729937-group",
+          "name": "Odonto estética e prótese  & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719863154000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363308344019489-group",
+          "name": "DENTAL UNIC & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719862197000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5521997845262",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719861563000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363312403021498-group",
+          "name": "Delicata Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719861400000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363284113958520-group",
+          "name": "H Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719859395000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363288733532528-group",
+          "name": "Clinica Edselma Bastos & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719859129000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556385158559",
+          "name": "Gilson Gama",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719845144000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363310221713558-group",
+          "name": "Ornare Clinica Odontologica LTDA & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719844114000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363264057450178-group",
+          "name": "Odontoimpact",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719841215000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363292058165940-group",
+          "name": " Humaniza Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719840854000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363191726213289-group",
+          "name": "POWER CURSOS - JURÍDICO",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719837040000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363314740577303-group",
+          "name": "Exclusiva Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719833525000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553172027791",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719833499000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559191780807",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719833482000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553173138669",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719832020000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363202796864118-group",
+          "name": "Camila & Flávio - Instituto MFG | Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719828017000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511968415591",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719827433000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558592240268",
+          "name": "Exclusiva Odontologia",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719827419000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558899860303",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719799787000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553184799947",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719799721000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553193309171",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719596252000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5516981969102",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719587112000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363310522170500-group",
+          "name": "Doutor Sorriso & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719527949000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521968969499",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719524101000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5515997912025",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719523747000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5521964586608",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719519320000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363296056441908-group",
+          "name": "Acollere & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719495418000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554989005297",
+          "name": "André",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719437138000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553491200124",
+          "name": "Isabela Garcia",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719436621000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554198998489",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719432221000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "556799108131",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719414761000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "553291193199",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719414529000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556999958450",
+          "name": "Clinica oralface Sabrina",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719407437000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553791033252",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719397397000",
+          "isGroupAnnouncement": false,
+          "archived": "true",
+          "phone": "120363311176830886-group",
+          "name": "Alfa Odontologia Especializada & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719363441000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5511998040947",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719347679000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363292835293977-group",
+          "name": "Art's do Sorriso & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719345840000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557791866867",
+          "name": "PH Prime Odontologia Integrada",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719337549000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554998301230",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719337472000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554999802060",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719330005000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "559581230043",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719329172000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363313126351468-group",
+          "name": "Jacqueline Montanari e Weverton & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719326225000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553197688563",
+          "name": "Hotmart",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719316356000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5519974033848",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719266768000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5512981577530",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719265787000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511982597079",
+          "name": "Daniela",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719258535000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511914692027",
+          "name": "Dente Clean",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719257587000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "556199158060",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719257560000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554188096224",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719254910000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511998781699",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719254338000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5517997354177",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719251438000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511934072125",
+          "name": "Vagner Barbosa",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719243297000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556285551350",
+          "name": "André Gomide",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719242704000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556999374569",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719242688000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554399341399",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719240417000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558698109870",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719079475000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556481121794",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719073078000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556799186028",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719073028000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554799290591",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719072987000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557199335904",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1719062416000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363306642111435-group",
+          "name": "OdontoFace & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718999907000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556696946766",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718980948000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521968091832",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718980123000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553496990697",
+          "name": "Doutor Sorriso",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718978752000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5513997353507",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718913609000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363301216067287-group",
+          "name": "Oral Face & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718912990000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363279488431372-group",
+          "name": "Reabilitar Moraes Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718889167000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553131577075",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718845430000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363290767812051-group",
+          "name": "Implantes & Arte & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718834489000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559281178870",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718833967000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "558599120201",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718829428000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363295814647753-group",
+          "name": "Delicata Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718829092000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363292208517440-group",
+          "name": "Odontocompany & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718818648000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558694794706",
+          "name": "Aline Torres",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718806429000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559295335322",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718798669000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5522981219875",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718752454000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5522992539902",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718709012000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553484364943",
+          "name": "Clínica Doutor Sorriso",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718651408000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511987741042",
+          "name": "Giordanna",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718649882000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556984311242",
+          "name": "Dra Vanessa",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718640405000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556798814449",
+          "name": "Dr. Rafael Lopes 😷🔩🦷",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718411210000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554399880293",
+          "name": "Rafael Maroubo",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718407874000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511982778840",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718386488000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558695538646",
+          "name": "Andressa",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718330125000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554192067744",
+          "name": "Handrey",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718325814000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5518991050929",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718324475000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363309727919827-group",
+          "name": "Ateliê do Sorriso & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718300406000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363305958597258-group",
+          "name": "Alberto Fonseca & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718295130000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554298425030",
+          "name": "Kamila",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718236589000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511963133337",
+          "name": "Dr. Ricardo",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718236469000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363306054811691-group",
+          "name": "DANILO VERONEZI BAGLI & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718233798000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5519971661500",
+          "name": "AnaCân",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718232970000",
+          "isGroupAnnouncement": true,
+          "archived": "false",
+          "phone": "120363276498719031-group",
+          "name": "Avisos - Imersão Implante Million",
+          "isGroup": false,
+          "communityId": "120363298295138707",
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718232428000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558499096875",
+          "name": "Carolina",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718232416000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558499834772",
+          "name": "Alberto Fonseca",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718223850000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521969597700",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718222024000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556198091910",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718221682000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559199420096",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718197694000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "556199775677",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718197452000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363307236750660-group",
+          "name": "Instituto Cláudia Alexandre & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718146104000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363289122187476-group",
+          "name": "GM Espaço Clinico & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718141404000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556684478679",
+          "name": "Cleber",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718132746000",
+          "isGroupAnnouncement": false,
+          "archived": "true",
+          "phone": "120363308108347234-group",
+          "name": "teste odonto & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718131799000",
+          "isGroupAnnouncement": false,
+          "archived": "true",
+          "phone": "120363306758875911-group",
+          "name": "Teste Odonto & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718131187000",
+          "isGroupAnnouncement": false,
+          "archived": "true",
+          "phone": "120363308520886969-group",
+          "name": "Teste Odonto & Sala Black teste",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718131069000",
+          "isGroupAnnouncement": false,
+          "archived": "true",
+          "phone": "120363309527961985-group",
+          "name": "Teste Odonto & Sala Black teste",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718130958000",
+          "isGroupAnnouncement": false,
+          "archived": "true",
+          "phone": "120363289891303404-group",
+          "name": "Teste Odonto & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718130915000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553491324126",
+          "name": "Aline",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718130228000",
+          "isGroupAnnouncement": false,
+          "archived": "true",
+          "phone": "120363290863276547-group",
+          "name": "Teste Odonto & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718114298000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511969774840",
+          "name": "Nova Sorriso",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718107814000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5517996774166",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718051903000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559881134560",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718051383000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556484190427",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718048413000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511959632778",
+          "name": "Dra Simone Justi",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718039754000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556191333959",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1718036708000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554198930891",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717848457000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5512991882471",
+          "name": "Dra Melissa Bento",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717847503000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5519997625990",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717801401000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363283790817453-group",
+          "name": "SORRISO NOVO H. ODONTO",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717791396000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5512992331632",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789909000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "556781583221",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789756000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511991881694",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789743000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556198239276",
+          "name": "Raul Lopes",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789734000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553598433133",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789727000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553291613253",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789724000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5519998929057",
+          "name": "Lucas Marcovig",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789719000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5522999448222",
+          "name": "LUIS FELIPE",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789713000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5511965514462",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789707000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555599596361",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789704000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555599586361",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789699000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555596471154",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789668000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5527998329988",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789663000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556191552039",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789659000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556183031314",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789653000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511998165024",
+          "name": "Tais Gonçalves 🦋",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789651000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511963889209",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789639000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556194117446",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789635000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556183191500",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789630000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511934308016",
+          "name": "Tania",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789626000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511992586059",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789618000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554199273356",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789611000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553597134068",
+          "name": "Lívia",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789607000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553591421167",
+          "name": "Geizi Bueno",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717789604000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553591000647",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717768765000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556181415647",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "true"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717767131000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559281465589",
+          "name": "MKMF❤️",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717766719000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558291463545",
+          "name": "J. Guilherme Vilela",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717766338000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "559481270037",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717707191000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556696625206",
+          "name": "Joana Faganello",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717706779000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555599941500",
+          "name": "Victhoria B",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717706033000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511969658824",
+          "name": "Jhenny ✨",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717705289000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556284459505",
+          "name": "Espaço Clínico GM",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717701654000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "553491261211",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717701623000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553492032666",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717701092000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521994569367",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717700935000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511950523665",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717698510000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554988451410",
+          "name": "Juh",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717696716000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556799859943",
+          "name": "Michelle",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717693796000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554591341794",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717684112000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556784470475",
+          "name": "Fernanda Pirez",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717678800000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557187898219",
+          "name": "Gabriel Vasconcelos",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717632686000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363278808333470-group",
+          "name": "Splendor Odontologia & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717626487000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558994282662",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717622424000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5517992029081",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717622387000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556699220469",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717614844000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558194062799",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717614565000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5518998149718",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717614557000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559181602783",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717614536000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5522988482223",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717614497000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556399447227",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717614415000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511999509427",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717614172000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521995973280",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717614115000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555599553922",
+          "name": "Pedro Teixeira",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717610521000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363290309872674-group",
+          "name": "Fabricio & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717610512000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557799005251",
+          "name": "Paulo Santos",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717600882000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5527996202501",
+          "name": "Maurilio Moraes da silva",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717600350000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5513988082765",
+          "name": "Bruna Araújo",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717598690000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521968977550",
+          "name": "Dra Flávia - Atendimento ao cliente",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717591128000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556696709177",
+          "name": "Clinica Implantare - Glória Ellen",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717511685000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556191995386",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717511611000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553592390709",
+          "name": "Dr Fernando Freitas",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717511024000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558296348604",
+          "name": "Central de Relacionamento Implantes",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717501313000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363287187428458-group",
+          "name": "Andressa Araújo da Silva & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717500155000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363288804509770-group",
+          "name": "Plantão - Junho/24",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717428449000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363302327971717-group",
+          "name": "Clínica Sublime Prime & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717427129000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521997705576",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717419962000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553398063038",
+          "name": "Rubia Reis",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717168273000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556293112603",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717168060000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363282387952113-group",
+          "name": "Oral Brasil & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717164758000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553288457325",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717164739000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554891718787",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717164726000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "556199426312",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717164715000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558695227293",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717164693000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511910151001",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717163783000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554399221204",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717039368000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363285513630204-group",
+          "name": "Clínica Sorriso Popular  & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717012869000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557191479919",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1717011503000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363285785592678-group",
+          "name": "Implatare Sorriso & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716931062000",
+          "isGroupAnnouncement": false,
+          "archived": "true",
+          "phone": "120363285105491140-group",
+          "name": "Alivi & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716930736000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556696609367",
+          "name": "Marina Limberger",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716924067000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556699967514",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716924055000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556696138066",
+          "name": "Luiz  Henrique",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716914335000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559883393305",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716896659000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553599810710",
+          "name": "Priscila - Oral Platinum Alfenas",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716485760000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558688297038",
+          "name": "Thamires",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716422274000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556984594485",
+          "name": "Oralface",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716422274000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556993578183",
+          "name": "Sabrina Financeiro OralFace",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716388318000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511983605902",
+          "name": "Bru",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716327068000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558681741021",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716327058000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558681071020",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716326958000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556697166154",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716326770000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553598074514",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716326707000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511994872950",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716326707000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554398488125",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716326707000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511966712513",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716326248000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556984895259",
+          "name": "Ely",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716325882000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554197538714",
+          "name": "Alivi",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716316891000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554988709292",
+          "name": "Entony Siminhuk",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1716210978000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559481371318",
+          "name": "Dentline",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715798379000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556381408722",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715792220000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556374008043",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715792202000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511910254462",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715619136000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555581169555",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715448513000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553599770710",
+          "name": "Oral Platinum Alfenas",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715363634000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558994232110",
+          "name": "Equipe Odontus",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715363150000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558994085122",
+          "name": "Equipe Odontus",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715363112000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558999065353",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715349793000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "34613288116",
+          "name": "LuzIA",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715347167000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511947848025",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715345546000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553599688493",
+          "name": "Recepção Oral Platinum",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715345114000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5521975500341",
+          "name": "Efyzz Odontologia - Tuani Gerente de Sucesso do Cliente",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715300629000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363280406066266-group",
+          "name": "Imersão Implante Million",
+          "isGroup": true,
+          "communityId": "120363298295138707",
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715262980000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511963129534",
+          "name": "Vanessa Serrano",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715207576000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559481359156",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715202493000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511930077947",
+          "name": "Ateliê Orofacial odontologia",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715132452000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556699882174",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715105260000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558698637188",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715105175000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558588005827",
+          "name": "Dra Alana Sobreira",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715104383000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556399958116",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715104366000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554599120943",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715104351000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556296540582",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715104332000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511981427570",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715104152000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556196368800",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715101853000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511950251001",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715083671000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511987726044",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715082397000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5519997178087",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715003060000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556385025633",
+          "name": "ODONTOCOMPANY-PORTO NACIONAL",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1715003058000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556385118546",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1714700521000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556182488846",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1714700490000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556198239530",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713838249000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558294108956",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713386072000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511958622327",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713357835000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554192737372",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713275944000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556294723102",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713221654000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558592139598",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713221479000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558586984629",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713191648000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5511971609692",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713187243000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556194352809",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1713183946000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558699619595",
+          "name": "Clínica Dra. Marília Vieira_Cocal",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712947730000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5513997089210",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712945191000",
+          "isGroupAnnouncement": false,
+          "tags": [
+            "9"
+          ],
+          "archived": "false",
+          "phone": "5527998696097",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712943810000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557781128080",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712928460000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558199244176",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712865328000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555596580235",
+          "name": "Iná Làutter",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712863673000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557781322467",
+          "name": "PH Prime Odontologia",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712863540000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "555189160194",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712835418000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556592537979",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712784325000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557597063612",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712782747000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553598297477",
+          "name": "Odonto Prime Clinic",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712782713000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558189486034",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712773039000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "559891780921",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712691664000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556992318556",
+          "name": "Clínica Sorriso Saudável Comercial",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712586435000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554999126100",
+          "name": "Jamile Stürmer",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712347911000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "557598427274",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712345312000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "556596422266",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712261404000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558681059029",
+          "name": "Nayara 💜📿",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712259997000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558681496931",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712257887000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "554988055279",
+          "name": "Odonto Company Chapecó",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712255574000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "553493353900",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712239973000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "558694829101",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1712008279000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "5517991996777",
+          "isGroup": false,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1710773075000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363265429018868-group",
+          "name": "Teste",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1709223996000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363231352060903-group",
+          "name": "Paulo & Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1708715354000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363243600609922-group",
+          "name": "Micaella & Sala Black ",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "1702836601000",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363207444146580-group",
+          "name": "🛑 Avisos | Sala Black",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      },
+      {
+        "json": {
+          "pinned": "false",
+          "messagesUnread": "0",
+          "unread": "0",
+          "lastMessageTime": "0",
+          "isGroupAnnouncement": false,
+          "archived": "false",
+          "phone": "120363316338755394-group",
+          "isGroup": true,
+          "isMuted": "0",
+          "isMarkedSpam": "false"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-02T21:06:17.000Z",
+  "versionId": "902391dd-1160-4463-92a5-37deeee9a393"
+}
