@@ -1,0 +1,37 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-07-05T20:43:01.993Z",
+  "id": "6gUzu1AKRDBPzXNU",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[ETAPA CRM] Gerar e enviar contratos",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "084767ce-ad70-4c04-8cd1-b23491a6dcc5",
+        "options": {}
+      },
+      "id": "3deee520-57a0-4e15-a2b7-563c946de0d6",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        820,
+        380
+      ],
+      "webhookId": "084767ce-ad70-4c04-8cd1-b23491a6dcc5"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-05T20:43:45.000Z",
+  "versionId": "10a44fa5-9113-4830-8fc3-e6e9563b4eba"
+}
