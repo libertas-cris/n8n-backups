@@ -236,14 +236,6 @@
         }
       }
     ],
-    "Enviar para assinatura": [
-      {
-        "json": {
-          "message": "success",
-          "uuid": "8c13a4a1-0aff-462d-81b7-a6ea30c8232f"
-        }
-      }
-    ],
     "Adicionar signatários": [
       {
         "json": {
@@ -280,6 +272,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-06T17:52:43.000Z",
-  "versionId": "5eee5446-6460-48df-9bba-ad30b2b48593"
+  "updatedAt": "2024-07-07T05:52:58.000Z",
+  "versionId": "9a744f8e-9a2c-454c-8913-ea0940de5492"
 }
