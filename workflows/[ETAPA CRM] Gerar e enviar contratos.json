@@ -1,6 +1,40 @@
 {
   "active": false,
-  "connections": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Gerar contratos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar contratos": {
+      "main": [
+        [
+          {
+            "node": "Adicionar signatários",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Adicionar signatários": {
+      "main": [
+        [
+          {
+            "node": "Enviar para assinatura",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
   "createdAt": "2024-07-05T20:43:01.993Z",
   "id": "6gUzu1AKRDBPzXNU",
   "meta": {
@@ -19,19 +53,233 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1.1,
       "position": [
-        820,
-        380
+        400,
+        720
       ],
-      "webhookId": "084767ce-ad70-4c04-8cd1-b23491a6dcc5"
+      "webhookId": "084767ce-ad70-4c04-8cd1-b23491a6dcc5",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "url": "https://secure.d4sign.com.br/api/v1/safes",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "tokenAPI",
+              "value": "live_a5c374ba322b639753bd1bff813f29ef0bf00b9e02fd5c2d42fe69f1f4cb995c"
+            },
+            {
+              "name": "cryptKey",
+              "value": "live_crypt_nn3VLU8iQG9WoycweqauHONscEoMShEM"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "76d91558-723f-4dfa-83c9-5c2320b0618e",
+      "name": "Pegar cofres",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "27463522-00ca-4ea1-a3e8-cf68df44f3ba",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        460,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://secure.d4sign.com.br/api/v1/documents/3cc684e2-a629-46fa-9dae-27ac5bccdc68/makedocumentbytemplateword",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "tokenAPI",
+              "value": "live_a5c374ba322b639753bd1bff813f29ef0bf00b9e02fd5c2d42fe69f1f4cb995c"
+            },
+            {
+              "name": "cryptKey",
+              "value": "live_crypt_nn3VLU8iQG9WoycweqauHONscEoMShEM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"name_document\": \"Nome do documento\",\n    \"templates\": {\n\t    \"MTMyMTQw\": {\n\t    \t\"Nome_Completo\": \"Matheus Cristhyan\",\n\t    \t\"cpf\": \"09103787460\",\n            \"endereco\": \"rua alto são josé\",\n            \"email\": \"matheus.cristhyan.libertas@gmail.com\",\n            \"telefone\": \"81993515055\",\n            \"valor\": \"R$ 20.000\",\n            \"Forma_de_pagamento\": \"Á vista no cartão de crédito\",\n            \"prazo\": \"12 meses\",\n            \"Data_de_assinatura\": \"01/07/2024\"\t\n\t    }\n   }\n}",
+        "options": {}
+      },
+      "id": "d57bd016-4402-41e0-bd5c-c642a3244ab1",
+      "name": "Gerar contratos",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        740,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://secure.d4sign.com.br/api/v1/templates",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "tokenAPI",
+              "value": "live_a5c374ba322b639753bd1bff813f29ef0bf00b9e02fd5c2d42fe69f1f4cb995c"
+            },
+            {
+              "name": "cryptKey",
+              "value": "live_crypt_nn3VLU8iQG9WoycweqauHONscEoMShEM"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5c478451-ac11-4575-8ec6-9b8ec4da3d6c",
+      "name": "Listar templates",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        160,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://secure.d4sign.com.br/api/v1/documents/{{ $json.uuid }}/createlist ",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "tokenAPI",
+              "value": "live_a5c374ba322b639753bd1bff813f29ef0bf00b9e02fd5c2d42fe69f1f4cb995c"
+            },
+            {
+              "name": "cryptKey",
+              "value": "live_crypt_nn3VLU8iQG9WoycweqauHONscEoMShEM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"signers\": [\n        {\n            \"email\": \"matheuscristhyan.2@gmail.com\",\n            \"act\": \"4\",\n            \"foreign\": \"0\",\n            \"certificadoicpbr\": \"0\",\n            \"assinatura_presencial\": \"0\"\n        }\n    ]\n}",
+        "options": {}
+      },
+      "id": "21bbf0cd-28be-47c8-9e9b-fccf420dbbdb",
+      "name": "Adicionar signatários",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        340
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://secure.d4sign.com.br/api/v1/documents/{{ $('Gerar contratos').item.json.uuid }}/sendtosigner ",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "tokenAPI",
+              "value": "live_a5c374ba322b639753bd1bff813f29ef0bf00b9e02fd5c2d42fe69f1f4cb995c"
+            },
+            {
+              "name": "cryptKey",
+              "value": "live_crypt_nn3VLU8iQG9WoycweqauHONscEoMShEM"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n    \"skip_email\":\"0\"\n}",
+        "options": {}
+      },
+      "id": "3fc46a34-a926-4f4e-9469-9984d1366e15",
+      "name": "Enviar para assinatura",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1220,
+        340
+      ]
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "Gerar contratos": [
+      {
+        "json": {
+          "message": "success",
+          "uuid": "8c13a4a1-0aff-462d-81b7-a6ea30c8232f"
+        }
+      }
+    ],
+    "Enviar para assinatura": [
+      {
+        "json": {
+          "message": "success",
+          "uuid": "8c13a4a1-0aff-462d-81b7-a6ea30c8232f"
+        }
+      }
+    ],
+    "Adicionar signatários": [
+      {
+        "json": {
+          "message": [
+            {
+              "key_signer": "MTA5MzUxNTMx",
+              "email": "matheuscristhyan.2@gmail.com",
+              "act": "4",
+              "foreign": "0",
+              "certificadoicpbr": 0,
+              "assinatura_presencial": 0,
+              "doc_auth": 0,
+              "embed_methodauth": "email",
+              "embed_smsnumber": "",
+              "upload_allow": 0,
+              "upload_obs": null,
+              "docauthandselfie": 0,
+              "skipemail": 0,
+              "whatsapp": 0,
+              "password_code": "",
+              "auth_pix": 0,
+              "videoselfie": null,
+              "status": "created",
+              "success": "1"
+            }
+          ]
+        }
+      }
+    ]
+  },
   "settings": {
     "executionOrder": "v1"
   },
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2024-07-05T20:43:45.000Z",
-  "versionId": "10a44fa5-9113-4830-8fc3-e6e9563b4eba"
+  "updatedAt": "2024-07-06T17:52:43.000Z",
+  "versionId": "5eee5446-6460-48df-9bba-ad30b2b48593"
 }
