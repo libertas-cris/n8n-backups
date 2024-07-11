@@ -27,23 +27,65 @@
       "main": [
         [
           {
-            "node": "Whatsapp",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Vip?",
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Whatsapp": {
+    "Merge": {
       "main": [
         [
           {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "vip?",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "vip?": {
+      "main": [
+        [
+          {
+            "node": "ingresso vip e nome",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ingresso normal",
             "type": "main",
             "index": 0
           }
@@ -61,11 +103,11 @@
         ]
       ]
     },
-    "Vip?": {
+    "ingresso normal": {
       "main": [
         [
           {
-            "node": "tipo",
+            "node": "Merge",
             "type": "main",
             "index": 0
           }
@@ -78,46 +120,34 @@
           {
             "node": "Merge",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "tipo": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
             "index": 1
           }
         ]
       ]
     },
-    "Merge": {
+    "Aggregate": {
       "main": [
         [
           {
-            "node": "Loop Over Items",
+            "node": "Dados finais",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Loop Over Items": {
+    "ingresso vip e nome": {
       "main": [
-        [],
         [
           {
-            "node": "Edit Fields",
+            "node": "Merge",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Edit Fields": {
+    "Dados finais": {
       "main": [
         [
           {
@@ -167,20 +197,22 @@
     },
     {
       "parameters": {
-        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['value'] = formataTelefone($input.all()[0].json['value'])\n\nreturn $input.all();"
+        "jsCode": "function formataTelefone(number) {\n    // Certifique-se de que o parâmetro é uma string\n    number = number.toString().replace(/[^\\d]/g, \"\");\n\n    let ddi = '55';\n    let ddd = number.substring(0, 2);\n\n    if (number.length === 13) {\n        ddi = number.substring(0, 2);\n        ddd = number.substring(2, 4);\n        return ddi + ddd + (parseInt(ddd) <= 28 ? number.substring(4, 13) : number.substring(5, 13));\n\n    } else if (number.length === 11) {\n        return ddi + ddd + (parseInt(ddd) <= 28 ? number.substring(2, 11) : number.substring(3, 11));\n\n    } else if (number.length === 10) {\n        return ddi + ddd + (parseInt(ddd) <= 28 ? '9' : '') + number.substring(2, 11);\n\n    } else if (number.length === 12) {\n        if (number.substring(0, 2) === '55') {\n            return number;\n        } else if (number.substring(0, 1) === '0') {\n            return formataTelefone(number.substring(1, 12));\n        } else {\n            return number;\n        }\n\n    } else {\n        return number;\n    }\n}\n\n// Aplicar a formatação ao valor de entrada\n$input.all()[0].json[\"payload.custom_fields\"][\"value\"] = formataTelefone($input.all()[0].json[\"payload.custom_fields\"][\"value\"]); \n\nreturn $input.all();\n"
       },
       "id": "633985c3-c8e6-40b9-b69c-b995cc913b07",
       "name": "Formata Telefone",
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        1140,
-        240
+        1400,
+        520
       ]
     },
     {
       "parameters": {
         "fieldToSplitOut": "payload.custom_fields",
+        "include": "selectedOtherFields",
+        "fieldsToInclude": "payload.name",
         "options": {}
       },
       "id": "ecade51b-9413-468a-b145-16037b40891e",
@@ -193,78 +225,14 @@
       ]
     },
     {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "707d6f62-1273-430b-99f6-3a35bbb6bef9",
-              "leftValue": "={{ $json.name }}",
-              "rightValue": "=Telefone (Whatsapp)",
-              "operator": {
-                "type": "string",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "7b4f963d-c094-43df-91bd-c1bbdcb4a30e",
-      "name": "Whatsapp",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        940,
-        240
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "707d6f62-1273-430b-99f6-3a35bbb6bef9",
-              "leftValue": "={{ $('Split Out').item.json.name }}",
-              "rightValue": "=Ingresso Vip",
-              "operator": {
-                "type": "string",
-                "operation": "equals"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "12a9cd8a-f370-4eca-9a82-cfabf1daffcb",
-      "name": "Vip?",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2,
-      "position": [
-        940,
-        520
-      ]
-    },
-    {
       "parameters": {},
       "id": "9fe19021-b697-49e5-ac5d-d1d0e408ec5e",
       "name": "Merge",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2.1,
       "position": [
-        1640,
-        380
+        2000,
+        320
       ]
     },
     {
@@ -274,7 +242,7 @@
             {
               "id": "0d95f2d9-c9d0-406b-8fd7-1683003b03fa",
               "name": "whatsapp",
-              "value": "={{ $json.value }}",
+              "value": "={{ $json[\"payload.custom_fields\"].value }}",
               "type": "string"
             }
           ]
@@ -286,30 +254,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
       "position": [
-        1360,
-        240
-      ]
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "977e70e0-658d-402e-93f2-8c8f98a1590c",
-              "name": "whatsapp",
-              "value": "={{ $json.value }}",
-              "type": "boolean"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "e9b078ee-1091-47e5-8abb-ddffae382c74",
-      "name": "tipo",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.3,
-      "position": [
-        1140,
+        1660,
         520
       ]
     },
@@ -334,9 +279,9 @@
           "mappingMode": "defineBelow",
           "value": {
             "data": "={{new DateTime($now).toFormat('dd/MM/yyyy HH:mm')}}",
-            "tipo": "={{ $json.whatsapp ? \"vip\" : \"pesquisa\" }} ",
-            "telefone": "={{ $json.whatsapp }}",
-            "nome": "={{ $('Trata Webhook').item.json.payload.name }}"
+            "tipo": "={{ $json.ingresso[0] }}",
+            "telefone": "={{ $json.whatsapp[0] }}",
+            "nome": "={{ $json.nome[0] }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -385,8 +330,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        2300,
-        400
+        2700,
+        320
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -397,18 +342,156 @@
     },
     {
       "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "dd32b697-bb7a-4d2a-a432-a07f9bd46321",
+              "leftValue": "={{ $json['payload.custom_fields'].name }}",
+              "rightValue": "=Telefone (Whatsapp)",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "bcfe0ee9-6ca4-4ca6-8426-191e18a87044",
+              "leftValue": "={{ $json['payload.custom_fields'].name }}",
+              "rightValue": "=Ingresso Vip",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "af8ecdc1-f19b-448f-ab9e-96dc7aafea4f",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        960,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "2246b809-74f5-4b59-9da9-551cfe221e7f",
+              "leftValue": "={{ $json['payload.custom_fields'].name }}",
+              "rightValue": "=Ingresso Vip",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "49f71b1b-d95b-4264-b0d1-91cd21bb5e22",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1160,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "2604b775-ccc8-4ccd-a396-911b2739e506",
+              "leftValue": "={{ $json['payload.custom_fields'].value }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "66e1fe87-a8b3-455b-8b5b-a979626f5868",
+      "name": "vip?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1380,
+        200
+      ]
+    },
+    {
+      "parameters": {
         "assignments": {
           "assignments": [
             {
-              "id": "2e33534a-2862-46f3-922f-0c3f44ae6c7b",
-              "name": "whatsapp",
-              "value": "={{ $json.whatsapp }}",
+              "id": "977e70e0-658d-402e-93f2-8c8f98a1590c",
+              "name": "ingresso",
+              "value": "=normal",
               "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5a34bb11-0a6f-4858-8612-8a8371b01b20",
+      "name": "ingresso normal",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1600,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f34e8281-9ba0-4554-9478-c50cddaef2f0",
+              "name": "ingresso",
+              "value": "={{ $json.ingresso }}",
+              "type": "array"
             },
             {
-              "id": "3eebcd48-4162-440a-886a-e3c035f27518",
-              "name": "tipo",
+              "id": "eb68adea-0f76-42c0-8fbe-1707be438153",
+              "name": "whatsapp",
               "value": "={{ $json.whatsapp }}",
+              "type": "array"
+            },
+            {
+              "id": "a0fd7532-b25d-46be-a1d9-717170f54139",
+              "name": "nome[0]",
+              "value": "={{ $json.nome[0] }}",
               "type": "string"
             }
           ]
@@ -416,25 +499,67 @@
         "options": {}
       },
       "id": "2073f688-643c-4f5d-84fd-5f18d273f017",
-      "name": "Edit Fields",
+      "name": "Dados finais",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
       "position": [
-        2080,
-        400
+        2460,
+        320
       ]
     },
     {
       "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "ingresso"
+            },
+            {
+              "fieldToAggregate": "whatsapp"
+            },
+            {
+              "fieldToAggregate": "nome"
+            }
+          ]
+        },
         "options": {}
       },
-      "id": "84d40c09-694c-4ef8-a5f4-f61741a8d0a3",
-      "name": "Loop Over Items",
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
+      "id": "2b5ef75a-a09b-45d2-9960-1e4f3a9d8fe6",
+      "name": "Aggregate",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
       "position": [
-        1820,
-        380
+        2220,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "977e70e0-658d-402e-93f2-8c8f98a1590c",
+              "name": "ingresso",
+              "value": "=vip",
+              "type": "string"
+            },
+            {
+              "id": "c9338ee5-b60b-4c36-9926-530254ec525c",
+              "name": "nome",
+              "value": "={{ $json[\"payload.name\"] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e9b078ee-1091-47e5-8abb-ddffae382c74",
+      "name": "ingresso vip e nome",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1600,
+        60
       ]
     }
   ],
@@ -445,58 +570,58 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "axios/0.24.0",
-            "content-length": "18732",
+            "content-length": "22437",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, br",
-            "b3": "66466da0000000000a7903bed9352740-3af2ffd2a6d2e93c-0-09ed986904ebdbb0",
+            "b3": "668ea861000000003391bfeb71f60f2d-466c13d60c1c3cb0-0-250efb09bffd93f9",
             "cdn-loop": "cloudflare",
             "cf-connecting-ip": "3.138.39.166",
             "cf-ipcountry": "US",
-            "cf-ray": "884e24cbad942d6a-ORD",
+            "cf-ray": "8a1194020e762c97-ORD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "traceparent": "00-66466da0000000000a7903bed9352740-3af2ffd2a6d2e93c-00",
-            "tracestate": "dd=t.tid:66466da000000000;t.dm:3;s:-1",
-            "x-b3-parentspanid": "09ed986904ebdbb0",
+            "traceparent": "00-668ea861000000003391bfeb71f60f2d-466c13d60c1c3cb0-00",
+            "tracestate": "dd=t.tid:668ea86100000000;t.dm:3;s:-1",
+            "x-b3-parentspanid": "250efb09bffd93f9",
             "x-b3-sampled": "0",
-            "x-b3-spanid": "3af2ffd2a6d2e93c",
-            "x-b3-traceid": "66466da0000000000a7903bed9352740",
-            "x-datadog-parent-id": "4247738678770854204",
+            "x-b3-spanid": "466c13d60c1c3cb0",
+            "x-b3-traceid": "668ea861000000003391bfeb71f60f2d",
+            "x-datadog-parent-id": "5074452690186812592",
             "x-datadog-sampling-priority": "-1",
-            "x-datadog-tags": "_dd.p.tid=66466da000000000",
-            "x-datadog-trace-id": "754638530784077632",
-            "x-forwarded-for": "172.70.130.249",
+            "x-datadog-tags": "_dd.p.tid=668ea86100000000",
+            "x-datadog-trace-id": "3715962185507540781",
+            "x-forwarded-for": "172.70.130.100",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
-            "x-real-ip": "172.70.130.249"
+            "x-real-ip": "172.70.130.100"
           },
           "params": {},
           "query": {},
           "body": {
-            "id": "35b03cfc-9170-446f-8dca-412d8e9233b9:main",
+            "id": "06429884-5128-4acb-b30e-3c2e79e2c09e:main",
             "trigger_id": "a6122f2f-8407-41d5-9820-25594033d63d",
-            "date": "2024-05-16T20:33:36.419Z",
+            "date": "2024-07-10T15:27:29.424Z",
             "payload": {
-              "id": "86a1erh9p",
+              "id": "86a3wgja7",
               "custom_id": null,
               "custom_item_id": 0,
-              "name": "Mauricio",
+              "name": "Vinícius",
               "text_content": "",
               "description": "",
               "status": {
-                "id": "subcat901300794753_sc901300759936_h4HQG5Vl",
-                "status": "contato finalizado",
-                "color": "#008844",
-                "orderindex": 5,
-                "type": "closed"
+                "id": "sc901300794753_RhQeAclv",
+                "status": "tentando contato mensagem",
+                "color": "#b660e0",
+                "orderindex": 2,
+                "type": "custom"
               },
-              "orderindex": "39677195.00000000000000000000000000000000",
-              "date_created": "1700235184226",
-              "date_updated": "1715891614048",
-              "date_closed": "1701451191134",
-              "date_done": "1701451191134",
+              "orderindex": "39699487.00000000000000000000000000000000",
+              "date_created": "1718990361861",
+              "date_updated": "1720625247463",
+              "date_closed": null,
+              "date_done": null,
               "archived": false,
               "creator": {
                 "id": 43040068,
@@ -505,26 +630,9 @@
                 "email": "victor@grupolibertas.com.br",
                 "profilePicture": "https://attachments.clickup.com/profilePictures/43040068_t8t.jpg"
               },
-              "assignees": [
-                {
-                  "id": 43035907,
-                  "username": "Marcos Foks",
-                  "color": "#536cfe",
-                  "initials": "MF",
-                  "email": "marcos@grupolibertas.com.br",
-                  "profilePicture": "https://attachments.clickup.com/profilePictures/43035907_n0u.jpg"
-                }
-              ],
+              "assignees": [],
               "group_assignees": [],
               "watchers": [
-                {
-                  "id": 43035907,
-                  "username": "Marcos Foks",
-                  "color": "#536cfe",
-                  "initials": "MF",
-                  "email": "marcos@grupolibertas.com.br",
-                  "profilePicture": "https://attachments.clickup.com/profilePictures/43035907_n0u.jpg"
-                },
                 {
                   "id": 43040068,
                   "username": "Tran",
@@ -535,17 +643,10 @@
                 }
               ],
               "checklists": [],
-              "tags": [
-                {
-                  "name": "sessão estratégica",
-                  "tag_fg": "#DC646A",
-                  "tag_bg": "#DC646A",
-                  "creator": 43035907
-                }
-              ],
+              "tags": [],
               "parent": null,
               "priority": null,
-              "due_date": "1701154800000",
+              "due_date": null,
               "start_date": null,
               "points": null,
               "time_estimate": null,
@@ -608,7 +709,7 @@
                   "type_config": {},
                   "date_created": "1695867402474",
                   "hide_from_guests": false,
-                  "value": "559884009639",
+                  "value": "557399593411",
                   "required": false
                 },
                 {
@@ -618,7 +719,6 @@
                   "type_config": {},
                   "date_created": "1695867416475",
                   "hide_from_guests": false,
-                  "value": "25-34",
                   "required": false
                 },
                 {
@@ -628,7 +728,6 @@
                   "type_config": {},
                   "date_created": "1695867451405",
                   "hide_from_guests": false,
-                  "value": "Entre 5 e 10 anos",
                   "required": false
                 },
                 {
@@ -638,7 +737,6 @@
                   "type_config": {},
                   "date_created": "1695867497625",
                   "hide_from_guests": false,
-                  "value": "20",
                   "required": false
                 },
                 {
@@ -648,7 +746,6 @@
                   "type_config": {},
                   "date_created": "1695867519649",
                   "hide_from_guests": false,
-                  "value": "Sim",
                   "required": false
                 },
                 {
@@ -658,7 +755,6 @@
                   "type_config": {},
                   "date_created": "1695867591102",
                   "hide_from_guests": false,
-                  "value": "1 mês ou menos",
                   "required": false
                 },
                 {
@@ -668,7 +764,6 @@
                   "type_config": {},
                   "date_created": "1695867605132",
                   "hide_from_guests": true,
-                  "value": "Instagram",
                   "required": false
                 },
                 {
@@ -678,7 +773,7 @@
                   "type_config": {},
                   "date_created": "1695867734969",
                   "hide_from_guests": false,
-                  "value": "5",
+                  "value": "12",
                   "required": false
                 },
                 {
@@ -688,7 +783,6 @@
                   "type_config": {},
                   "date_created": "1695870886350",
                   "hide_from_guests": false,
-                  "value": "1700190000000",
                   "required": false
                 },
                 {
@@ -698,7 +792,7 @@
                   "type_config": {},
                   "date_created": "1695870897185",
                   "hide_from_guests": false,
-                  "value": "l.instagram.com",
+                  "value": "adsfb",
                   "required": false
                 },
                 {
@@ -708,6 +802,7 @@
                   "type_config": {},
                   "date_created": "1695870906563",
                   "hide_from_guests": false,
+                  "value": "as1",
                   "required": false
                 },
                 {
@@ -717,6 +812,7 @@
                   "type_config": {},
                   "date_created": "1695870918009",
                   "hide_from_guests": false,
+                  "value": "[AS12] [INGRESSOS] [CONVERSÕES] [COMPRA] [ABO] [Q] - Público quente",
                   "required": false
                 },
                 {
@@ -726,6 +822,7 @@
                   "type_config": {},
                   "date_created": "1695870929222",
                   "hide_from_guests": false,
+                  "value": "02 - IG + FB | Todos | 180D",
                   "required": false
                 },
                 {
@@ -735,6 +832,7 @@
                   "type_config": {},
                   "date_created": "1695870939084",
                   "hide_from_guests": false,
+                  "value": "web03_im_diferente",
                   "required": false
                 },
                 {
@@ -743,15 +841,6 @@
                   "type": "short_text",
                   "type_config": {},
                   "date_created": "1696977739792",
-                  "hide_from_guests": true,
-                  "required": false
-                },
-                {
-                  "id": "27ddd108-8ae8-4353-99bc-49e1a800b676",
-                  "name": "[AP] Clínica",
-                  "type": "short_text",
-                  "type_config": {},
-                  "date_created": "1696977767083",
                   "hide_from_guests": true,
                   "required": false
                 },
@@ -884,15 +973,7 @@
                   },
                   "date_created": "1698189839866",
                   "hide_from_guests": false,
-                  "required": false
-                },
-                {
-                  "id": "13f4e607-7a31-428d-9775-fab416cb95d9",
-                  "name": "Origem",
-                  "type": "short_text",
-                  "type_config": {},
-                  "date_created": "1704300723971",
-                  "hide_from_guests": false,
+                  "value": 0,
                   "required": false
                 },
                 {
@@ -1022,11 +1103,11 @@
                   "required": false
                 },
                 {
-                  "id": "bd130af6-0457-466c-a502-76ce6c6c911c",
-                  "name": "Mentor 2",
-                  "type": "short_text",
+                  "id": "0866204c-99a9-44e9-b34e-ad229e1de8fe",
+                  "name": "Telefone",
+                  "type": "phone",
                   "type_config": {},
-                  "date_created": "1699899852364",
+                  "date_created": "1699900147890",
                   "hide_from_guests": false,
                   "required": false
                 },
@@ -1039,76 +1120,109 @@
                     "options": [
                       {
                         "id": "c49692b2-ce7a-4a75-a59d-9b90f2e631f5",
-                        "name": "T1 - Vermelha - 17/08",
+                        "name": "T1 - Vermelha - Agosto/23",
                         "color": "#e50000",
                         "orderindex": 0
                       },
                       {
                         "id": "f6c450f1-bdf6-4d09-a5ce-85fb77f9b667",
-                        "name": "T2 - Cinza - 19/09",
+                        "name": "T2 - Cinza - Setembro/24",
                         "color": "#b5bcc2",
                         "orderindex": 1
                       },
                       {
                         "id": "d1e5a453-6434-435b-8930-059b1909b087",
-                        "name": "T3 - Branca - 10/10",
+                        "name": "T3 - Outubro/23",
                         "color": "#b5bcc2",
                         "orderindex": 2
                       },
                       {
                         "id": "70d0ad85-faa9-4bde-93ef-eb3a0af905fd",
-                        "name": "T4 - Azul - 31/10",
+                        "name": "T4 - 31/10",
                         "color": "#0231E8",
                         "orderindex": 3
                       },
                       {
                         "id": "60dc4125-9cad-4d50-a8d4-a15fb906e0fb",
-                        "name": "T5 - Dourada - 21/11",
+                        "name": "T5 - Novembro/23",
                         "color": "#f9d900",
                         "orderindex": 4
                       },
                       {
                         "id": "c8e7a499-1335-4f54-9bf3-993e5be72d18",
-                        "name": "T6 - Verde - 10/01",
+                        "name": "T6 - Janeiro/24",
                         "color": "#2ecd6f",
                         "orderindex": 5
                       },
                       {
                         "id": "20828e75-1d5f-414f-9944-495a1270a6e4",
-                        "name": "T7 - Laranja - 20/02",
+                        "name": "T7 - Fevereiro/24",
                         "color": "#E65100",
                         "orderindex": 6
                       },
                       {
                         "id": "08d19e9a-7e13-4fee-ba04-1b6cb1ca834b",
-                        "name": "T8 - Roxa - 12/03",
+                        "name": "T8 - Março/24",
                         "color": "#9b59b6",
                         "orderindex": 7
                       },
                       {
                         "id": "b6c2e6f2-f857-43ed-afa0-8dc4b550dcf6",
-                        "name": "T9 - Azul bebê - 09/04",
+                        "name": "T9 - Abril/24",
                         "color": "#1bbc9c",
                         "orderindex": 8
                       },
                       {
                         "id": "0879c9d9-5c73-4224-ba8e-06b8064381bc",
-                        "name": "T10 - Rosa - 30/04",
+                        "name": "T10 - Maio/24",
                         "color": "#f900ea",
                         "orderindex": 9
+                      },
+                      {
+                        "id": "7b4db95f-7111-4f03-90f6-b5799d7af37a",
+                        "name": "T11 - Junho/24",
+                        "color": "#AF7E2E",
+                        "orderindex": 10
+                      },
+                      {
+                        "id": "f7ce3b3a-0b21-4693-b1e9-0e6abd4daac9",
+                        "name": "T12 - Julho/24",
+                        "color": null,
+                        "orderindex": 11
+                      },
+                      {
+                        "id": "137b0943-e904-42be-8db6-e40031951abb",
+                        "name": "T13 - Agosto/24",
+                        "color": null,
+                        "orderindex": 12
+                      },
+                      {
+                        "id": "825d79d5-b42a-4967-b40e-f7ce38e47319",
+                        "name": "T14 - Setembro/24",
+                        "color": null,
+                        "orderindex": 13
+                      },
+                      {
+                        "id": "2e1042df-41a1-455f-ac71-94dc95893124",
+                        "name": "T15 - Outubro/24",
+                        "color": null,
+                        "orderindex": 14
+                      },
+                      {
+                        "id": "2b149133-a0e2-4bde-9a5f-aeccb50f74d4",
+                        "name": "T16 - Novembro/24",
+                        "color": null,
+                        "orderindex": 15
+                      },
+                      {
+                        "id": "b5b267d5-c185-4623-9d8e-7e8f81a5d853",
+                        "name": "T17 - Dezembro/24",
+                        "color": null,
+                        "orderindex": 16
                       }
                     ]
                   },
                   "date_created": "1699900134450",
-                  "hide_from_guests": false,
-                  "required": false
-                },
-                {
-                  "id": "0866204c-99a9-44e9-b34e-ad229e1de8fe",
-                  "name": "Telefone",
-                  "type": "phone",
-                  "type_config": {},
-                  "date_created": "1699900147890",
                   "hide_from_guests": false,
                   "required": false
                 },
@@ -1119,10 +1233,50 @@
                   "type_config": {
                     "single_user": false,
                     "include_groups": null,
-                    "include_guests": false,
+                    "include_guests": true,
                     "include_team_members": false
                   },
                   "date_created": "1699904103911",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "bd130af6-0457-466c-a502-76ce6c6c911c",
+                  "name": "Mentor",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1699899852364",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "83bb329d-5016-4bff-8543-0939cb64e173",
+                  "name": "Closer",
+                  "type": "users",
+                  "type_config": {
+                    "single_user": true,
+                    "include_guests": true,
+                    "include_team_members": true
+                  },
+                  "date_created": "1716646685727",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "8707884a-d885-41d0-9df8-3bc14e8b847d",
+                  "name": "Categoria",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1717512266969",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "9cce934a-ad50-40d5-8f24-ccfa24b14ca1",
+                  "name": "Convidado",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1717519965875",
                   "hide_from_guests": false,
                   "required": false
                 },
@@ -1204,6 +1358,18 @@
                         "name": "Blacklist",
                         "color": "#000000",
                         "orderindex": 11
+                      },
+                      {
+                        "id": "d07f209c-c355-4ab1-8476-23221fedf1aa",
+                        "name": "Não era decisor",
+                        "color": "#40C294",
+                        "orderindex": 12
+                      },
+                      {
+                        "id": "990e2546-5275-47c4-a24a-72317c3d5d1f",
+                        "name": "Falta de credibilidade",
+                        "color": null,
+                        "orderindex": 13
                       }
                     ]
                   },
@@ -1236,7 +1402,7 @@
                   "type_config": {},
                   "date_created": "1695867383436",
                   "hide_from_guests": true,
-                  "value": "mauriciothacilio@gmail.com",
+                  "value": "drvinicius_odonto@hotmail.com",
                   "required": false
                 },
                 {
@@ -1246,7 +1412,6 @@
                   "type_config": {},
                   "date_created": "1695867438787",
                   "hide_from_guests": false,
-                  "value": "Sim, de 3 até 10 mil reais",
                   "required": false
                 },
                 {
@@ -1256,7 +1421,6 @@
                   "type_config": {},
                   "date_created": "1695867477062",
                   "hide_from_guests": false,
-                  "value": "Facetas",
                   "required": false
                 },
                 {
@@ -1266,7 +1430,6 @@
                   "type_config": {},
                   "date_created": "1695867534125",
                   "hide_from_guests": false,
-                  "value": "Para outros procedimentos ",
                   "required": false
                 },
                 {
@@ -1276,7 +1439,6 @@
                   "type_config": {},
                   "date_created": "1695867542524",
                   "hide_from_guests": false,
-                  "value": "Entre R$ 40.000 a 100.000",
                   "required": false
                 },
                 {
@@ -1335,82 +1497,88 @@
                         "orderindex": 7
                       },
                       {
+                        "id": "54984cf8-15cf-4242-b69e-071ba365fc74",
+                        "name": "Comprou (Impact/P.C.R/DNE)",
+                        "color": "#1bbc9c",
+                        "orderindex": 8
+                      },
+                      {
                         "id": "e9e5ba64-adf3-4ffb-8ae8-a65e8e5d5ed4",
                         "name": "Comprou a Sala Black",
                         "color": "#2ecd6f",
-                        "orderindex": 8
+                        "orderindex": 9
                       },
                       {
                         "id": "2b24291c-b4f5-4f77-8bfd-ae536681f1ad",
                         "name": "Onboarding",
                         "color": "#e50000",
-                        "orderindex": 9
+                        "orderindex": 10
                       },
                       {
                         "id": "100f6269-711a-4f7a-947d-19b9cbdf4f3a",
                         "name": "Aplicação Orgânico (SE)",
                         "color": "#81B1FF",
-                        "orderindex": 10
+                        "orderindex": 11
                       },
                       {
                         "id": "ab1182bb-899e-4262-a613-b9cd74d323aa",
                         "name": "Lead (SE)",
                         "color": "#bcd5ff",
-                        "orderindex": 11
+                        "orderindex": 12
                       },
                       {
                         "id": "8778802b-f09d-40f2-a13d-e53ea80cf31f",
                         "name": "Convite Reunião (SE)",
                         "color": "#81B1FF",
-                        "orderindex": 12
+                        "orderindex": 13
                       },
                       {
                         "id": "6deaca49-d0ce-42d6-bb38-4506af4efe3d",
                         "name": "Convite Reunião (SE) - FOLLOW",
                         "color": "#0231E8",
-                        "orderindex": 13
+                        "orderindex": 14
                       },
                       {
                         "id": "3180cfcd-0835-4f45-8008-3d2609d66a30",
                         "name": "Reunião Agendada (SE)",
                         "color": "#04A9F4",
-                        "orderindex": 14
+                        "orderindex": 15
                       },
                       {
                         "id": "7ab02491-6aa0-4607-af1b-b1a68b8a5151",
                         "name": "Reunião Realizada (SE)",
                         "color": "#02BCD4",
-                        "orderindex": 15
+                        "orderindex": 16
                       },
                       {
                         "id": "0818d031-49c5-4480-abce-c5511f194adc",
                         "name": "Follow-up (SE)",
                         "color": "#f9d900",
-                        "orderindex": 16
+                        "orderindex": 17
                       },
                       {
                         "id": "6175c3f1-441d-4ca4-82d2-fcdb767ae319",
                         "name": "Agência",
                         "color": "#F99618",
-                        "orderindex": 17
+                        "orderindex": 18
                       },
                       {
                         "id": "ec5008c0-2488-442f-9a0d-e0edca4fd6b5",
                         "name": "Evento Presencial",
                         "color": "#AF7E2E",
-                        "orderindex": 18
+                        "orderindex": 19
                       },
                       {
                         "id": "a2d7ef42-d8a2-42fd-8ded-3636a6bca787",
                         "name": "Sponsor",
                         "color": "#1664E6",
-                        "orderindex": 19
+                        "orderindex": 20
                       }
                     ]
                   },
                   "date_created": "1695961005791",
                   "hide_from_guests": false,
-                  "value": 13,
+                  "value": 14,
                   "required": false
                 },
                 {
@@ -1420,7 +1588,15 @@
                   "type_config": {},
                   "date_created": "1695962286317",
                   "hide_from_guests": true,
-                  "value": "true",
+                  "required": false
+                },
+                {
+                  "id": "27ddd108-8ae8-4353-99bc-49e1a800b676",
+                  "name": "[AP] Clínica",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1696977767083",
+                  "hide_from_guests": true,
                   "required": false
                 },
                 {
@@ -1430,7 +1606,161 @@
                   "type_config": {},
                   "date_created": "1697663405507",
                   "hide_from_guests": false,
-                  "value": "559884009639",
+                  "value": "557399593411",
+                  "required": false
+                },
+                {
+                  "id": "13f4e607-7a31-428d-9775-fab416cb95d9",
+                  "name": "Origem",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1704300723971",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "b8ef7955-c874-423a-ae85-301bf39e717e",
+                  "name": "[SB] Data da Compra",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1719580466341",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "83513f62-c16b-4665-a792-a1bb76c4b359",
+                  "name": "[SB] CNPJ",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1719580520511",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "21655671-5c1f-4d62-a219-e68922c13307",
+                  "name": "[SB] Cidade",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1719580758158",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "86650f05-1f5a-4433-81fc-35f2797ce7ae",
+                  "name": "[SB] UF",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1719580773610",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "29805e68-9d2e-437e-8b18-f35e1ed9997e",
+                  "name": "[SB] Plataforma de Pagamento",
+                  "type": "drop_down",
+                  "type_config": {
+                    "new_drop_down": true,
+                    "options": [
+                      {
+                        "id": "3fea8683-cae3-47d0-9044-05daca395d03",
+                        "name": "Asaas",
+                        "color": "#0231E8",
+                        "orderindex": 0
+                      },
+                      {
+                        "id": "efca5f24-c4f4-49c6-be38-3c65fdfc8bd9",
+                        "name": "Green",
+                        "color": "#2ecd6f",
+                        "orderindex": 1
+                      },
+                      {
+                        "id": "1aa1a703-b702-4e46-b4e0-c50622a7e1f4",
+                        "name": "Conta direto",
+                        "color": "#f9d900",
+                        "orderindex": 2
+                      },
+                      {
+                        "id": "6030c642-03af-4d71-82d5-da0042859cbe",
+                        "name": "Híbrido",
+                        "color": "#9b59b6",
+                        "orderindex": 3
+                      }
+                    ]
+                  },
+                  "date_created": "1719580835035",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "be4c7910-4388-46b3-b5d2-9dfa12c96030",
+                  "name": "[SB] Forma de Pagamento",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1719580858798",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "261d84a6-e699-4c03-9178-01da36ec6dce",
+                  "name": "[SB] Prazo",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1720186396105",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "fd16a814-b8e9-4128-b765-6c3165638bf0",
+                  "name": "[SB] Valor",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1720186433444",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "504cfcc6-ca2d-403a-bc99-110b7fc17eee",
+                  "name": "Dia de vencimento",
+                  "type": "date",
+                  "type_config": {},
+                  "date_created": "1720187012189",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "40523737-82c1-49a5-9ebc-52d0a812b982",
+                  "name": "Nome Completo do Sócio",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1720397127514",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "f0b9372f-1b84-4682-b425-45e5a6b52ece",
+                  "name": "[SB] CPF",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1720397159656",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "5aed0524-bd1a-4476-96e0-4916b2057920",
+                  "name": "[SB] Razão Social",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1720397258435",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "c71c40d9-74df-448a-ab08-c0ae70bb8fda",
+                  "name": "[SB] Endereço",
+                  "type": "short_text",
+                  "type_config": {},
+                  "date_created": "1720397283577",
+                  "hide_from_guests": false,
                   "required": false
                 }
               ],
@@ -1438,7 +1768,7 @@
               "linked_tasks": [],
               "locations": [],
               "team_id": "30971486",
-              "url": "https://app.clickup.com/t/86a1erh9p",
+              "url": "https://app.clickup.com/t/86a3wgja7",
               "sharing": {
                 "public": false,
                 "public_share_expires_on": null,
@@ -1490,6 +1820,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-05-16T20:57:15.000Z",
-  "versionId": "582d71ee-0f58-463b-a5cd-67ca546432b0"
+  "updatedAt": "2024-07-10T15:42:07.000Z",
+  "versionId": "3192f766-6a53-4718-86e5-19990e061bca"
 }
