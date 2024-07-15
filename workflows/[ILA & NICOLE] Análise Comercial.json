@@ -291,6 +291,94 @@
           }
         ]
       ]
+    },
+    "CRM DQ": {
+      "main": [
+        [
+          {
+            "node": "HighLevel",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HighLevel": {
+      "main": [
+        [
+          {
+            "node": "HighLevel1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HighLevel2": {
+      "main": [
+        [
+          {
+            "node": "HighLevel3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CRM DQ1": {
+      "main": [
+        [
+          {
+            "node": "HighLevel2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HighLevel4": {
+      "main": [
+        [
+          {
+            "node": "HighLevel5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CRM DQ2": {
+      "main": [
+        [
+          {
+            "node": "HighLevel4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HighLevel6": {
+      "main": [
+        [
+          {
+            "node": "HighLevel7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CRM DQ3": {
+      "main": [
+        [
+          {
+            "node": "HighLevel6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-16T09:21:40.196Z",
@@ -3278,7 +3366,8 @@
       "position": [
         2680,
         840
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -3374,7 +3463,8 @@
       "position": [
         2440,
         560
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -3470,7 +3560,8 @@
       "position": [
         3080,
         1040
-      ]
+      ],
+      "disabled": true
     },
     {
       "parameters": {
@@ -3603,7 +3694,324 @@
       "position": [
         3080,
         1540
-      ]
+      ],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Formata Telefone').item.json.email }}",
+        "phone": "={{ $('Formata Telefone').item.json.telefone }}",
+        "additionalFields": {
+          "customFields": {
+            "values": [
+              {
+                "fieldId": "vvwTyVdzhvBpi4hdAacV",
+                "fieldValue": "={{ $('Formata Telefone').item.json.clinica }}"
+              },
+              {
+                "fieldId": "qAl1O4NqPY1opswawykC",
+                "fieldValue": "={{ $('Formata Telefone').item.json.função }}"
+              },
+              {
+                "fieldId": "lwIFb8oa4cnG5A9l8v1D",
+                "fieldValue": "={{ $('Formata Telefone').item.json.especialidade }}"
+              },
+              {
+                "fieldId": "KcJc54Cw8WbgisQLqCag",
+                "fieldValue": "={{ $('Formata Telefone').item.json.dificuldade }}"
+              },
+              {
+                "fieldId": "QzRRCM6ALiJ1gI8tUSTt",
+                "fieldValue": "={{ $('Formata Telefone').item.json.investe }}"
+              },
+              {
+                "fieldId": "aHZKSxqnOqpJcr7mtVwI",
+                "fieldValue": "={{ $('Formata Telefone').item.json.faturamento }}"
+              },
+              {
+                "fieldId": "F8H0SBnCJkreH7ObBDsd",
+                "fieldValue": "={{ $('Formata Telefone').item.json.transformacao }}"
+              }
+            ]
+          },
+          "name": "={{ $('Formata Telefone').item.json.nome }}"
+        }
+      },
+      "id": "803c1295-3ddf-4ab6-9f3c-df46db63a1de",
+      "name": "HighLevel",
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 1,
+      "position": [
+        2660,
+        560
+      ],
+      "credentials": {
+        "highLevelApi": {
+          "id": "QziUkmhVtoqRhyVa",
+          "name": "CRM LIbertas FSS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "pipelineId": "erDhFcnwF5HzS8qdu9nY",
+        "stageId": "ce65dc73-3b08-4a93-9499-50c10956545f",
+        "contactIdentifier": "={{ $json.id }}",
+        "title": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {}
+      },
+      "id": "faaf2b80-fb9d-4ccd-8ddb-ed76afd73627",
+      "name": "HighLevel1",
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        560
+      ],
+      "credentials": {
+        "highLevelApi": {
+          "id": "QziUkmhVtoqRhyVa",
+          "name": "CRM LIbertas FSS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Formata Telefone').item.json.email }}",
+        "phone": "={{ $('Formata Telefone').item.json.telefone }}",
+        "additionalFields": {
+          "customFields": {
+            "values": [
+              {
+                "fieldId": "vvwTyVdzhvBpi4hdAacV",
+                "fieldValue": "={{ $('Formata Telefone').item.json.clinica }}"
+              },
+              {
+                "fieldId": "qAl1O4NqPY1opswawykC",
+                "fieldValue": "={{ $('Formata Telefone').item.json.função }}"
+              },
+              {
+                "fieldId": "lwIFb8oa4cnG5A9l8v1D",
+                "fieldValue": "={{ $('Formata Telefone').item.json.especialidade }}"
+              },
+              {
+                "fieldId": "KcJc54Cw8WbgisQLqCag",
+                "fieldValue": "={{ $('Formata Telefone').item.json.dificuldade }}"
+              },
+              {
+                "fieldId": "QzRRCM6ALiJ1gI8tUSTt",
+                "fieldValue": "={{ $('Formata Telefone').item.json.investe }}"
+              },
+              {
+                "fieldId": "aHZKSxqnOqpJcr7mtVwI",
+                "fieldValue": "={{ $('Formata Telefone').item.json.faturamento }}"
+              },
+              {
+                "fieldId": "F8H0SBnCJkreH7ObBDsd",
+                "fieldValue": "={{ $('Formata Telefone').item.json.transformacao }}"
+              }
+            ]
+          },
+          "name": "={{ $('Formata Telefone').item.json.nome }}"
+        }
+      },
+      "id": "c7aaafb6-3931-4294-be51-2294d2edb95d",
+      "name": "HighLevel2",
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        840
+      ],
+      "credentials": {
+        "highLevelApi": {
+          "id": "QziUkmhVtoqRhyVa",
+          "name": "CRM LIbertas FSS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "pipelineId": "erDhFcnwF5HzS8qdu9nY",
+        "stageId": "ce65dc73-3b08-4a93-9499-50c10956545f",
+        "contactIdentifier": "={{ $json.id }}",
+        "title": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {}
+      },
+      "id": "3b26a6ae-35c6-4c0f-ba12-942f19fc8e37",
+      "name": "HighLevel3",
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 1,
+      "position": [
+        3100,
+        840
+      ],
+      "credentials": {
+        "highLevelApi": {
+          "id": "QziUkmhVtoqRhyVa",
+          "name": "CRM LIbertas FSS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Formata Telefone').item.json.email }}",
+        "phone": "={{ $('Formata Telefone').item.json.telefone }}",
+        "additionalFields": {
+          "customFields": {
+            "values": [
+              {
+                "fieldId": "vvwTyVdzhvBpi4hdAacV",
+                "fieldValue": "={{ $('Formata Telefone').item.json.clinica }}"
+              },
+              {
+                "fieldId": "qAl1O4NqPY1opswawykC",
+                "fieldValue": "={{ $('Formata Telefone').item.json.função }}"
+              },
+              {
+                "fieldId": "lwIFb8oa4cnG5A9l8v1D",
+                "fieldValue": "={{ $('Formata Telefone').item.json.especialidade }}"
+              },
+              {
+                "fieldId": "KcJc54Cw8WbgisQLqCag",
+                "fieldValue": "={{ $('Formata Telefone').item.json.dificuldade }}"
+              },
+              {
+                "fieldId": "QzRRCM6ALiJ1gI8tUSTt",
+                "fieldValue": "={{ $('Formata Telefone').item.json.investe }}"
+              },
+              {
+                "fieldId": "aHZKSxqnOqpJcr7mtVwI",
+                "fieldValue": "={{ $('Formata Telefone').item.json.faturamento }}"
+              },
+              {
+                "fieldId": "F8H0SBnCJkreH7ObBDsd",
+                "fieldValue": "={{ $('Formata Telefone').item.json.transformacao }}"
+              }
+            ]
+          },
+          "name": "={{ $('Formata Telefone').item.json.nome }}"
+        }
+      },
+      "id": "41ffbc5b-5007-4c4d-89ac-81baf1159399",
+      "name": "HighLevel4",
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        1040
+      ],
+      "credentials": {
+        "highLevelApi": {
+          "id": "QziUkmhVtoqRhyVa",
+          "name": "CRM LIbertas FSS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "pipelineId": "erDhFcnwF5HzS8qdu9nY",
+        "stageId": "ce65dc73-3b08-4a93-9499-50c10956545f",
+        "contactIdentifier": "={{ $json.id }}",
+        "title": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {}
+      },
+      "id": "2de09eae-b5ef-4723-b376-4c150a9c80a5",
+      "name": "HighLevel5",
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 1,
+      "position": [
+        3500,
+        1040
+      ],
+      "credentials": {
+        "highLevelApi": {
+          "id": "QziUkmhVtoqRhyVa",
+          "name": "CRM LIbertas FSS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $('Formata Telefone').item.json.email }}",
+        "phone": "={{ $('Formata Telefone').item.json.telefone }}",
+        "additionalFields": {
+          "customFields": {
+            "values": [
+              {
+                "fieldId": "vvwTyVdzhvBpi4hdAacV",
+                "fieldValue": "={{ $('Formata Telefone').item.json.clinica }}"
+              },
+              {
+                "fieldId": "qAl1O4NqPY1opswawykC",
+                "fieldValue": "={{ $('Formata Telefone').item.json.função }}"
+              },
+              {
+                "fieldId": "lwIFb8oa4cnG5A9l8v1D",
+                "fieldValue": "={{ $('Formata Telefone').item.json.especialidade }}"
+              },
+              {
+                "fieldId": "KcJc54Cw8WbgisQLqCag",
+                "fieldValue": "={{ $('Formata Telefone').item.json.dificuldade }}"
+              },
+              {
+                "fieldId": "QzRRCM6ALiJ1gI8tUSTt",
+                "fieldValue": "={{ $('Formata Telefone').item.json.investe }}"
+              },
+              {
+                "fieldId": "aHZKSxqnOqpJcr7mtVwI",
+                "fieldValue": "={{ $('Formata Telefone').item.json.faturamento }}"
+              },
+              {
+                "fieldId": "F8H0SBnCJkreH7ObBDsd",
+                "fieldValue": "={{ $('Formata Telefone').item.json.transformacao }}"
+              }
+            ]
+          },
+          "name": "={{ $('Formata Telefone').item.json.nome }}"
+        }
+      },
+      "id": "e3508fc8-5e01-486e-b22e-72cede1c5d87",
+      "name": "HighLevel6",
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 1,
+      "position": [
+        3280,
+        1540
+      ],
+      "credentials": {
+        "highLevelApi": {
+          "id": "QziUkmhVtoqRhyVa",
+          "name": "CRM LIbertas FSS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "pipelineId": "erDhFcnwF5HzS8qdu9nY",
+        "stageId": "ce65dc73-3b08-4a93-9499-50c10956545f",
+        "contactIdentifier": "={{ $json.id }}",
+        "title": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {}
+      },
+      "id": "ecc7673b-c2dc-4390-9081-44d689749c25",
+      "name": "HighLevel7",
+      "type": "n8n-nodes-base.highLevel",
+      "typeVersion": 1,
+      "position": [
+        3500,
+        1540
+      ],
+      "credentials": {
+        "highLevelApi": {
+          "id": "QziUkmhVtoqRhyVa",
+          "name": "CRM LIbertas FSS"
+        }
+      }
     }
   ],
   "pinData": {
@@ -3664,6 +4072,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-09T12:58:28.000Z",
-  "versionId": "96a3477f-53f9-4890-9c13-f9a06ae3c09c"
+  "updatedAt": "2024-07-15T04:06:45.000Z",
+  "versionId": "ab31af8d-6c7a-4b70-b908-c0538e38ff98"
 }
