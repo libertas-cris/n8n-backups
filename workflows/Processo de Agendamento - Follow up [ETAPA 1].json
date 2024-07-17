@@ -49,7 +49,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Summarize",
             "type": "main",
             "index": 0
           }
@@ -60,32 +60,14 @@
       "main": [
         [
           {
-            "node": "vip?",
+            "node": "Dados finais",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Formata Telefone",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "vip?": {
-      "main": [
-        [
-          {
-            "node": "ingresso vip e nome",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "ingresso normal",
+            "node": "Dados finais1",
             "type": "main",
             "index": 0
           }
@@ -125,17 +107,6 @@
         ]
       ]
     },
-    "Aggregate": {
-      "main": [
-        [
-          {
-            "node": "Dados finais",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "ingresso vip e nome": {
       "main": [
         [
@@ -152,6 +123,101 @@
         [
           {
             "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "ingresso normal1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ingresso normal1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados finais1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "ActiveCampaign1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign": {
+      "main": [
+        [
+          {
+            "node": "ADD TAG DE FOLLOW NO ACTIVE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActiveCampaign1": {
+      "main": [
+        [
+          {
+            "node": "ADD TAG DE FOLLOW NO ACTIVE1",
             "type": "main",
             "index": 0
           }
@@ -204,8 +270,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 1,
       "position": [
-        1400,
-        520
+        1920,
+        1340
       ]
     },
     {
@@ -231,8 +297,8 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 2.1,
       "position": [
-        2000,
-        320
+        2420,
+        840
       ]
     },
     {
@@ -254,8 +320,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
       "position": [
-        1660,
-        520
+        2260,
+        1200
       ]
     },
     {
@@ -279,9 +345,11 @@
           "mappingMode": "defineBelow",
           "value": {
             "data": "={{new DateTime($now).toFormat('dd/MM/yyyy HH:mm')}}",
-            "tipo": "={{ $json.ingresso[0] }}",
-            "telefone": "={{ $json.whatsapp[0] }}",
-            "nome": "={{ $json.nome[0] }}"
+            "tipo": "={{ $json.ingresso }}",
+            "telefone": "={{ $json[\"Telefone (Whatsap)\"] }}",
+            "nome": "={{ $('Trata Webhook').item.json.payload.name }}",
+            "chave": "={{ $json[\"Telefone (Whatsap)\"].slice(-7) }}",
+            "email": "={{ $json.Email }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -304,6 +372,16 @@
               "canBeUsedToMatch": true
             },
             {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
               "id": "telefone",
               "displayName": "telefone",
               "required": false,
@@ -320,6 +398,26 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "chave",
+              "displayName": "chave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "respondeu?",
+              "displayName": "respondeu?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ]
         },
@@ -330,8 +428,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        2700,
-        320
+        1920,
+        180
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -368,6 +466,16 @@
                 "operation": "equals",
                 "name": "filter.operator.equals"
               }
+            },
+            {
+              "id": "e29564be-f89a-4c44-9354-b9295ae6b666",
+              "leftValue": "={{ $json['payload.custom_fields'].name }}",
+              "rightValue": "=E-mail",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
             }
           ],
           "combinator": "or"
@@ -379,7 +487,7 @@
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2,
       "position": [
-        960,
+        940,
         380
       ]
     },
@@ -394,8 +502,8 @@
           "conditions": [
             {
               "id": "2246b809-74f5-4b59-9da9-551cfe221e7f",
-              "leftValue": "={{ $json['payload.custom_fields'].name }}",
-              "rightValue": "=Ingresso Vip",
+              "leftValue": "={{ $json.appended_payload_custom_fields_value[0] }}",
+              "rightValue": "=true",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -412,41 +520,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2,
       "position": [
-        1160,
+        1340,
         380
-      ]
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict"
-          },
-          "conditions": [
-            {
-              "id": "2604b775-ccc8-4ccd-a396-911b2739e506",
-              "leftValue": "={{ $json['payload.custom_fields'].value }}",
-              "rightValue": "=",
-              "operator": {
-                "type": "string",
-                "operation": "exists",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "id": "66e1fe87-a8b3-455b-8b5b-a979626f5868",
-      "name": "vip?",
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2,
-      "position": [
-        1380,
-        200
       ]
     },
     {
@@ -468,8 +543,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
       "position": [
-        1600,
-        280
+        2020,
+        820
       ]
     },
     {
@@ -477,21 +552,21 @@
         "assignments": {
           "assignments": [
             {
-              "id": "f34e8281-9ba0-4554-9478-c50cddaef2f0",
+              "id": "b08df131-aadb-4c9c-83d6-cbbd3dafee13",
               "name": "ingresso",
-              "value": "={{ $json.ingresso }}",
-              "type": "array"
+              "value": "vip",
+              "type": "string"
             },
             {
-              "id": "eb68adea-0f76-42c0-8fbe-1707be438153",
-              "name": "whatsapp",
-              "value": "={{ $json.whatsapp }}",
-              "type": "array"
+              "id": "c75b5c2c-807e-4a3b-9f07-6ce9afa68d36",
+              "name": "Telefone (Whatsap)",
+              "value": "={{ $json.appended_payload_custom_fields_value[2] }}",
+              "type": "string"
             },
             {
-              "id": "a0fd7532-b25d-46be-a1d9-717170f54139",
-              "name": "nome[0]",
-              "value": "={{ $json.nome[0] }}",
+              "id": "a338550f-e570-48d4-a4f3-b72768d09663",
+              "name": "Email",
+              "value": "={{ $json.appended_payload_custom_fields_value[1] }}",
               "type": "string"
             }
           ]
@@ -503,8 +578,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
       "position": [
-        2460,
-        320
+        1680,
+        180
       ]
     },
     {
@@ -529,8 +604,8 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        2220,
-        320
+        2640,
+        840
       ]
     },
     {
@@ -558,9 +633,351 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.3,
       "position": [
-        1600,
-        60
+        2020,
+        660
       ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "2246b809-74f5-4b59-9da9-551cfe221e7f",
+              "leftValue": "={{ $json['payload.custom_fields'].name }}",
+              "rightValue": "=E-mail",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9a75efcc-9343-4329-90df-8eb6a2c33a48",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1560,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e1fe9a52-a9ee-4e8f-b7a4-d85e82848dc3",
+              "name": "E-mail",
+              "value": "={{ $json['payload.custom_fields'].value }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "3302193b-110e-4a9c-8756-d0fefe72210b",
+      "name": "ingresso normal1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        2020,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "append",
+              "field": "[\"payload.custom_fields\"].value"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8c479f29-3647-43b7-8af9-17e8f9464343",
+      "name": "Summarize",
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b08df131-aadb-4c9c-83d6-cbbd3dafee13",
+              "name": "ingresso",
+              "value": "normal",
+              "type": "string"
+            },
+            {
+              "id": "c75b5c2c-807e-4a3b-9f07-6ce9afa68d36",
+              "name": "Telefone (Whatsap)",
+              "value": "={{ $json.appended_payload_custom_fields_value[2] }}",
+              "type": "string"
+            },
+            {
+              "id": "a338550f-e570-48d4-a4f3-b72768d09663",
+              "name": "Email",
+              "value": "={{ $json.appended_payload_custom_fields_value[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "08dd97ea-9b57-45aa-9a94-72b2907e9c89",
+      "name": "Dados finais1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.3,
+      "position": [
+        1680,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": " https://activeilaenicole.api-us1.com/api/3/contactTags",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            },
+            {
+              "name": "Api-Token",
+              "value": "7faa5f8fade7ade83a9851dfb75cb120c0c57114c3a8eb7a8f1f1d3620c93e0d05542921"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"contactTag\": {         \"contact\": {{ $json.id }}, \n\"tag\": 293   \n}}",
+        "options": {}
+      },
+      "id": "d3a90b5f-0d1c-4daa-9e3d-1844a24b5045",
+      "name": "ADD TAG DE FOLLOW NO ACTIVE",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2300,
+        180
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1tXKFYiu2sisLoWIl91eTJfR1AQaNl2BTraZOUC37uF4",
+          "mode": "list",
+          "cachedResultName": "Processo de Agendamento - Follow Up's",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tXKFYiu2sisLoWIl91eTJfR1AQaNl2BTraZOUC37uF4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1tXKFYiu2sisLoWIl91eTJfR1AQaNl2BTraZOUC37uF4/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "data": "={{new DateTime($now).toFormat('dd/MM/yyyy HH:mm')}}",
+            "tipo": "={{ $json.ingresso }}",
+            "telefone": "={{ $json[\"Telefone (Whatsap)\"] }}",
+            "nome": "={{ $('Trata Webhook').item.json.payload.name }}",
+            "chave": "={{ $json[\"Telefone (Whatsap)\"].slice(-7) }}",
+            "email": "={{ $json.Email }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "data",
+              "displayName": "data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nome",
+              "displayName": "nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "telefone",
+              "displayName": "telefone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tipo",
+              "displayName": "tipo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "chave",
+              "displayName": "chave",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "respondeu?",
+              "displayName": "respondeu?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6a7fded8-7979-41e2-b3d4-acab8c070394",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1920,
+        460
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": " https://activeilaenicole.api-us1.com/api/3/contactTags",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            },
+            {
+              "name": "Api-Token",
+              "value": "7faa5f8fade7ade83a9851dfb75cb120c0c57114c3a8eb7a8f1f1d3620c93e0d05542921"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"contactTag\": {         \"contact\": {{ $json.id }}, \n\"tag\": 293   \n}}",
+        "options": {}
+      },
+      "id": "5ad1b963-2e7f-4148-b8b3-2ebb5367817f",
+      "name": "ADD TAG DE FOLLOW NO ACTIVE1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2300,
+        460
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.email }}",
+        "updateIfExists": true,
+        "additionalFields": {}
+      },
+      "id": "e1a241e2-42ad-4340-8ffa-1330f50207e1",
+      "name": "ActiveCampaign",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        180
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "jY4mO4rkMqLOPVXo",
+          "name": "Ila & Nicole"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "email": "={{ $json.email }}",
+        "updateIfExists": true,
+        "additionalFields": {}
+      },
+      "id": "a4649bcd-743b-4069-933d-e9146f6ae7e4",
+      "name": "ActiveCampaign1",
+      "type": "n8n-nodes-base.activeCampaign",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        460
+      ],
+      "credentials": {
+        "activeCampaignApi": {
+          "id": "jY4mO4rkMqLOPVXo",
+          "name": "Ila & Nicole"
+        }
+      }
     }
   ],
   "pinData": {
@@ -1820,6 +2237,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-10T15:42:07.000Z",
-  "versionId": "3192f766-6a53-4718-86e5-19990e061bca"
+  "updatedAt": "2024-07-16T18:17:51.000Z",
+  "versionId": "85536351-787a-443a-b93d-9d11c85cb9f3"
 }
