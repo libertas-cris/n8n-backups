@@ -710,7 +710,7 @@
       "type": "n8n-nodes-base.summarize",
       "typeVersion": 1,
       "position": [
-        1160,
+        1140,
         380
       ]
     },
@@ -2237,6 +2237,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-16T18:17:51.000Z",
-  "versionId": "85536351-787a-443a-b93d-9d11c85cb9f3"
+  "updatedAt": "2024-07-17T04:04:36.000Z",
+  "versionId": "0704767b-e457-4c17-b4ba-94cad712eb6b"
 }
