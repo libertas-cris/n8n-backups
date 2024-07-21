@@ -379,6 +379,28 @@
           }
         ]
       ]
+    },
+    "HighLevel5": {
+      "main": [
+        [
+          {
+            "node": "MSG VIC",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HighLevel7": {
+      "main": [
+        [
+          {
+            "node": "MSG VIC1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-16T09:21:40.196Z",
@@ -4026,6 +4048,80 @@
           "name": "CRM LIbertas FSS"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5531984799947"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "cc0d9cfa-382c-4de6-8be2-7aa4a2b747c7",
+      "name": "MSG VIC",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3680,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5531984799947"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f7855c99-9355-4960-b2bf-a6770cc194a3",
+      "name": "MSG VIC1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3700,
+        1540
+      ]
     }
   ],
   "pinData": {
@@ -4086,6 +4182,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-16T19:32:49.000Z",
-  "versionId": "a47cc353-8f06-40df-a43b-5889b3f09b4a"
+  "updatedAt": "2024-07-20T19:34:37.000Z",
+  "versionId": "a31e59e1-c98a-43a2-8216-015ecd1d71a0"
 }
