@@ -1,0 +1,134 @@
+{
+  "active": true,
+  "connections": {
+    "Trata Webhook": {
+      "main": [
+        [
+          {
+            "node": "Formata Telefone",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Trata Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formata Telefone": {
+      "main": [
+        [
+          {
+            "node": "Final 2789",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-23T14:19:37.560Z",
+  "id": "3wYRBy8B1OW9MPJT",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[JESS] Recuperação de Grupo",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "b0948247-df3b-428f-a156-3cb447b1c811",
+        "options": {}
+      },
+      "id": "b44d6772-f1c0-4454-97ff-7d7777e572f9",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        220
+      ],
+      "webhookId": "b0948247-df3b-428f-a156-3cb447b1c811"
+    },
+    {
+      "parameters": {
+        "jsCode": "return typeof $node[\"Webhook\"].json[\"body\"] == 'string' ? JSON.parse($node[\"Webhook\"].json[\"body\"]) : $node[\"Webhook\"].json[\"body\"]\n"
+      },
+      "id": "8676fde6-a127-4e46-8fe0-7b08d0d488da",
+      "name": "Trata Webhook",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        340,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function formataTelefone(number) {\n    number = number.toString().replace(/[^\\d]/g, \"\")\n    let ddi = '55'\n    let ddd = number.substring(0, 2)\n\n    if (number.length == 13) {\n        let ddi = number.substring(0, 2)\n        let ddd = number.substring(2, 4)\n        return ddi + ddd + (ddd <= 28 ? number.substring(4, 13) : number.substring(5, 13))\n\n    } else if (number.length == 11) {\n        return ddi + ddd + (ddd <= 28 ? number.substring(2, 11) : number.substring(3, 11))\n\n    } else if (number.length == 10) {\n        return ddi + ddd + (ddd <= 28 ? '9' : '') + number.substring(2, 11)\n\n    } else if (number.length == 12) {\n        return number.substring(0, 2) == '55' ? number : (number.substring(0, 1) == '0' ? formataTelefone(number.substring(1, 12)) : number)\n\n    } else {\n        return number\n    }\n}\n\n$input.all()[0].json['telefone'] = formataTelefone($node['Trata Webhook'].json['telefone'])\n\nreturn $input.all();"
+      },
+      "id": "2e0aaa0e-4a7b-4232-82b4-68091a9e8f96",
+      "name": "Formata Telefone",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        520,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C92A5E4516CC0A421E9D604DAF2BCF1/token/DAEE58152CBC84AAAF621399/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fa17da691aa134d98a36ad45928e14669S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $('Formata Telefone').item.json.phone }}"
+            },
+            {
+              "name": "message",
+              "value": "=Hey, {{ $('Formata Telefone').item.json.name.split(\" \")[0] }}.\n\nNo *Your RealBrit* sua relação com o inglês britânico não será mais a mesma. \n\nVou te mostrar como se livrar do inglês genérico para *falar com naturalidade e confiança.*\n\nPara garantir que você receba todos os *materiais e links das aulas*, é importante estar na comunidade do evento. \n\nBasta responder com *Real* que te mando o link."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ffc523a1-982f-4734-adfd-260effbd1bf1",
+      "name": "Final 2789",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        220
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-07-23T14:23:18.000Z",
+  "versionId": "d4cba932-db8f-4801-9985-1c62615da0d6"
+}
