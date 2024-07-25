@@ -380,21 +380,6 @@
         ]
       ]
     },
-    "HighLevel5": {
-      "main": [
-        []
-      ]
-    },
-    "HighLevel7": {
-      "main": [
-        []
-      ]
-    },
-    "HighLevel1": {
-      "main": [
-        []
-      ]
-    },
     "If": {
       "main": [
         [
@@ -4182,7 +4167,7 @@
             },
             {
               "name": "message",
-              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}"
+              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*link CRM:* {{ $node[\"ClickUp4\"].json[\"url\"] }}"
             }
           ]
         },
@@ -4517,7 +4502,7 @@
             },
             {
               "name": "message",
-              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}"
+              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*link CRM:* {{ $node[\"ClickUp4\"].json[\"url\"] }}"
             }
           ]
         },
@@ -4715,6 +4700,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-25T03:00:12.000Z",
-  "versionId": "b7e991fe-2f2a-4a2d-9e28-7685fb338967"
+  "updatedAt": "2024-07-25T14:41:53.000Z",
+  "versionId": "f72b91bd-7ca0-40f2-a105-720e6217506f"
 }
