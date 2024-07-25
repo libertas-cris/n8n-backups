@@ -296,7 +296,7 @@
       "main": [
         [
           {
-            "node": "HighLevel",
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -329,7 +329,7 @@
       "main": [
         [
           {
-            "node": "HighLevel2",
+            "node": "If1",
             "type": "main",
             "index": 0
           }
@@ -351,7 +351,7 @@
       "main": [
         [
           {
-            "node": "HighLevel4",
+            "node": "If2",
             "type": "main",
             "index": 0
           }
@@ -373,7 +373,7 @@
       "main": [
         [
           {
-            "node": "HighLevel6",
+            "node": "If3",
             "type": "main",
             "index": 0
           }
@@ -381,6 +381,75 @@
       ]
     },
     "HighLevel5": {
+      "main": [
+        []
+      ]
+    },
+    "HighLevel7": {
+      "main": [
+        []
+      ]
+    },
+    "HighLevel1": {
+      "main": [
+        []
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "ClickUp1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ClickUp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "ClickUp2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ClickUp3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "ClickUp4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ClickUp5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp4": {
       "main": [
         [
           {
@@ -391,11 +460,51 @@
         ]
       ]
     },
-    "HighLevel7": {
+    "ClickUp5": {
+      "main": [
+        [
+          {
+            "node": "MSG VIC2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "ClickUp6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ClickUp7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp6": {
       "main": [
         [
           {
             "node": "MSG VIC1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp7": {
+      "main": [
+        [
+          {
+            "node": "MSG VIC3",
             "type": "main",
             "index": 0
           }
@@ -483,7 +592,9 @@
     },
     {
       "parameters": {
-        "options": {}
+        "options": {
+          "timezone": "America/Sao_Paulo"
+        }
       },
       "id": "9b0801f2-aaaa-4f36-b89d-d0b119f8232c",
       "name": "Data",
@@ -3765,8 +3876,8 @@
       "type": "n8n-nodes-base.highLevel",
       "typeVersion": 1,
       "position": [
-        2660,
-        560
+        4460,
+        -160
       ],
       "credentials": {
         "highLevelApi": {
@@ -3792,8 +3903,8 @@
       "type": "n8n-nodes-base.highLevel",
       "typeVersion": 1,
       "position": [
-        2880,
-        560
+        4640,
+        -160
       ],
       "credentials": {
         "highLevelApi": {
@@ -3848,8 +3959,8 @@
       "type": "n8n-nodes-base.highLevel",
       "typeVersion": 1,
       "position": [
-        2880,
-        840
+        4460,
+        20
       ],
       "credentials": {
         "highLevelApi": {
@@ -3875,8 +3986,8 @@
       "type": "n8n-nodes-base.highLevel",
       "typeVersion": 1,
       "position": [
-        3100,
-        840
+        4640,
+        20
       ],
       "credentials": {
         "highLevelApi": {
@@ -3931,8 +4042,8 @@
       "type": "n8n-nodes-base.highLevel",
       "typeVersion": 1,
       "position": [
-        3280,
-        1040
+        4460,
+        200
       ],
       "credentials": {
         "highLevelApi": {
@@ -3957,8 +4068,8 @@
       "type": "n8n-nodes-base.highLevel",
       "typeVersion": 1,
       "position": [
-        3500,
-        1040
+        4640,
+        200
       ],
       "credentials": {
         "highLevelApi": {
@@ -4013,8 +4124,8 @@
       "type": "n8n-nodes-base.highLevel",
       "typeVersion": 1,
       "position": [
-        3280,
-        1540
+        4460,
+        380
       ],
       "credentials": {
         "highLevelApi": {
@@ -4039,8 +4150,8 @@
       "type": "n8n-nodes-base.highLevel",
       "typeVersion": 1,
       "position": [
-        3500,
-        1540
+        4640,
+        380
       ],
       "credentials": {
         "highLevelApi": {
@@ -4082,8 +4193,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3680,
-        1040
+        3760,
+        900
       ]
     },
     {
@@ -4119,8 +4230,430 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        3700,
+        3760,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901304701916",
+        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
+          "dueDate": "={{ $json.currentDate }}"
+        }
+      },
+      "id": "327fd47b-63b0-4035-962b-fc9c5dc97bdf",
+      "name": "ClickUp1",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        2920,
+        380
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4b9e06e9-44b8-4f2e-a07d-1acb95a0791e",
+              "leftValue": "={{ $('Formata Telefone').item.json.utm_source }}",
+              "rightValue": "=adsfb",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0b2c4eee-9ec2-4eb7-962b-5ac0fbfd62fe",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2660,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901304701916",
+        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
+          "dueDate": "={{ $json.currentDate }}"
+        }
+      },
+      "id": "35225311-143c-4e2d-a369-a0ad8ddaf909",
+      "name": "ClickUp",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        2920,
+        620
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901304701916",
+        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
+          "dueDate": "={{ $json.currentDate }}"
+        }
+      },
+      "id": "b35196c7-1093-4327-8852-17b3ea068082",
+      "name": "ClickUp2",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        700
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4b9e06e9-44b8-4f2e-a07d-1acb95a0791e",
+              "leftValue": "={{ $('Formata Telefone').item.json.utm_source }}",
+              "rightValue": "=adsfb",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3349a369-58da-4f8c-8706-29f948e34aaa",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2880,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901304701916",
+        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
+          "dueDate": "={{ $json.currentDate }}"
+        }
+      },
+      "id": "e1435991-5ea8-4b2c-a326-d9e59744fe37",
+      "name": "ClickUp3",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        3180,
+        860
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901304701916",
+        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
+          "dueDate": "={{ $json.currentDate }}"
+        }
+      },
+      "id": "d13e7d61-8281-4d52-96b1-47d74de8fde1",
+      "name": "ClickUp4",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        900
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4b9e06e9-44b8-4f2e-a07d-1acb95a0791e",
+              "leftValue": "={{ $('Formata Telefone').item.json.utm_source }}",
+              "rightValue": "=adsfb",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fbcb1df7-dc27-423d-9e4f-45e8efb33bf1",
+      "name": "If2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3280,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901304701916",
+        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
+          "dueDate": "={{ $json.currentDate }}"
+        }
+      },
+      "id": "2db675ba-3301-4104-a1b2-fbede5bacc6d",
+      "name": "ClickUp5",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        1100
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5531984799947"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5a68d3da-4a4c-4101-8eeb-13ac21af10e5",
+      "name": "MSG VIC2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3760,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901304701916",
+        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
+          "dueDate": "={{ $json.currentDate }}"
+        }
+      },
+      "id": "43170800-4ef6-4cab-b20c-596cfedfa748",
+      "name": "ClickUp6",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        1360
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "4b9e06e9-44b8-4f2e-a07d-1acb95a0791e",
+              "leftValue": "={{ $('Formata Telefone').item.json.utm_source }}",
+              "rightValue": "=adsfb",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c3cd13b4-3559-466e-af16-5cde05d9f174",
+      "name": "If3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        3280,
         1540
+      ]
+    },
+    {
+      "parameters": {
+        "team": "30971486",
+        "space": "90070031834",
+        "folder": "90130377914",
+        "list": "901304701916",
+        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "additionalFields": {
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
+          "dueDate": "={{ $json.currentDate }}"
+        }
+      },
+      "id": "77d288e6-d234-445d-85ee-3a2d02ca3a02",
+      "name": "ClickUp7",
+      "type": "n8n-nodes-base.clickUp",
+      "typeVersion": 1,
+      "position": [
+        3540,
+        1600
+      ],
+      "credentials": {
+        "clickUpApi": {
+          "id": "fy7YLKgPN9XVKscl",
+          "name": "Space Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=5531984799947"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fa39713b-e23c-4071-b6e5-80686724827e",
+      "name": "MSG VIC3",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3760,
+        1600
       ]
     }
   ],
@@ -4182,6 +4715,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-20T19:34:37.000Z",
-  "versionId": "a31e59e1-c98a-43a2-8216-015ecd1d71a0"
+  "updatedAt": "2024-07-25T03:00:12.000Z",
+  "versionId": "b7e991fe-2f2a-4a2d-9e28-7685fb338967"
 }
