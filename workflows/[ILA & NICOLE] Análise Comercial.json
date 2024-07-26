@@ -4227,6 +4227,9 @@
         "list": "901304701916",
         "name": "={{ $('Formata Telefone').item.json.nome }}",
         "additionalFields": {
+          "assignees": [
+            82001013
+          ],
           "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
@@ -4287,6 +4290,9 @@
         "list": "901304701916",
         "name": "={{ $('Formata Telefone').item.json.nome }}",
         "additionalFields": {
+          "assignees": [
+            82001013
+          ],
           "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
@@ -4314,6 +4320,9 @@
         "list": "901304701916",
         "name": "={{ $('Formata Telefone').item.json.nome }}",
         "additionalFields": {
+          "assignees": [
+            82001013
+          ],
           "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
@@ -4374,6 +4383,9 @@
         "list": "901304701916",
         "name": "={{ $('Formata Telefone').item.json.nome }}",
         "additionalFields": {
+          "assignees": [
+            82001013
+          ],
           "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
@@ -4401,6 +4413,9 @@
         "list": "901304701916",
         "name": "={{ $('Formata Telefone').item.json.nome }}",
         "additionalFields": {
+          "assignees": [
+            82001013
+          ],
           "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
@@ -4461,6 +4476,9 @@
         "list": "901304701916",
         "name": "={{ $('Formata Telefone').item.json.nome }}",
         "additionalFields": {
+          "assignees": [
+            82001013
+          ],
           "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
@@ -4525,6 +4543,9 @@
         "list": "901304701916",
         "name": "={{ $('Formata Telefone').item.json.nome }}",
         "additionalFields": {
+          "assignees": [
+            82001013
+          ],
           "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
@@ -4585,6 +4606,9 @@
         "list": "901304701916",
         "name": "={{ $('Formata Telefone').item.json.nome }}",
         "additionalFields": {
+          "assignees": [
+            82001013
+          ],
           "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
@@ -4700,6 +4724,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-25T14:41:53.000Z",
-  "versionId": "f72b91bd-7ca0-40f2-a105-720e6217506f"
+  "updatedAt": "2024-07-26T04:14:17.000Z",
+  "versionId": "825d1222-45b5-4e8b-8f95-a0fe573a243e"
 }
