@@ -438,7 +438,7 @@
       "main": [
         [
           {
-            "node": "MSG VIC",
+            "node": "MSG GRUPO4",
             "type": "main",
             "index": 0
           }
@@ -449,7 +449,7 @@
       "main": [
         [
           {
-            "node": "MSG VIC2",
+            "node": "MSG GRUPO5",
             "type": "main",
             "index": 0
           }
@@ -478,7 +478,7 @@
       "main": [
         [
           {
-            "node": "MSG VIC1",
+            "node": "MSG GRUPO6",
             "type": "main",
             "index": 0
           }
@@ -489,7 +489,51 @@
       "main": [
         [
           {
-            "node": "MSG VIC3",
+            "node": "MSG GRUPO7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp1": {
+      "main": [
+        [
+          {
+            "node": "MSG GRUPO",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp": {
+      "main": [
+        [
+          {
+            "node": "MSG GRUPO1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp2": {
+      "main": [
+        [
+          {
+            "node": "MSG GRUPO2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ClickUp3": {
+      "main": [
+        [
+          {
+            "node": "MSG GRUPO3",
             "type": "main",
             "index": 0
           }
@@ -4147,80 +4191,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "=5531984799947"
-            },
-            {
-              "name": "message",
-              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*link CRM:* {{ $node[\"ClickUp4\"].json[\"url\"] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "cc0d9cfa-382c-4de6-8be2-7aa4a2b747c7",
-      "name": "MSG VIC",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        3760,
-        900
-      ]
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "=5531984799947"
-            },
-            {
-              "name": "message",
-              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "f7855c99-9355-4960-b2bf-a6770cc194a3",
-      "name": "MSG VIC1",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        3760,
-        1360
-      ]
-    },
-    {
-      "parameters": {
         "team": "30971486",
         "space": "90070031834",
         "folder": "90130377914",
@@ -4230,7 +4200,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\"}, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4293,7 +4263,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4323,7 +4293,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4386,7 +4356,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4416,7 +4386,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4479,7 +4449,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4500,43 +4470,6 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Client-Token",
-              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
-            }
-          ]
-        },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "phone",
-              "value": "=5531984799947"
-            },
-            {
-              "name": "message",
-              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*link CRM:* {{ $node[\"ClickUp4\"].json[\"url\"] }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "id": "5a68d3da-4a4c-4101-8eeb-13ac21af10e5",
-      "name": "MSG VIC2",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.1,
-      "position": [
-        3760,
-        1100
-      ]
-    },
-    {
-      "parameters": {
         "team": "30971486",
         "space": "90070031834",
         "folder": "90130377914",
@@ -4546,7 +4479,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4609,7 +4542,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4646,22 +4579,281 @@
           "parameters": [
             {
               "name": "phone",
-              "value": "=5531984799947"
+              "value": "=120363303787410525-group"
             },
             {
               "name": "message",
-              "value": "=*+1 lead no CRM*\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}"
+              "value": "=*+1 lead da Sessão Estratégica*\n\n*Origem:* {{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*Clínica:* {{ $('Formata Telefone').item.json.clinica }}\n*Função:* {{ $node[\"Formata Telefone\"].json[\"função\"] }}\n*Investe em tráfego:* {{ $node[\"Formata Telefone\"].json[\"investe\"] }}\n*Faturamento:* {{ $node[\"Formata Telefone\"].json[\"faturamento\"] }}\n*Especialidade:* {{ $node[\"Formata Telefone\"].json[\"especialidade\"] }}\n*Dificuldade:* {{ $node[\"Formata Telefone\"].json[\"dificuldade\"] }}\n\n*link CRM:* {{ $node[\"ClickUp1\"].json[\"url\"] }} "
             }
           ]
         },
         "options": {}
       },
-      "id": "fa39713b-e23c-4071-b6e5-80686724827e",
-      "name": "MSG VIC3",
+      "id": "d9631cf4-0e87-44aa-8851-ffc532b19259",
+      "name": "MSG GRUPO",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3160,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363303787410525-group"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead da Sessão Estratégica*\n\n*Origem:* {{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*Clínica:* {{ $('Formata Telefone').item.json.clinica }}\n*Função:* {{ $node[\"Formata Telefone\"].json[\"função\"] }}\n*Investe em tráfego:* {{ $node[\"Formata Telefone\"].json[\"investe\"] }}\n*Faturamento:* {{ $node[\"Formata Telefone\"].json[\"faturamento\"] }}\n*Especialidade:* {{ $node[\"Formata Telefone\"].json[\"especialidade\"] }}\n*Dificuldade:* {{ $node[\"Formata Telefone\"].json[\"dificuldade\"] }}\n\n*link CRM:* {{ $node[\"ClickUp\"].json[\"url\"] }} "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7f4583d7-dc77-4751-b350-44939e8450cf",
+      "name": "MSG GRUPO1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3320,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363303787410525-group"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead da Sessão Estratégica*\n\n*Origem:* {{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*Clínica:* {{ $('Formata Telefone').item.json.clinica }}\n*Função:* {{ $node[\"Formata Telefone\"].json[\"função\"] }}\n*Investe em tráfego:* {{ $node[\"Formata Telefone\"].json[\"investe\"] }}\n*Faturamento:* {{ $node[\"Formata Telefone\"].json[\"faturamento\"] }}\n*Especialidade:* {{ $node[\"Formata Telefone\"].json[\"especialidade\"] }}\n*Dificuldade:* {{ $node[\"Formata Telefone\"].json[\"dificuldade\"] }}\n\n*link CRM:* {{ $node[\"ClickUp2\"].json[\"url\"] }} "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0751fd27-215c-4186-9c49-8b78e1d7d59c",
+      "name": "MSG GRUPO2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3580,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363303787410525-group"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead da Sessão Estratégica*\n\n*Origem:* {{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*Clínica:* {{ $('Formata Telefone').item.json.clinica }}\n*Função:* {{ $node[\"Formata Telefone\"].json[\"função\"] }}\n*Investe em tráfego:* {{ $node[\"Formata Telefone\"].json[\"investe\"] }}\n*Faturamento:* {{ $node[\"Formata Telefone\"].json[\"faturamento\"] }}\n*Especialidade:* {{ $node[\"Formata Telefone\"].json[\"especialidade\"] }}\n*Dificuldade:* {{ $node[\"Formata Telefone\"].json[\"dificuldade\"] }}\n\n*link CRM:* {{ $node[\"ClickUp3\"].json[\"url\"] }} "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bda6c0b6-360f-4a3e-874a-f5b04abfb871",
+      "name": "MSG GRUPO3",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
         3760,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363303787410525-group"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead da Sessão Estratégica*\n\n*Origem:* {{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*Clínica:* {{ $('Formata Telefone').item.json.clinica }}\n*Função:* {{ $node[\"Formata Telefone\"].json[\"função\"] }}\n*Investe em tráfego:* {{ $node[\"Formata Telefone\"].json[\"investe\"] }}\n*Faturamento:* {{ $node[\"Formata Telefone\"].json[\"faturamento\"] }}\n*Especialidade:* {{ $node[\"Formata Telefone\"].json[\"especialidade\"] }}\n*Dificuldade:* {{ $node[\"Formata Telefone\"].json[\"dificuldade\"] }}\n\n*link CRM:* {{ $node[\"ClickUp4\"].json[\"url\"] }} "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5d40b69c-7f83-4afd-bb5f-eec28f600046",
+      "name": "MSG GRUPO4",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3800,
+        900
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363303787410525-group"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead da Sessão Estratégica*\n\n*Origem:* {{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*Clínica:* {{ $('Formata Telefone').item.json.clinica }}\n*Função:* {{ $node[\"Formata Telefone\"].json[\"função\"] }}\n*Investe em tráfego:* {{ $node[\"Formata Telefone\"].json[\"investe\"] }}\n*Faturamento:* {{ $node[\"Formata Telefone\"].json[\"faturamento\"] }}\n*Especialidade:* {{ $node[\"Formata Telefone\"].json[\"especialidade\"] }}\n*Dificuldade:* {{ $node[\"Formata Telefone\"].json[\"dificuldade\"] }}\n\n*link CRM:* {{ $node[\"ClickUp5\"].json[\"url\"] }} "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e515fcc5-0490-42e3-8546-aa713162bc42",
+      "name": "MSG GRUPO5",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3800,
+        1100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363303787410525-group"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead da Sessão Estratégica*\n\n*Origem:* {{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*Clínica:* {{ $('Formata Telefone').item.json.clinica }}\n*Função:* {{ $node[\"Formata Telefone\"].json[\"função\"] }}\n*Investe em tráfego:* {{ $node[\"Formata Telefone\"].json[\"investe\"] }}\n*Faturamento:* {{ $node[\"Formata Telefone\"].json[\"faturamento\"] }}\n*Especialidade:* {{ $node[\"Formata Telefone\"].json[\"especialidade\"] }}\n*Dificuldade:* {{ $node[\"Formata Telefone\"].json[\"dificuldade\"] }}\n\n*link CRM:* {{ $node[\"ClickUp6\"].json[\"url\"] }} "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f7e7d88c-9089-48f0-8386-ce202ec66e1f",
+      "name": "MSG GRUPO6",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3800,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "=120363303787410525-group"
+            },
+            {
+              "name": "message",
+              "value": "=*+1 lead da Sessão Estratégica*\n\n*Origem:* {{ $node[\"Formata Telefone\"].json[\"utm_source\"] }}\n\n*Nome:* {{ $('Formata Telefone').item.json.nome }}\n*Email:* {{ $('Formata Telefone').item.json.email }}\n*Telefone:* {{ $('Formata Telefone').item.json.telefone }}\n\n*Clínica:* {{ $('Formata Telefone').item.json.clinica }}\n*Função:* {{ $node[\"Formata Telefone\"].json[\"função\"] }}\n*Investe em tráfego:* {{ $node[\"Formata Telefone\"].json[\"investe\"] }}\n*Faturamento:* {{ $node[\"Formata Telefone\"].json[\"faturamento\"] }}\n*Especialidade:* {{ $node[\"Formata Telefone\"].json[\"especialidade\"] }}\n*Dificuldade:* {{ $node[\"Formata Telefone\"].json[\"dificuldade\"] }}\n\n*link CRM:* {{ $node[\"ClickUp7\"].json[\"url\"] }} "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "60e2af46-efbd-4658-bc91-6bae683d888f",
+      "name": "MSG GRUPO7",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        3800,
         1600
       ]
     }
@@ -4672,47 +4864,51 @@
         "json": {
           "headers": {
             "host": "n8n.marcosfoks.com.br",
-            "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/21E236 Instagram 329.0.6.27.88 (iPhone15,3; iOS 17_4_1; pt_BR; pt; scale=3.00; 1290x2796; 593314425)",
-            "content-length": "1654",
+            "user-agent": "Mozilla/5.0 (Linux; Android 13; SM-A035M Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/126.0.6478.134 Mobile Safari/537.36 Instagram 340.0.0.22.109 Android (33/13; 300dpi; 720x1465; samsung; SM-A035M; a03; ums9230_25c10; pt_BR; 622859821)",
+            "content-length": "1761",
             "accept": "*/*",
             "accept-encoding": "gzip, br",
-            "accept-language": "pt-BR,pt;q=0.9",
+            "accept-language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
             "cdn-loop": "cloudflare",
-            "cf-connecting-ip": "2804:1b3:9000:6b24:a043:6d78:65e5:7c4c",
+            "cf-connecting-ip": "2804:5b8:61c8:f600:209c:adde:755f:5b14",
             "cf-ipcountry": "BR",
-            "cf-ray": "87e2aa5f8fc525b4-GIG",
+            "cf-ray": "8a95d7e28a788b1b-SJP",
             "cf-visitor": "{\"scheme\":\"https\"}",
-            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryd7AdjeRhv98eBBMt",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundaryGac4AexCpXvWGuDr",
             "origin": "https://dentistapower.com.br",
+            "priority": "u=1, i",
             "referer": "https://dentistapower.com.br/",
+            "sec-ch-ua": "\"Not/A)Brand\";v=\"8\", \"Chromium\";v=\"126\", \"Android WebView\";v=\"126\"",
+            "sec-ch-ua-mobile": "?1",
+            "sec-ch-ua-platform": "\"Android\"",
             "sec-fetch-dest": "empty",
             "sec-fetch-mode": "cors",
             "sec-fetch-site": "cross-site",
-            "x-forwarded-for": "172.70.105.214",
+            "x-forwarded-for": "172.70.236.132",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
-            "x-real-ip": "172.70.105.214"
+            "x-real-ip": "172.70.236.132"
           },
           "params": {},
           "query": {},
           "body": {
-            "nome": "Analia ",
-            "email": "analia.zizzi@gmail.com",
-            "telefone": "(27) 99920-8253",
-            "clinica": "OPI Odontologia ",
+            "nome": "Heitor gabriel da silva rabeti",
+            "email": "heitorrabetti@gmail.com",
+            "telefone": "5517996366734",
+            "clinica": "Hnr odontologia",
             "função": "Dono/Sócio",
-            "dificuldade": "Trazer novos pacientes ",
-            "especialidade": "ortodontia ",
-            "investe": "Sim, até R$ 2.000",
-            "faturamento": "Entre R$ 20 mil e R$ 50 mil",
+            "dificuldade": "Lucro e custos fixos",
+            "especialidade": "Implante e prótese",
+            "investe": "Sim, entre R$ 2.000 e R$ 5.000",
+            "faturamento": "Entre R$ 100 mil e R$ 250 mil",
             "etapa": "2",
-            "utm_campaign": "null",
-            "utm_source": "linktree",
-            "utm_medium": "null",
-            "utm_term": "null",
-            "utm_content": "null"
+            "utm_campaign": "se",
+            "utm_source": "adsfb",
+            "utm_medium": "[SE] [CADASTROS] [CONVERSÕES] [ABO] [F] - Público frio",
+            "utm_term": "SE02_protocolo",
+            "utm_content": "04 - Advantage"
           }
         }
       }
@@ -4724,6 +4920,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-26T04:14:17.000Z",
-  "versionId": "825d1222-45b5-4e8b-8f95-a0fe573a243e"
+  "updatedAt": "2024-07-26T17:42:08.000Z",
+  "versionId": "003d4cd6-1dac-43f7-b164-125c01f8c160"
 }
