@@ -4195,7 +4195,7 @@
         "space": "90070031834",
         "folder": "90130377914",
         "list": "901304701916",
-        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "name": "={{ $('Formata Telefone').item.json.nome + \"[TRÁFEGO]\" }}",
         "additionalFields": {
           "assignees": [
             82001013
@@ -4258,7 +4258,7 @@
         "space": "90070031834",
         "folder": "90130377914",
         "list": "901304701916",
-        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "name": "={{ $('Formata Telefone').item.json.nome + \"[ORGÂNICO]\" }}",
         "additionalFields": {
           "assignees": [
             82001013
@@ -4288,7 +4288,7 @@
         "space": "90070031834",
         "folder": "90130377914",
         "list": "901304701916",
-        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "name": "={{ $('Formata Telefone').item.json.nome + \"[TRÁFEGO]\" }}",
         "additionalFields": {
           "assignees": [
             82001013
@@ -4351,7 +4351,7 @@
         "space": "90070031834",
         "folder": "90130377914",
         "list": "901304701916",
-        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "name": "={{ $('Formata Telefone').item.json.nome + \"[ORGÂNICO]\" }}",
         "additionalFields": {
           "assignees": [
             82001013
@@ -4381,7 +4381,7 @@
         "space": "90070031834",
         "folder": "90130377914",
         "list": "901304701916",
-        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "name": "={{ $('Formata Telefone').item.json.nome + \"[TRÁFEGO]\" }}",
         "additionalFields": {
           "assignees": [
             82001013
@@ -4444,7 +4444,7 @@
         "space": "90070031834",
         "folder": "90130377914",
         "list": "901304701916",
-        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "name": "={{ $('Formata Telefone').item.json.nome + \"[ORGÂNICO]\" }}",
         "additionalFields": {
           "assignees": [
             82001013
@@ -4474,7 +4474,7 @@
         "space": "90070031834",
         "folder": "90130377914",
         "list": "901304701916",
-        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "name": "={{ $('Formata Telefone').item.json.nome + \"[TRÁFEGO]\" }}",
         "additionalFields": {
           "assignees": [
             82001013
@@ -4537,7 +4537,7 @@
         "space": "90070031834",
         "folder": "90130377914",
         "list": "901304701916",
-        "name": "={{ $('Formata Telefone').item.json.nome }}",
+        "name": "={{ $('Formata Telefone').item.json.nome + \"[ORGÂNICO]\" }}",
         "additionalFields": {
           "assignees": [
             82001013
@@ -4920,6 +4920,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-26T17:42:08.000Z",
-  "versionId": "003d4cd6-1dac-43f7-b164-125c01f8c160"
+  "updatedAt": "2024-07-29T14:20:30.000Z",
+  "versionId": "44c95cf7-5f75-4799-84a0-fcba2d93b294"
 }
