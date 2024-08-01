@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Split Out",
+            "node": "Google Sheets1",
             "type": "main",
             "index": 0
           }
@@ -25,13 +25,7 @@
     },
     "Split Out": {
       "main": [
-        [
-          {
-            "node": "Filter",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Merge": {
@@ -169,31 +163,14 @@
         ]
       ]
     },
-    "Summarize": {
+    "Dados finais1": {
       "main": [
         []
       ]
     },
-    "Dados finais1": {
-      "main": [
-        [
-          {
-            "node": "Google Sheets1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Google Sheets1": {
       "main": [
-        [
-          {
-            "node": "ActiveCampaign1",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "ActiveCampaign": {
@@ -280,8 +257,8 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        740,
-        380
+        720,
+        980
       ]
     },
     {
@@ -482,7 +459,7 @@
       "typeVersion": 2,
       "position": [
         940,
-        380
+        960
       ]
     },
     {
@@ -704,8 +681,8 @@
       "type": "n8n-nodes-base.summarize",
       "typeVersion": 1,
       "position": [
-        1140,
-        380
+        1120,
+        940
       ]
     },
     {
@@ -801,11 +778,11 @@
           "mappingMode": "defineBelow",
           "value": {
             "data": "={{new DateTime($now).toFormat('dd/MM/yyyy HH:mm')}}",
-            "tipo": "={{ $json.ingresso }}",
-            "telefone": "={{ $json[\"Telefone (Whatsap)\"] }}",
+            "tipo": "=normal",
+            "telefone": "={{ $json.payload.custom_fields[6].value }}",
             "nome": "={{ $('Trata Webhook').item.json.payload.name }}",
-            "chave": "={{ $json[\"Telefone (Whatsap)\"].slice(-7) }}",
-            "email": "={{ $json.Email }}"
+            "chave": "={{ $json.payload.custom_fields[6].value.slice(-7) }}",
+            "email": "="
           },
           "matchingColumns": [],
           "schema": [
@@ -884,8 +861,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.3,
       "position": [
-        1920,
-        460
+        740,
+        380
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -1477,6 +1454,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-31T04:24:05.000Z",
-  "versionId": "6419f5dc-c3b0-42d8-a18e-9a9268385533"
+  "updatedAt": "2024-08-01T03:29:21.000Z",
+  "versionId": "293ec656-354f-4585-b561-71c6db2d95c3"
 }
