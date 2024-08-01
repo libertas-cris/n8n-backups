@@ -4856,6 +4856,36 @@
         3800,
         1600
       ]
+    },
+    {
+      "parameters": {
+        "familyName": "={{ $('Formata Telefone').item.json.nome }}",
+        "givenName": "={{ $('Formata Telefone').item.json.nome.split(\" \")[0] }}",
+        "additionalFields": {
+          "phoneUi": {
+            "phoneValues": [
+              {
+                "type": "main",
+                "value": "={{ $('Formata Telefone').item.json.telefone }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "961449a3-429a-4208-b369-a3885fda00a6",
+      "name": "Google Contacts",
+      "type": "n8n-nodes-base.googleContacts",
+      "typeVersion": 1,
+      "position": [
+        580,
+        640
+      ],
+      "credentials": {
+        "googleContactsOAuth2Api": {
+          "id": "uBEaJtuv9ZQuYKHk",
+          "name": "Victoria"
+        }
+      }
     }
   ],
   "pinData": {
@@ -4920,6 +4950,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-07-31T15:04:54.000Z",
-  "versionId": "231571e6-89f5-450c-8c34-defbfcb0bc97"
+  "updatedAt": "2024-08-01T14:42:48.000Z",
+  "versionId": "51d110cf-3752-46bb-9182-dcc4d70eb454"
 }
