@@ -1,0 +1,418 @@
+{
+  "active": false,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MSG | Marcela": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MSG | Tran": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "MSG | Marcela",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "MSG | Tran",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-07-31T17:18:58.138Z",
+  "id": "D27UNeNntcuhbZdr",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "DISPARO GRUPOS - Aviso Aula",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression"
+            }
+          ]
+        }
+      },
+      "id": "0418a4dd-f688-4800-81ff-527f7ee96080",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        620,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1g5II4zI2nq4DLZsRRDXbGEec_pTk59I_0rJBuaeGbJc",
+          "mode": "list",
+          "cachedResultName": "Criação de Grupos em Massa",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1g5II4zI2nq4DLZsRRDXbGEec_pTk59I_0rJBuaeGbJc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1943809950,
+          "mode": "list",
+          "cachedResultName": "Grupo ativos clickup",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1g5II4zI2nq4DLZsRRDXbGEec_pTk59I_0rJBuaeGbJc/edit#gid=1943809950"
+        },
+        "options": {}
+      },
+      "id": "d9a1f92a-b380-4e2f-b256-b55f78e31016",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        840,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "e9308e03-a8a1-4508-a473-52c5a9f2ac68",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "=",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "6d0e3d98-ee6f-4004-9c3d-feed93173cc4",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2,
+      "position": [
+        1060,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "43e0cd9a-3b8c-4453-be11-405d7733d183",
+              "leftValue": "={{ $json.consultor }}",
+              "rightValue": "=Marcela Proença",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e01d57b6-db74-4662-a7ca-6e99d650f9cd",
+      "name": "If",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1280,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3BEDDFEC0E038099BE94661BB58ECC45/token/6A577D749FF578BF542A8521/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "F206336aa6c154c618083085a4b1f5de3S"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "name": "message",
+              "value": "=Aula: Follow-Up de Alta Performance\n\n🗓 Data: (HOJE)\n⏰ Horário: 17h00 (Horário de Brasília)\n\nQuer transformar seus follow-ups em uma poderosa ferramenta de conversão? 🔥 Hoje, às 17h00, participe da nossa aula especial sobre Follow-Up de Alta Performance e descubra os segredos para maximizar seus resultados!\n\nNão perca essa oportunidade de elevar suas habilidades e aumentar suas conversões! Vamos juntos transformar seus follow-ups em um diferencial competitivo que fará toda a diferença no seu dia a dia. \n\n🚀 Prepare-se para uma aula dinâmica e cheia de insights práticos!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "90d0f66d-641e-4911-a90e-bc924baa77af",
+      "name": "MSG | Tran",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1860,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3CC464C467F3C09DF85996AA42CF65C4/token/2C661F295A0505B121FC569F/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "={{ $json.id }}"
+            },
+            {
+              "name": "message",
+              "value": "=Aula: Follow-Up de Alta Performance\n\n🗓 Data: (HOJE)\n⏰ Horário: 17h00 (Horário de Brasília)\n\nQuer transformar seus follow-ups em uma poderosa ferramenta de conversão? 🔥 Hoje, às 17h00, participe da nossa aula especial sobre Follow-Up de Alta Performance e descubra os segredos para maximizar seus resultados!\n\nNão perca essa oportunidade de elevar suas habilidades e aumentar suas conversões! Vamos juntos transformar seus follow-ups em um diferencial competitivo que fará toda a diferença no seu dia a dia. \n\n🚀 Prepare-se para uma aula dinâmica e cheia de insights práticos!"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ff1efc93-b764-41b4-8c91-22b628bfb428",
+      "name": "MSG | Marcela",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1840,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.z-api.io/instances/3C1825917D649026AAA446A65441921E/token/92B58C5DAD3489D5AD780116/send-text",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Client-Token",
+              "value": "Fc42ae886be5842c29595e379b6c74fbaS"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "phone",
+              "value": "120363316428441004-group"
+            },
+            {
+              "name": "message",
+              "value": "=Boa tarde, pessoal! Tudo bem? Como foi o mês de Julho aí na clínica?\n\nPreciso que me enviem algumas métricas referentes ao mês de Julho/2024, por favor:\n\nVENDAS\n\n1) Meta de Faturamento: R$\n2) Realizado Faturamento: R$\n3) Oportunidade de vendas: R$\n4) Entrada Faturamento: R$\n5) Ticket Médio: R$\n6) Nº de fechamentos\n\nFLUXO DE CAIXA\n\n1) Recebíveis: R$\n2) Despesa: R$\n3) Porcentagem de Inadimplência:\n4) Lucratividade: R$\n\nAGENDAMENTO E COMPARECIMENTO GERAL\n\n1) Agendamentos:\n2) Comparecimentos:\n\nPERFORMANCE TRÁFEGO PAGO\n\n1) Investimento em Tráfego Pago:\n2) Total nº de leads no mês\n3) Total nº de leads agendados no mês\n4) Total nº de leads comparecidos no mês\n5) Total nº de leads fechados no mês\n6) Valor total de orçamentos fechados pelo comparecimento de leads (em reais)\n\nPERFORMANCE INDICAÇÕES\n\n1) Nº Total de pacientes indicados \n2) Nº de agendamentos\n3) Nº de comparecimentos\n4) Nº de fechamentos\n5) Faturamento através de indicações"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "283da7ca-29b2-4caf-9136-1a92c82eca40",
+      "name": "MSG | Ila",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        980,
+        -40
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "1b61564f-365f-4253-b1f5-0c286f160516",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1540,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "e0f23bbc-2048-4ee3-95ca-f5ef1fc29419",
+      "name": "Loop Over Items1",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1540,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (20 - 8 + 1)) + 8}}"
+      },
+      "id": "5e6d1ab5-06f4-4c06-896b-d28369cab128",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2100,
+        80
+      ],
+      "webhookId": "0c1e6032-0def-4362-8dbd-33a4d5a88128"
+    },
+    {
+      "parameters": {
+        "amount": "={{ Math.floor(Math.random() * (20 - 8 + 1)) + 8}}"
+      },
+      "id": "4703f65a-efe1-4946-8a36-f29ce8a9b44b",
+      "name": "Wait1",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2100,
+        440
+      ],
+      "webhookId": "0c1e6032-0def-4362-8dbd-33a4d5a88128"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-08-01T18:52:54.000Z",
+  "versionId": "7cbb38d6-43e7-4b17-a133-f271e2dbaa54"
+}
