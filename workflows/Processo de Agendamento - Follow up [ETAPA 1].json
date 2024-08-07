@@ -23,11 +23,6 @@
         ]
       ]
     },
-    "Split Out": {
-      "main": [
-        []
-      ]
-    },
     "Merge": {
       "main": [
         [
@@ -163,16 +158,6 @@
         ]
       ]
     },
-    "Dados finais1": {
-      "main": [
-        []
-      ]
-    },
-    "Google Sheets1": {
-      "main": [
-        []
-      ]
-    },
     "ActiveCampaign": {
       "main": [
         [
@@ -189,6 +174,17 @@
         [
           {
             "node": "ADD TAG DE FOLLOW NO ACTIVE1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
             "type": "main",
             "index": 0
           }
@@ -949,6 +945,20 @@
           "name": "Ila & Nicole"
         }
       }
+    },
+    {
+      "parameters": {
+        "workflowId": "yxL0Eja1zDUksM4U",
+        "options": {}
+      },
+      "id": "f3b9dd88-15d0-438d-b8d7-9bac361f136f",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1,
+      "position": [
+        960,
+        380
+      ]
     }
   ],
   "pinData": {
@@ -958,44 +968,44 @@
           "headers": {
             "host": "n8n.marcosfoks.com.br",
             "user-agent": "axios/0.24.0",
-            "content-length": "8371",
+            "content-length": "9010",
             "accept": "application/json, text/plain, */*",
             "accept-encoding": "gzip, br",
-            "b3": "66a9bbff0000000057b1d55e3ce732be-3e46da3c893c3cb7-0-2428c7a9aacc544b",
+            "b3": "66b0c8050000000065be1f90939f6144-4617dc8e3b1f2e93-0-5bd5c994b4443859",
             "cdn-loop": "cloudflare",
             "cf-connecting-ip": "3.23.71.80",
             "cf-ipcountry": "US",
-            "cf-ray": "8abace9dbf01e174-ORD",
+            "cf-ray": "8ae6d9c75db06204-ORD",
             "cf-visitor": "{\"scheme\":\"https\"}",
             "content-type": "application/json",
-            "traceparent": "00-66a9bbff0000000057b1d55e3ce732be-3e46da3c893c3cb7-00",
-            "tracestate": "dd=t.tid:66a9bbff00000000;t.dm:3;s:-1",
-            "x-b3-parentspanid": "2428c7a9aacc544b",
+            "traceparent": "00-66b0c8050000000065be1f90939f6144-4617dc8e3b1f2e93-00",
+            "tracestate": "dd=t.tid:66b0c80500000000;t.dm:3;s:-1",
+            "x-b3-parentspanid": "5bd5c994b4443859",
             "x-b3-sampled": "0",
-            "x-b3-spanid": "3e46da3c893c3cb7",
-            "x-b3-traceid": "66a9bbff0000000057b1d55e3ce732be",
-            "x-datadog-parent-id": "4487514032256597175",
+            "x-b3-spanid": "4617dc8e3b1f2e93",
+            "x-b3-traceid": "66b0c8050000000065be1f90939f6144",
+            "x-datadog-parent-id": "5050748010554666643",
             "x-datadog-sampling-priority": "-1",
-            "x-datadog-tags": "_dd.p.tid=66a9bbff00000000",
-            "x-datadog-trace-id": "6319066352902943422",
-            "x-forwarded-for": "172.70.126.234",
+            "x-datadog-tags": "_dd.p.tid=66b0c80500000000",
+            "x-datadog-trace-id": "7331331949218193732",
+            "x-forwarded-for": "172.69.6.56",
             "x-forwarded-host": "n8n.marcosfoks.com.br",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
             "x-forwarded-server": "bc917484dc53",
-            "x-real-ip": "172.70.126.234"
+            "x-real-ip": "172.69.6.56"
           },
           "params": {},
           "query": {},
           "body": {
-            "id": "f55a5ffa-a843-4f7e-9837-a438ee4f4bfb:main",
+            "id": "0d2c441d-9497-42e6-a6a1-cfd3f78e912e:main",
             "trigger_id": "9efb4b05-33a3-45c5-bc00-743101f2c5b3",
-            "date": "2024-07-31T04:22:23.436Z",
+            "date": "2024-08-05T12:39:34.134Z",
             "payload": {
-              "id": "86a4b1d8b",
+              "id": "86a4c9ph9",
               "custom_id": null,
               "custom_item_id": 0,
-              "name": "Michelle Nunes - SE ORG",
+              "name": "Drielly [TRÁFEGO]",
               "text_content": "",
               "description": "",
               "status": {
@@ -1005,9 +1015,9 @@
                 "orderindex": 0,
                 "type": "open"
               },
-              "orderindex": "39703490.00000000000000000000000000000000",
-              "date_created": "1722094071043",
-              "date_updated": "1722399741162",
+              "orderindex": "39703749.00000000000000000000000000000000",
+              "date_created": "1722380313909",
+              "date_updated": "1722861570826",
               "date_closed": null,
               "date_done": null,
               "archived": false,
@@ -1138,7 +1148,7 @@
                   "type_config": {},
                   "date_created": "1721875004096",
                   "hide_from_guests": false,
-                  "value": "Consultório em Divinópolis MG",
+                  "value": "Bem Estar - Paulinia ",
                   "required": false
                 },
                 {
@@ -1148,7 +1158,7 @@
                   "type_config": {},
                   "date_created": "1704488199180",
                   "hide_from_guests": false,
-                  "value": "Dentista",
+                  "value": "Dono/Sócio",
                   "required": false
                 },
                 {
@@ -1158,7 +1168,7 @@
                   "type_config": {},
                   "date_created": "1721875025282",
                   "hide_from_guests": false,
-                  "value": "Lentes de Contato",
+                  "value": "Implante e prótese",
                   "required": false
                 },
                 {
@@ -1168,7 +1178,7 @@
                   "type_config": {},
                   "date_created": "1681439246903",
                   "hide_from_guests": false,
-                  "value": "Até R$ 10 mil",
+                  "value": "Entre R$ 50 mil e R$ 100 mil",
                   "required": false
                 },
                 {
@@ -1187,7 +1197,7 @@
                   "type_config": {},
                   "date_created": "1695867402474",
                   "hide_from_guests": false,
-                  "value": "553784023707",
+                  "value": "5519989384211",
                   "required": false
                 },
                 {
@@ -1212,62 +1222,95 @@
                         "orderindex": 0
                       },
                       {
+                        "id": "2467cb8b-e882-41c7-b3f3-c53b59c3f38f",
+                        "name": "Descartado pós agendamento (desqualificado)",
+                        "color": null,
+                        "orderindex": 1
+                      },
+                      {
                         "id": "7b8485f9-c59a-467e-89f3-c8fbdd049a53",
                         "name": "No-show",
                         "color": "#7C4DFF",
-                        "orderindex": 1
+                        "orderindex": 2
                       },
                       {
                         "id": "4b38362f-6995-49c1-891d-1e4fe80ff613",
                         "name": "Lead desqualificado (Proposta não apresentada)",
                         "color": "#800000",
-                        "orderindex": 2
-                      },
-                      {
-                        "id": "749cb46a-338b-42ba-a936-ea1957f3194a",
-                        "name": "Segunda reunião agendada",
-                        "color": "#E65100",
                         "orderindex": 3
                       },
                       {
-                        "id": "deb7ba94-9f9c-4dd2-b541-224c597dc41f",
-                        "name": "Follow-up Semana",
-                        "color": "#ff7800",
+                        "id": "749cb46a-338b-42ba-a936-ea1957f3194a",
+                        "name": "2ª Reunião (decisor ou proposta)",
+                        "color": "#f9d900",
                         "orderindex": 4
+                      },
+                      {
+                        "id": "92db3967-4299-42b9-8074-42e705bfa220",
+                        "name": "No-show 2ª Reunião",
+                        "color": "#7C4DFF",
+                        "orderindex": 5
+                      },
+                      {
+                        "id": "d8eef236-9216-4e75-af0a-a5fce0bc10b5",
+                        "name": "Proposta apresentada",
+                        "color": "#ff7800",
+                        "orderindex": 6
+                      },
+                      {
+                        "id": "8e6d1469-4f65-4d82-9712-797b5a6028ed",
+                        "name": "Follow-up agendado",
+                        "color": "#E65100",
+                        "orderindex": 7
+                      },
+                      {
+                        "id": "deb7ba94-9f9c-4dd2-b541-224c597dc41f",
+                        "name": "No-show reunião follow",
+                        "color": "#7C4DFF",
+                        "orderindex": 8
                       },
                       {
                         "id": "e4ec4c2b-ace2-4277-b7ee-f1c122615b47",
                         "name": "Follow-up Longo",
                         "color": "#f9d900",
-                        "orderindex": 5
+                        "orderindex": 9
                       },
                       {
                         "id": "ea2bda8c-fc7b-4bf3-8be3-9176260b8acb",
                         "name": "Aguardando pagamento",
                         "color": "#04A9F4",
-                        "orderindex": 6
+                        "orderindex": 10
                       },
                       {
                         "id": "7fbaf701-28d5-4b10-b461-0621687c9162",
                         "name": "Comprou front-end",
                         "color": "#1bbc9c",
-                        "orderindex": 7
+                        "orderindex": 11
                       },
                       {
                         "id": "a3772b9d-2a36-416d-8c4c-affd06b0b412",
                         "name": "Contrato Sala Black",
                         "color": "#02BCD4",
-                        "orderindex": 8
+                        "orderindex": 12
                       },
                       {
                         "id": "6e6dc5f7-b481-4c55-a4c2-d2fd73ee664d",
                         "name": "Onboarding Sala Black",
                         "color": "#2ecd6f",
-                        "orderindex": 9
+                        "orderindex": 13
                       }
                     ]
                   },
                   "date_created": "1721769349448",
+                  "hide_from_guests": false,
+                  "required": false
+                },
+                {
+                  "id": "0578431b-85f8-45ab-89df-4a507c14a9d3",
+                  "name": "Reunião agendada",
+                  "type": "checkbox",
+                  "type_config": {},
+                  "date_created": "1722438493738",
                   "hide_from_guests": false,
                   "required": false
                 },
@@ -1375,7 +1418,7 @@
                   "type_config": {},
                   "date_created": "1695867534125",
                   "hide_from_guests": false,
-                  "value": "Captação de clientes; aumentar a oportunidade de venda ",
+                  "value": "Fechamento ",
                   "required": false
                 },
                 {
@@ -1385,7 +1428,7 @@
                   "type_config": {},
                   "date_created": "1695867438787",
                   "hide_from_guests": false,
-                  "value": "Não",
+                  "value": "Sim, entre R$ 2.000 e R$ 5.000",
                   "required": false
                 },
                 {
@@ -1402,7 +1445,7 @@
               "linked_tasks": [],
               "locations": [],
               "team_id": "30971486",
-              "url": "https://app.clickup.com/t/86a4b1d8b",
+              "url": "https://app.clickup.com/t/86a4c9ph9",
               "sharing": {
                 "public": false,
                 "public_share_expires_on": null,
@@ -1454,6 +1497,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-08-01T03:29:21.000Z",
-  "versionId": "293ec656-354f-4585-b561-71c6db2d95c3"
+  "updatedAt": "2024-08-06T21:10:45.000Z",
+  "versionId": "49a4c337-3d20-4d7f-ada3-341fd9f44e2c"
 }
