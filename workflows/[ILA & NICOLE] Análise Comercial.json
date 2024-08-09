@@ -911,6 +911,9 @@
         1280,
         80
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -1154,6 +1157,9 @@
         1740,
         320
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -1195,6 +1201,9 @@
         1280,
         340
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -1554,6 +1563,9 @@
         2000,
         560
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -1805,6 +1817,9 @@
         2220,
         560
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -2079,6 +2094,9 @@
         2240,
         840
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -2330,6 +2348,9 @@
         2460,
         840
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -2609,6 +2630,9 @@
         2480,
         1160
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -2860,6 +2884,9 @@
         2720,
         1160
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -3109,6 +3136,9 @@
         2480,
         1680
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -3360,6 +3390,9 @@
         2720,
         1680
       ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "aqyCUOYp9QE28Sw2",
@@ -4950,6 +4983,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-08-01T14:42:48.000Z",
-  "versionId": "51d110cf-3752-46bb-9182-dcc4d70eb454"
+  "updatedAt": "2024-08-09T01:17:30.000Z",
+  "versionId": "9cca278d-8d3c-4a7a-92cb-56f2edb41864"
 }
