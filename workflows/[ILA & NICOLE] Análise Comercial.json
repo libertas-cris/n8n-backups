@@ -85,17 +85,6 @@
         ]
       ]
     },
-    "Existe? Etapa 2": {
-      "main": [
-        [
-          {
-            "node": "Atualiza Etapa 2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Busca Lead Final": {
       "main": [
         [
@@ -539,6 +528,28 @@
           }
         ]
       ]
+    },
+    "Existe? Etapa 2": {
+      "main": [
+        [
+          {
+            "node": "eventos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "eventos": {
+      "main": [
+        [
+          {
+            "node": "Atualiza Etapa 2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2024-02-16T09:21:40.196Z",
@@ -946,7 +957,7 @@
             "Investe em tráfego": "={{ $('Formata Telefone').item.json.investe }}",
             "Faturamento": "={{ $('Formata Telefone').item.json.faturamento }}",
             "Etapa_form": "2",
-            "Chave(busca)": "={{ $json['Chave(busca)'] }}"
+            "Chave(busca)": "={{ $('Existe? Etapa 2').item.json['Chave(busca)'] }}"
           },
           "matchingColumns": [
             "Chave(busca)"
@@ -1154,7 +1165,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        1740,
+        1920,
         320
       ],
       "retryOnFail": true,
@@ -4233,7 +4244,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\"}, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-ads\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\"}, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-ads\" }, {\"id\":\"4ad91e62-76fc-49ee-9057-668bcaf87185\", \"value\":\"{{ $('Formata Telefone').item.json.utm_source }}\"}, {\"id\":\"f1733835-07a8-4dbf-a274-8d94e9616e1b\", \"value\":\"{{ $('Formata Telefone').item.json.utm_campaign }}\"}, {\"id\":\"ce49ae3e-50e3-4243-ac4a-8d88392be9c0\", \"value\":\"{{ $('Formata Telefone').item.json.utm_medium }}\"}, {\"id\":\"337c028c-d492-44cd-8888-c0566b807def\", \"value\":\"{{ $('Formata Telefone').item.json.utm_content }}\"}, {\"id\":\"f60b21be-a6cb-49a6-b1ec-5c747df5fec3\", \"value\":\"{{ $('Formata Telefone').item.json.utm_term }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4296,7 +4307,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-org\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-org\" }, {\"id\":\"4ad91e62-76fc-49ee-9057-668bcaf87185\", \"value\":\"{{ $('Formata Telefone').item.json.utm_source }}\"}, {\"id\":\"f1733835-07a8-4dbf-a274-8d94e9616e1b\", \"value\":\"{{ $('Formata Telefone').item.json.utm_campaign }}\"}, {\"id\":\"ce49ae3e-50e3-4243-ac4a-8d88392be9c0\", \"value\":\"{{ $('Formata Telefone').item.json.utm_medium }}\"}, {\"id\":\"337c028c-d492-44cd-8888-c0566b807def\", \"value\":\"{{ $('Formata Telefone').item.json.utm_content }}\"}, {\"id\":\"f60b21be-a6cb-49a6-b1ec-5c747df5fec3\", \"value\":\"{{ $('Formata Telefone').item.json.utm_term }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4326,7 +4337,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-ads\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-ads\" }, {\"id\":\"4ad91e62-76fc-49ee-9057-668bcaf87185\", \"value\":\"{{ $('Formata Telefone').item.json.utm_source }}\"}, {\"id\":\"f1733835-07a8-4dbf-a274-8d94e9616e1b\", \"value\":\"{{ $('Formata Telefone').item.json.utm_campaign }}\"}, {\"id\":\"ce49ae3e-50e3-4243-ac4a-8d88392be9c0\", \"value\":\"{{ $('Formata Telefone').item.json.utm_medium }}\"}, {\"id\":\"337c028c-d492-44cd-8888-c0566b807def\", \"value\":\"{{ $('Formata Telefone').item.json.utm_content }}\"}, {\"id\":\"f60b21be-a6cb-49a6-b1ec-5c747df5fec3\", \"value\":\"{{ $('Formata Telefone').item.json.utm_term }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4389,7 +4400,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-org\"}]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-org\"}, {\"id\":\"4ad91e62-76fc-49ee-9057-668bcaf87185\", \"value\":\"{{ $('Formata Telefone').item.json.utm_source }}\"}, {\"id\":\"f1733835-07a8-4dbf-a274-8d94e9616e1b\", \"value\":\"{{ $('Formata Telefone').item.json.utm_campaign }}\"}, {\"id\":\"ce49ae3e-50e3-4243-ac4a-8d88392be9c0\", \"value\":\"{{ $('Formata Telefone').item.json.utm_medium }}\"}, {\"id\":\"337c028c-d492-44cd-8888-c0566b807def\", \"value\":\"{{ $('Formata Telefone').item.json.utm_content }}\"}, {\"id\":\"f60b21be-a6cb-49a6-b1ec-5c747df5fec3\", \"value\":\"{{ $('Formata Telefone').item.json.utm_term }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4419,7 +4430,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-ads\"}]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-ads\"}, {\"id\":\"4ad91e62-76fc-49ee-9057-668bcaf87185\", \"value\":\"{{ $('Formata Telefone').item.json.utm_source }}\"}, {\"id\":\"f1733835-07a8-4dbf-a274-8d94e9616e1b\", \"value\":\"{{ $('Formata Telefone').item.json.utm_campaign }}\"}, {\"id\":\"ce49ae3e-50e3-4243-ac4a-8d88392be9c0\", \"value\":\"{{ $('Formata Telefone').item.json.utm_medium }}\"}, {\"id\":\"337c028c-d492-44cd-8888-c0566b807def\", \"value\":\"{{ $('Formata Telefone').item.json.utm_content }}\"}, {\"id\":\"f60b21be-a6cb-49a6-b1ec-5c747df5fec3\", \"value\":\"{{ $('Formata Telefone').item.json.utm_term }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4482,7 +4493,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-org\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\" }, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-org\" }, {\"id\":\"4ad91e62-76fc-49ee-9057-668bcaf87185\", \"value\":\"{{ $('Formata Telefone').item.json.utm_source }}\"}, {\"id\":\"f1733835-07a8-4dbf-a274-8d94e9616e1b\", \"value\":\"{{ $('Formata Telefone').item.json.utm_campaign }}\"}, {\"id\":\"ce49ae3e-50e3-4243-ac4a-8d88392be9c0\", \"value\":\"{{ $('Formata Telefone').item.json.utm_medium }}\"}, {\"id\":\"337c028c-d492-44cd-8888-c0566b807def\", \"value\":\"{{ $('Formata Telefone').item.json.utm_content }}\"}, {\"id\":\"f60b21be-a6cb-49a6-b1ec-5c747df5fec3\", \"value\":\"{{ $('Formata Telefone').item.json.utm_term }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4512,7 +4523,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-ads\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"b0c7b0ef-a7d2-40db-a72b-b0acdeb469f2\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-ads\" }, {\"id\":\"4ad91e62-76fc-49ee-9057-668bcaf87185\", \"value\":\"{{ $('Formata Telefone').item.json.utm_source }}\"}, {\"id\":\"f1733835-07a8-4dbf-a274-8d94e9616e1b\", \"value\":\"{{ $('Formata Telefone').item.json.utm_campaign }}\"}, {\"id\":\"ce49ae3e-50e3-4243-ac4a-8d88392be9c0\", \"value\":\"{{ $('Formata Telefone').item.json.utm_medium }}\"}, {\"id\":\"337c028c-d492-44cd-8888-c0566b807def\", \"value\":\"{{ $('Formata Telefone').item.json.utm_content }}\"}, {\"id\":\"f60b21be-a6cb-49a6-b1ec-5c747df5fec3\", \"value\":\"{{ $('Formata Telefone').item.json.utm_term }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4575,7 +4586,7 @@
           "assignees": [
             82001013
           ],
-          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-org\" }]",
+          "customFieldsJson": "=[{\"id\":\"deff6c81-9dc6-4b15-a249-937c677056fb\",\"value\":\"{{ $('Formata Telefone').item.json.especialidade }}\"}, {\"id\":\"a964eea7-44f0-476d-8246-e691e8166680\", \"value\":\"{{ $('Formata Telefone').item.json.faturamento }}\"}, {\"id\":\"48979394-c189-425a-a8ab-aad64178242b\", \"value\":\"{{ $('Formata Telefone').item.json.investe }}\"}, {\"id\":\"85e5466a-afb4-4e65-bd1f-58af78c9479d\", \"value\":\"{{ $('Formata Telefone').item.json.dificuldade }}\"}, {\"id\":\"f8d8e702-9e3c-4605-a15f-501f81a3b0e2\", \"value\":\"{{ $('Formata Telefone').item.json.função }}\"}, {\"id\":\"ca63198d-4367-4195-a85b-8a81b810106a\", \"value\":\"{{ $('Formata Telefone').item.json.clinica }}\"}, {\"id\":\"6cf1dba1-1c24-471e-bd7a-9eed2c8e2d2c\", \"value\":\"7223face-bb1e-4643-8eea-a451325b92cd\" }, {\"id\":\"aac36645-04a7-4fbe-b2c7-15f62e5bcc49\", \"value\":\"{{ $node[\"Formata Telefone\"].json[\"telefone\"] }}\"}, {\"id\":\"13f4e607-7a31-428d-9775-fab416cb95d9\", \"value\":\"SE-org\" }, {\"id\":\"4ad91e62-76fc-49ee-9057-668bcaf87185\", \"value\":\"{{ $('Formata Telefone').item.json.utm_source }}\"}, {\"id\":\"f1733835-07a8-4dbf-a274-8d94e9616e1b\", \"value\":\"{{ $('Formata Telefone').item.json.utm_campaign }}\"}, {\"id\":\"ce49ae3e-50e3-4243-ac4a-8d88392be9c0\", \"value\":\"{{ $('Formata Telefone').item.json.utm_medium }}\"}, {\"id\":\"337c028c-d492-44cd-8888-c0566b807def\", \"value\":\"{{ $('Formata Telefone').item.json.utm_content }}\"}, {\"id\":\"f60b21be-a6cb-49a6-b1ec-5c747df5fec3\", \"value\":\"{{ $('Formata Telefone').item.json.utm_term }}\" }]",
           "dueDate": "={{ $json.currentDate }}"
         }
       },
@@ -4919,6 +4930,266 @@
           "name": "Victoria"
         }
       }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0",
+          "mode": "list",
+          "cachedResultName": "[ILA & NICOLE] Sessão Estratégica",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1283159309,
+          "mode": "list",
+          "cachedResultName": "eventos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1hFQ9qe8_GSWHxxPENgNu5yoJ053JF0UDea7GFbuzgK0/edit#gid=1283159309"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ new DateTime($now).format(\"dd/MM/yyyy\") }}",
+            "Email": "={{ $json.Email }}",
+            "Descrição": "Análise Comercial",
+            "Origem": "Página de Aplicação",
+            "Meio": "Formulário",
+            "Ação": "Preencher",
+            "Situação": "Ganho",
+            "Público": "={{ $json.utm_medium.includes(\"[Q]\") ? \"PQ\" : \"PF\" }}",
+            "Utm_source": "={{ $json.utm_source }}",
+            "Utm_term": "={{ $json.utm_term }}",
+            "Utm_medium": "={{ $json.utm_medium }}",
+            "Utm_campaign": "={{ $json.utm_campaign }}",
+            "Utm_content": "={{ $json.utm_content }}",
+            "Preencher": "1",
+            "Inscrição": "0",
+            "noshow": "0",
+            "Agendar": "0",
+            "Funil": "Análise Comercial"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Closer",
+              "displayName": "Closer",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Descrição",
+              "displayName": "Descrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Origem",
+              "displayName": "Origem",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Meio",
+              "displayName": "Meio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ação",
+              "displayName": "Ação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Situação",
+              "displayName": "Situação",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Público",
+              "displayName": "Público",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Funil",
+              "displayName": "Funil",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Utm_source",
+              "displayName": "Utm_source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Utm_term",
+              "displayName": "Utm_term",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Utm_campaign",
+              "displayName": "Utm_campaign",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Utm_medium",
+              "displayName": "Utm_medium",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Utm_content",
+              "displayName": "Utm_content",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Valor",
+              "displayName": "Valor",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Produto",
+              "displayName": "Produto",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Data",
+              "displayName": "Data",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Inscrição",
+              "displayName": "Inscrição",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Preencher",
+              "displayName": "Preencher",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Agendar",
+              "displayName": "Agendar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "noshow",
+              "displayName": "noshow",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {
+          "cellFormat": "USER_ENTERED"
+        }
+      },
+      "id": "92ecbc48-d8a2-4b08-83c2-e5b88c0446f9",
+      "name": "eventos",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.3,
+      "position": [
+        1720,
+        320
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "aqyCUOYp9QE28Sw2",
+          "name": "Cris - Libertas"
+        }
+      }
     }
   ],
   "pinData": {
@@ -4983,6 +5254,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 1,
-  "updatedAt": "2024-08-09T01:17:30.000Z",
-  "versionId": "9cca278d-8d3c-4a7a-92cb-56f2edb41864"
+  "updatedAt": "2024-08-09T03:34:45.000Z",
+  "versionId": "e49ede33-0d0f-4d55-b4f9-329c30c72c11"
 }
